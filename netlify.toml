@@ -1,0 +1,13 @@
+[build]
+  command = "gatsby build"
+  publish = "public"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[plugins]]
+  package = "@netlify/plugin-gatsby"
+
+# If you decide to use Netlify Functions in the future, uncomment the following:
+# [functions]
+#   directory = "netlify/functions"
