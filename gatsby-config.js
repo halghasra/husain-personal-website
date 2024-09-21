@@ -1,20 +1,12 @@
-/**
- * Configure your Gatsby site with this file.
- *
- * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/
- */
-
-/**
- * @type {import('gatsby').GatsbyConfig}
- */
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    title: `Husain Alghasra`,
+    description: `Personal website of Husain Alghasra featuring a blog and learning hub`,
+    author: `Husain Alghasra`,
+    siteUrl: `https://husainalghasra.com`,
   },
   plugins: [
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -23,21 +15,52 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `content`,
+        path: `${__dirname}/content`,
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 630,
+            },
+          },
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: "language-",
+              inlineCodeMarker: null,
+              aliases: {},
+              showLineNumbers: false,
+              noInlineHighlight: false,
+            },
+          },
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-smartypants`,
+        ],
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Husain Alghasra's Personal Website`,
+        short_name: `Husain Alghasra`,
         start_url: `/`,
-        background_color: `#663399`,
-        // This will impact how browsers show your PWA/website
-        // https://css-tricks.com/meta-theme-color-and-trickery/
-        // theme_color: `#663399`,
+        background_color: `#ffffff`,
+        theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site. You'll need to add this icon.
       },
     },
+    // Removed gatsby-plugin-gatsby-cloud
   ],
 }
