@@ -1,0 +1,57 @@
+.learningHubHeader {
+    text-align: center;
+    padding: 3rem 0;
+    background: linear-gradient(135deg, var(--bg), var(--textLink));
+    color: var(--bg);
+    margin-bottom: 2rem;
+  }
+  
+  .learningHubHeader h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .learningHubHeader p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+  }
+  
+  .lessonGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .lessonCard {
+    background-color: var(--bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+  }
+  
+  .lessonCard:hover {
+    transform: translateY(-5px);
+  }
+  
+  .lessonCard a {
+    display: block;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: var(--textNormal);
+  }
+  
+  .lessonCard h2 {
+    margin: 0 0 1rem;
+    color: var(--textLink);
+  }
+  
+  .lessonDate {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-bottom: 1rem;
+  }
+  
+  .lessonExcerpt {
+    font-size: 1rem;
+    line-height: 1.5;
+  }

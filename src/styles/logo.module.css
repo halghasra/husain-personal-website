@@ -1,0 +1,8 @@
+.logoContainer {
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+  
+  .hovered {
+    transform: scale(1.1) rotate(5deg);
+  }

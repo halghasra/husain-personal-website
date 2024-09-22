@@ -1,22 +1,25 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import Layout from '../../components/Layout';
+import * as styles from '../../styles/learning-hub.module.css';
 
 const LearningHubPage = ({ data }) => {
   const lessons = data.allMarkdownRemark.nodes;
 
   return (
     <Layout>
-      <h1>Learning Hub</h1>
-      <div className="lesson-list">
+      <div className={styles.learningHubHeader}>
+        <h1>Learning Hub</h1>
+        <p>Explore lessons on technology, computer science, and more!</p>
+      </div>
+      <div className={styles.lessonGrid}>
         {lessons.map((lesson) => (
-          <article key={lesson.fields.slug} className="lesson-preview">
-            <h2>
-              <Link to={lesson.fields.slug}>{lesson.frontmatter.title}</Link>
-            </h2>
-            <small>{lesson.frontmatter.date}</small>
-            <p>{lesson.excerpt}</p>
-            <Link to={lesson.fields.slug}>Start lesson</Link>
+          <article key={lesson.fields.slug} className={styles.lessonCard}>
+            <Link to={lesson.fields.slug}>
+              <h2>{lesson.frontmatter.title}</h2>
+              <p className={styles.lessonDate}>{lesson.frontmatter.date}</p>
+              <p className={styles.lessonExcerpt}>{lesson.excerpt}</p>
+            </Link>
           </article>
         ))}
       </div>
