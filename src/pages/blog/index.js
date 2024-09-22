@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, graphql, navigate } from 'gatsby';
 import Layout from '../../components/Layout';
+import Search from '../../components/Search';
 import * as styles from '../../styles/blog-list.module.css';
 
 const BlogPage = ({ data }) => {
@@ -9,6 +10,7 @@ const BlogPage = ({ data }) => {
   return (
     <Layout>
       <h1>Blog</h1>
+      <Search posts={posts} />
       <div className={styles.blogList}>
         {posts.map((post) => (
           <article key={post.fields.slug} className={styles.blogPostPreview}>

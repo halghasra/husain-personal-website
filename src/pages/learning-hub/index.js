@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import Layout from '../../components/Layout';
+import Search from '../../components/Search';
 import * as styles from '../../styles/learning-hub.module.css';
 
 const LearningHubPage = ({ data }) => {
@@ -12,6 +13,7 @@ const LearningHubPage = ({ data }) => {
         <h1>Learning Hub</h1>
         <p>Explore lessons on technology, computer science, and more!</p>
       </div>
+      <Search posts={lessons} />
       <div className={styles.lessonGrid}>
         {lessons.map((lesson) => (
           <article key={lesson.fields.slug} className={styles.lessonCard}>
