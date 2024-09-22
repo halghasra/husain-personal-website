@@ -1,0 +1,47 @@
+.siteWrapper {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1.0875rem 1.45rem;
+}
+
+.header {
+    margin-bottom: 1.45rem;
+    background: var(--bg);
+    transition: background-color 0.3s ease;
+}
+
+.headerContent {
+    margin: 0 auto;
+    max-width: 960px;
+    padding: 1.45rem 1.0875rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav {
+    display: flex;
+    gap: 1rem;
+}
+
+.navLink {
+    color: var(--textLink);
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .navLink:hover {
+    text-decoration: underline;
+  }
+  
+  .main {
+    min-height: 70vh;
+  }
+  
+  .footer {
+    margin-top: 2rem;
+    padding: 1rem 0;
+    text-align: center;
+    background: var(--bg);
+    transition: background-color 0.3s ease;
+  }

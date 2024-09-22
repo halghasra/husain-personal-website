@@ -1,0 +1,36 @@
+.blogList {
+    display: grid;
+    gap: 2rem;
+  }
+  
+  .blogPostPreview {
+    border-bottom: 1px solid var(--hr);
+    padding-bottom: 1rem;
+  }
+  
+  .blogPostPreview h2 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .blogPostPreview small {
+    color: var(--textNormal);
+    opacity: 0.7;
+  }
+  
+  .blogPostPreview p {
+    margin-top: 1rem;
+  }
+  
+  .readMoreButton {
+    background-color: var(--textLink);
+    color: var(--bg);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .readMoreButton:hover {
+    background-color: var(--textTitle);
+  }
