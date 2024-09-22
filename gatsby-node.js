@@ -17,11 +17,14 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const result = await graphql(`
     query {
-      allMarkdownRemark {
+      allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
         edges {
           node {
             fields {
               slug
+            }
+            frontmatter {
+              title
             }
           }
         }
@@ -29,10 +32,64 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  // Create blog post pages
+  const posts = result.data.allMarkdownRemark.edges.filter(
+    edge => edge.node.fields.slug.startsWith('/blog/')
+  )
+  const postsPerPage = 6
+  const numPages = Math.ceil(posts.length / postsPerPage)
+
+  Array.from({ length: numPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/blog` : `/blog/${i + 1}`,
+      component: path.resolve("./src/templates/blog-list.js"),
+      context: {
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        numPages,
+        currentPage: i + 1,
+      },
+    })
+  })
+
+
+
+  // Create individual blog post pages
+  posts.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
       component: path.resolve(`./src/templates/blog-post.js`),
+      context: {
+        slug: node.fields.slug,
+      },
+    })
+  })
+
+  // Create learning hub pages (similar to blog posts)
+  const lessons = result.data.allMarkdownRemark.edges.filter(
+    edge => edge.node.fields.slug.startsWith('/learning-hub/')
+  )
+  const lessonsPerPage = 6
+  const numLessonPages = Math.ceil(lessons.length / lessonsPerPage)
+
+  Array.from({ length: numLessonPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/learning-hub` : `/learning-hub/${i + 1}`,
+      component: path.resolve("./src/templates/lesson-list.js"),
+      context: {
+        limit: lessonsPerPage,
+        skip: i * lessonsPerPage,
+        numPages: numLessonPages,
+        currentPage: i + 1,
+      },
+    })
+  })
+
+  // Create individual lesson pages
+  lessons.forEach(({ node }) => {
+    createPage({
+      path: node.fields.slug,
+      component: path.resolve(`./src/templates/lesson.js`),
       context: {
         slug: node.fields.slug,
       },
@@ -45,7 +102,6 @@ exports.onCreateWebpackConfig = ({ actions }) => {
     resolve: {
       alias: {
         '../components/layout': path.resolve(__dirname, 'src/components/Layout.js'),
-        '../../components/layout': path.resolve(__dirname, 'src/components/Layout.js'),
       },
     },
   })
