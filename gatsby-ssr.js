@@ -10,7 +10,7 @@ import { ThemeProvider } from './src/components/ThemeContext';
 /**
  * @type {import('gatsby').GatsbySSR['onRenderBody']}
  */
-exports.onRenderBody = ({ setHtmlAttributes }) => {
+export const onRenderBody = ({ setHtmlAttributes }) => {
   setHtmlAttributes({ lang: `en` })
 }
 
