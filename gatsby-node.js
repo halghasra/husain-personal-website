@@ -45,6 +45,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
     resolve: {
       alias: {
         '../components/layout': path.resolve(__dirname, 'src/components/Layout.js'),
+        '../../components/layout': path.resolve(__dirname, 'src/components/Layout.js'),
       },
     },
   })
