@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
-import Layout from '../../components/Layout';
+import Layout from '../../components/layout';
 
 const LearningHubPage = ({ data }) => {
   const lessons = data.allMarkdownRemark.nodes;
@@ -24,7 +24,7 @@ const LearningHubPage = ({ data }) => {
 export const query = graphql`
   query {
     allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { frontmatter: {date: DESC} }
       filter: { fileAbsolutePath: { regex: "/content/learning-hub/" } }
     ) {
       nodes {
