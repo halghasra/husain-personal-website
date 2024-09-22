@@ -1,4 +1,5 @@
 const path = require('path')
+const _ = require('lodash')
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
@@ -13,8 +14,10 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   }
 }
 
-exports.createPages = async ({ graphql, actions }) => {
+exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions
+
+  // Query for markdown nodes to use in creating pages.
   const result = await graphql(`
     query {
       allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
@@ -25,12 +28,23 @@ exports.createPages = async ({ graphql, actions }) => {
             }
             frontmatter {
               title
+              categories
             }
           }
         }
       }
+      categoriesGroup: allMarkdownRemark(limit: 2000) {
+        group(field: { frontmatter: { categories: SELECT } }) {
+          fieldValue
+        }
+      }
     }
   `)
+
+  if (result.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query.`)
+    return
+  }
 
   // Create blog post pages
   const posts = result.data.allMarkdownRemark.edges.filter(
@@ -52,23 +66,21 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-
-
   // Create individual blog post pages
-posts.forEach(({ node }, index) => {
-  const previous = index === posts.length - 1 ? null : posts[index + 1].node
-  const next = index === 0 ? null : posts[index - 1].node
+  posts.forEach(({ node }, index) => {
+    const previous = index === posts.length - 1 ? null : posts[index + 1].node
+    const next = index === 0 ? null : posts[index - 1].node
 
-  createPage({
-    path: node.fields.slug,
-    component: path.resolve(`./src/templates/blog-post.js`),
-    context: {
-      slug: node.fields.slug,
-      previous,
-      next,
-    },
+    createPage({
+      path: node.fields.slug,
+      component: path.resolve(`./src/templates/blog-post.js`),
+      context: {
+        slug: node.fields.slug,
+        previous,
+        next,
+      },
+    })
   })
-})
 
   // Create learning hub pages (similar to blog posts)
   const lessons = result.data.allMarkdownRemark.edges.filter(
@@ -102,6 +114,20 @@ posts.forEach(({ node }, index) => {
         slug: lesson.node.fields.slug,
         previous,
         next,
+      },
+    })
+  })
+
+  // Create category pages
+  const categoryTemplate = path.resolve('src/templates/category.js')
+  const categories = result.data.categoriesGroup.group
+
+  categories.forEach(category => {
+    createPage({
+      path: `/category/${_.kebabCase(category.fieldValue)}/`,
+      component: categoryTemplate,
+      context: {
+        category: category.fieldValue,
       },
     })
   })

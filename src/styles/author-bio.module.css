@@ -1,0 +1,16 @@
+.bioContainer {
+    display: flex;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .avatar {
+    margin-right: 1rem;
+    margin-bottom: 0;
+    min-width: 50px;
+    border-radius: 100%;
+  }
+  
+  .bioContainer p {
+    margin-bottom: 0;
+  }

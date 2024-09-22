@@ -2,7 +2,13 @@ module.exports = {
   siteMetadata: {
     title: `Husain Alghasra`,
     description: `Personal website of Husain Alghasra featuring a blog and learning hub`,
-    author: `Husain Alghasra`,
+    author: {
+      name: `Husain Alghasra`,
+      summary: `who lives and works in London building useful things.`,
+    },
+    social: {
+      twitter: `j0se1n`,
+    },
     siteUrl: `https://husainalghasra.com`,
   },
   plugins: [

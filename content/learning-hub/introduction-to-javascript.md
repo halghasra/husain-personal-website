@@ -1,6 +1,7 @@
 ---
 title: "Introduction to JavaScript"
 date: "2024-09-21"
+categories: ["Technology", "Web Development"]
 ---
 
 Welcome to this introductory lesson on JavaScript!

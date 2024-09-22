@@ -1,6 +1,7 @@
 ---
 title: "My First Blog Post"
 date: "2024-09-21"
+categories: ["Technology", "Web Development"]
 ---
 
 This is my first blog post on my new Gatsby site!
