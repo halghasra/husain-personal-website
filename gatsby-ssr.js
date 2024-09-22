@@ -10,9 +10,10 @@ import { ThemeProvider } from './src/components/ThemeContext';
 /**
  * @type {import('gatsby').GatsbySSR['onRenderBody']}
  */
-export const onRenderBody = ({ setHtmlAttributes }) => {
-  setHtmlAttributes({ lang: `en` })
-}
+export const onRenderBody = ({ setHtmlAttributes, setBodyAttributes }) => {
+  setHtmlAttributes({ lang: `en` });
+  setBodyAttributes({ className: 'light' }); // Default to light theme
+};
 
 export const wrapRootElement = ({ element }) => (
   <ThemeProvider>{element}</ThemeProvider>

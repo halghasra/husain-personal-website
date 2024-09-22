@@ -21,7 +21,7 @@ const BlogList = ({ data, pageContext }) => {
               <Link to={node.fields.slug}>{title}</Link>
             </h2>
             <small>{node.frontmatter.date}</small>
-            <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+            <p>{node.excerpt}</p>
           </article>
         )
       })}

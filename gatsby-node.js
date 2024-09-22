@@ -55,15 +55,20 @@ exports.createPages = async ({ graphql, actions }) => {
 
 
   // Create individual blog post pages
-  posts.forEach(({ node }) => {
-    createPage({
-      path: node.fields.slug,
-      component: path.resolve(`./src/templates/blog-post.js`),
-      context: {
-        slug: node.fields.slug,
-      },
-    })
+posts.forEach(({ node }, index) => {
+  const previous = index === posts.length - 1 ? null : posts[index + 1].node
+  const next = index === 0 ? null : posts[index - 1].node
+
+  createPage({
+    path: node.fields.slug,
+    component: path.resolve(`./src/templates/blog-post.js`),
+    context: {
+      slug: node.fields.slug,
+      previous,
+      next,
+    },
   })
+})
 
   // Create learning hub pages (similar to blog posts)
   const lessons = result.data.allMarkdownRemark.edges.filter(
