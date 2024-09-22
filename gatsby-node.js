@@ -86,12 +86,17 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   // Create individual lesson pages
-  lessons.forEach(({ node }) => {
+  lessons.forEach((lesson, index) => {
+    const previous = index === lessons.length - 1 ? null : lessons[index + 1].node
+    const next = index === 0 ? null : lessons[index - 1].node
+
     createPage({
-      path: node.fields.slug,
+      path: lesson.node.fields.slug,
       component: path.resolve(`./src/templates/lesson.js`),
       context: {
-        slug: node.fields.slug,
+        slug: lesson.node.fields.slug,
+        previous,
+        next,
       },
     })
   })
