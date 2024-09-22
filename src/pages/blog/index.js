@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
+import { Link, graphql, navigate } from 'gatsby';
 import Layout from '../../components/Layout';
 
 const BlogPage = ({ data }) => {
@@ -16,7 +16,7 @@ const BlogPage = ({ data }) => {
           </h2>
           <small>{post.frontmatter.date}</small>
           <p>{post.excerpt}</p>
-          <link to={post.fields.slug}>Read more</link>
+          <button onClick={() => navigate(post.fields.slug)}>Read more</button>
         </article>
       ))}
       </div>
