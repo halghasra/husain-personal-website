@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'gatsby';
-import ThemeToggle from './ThemeToggle';
+import { ThemeContext } from './ThemeContext';
 
 const Layout = ({ children }) => {
+  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
+
   return (
-    <div className="site-wrapper">
+    <div className={`site-wrapper ${isDarkMode ? 'dark' : 'light'}`}>
       <header>
         <nav>
           <Link to="/">Home</Link>
@@ -12,7 +14,9 @@ const Layout = ({ children }) => {
           <Link to="/blog">Blog</Link>
           <Link to="/learning-hub">Learning Hub</Link>
         </nav>
-        <ThemeToggle />
+        <button onClick={toggleTheme}>
+          {isDarkMode ? '🌞 Light Mode' : '🌙 Dark Mode'}
+        </button>
       </header>
       <main>{children}</main>
       <footer>
