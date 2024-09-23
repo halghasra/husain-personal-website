@@ -2,22 +2,15 @@
 title: "CoinMarketCap Data Breach"
 date: "2021-10-22"
 categories: ["Articles", "Cyber Security", "Technology"]
-tags: 
-  - "blockchain"
-  - "coinmarketcap"
-  - "cyber-security"
-  - "data-breach"
-  - "data-leaks"
-  - "decentralization"
-  - "security"
-coverImage: "CoinMarketCap-data-breach.png"
+tags: ["blockchain", "coinmarketcap", "cyber-security", "data-breach", "data-leaks", "decentralization", "security"] 
+coverImage: "./images/CoinMarketCap-data-breach.png"
 ---
 
 The most recent data breach happened to CoinMarketCap , and almost 3.1 million user emails (including mine) were compromised.
 
 <figure>
 
-![](./img_9954-1.jpg)
+![](./images/img_9954-1.jpg)
 
 <figcaption>
 
@@ -31,7 +24,7 @@ I have noticed a big wave of phishing attempts (especially related to Cryptocurr
 
 <figure>
 
-![](./img_9955-1.jpg)
+![](./images/img_9955-1.jpg)
 
 <figcaption>
 
@@ -56,7 +49,7 @@ Finally, this kind of a situation, leads the way for more efforts of separating 
 
 <figure>
 
-![](./da74cae7-c4ac-4bf0-b8ac-3a43fb0e5e8c-55344-00000b25fea445b0_file-1.jpg)
+![](./images/da74cae7-c4ac-4bf0-b8ac-3a43fb0e5e8c-55344-00000b25fea445b0_file-1.jpg)
 
 <figcaption>
 

@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Layout from "../components/Layout"
 import AuthorBio from "../components/AuthorBio"
 import ShareButtons from "../components/ShareButtons"
@@ -9,13 +10,30 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = pageContext
+  const coverImage = getImage(post.frontmatter.coverImage)
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout>
       <article className={styles.blogPost}>
+        {coverImage && (
+          <GatsbyImage 
+            image={coverImage} 
+            alt={post.frontmatter.title} 
+            className={styles.coverImage}
+          />
+        )}
         <header>
           <h1>{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
+          {post.frontmatter.tags && (
+            <div className={styles.tags}>
+              {post.frontmatter.tags.map(tag => (
+                <Link to={`/tag/${tag}`} key={tag} className={styles.tag}>
+                  {tag}
+                </Link>
+              ))}
+            </div>
+          )}
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
         <ShareButtons
@@ -68,6 +86,12 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        tags
+        coverImage {
+          childImageSharp {
+            gatsbyImageData(width: 800, height: 400, layout: CONSTRAINED)
+          }
+        }
       }
     }
   }

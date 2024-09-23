@@ -1,16 +1,9 @@
 ---
 title: "Start With Why - Simon Sinek"
 date: "2021-08-10"
-categories: 
-  - "blog"
-  - "book-reviews"
-tags: 
-  - "business-books"
-  - "reading"
-  - "reviews"
-  - "simon-sinek"
-  - "start-with-why"
-coverImage: "Start-with-why-review.png"
+categories: ["Blog", "Book Reviews"]
+tags: ["Business", "Reviews", "Simon Sinek", "Start with Why"]
+coverImage: "./images/Start-with-why-review.png"
 ---
 
 I had this book on my Kindle for years and never got the time (nor the desire) to start reading it. Not until the beginning of this year, when I was traveling back and forth and had the need to spend countless dull hours in ‘lounge-less’ airports. However this book didn’t serve me well. I lost interest in few pages and caught myself reading without comprehension many times. It is not that there were anything wrong with the general idea of the book, it is a great idea actually but not for a 255 pages book.

@@ -1,21 +1,12 @@
 ---
 title: "Unlocking Leadership's Hidden Power: How 'Start with Why' Changed My Perspective"
 date: "2021-08-14"
-categories: 
-  - "articles"
-  - "blog"
-  - "general"
-tags: 
-  - "business"
-  - "high-impact-leadership"
-  - "inspirational-leaders"
-  - "leadership"
-  - "start-with-why"
-  - "thought-leadership"
-coverImage: "Start-with-why-how-this-book-inspired-me.png"
+categories: ["Blog", "General", "Articles"]
+tags: ["Business", "Leadership", "High Impact Leadership", "Start With Why", "Thought Leadership"]
+coverImage: "./images/Start-with-why-how-this-book-inspired-me.png"
 ---
 
-Few days ago, I reviewed the book “[Start with Why](https://husainalghasra.com/2021/08/11/start-with-why-simon-sinek/)” by the author and public speaker Simon Sinek. This book is based on a TED talk titled **“How Great Leaders Inspire Action****” an**d discusses a simple yet powerful concept for inspirational leadership.
+Few days ago, I reviewed the book “[Start with Why](../start-with-why-simon-sinek/index.md)” by the author and public speaker Simon Sinek. This book is based on a TED talk titled **“How Great Leaders Inspire Action****” an**d discusses a simple yet powerful concept for inspirational leadership.
 
 “_I made a discovery. And this discovery profoundly changed my view on how I thought the world worked, and it profoundly changed the way in which I operate in it_”, Simon said at the beginning of his speech.
 
@@ -51,7 +42,7 @@ I spent hours researching before concluding that inspirational leadership is wid
 
 **Motivation vs Inspiration**
 
-![](https://husainalghasra.com/wp-content/uploads/2021/08/img_0911-1.gif?w=960)
+![](./images/img_0911-1.gif)
 
 Many people think that motivation and inspiration are more or less the same thing. Well, they aren't. Although both disciplines can lead somehow to the same result, there are fundamental differences between both terms.
 

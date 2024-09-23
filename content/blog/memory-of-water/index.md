@@ -1,10 +1,8 @@
 ---
 title: "The Thirst for Freedom: A Review of Emmi Itäranta’s Memory of Water"
 date: "2017-03-24"
-categories: 
-  - "blog"
-  - "book-reviews"
-coverImage: "memory-of-water.png"
+categories: ["Blog", "Book Reviews"]
+coverImage: "./images/memory-of-water.png"
 ---
 
 I needed a moment to absorb what I had just finished reading. Like any other great work, I hesitated to accept the reality of the events or my desire for more. For me, what we cannot achieve in our real lives, our imaginations and the hopes we build between the lines of what we read can reach.

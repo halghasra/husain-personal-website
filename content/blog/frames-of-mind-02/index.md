@@ -1,25 +1,16 @@
 ---
 title: "Exploring Multiple Intelligences: A Review of Frames of Mind by Dr. Howard Gardner – Part 2"
 date: "2022-02-17"
-categories: 
-  - "articles"
-  - "blog"
-  - "book-reviews"
-  - "science"
-tags: 
-  - "frames-of-mind"
-  - "multiple-intelligences"
-  - "the-theory-of-multiple-intelligences"
-  - "تقييم-كتب"
-  - "هواة-القراءة"
-coverImage: "Frames-of-Mind-part-2-2.png"
+categories: ["Blog", "Book Reviews", "Articles", "Science"]
+tags: ["Frames of Mind", "Multiple Intelligences", "The Theory of Multiple Intelligences", "Theory", "Book Reviews"]
+coverImage: "./images/Frames-of-Mind-part-2-2.png"
 ---
 
-In the [first part](https://husainalghasra.com/2022/02/08/أطر-العقل-نظرية-الذكاءات-المتعددة-الج/) of this article, we discussed the origins and emergence of the theory of multiple intelligences, the types of intelligences according to Dr. Howard Gardner, the reasons for identifying and understanding these types of intelligence, and how they can help identify and develop individuals' hidden potentials.
+In the [first part](../frames-of-mind-01/index.md) of this article, we discussed the origins and emergence of the theory of multiple intelligences, the types of intelligences according to Dr. Howard Gardner, the reasons for identifying and understanding these types of intelligence, and how they can help identify and develop individuals' hidden potentials.
 
 In this second and final part, we will explore these relationships further and continue reading about the theory of multiple intelligences. We will also learn about internal and external sources of intelligence. Finally, we will look at Gardner's suggestions for establishing scientific frameworks to measure individual intelligence (specifically in students) and how these measurements can improve the educational process.
 
-![](https://husainalghasra.com/wp-content/uploads/2022/02/pexels-photo-207924-1.jpg?w=1024)
+![](./images/pexels-photo-207924-1.jpg)
 
 **Using Neuroscience to Understand Cognitive Traits**
 

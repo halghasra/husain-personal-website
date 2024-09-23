@@ -1,15 +1,9 @@
 ---
 title: "A Thousand Splendid Suns': A Story of Love, Loss, and Survival in War-Torn Afghanistan"
 date: "2017-01-31"
-categories: 
-  - "blog"
-  - "book-reviews"
-tags: 
-  - "book-reviews"
-  - "novels"
-  - "readers"
-  - "thousand-splendid-suns"
-coverImage: "thousand-splendid-suns.png"
+categories: ["Blog", "Book Reviews"]
+tags: ["Book Reviews", "Novels", "Readers", "Thousand Splendid Suns"]
+coverImage: "./images/thousand-splendid-suns.png"
 ---
 
 That moment when you finish reading the last word of Khaled Hosseini's _A Thousand Splendid Suns_ is indescribable. It is often followed by a deep silence as you try to take in all the tragedies and events. The characters become so real in your mind that you can see their faces, feel their pain, laugh with them, cry with them, and wait anxiously with them.

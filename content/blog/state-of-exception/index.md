@@ -1,12 +1,9 @@
 ---
 title: "Understanding Modern Politics through Giorgio Agamben's State of Exception"
 date: "2017-03-16"
-categories: 
-  - "blog"
-  - "book-reviews"
-tags: 
-  - "حالة-الإستثناء،-جورجو-أغامبين،-فلسفة"
-coverImage: "halat-alestithnaa.png"
+categories: ["Blog", "Book Reviews"]
+tags: ["State of Exception", "Giorgio Agamben", "Politics", "Philosophy"]
+coverImage: "./images/halat-alestithnaa.png"
 ---
 
 > _"State of exception makes people feel that they have been turned into expendable beings, defenceless bodies, stripped of their identity and their right to belong, and thrown into a realm of prohibition."_

@@ -1,16 +1,9 @@
 ---
 title: "The Twitter Data Breach: What You Need to Know and How to Protect Yourself"
 date: "2023-01-06"
-categories: 
-  - "articles"
-  - "blog"
-  - "tech"
-tags: 
-  - "cybersecurity"
-  - "data-breach"
-  - "email-protection"
-  - "twitter"
-coverImage: "pexels-photo-5952651.jpeg"
+categories: ["Blog", "Articles", "Technology"]
+tags: ["Cybersecurity", "Data Breach", "Data", "Email Protection", "Twitter"]
+coverImage: "./images/pexels-photo-5952651.jpeg"
 ---
 
 On January 1st 2021, Twitter suffered a data breach that resulted in the exposure of over 200 million email addresses. Recently, these exposed credentials appeared on the dark web, causing concern for individuals whose information was included in the leak.
@@ -21,7 +14,7 @@ Fortunately, no passwords were leaked in the breach. However, this does not mean
 
 <figure>
 
-![three people hacking a computer system](images/pexels-photo-5380643.jpeg)
+![three people hacking a computer system](./images/pexels-photo-5380643.jpeg)
 
 <figcaption>
 
@@ -49,7 +42,7 @@ You may start to receive more spam emails as a result of your email address bein
 
 <figure>
 
-![shopping business money pay](images/money-card-business-credit-card-50987.jpeg)
+![shopping business money pay](./images/money-card-business-credit-card-50987.jpeg)
 
 <figcaption>
 

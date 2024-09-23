@@ -34,3 +34,22 @@
   .readMoreButton:hover {
     background-color: var(--textTitle);
   }
+
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+  }
+  
+  .paginationLink {
+    padding: 0.5rem 1rem;
+    background-color: var(--textLink);
+    color: var(--bg);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .paginationLink:hover {
+    background-color: var(--textNormal);
+  }

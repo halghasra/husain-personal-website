@@ -29,10 +29,15 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             frontmatter {
               title
               categories
+              tags
+              coverImage {
+                childImageSharp {
+                  gatsbyImageData(width: 800, height: 400, layout: CONSTRAINED)
+                }
+              }
             }
           }
         }
-      }
       categoriesGroup: allMarkdownRemark(limit: 2000) {
         group(field: { frontmatter: { categories: SELECT } }) {
           fieldValue

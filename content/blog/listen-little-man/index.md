@@ -1,10 +1,8 @@
 ---
 title: "A Review of Listen, Little Man! by Wilhelm Reich"
 date: "2017-03-25"
-categories: 
-  - "blog"
-  - "book-reviews"
-coverImage: "listen-small-man.png"
+categories: ["Blog", "Book Reviews"]
+coverImage: "./images/listen-small-man.png"
 ---
 
 _Listen, Little Man!_ is more of a letter than a traditional book. It feels as though the author, Wilhelm Reich, needed to pour out his thoughts and frustrations, addressing the "little man."

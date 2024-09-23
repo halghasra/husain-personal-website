@@ -1,16 +1,9 @@
 ---
 title: "What is Relativity? by François Vannucci: A Disappointing Exploration"
 date: "2021-01-14"
-categories: 
-  - "blog"
-  - "book-reviews"
-tags: 
-  - "آينشتاين"
-  - "النظرية-النسبية"
-  - "جاليليو"
-  - "علوم"
-  - "فيزياء"
-coverImage: "quest-ce-qua-la-relativite.png"
+categories: ["Blog", "Book Reviews"]
+tags: ["Einstein", "Relativity Theory", "Galileo", "Science", "Physics"]
+coverImage: "./images/quest-ce-qua-la-relativite.png"
 ---
 
 _What is Relativity?_ by François Vannucci promised an accessible introduction to one of the most profound theories in physics. Unfortunately, the book falls short on several fronts, leaving readers frustrated and confused rather than enlightened.

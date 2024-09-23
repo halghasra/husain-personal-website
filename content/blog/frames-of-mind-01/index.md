@@ -1,20 +1,9 @@
 ---
 title: "Exploring Multiple Intelligences: A Review of Frames of Mind by Dr. Howard Gardner - Part 1"
 date: "2022-02-08"
-categories: 
-  - "articles"
-  - "blog"
-  - "book-reviews"
-  - "science"
-tags: 
-  - "brain"
-  - "education"
-  - "frames-of-mind"
-  - "howard-gardner"
-  - "intelligence"
-  - "neuroscience"
-  - "talents"
-coverImage: "Frames-of-Mind-2.png"
+categories: ["articles", "blog", "Book Reviews", "Science"]
+tags: ["brain", "education", "frames of mind", "Howard Gardner", "Intelligence", "Neuroscience", "Talents"]
+coverImage: "./images/Frames-of-Mind-2.png"
 ---
 
 Intelligence has always been a rich topic for debate and comparison. We often hear people saying that someone is smarter than someone else or that a child shows great potential and might become very intelligent in the future.
@@ -27,7 +16,7 @@ In the academic world, universities and research institutions have been constant
 
 <figure>
 
-![](https://husainalghasra.files.wordpress.com/2022/02/2795585-article-what-is-a-genius-iq-scoreecf71fe1-aadb-424b-b6ce-9a15002d2fdd-5a56782989eacc003758bb57.png?w=614)
+![](./images/2795585.png)
 
 <figcaption>
 
@@ -49,7 +38,7 @@ In 1983, psychologist and Harvard University professor of cognition and educatio
 
 <figure>
 
-![](https://husainalghasra.files.wordpress.com/2022/02/22-78-howard-gardner.jpeg?w=765)
+![](./images/22-78-howard-gardner.jpeg)
 
 <figcaption>
 

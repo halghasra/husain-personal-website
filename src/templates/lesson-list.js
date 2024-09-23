@@ -1,6 +1,9 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Layout from "../components/Layout"
+import Search from "../components/Search"
+import * as styles from "../styles/learning-hub.module.css"
 
 const LessonList = ({ data, pageContext }) => {
   const lessons = data.allMarkdownRemark.edges
@@ -12,27 +15,47 @@ const LessonList = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <h1>Learning Hub</h1>
-      {lessons.map(({ node }) => {
-        const title = node.frontmatter.title || node.fields.slug
-        return (
-          <article key={node.fields.slug}>
-            <h2>
-              <Link to={node.fields.slug}>{title}</Link>
-            </h2>
-            <small>{node.frontmatter.date}</small>
-            <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-          </article>
-        )
-      })}
-      <nav>
+      <div className={styles.learningHubHeader}>
+        <h1>Learning Hub</h1>
+        <p>Explore lessons on technology, computer science, and more!</p>
+      </div>
+      <Search posts={lessons.map(({ node }) => node)} />
+      <div className={styles.lessonGrid}>
+        {lessons.map(({ node }) => {
+          const coverImage = getImage(node.frontmatter.coverImage)
+          return (
+            <article key={node.fields.slug} className={styles.lessonCard}>
+              {coverImage && (
+                <GatsbyImage 
+                  image={coverImage} 
+                  alt={node.frontmatter.title} 
+                  className={styles.coverImage}
+                />
+              )}
+              <Link to={node.fields.slug}>
+                <h2>{node.frontmatter.title}</h2>
+                <p className={styles.lessonDate}>{node.frontmatter.date}</p>
+                <p className={styles.lessonExcerpt}>{node.excerpt}</p>
+              </Link>
+              <div className={styles.tags}>
+                {node.frontmatter.tags && node.frontmatter.tags.map(tag => (
+                  <Link to={`/tag/${tag}`} key={tag} className={styles.tag}>
+                    {tag}
+                  </Link>
+                ))}
+              </div>
+            </article>
+          )
+        })}
+      </div>
+      <nav className={styles.pagination}>
         {!isFirst && (
-          <Link to={prevPage} rel="prev">
+          <Link to={prevPage} rel="prev" className={styles.paginationLink}>
             ← Previous Page
           </Link>
         )}
         {!isLast && (
-          <Link to={nextPage} rel="next">
+          <Link to={nextPage} rel="next" className={styles.paginationLink}>
             Next Page →
           </Link>
         )}
@@ -60,6 +83,12 @@ export const lessonListQuery = graphql`
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
+            tags
+            coverImage {
+              childImageSharp {
+                gatsbyImageData(width: 600, height: 300, layout: CONSTRAINED)
+              }
+            }
           }
         }
       }

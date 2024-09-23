@@ -1,10 +1,8 @@
 ---
 title: "Exploring the Strange Beauty of The Appointment by Herta Müller"
 date: "2021-02-19"
-categories: 
-  - "blog"
-  - "book-reviews"
-coverImage: "Isqatat.png"
+categories: ["Blog", "Book Reviews"]
+coverImage: "./images/Isqatat.png"
 ---
 
 _The Appointment_ is one of the most well-known novels by Herta Müller. It has a unique charm and a strange atmosphere that makes it stand out. The story’s oddness pulls the reader in, making them feel like they are living the strange daily life of the characters.

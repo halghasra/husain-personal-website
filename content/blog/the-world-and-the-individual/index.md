@@ -1,15 +1,9 @@
 ---
 title: "Diving into Philosophy: My Experience with Josiah Royce's 'The World and the Individual'"
 date: "2021-02-08"
-categories: 
-  - "blog"
-  - "book-reviews"
-tags: 
-  - "العالم-والفرد"
-  - "الوجود"
-  - "جوزايا-رويس"
-  - "فلسفة"
-coverImage: "alalam-wal-fard.png"
+categories: ["Blog", "Book Reviews"]
+tags: ["The World and the Individual", "Existence", "Josiah Royce", "Philosophy"]
+coverImage: "./images/alalam-wal-fard.png"
 ---
 
 This book marks my first foray into the world of philosophy. It delves into various interpretations of the meaning of the world and the individual, and it is the first volume in the series _The Four Historical Conceptions of Being_ by American philosopher and historian Josiah Royce.
