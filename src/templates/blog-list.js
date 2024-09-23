@@ -15,13 +15,16 @@ const BlogList = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <h1>Blog</h1>
+      <div className={styles.blogHeader}>
+        <h1>Blog</h1>
+        <p>Explore my thoughts, ideas, and experiences</p>
+      </div>
       <Search posts={posts.map(({ node }) => node)} />
-      <div className={styles.blogList}>
+      <div className={styles.blogGrid}>
         {posts.map(({ node }) => {
           const coverImage = getImage(node.frontmatter.coverImage);
           return (
-            <article key={node.fields.slug} className={styles.blogPostPreview}>
+            <article key={node.fields.slug} className={styles.blogPostCard}>
               {coverImage && (
                 <GatsbyImage 
                   image={coverImage} 
@@ -29,19 +32,21 @@ const BlogList = ({ data, pageContext }) => {
                   className={styles.coverImage}
                 />
               )}
-              <h2>
-                <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
-              </h2>
-              <small>{node.frontmatter.date}</small>
-              <p>{node.excerpt}</p>
-              <div className={styles.tags}>
-                {node.frontmatter.tags && node.frontmatter.tags.map(tag => (
-                  <Link to={`/tag/${tag}`} key={tag} className={styles.tag}>
-                    {tag}
-                  </Link>
-                ))}
+              <div className={styles.cardContent}>
+                <h2>
+                  <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
+                </h2>
+                <p className={styles.postDate}>{node.frontmatter.date}</p>
+                <p className={styles.postExcerpt}>{node.excerpt}</p>
+                <div className={styles.tags}>
+                  {node.frontmatter.tags && node.frontmatter.tags.map(tag => (
+                    <Link to={`/tag/${tag}`} key={tag} className={styles.tag}>
+                      {tag}
+                    </Link>
+                  ))}
+                </div>
+                <Link to={node.fields.slug} className={styles.readMoreLink}>Read more</Link>
               </div>
-              <Link to={node.fields.slug} className={styles.readMoreLink}>Read more</Link>
             </article>
           );
         })}
