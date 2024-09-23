@@ -38,8 +38,14 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             }
           }
         }
+      }
       categoriesGroup: allMarkdownRemark(limit: 2000) {
         group(field: { frontmatter: { categories: SELECT } }) {
+          fieldValue
+        }
+      }
+      tagsGroup: allMarkdownRemark(limit: 2000) {
+        group(field: { frontmatter: { tags: SELECT } }) {
           fieldValue
         }
       }
@@ -133,6 +139,20 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       component: categoryTemplate,
       context: {
         category: category.fieldValue,
+      },
+    })
+  })
+
+  // Create tag pages
+  const tagTemplate = path.resolve('src/templates/tag.js')
+  const tags = result.data.tagsGroup.group
+
+  tags.forEach(tag => {
+    createPage({
+      path: `/tag/${_.kebabCase(tag.fieldValue)}/`,
+      component: tagTemplate,
+      context: {
+        tag: tag.fieldValue,
       },
     })
   })

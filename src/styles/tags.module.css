@@ -1,0 +1,54 @@
+.tagsHeader {
+    text-align: center;
+    padding: 3rem 0;
+    background: linear-gradient(135deg, var(--bg), var(--textLink));
+    color: var(--bg);
+    margin-bottom: 2rem;
+  }
+  
+  .tagsHeader h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .tagsHeader p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+  }
+  
+  .tagsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    padding: 0 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .tagCard {
+    background-color: var(--bg);
+    border: 2px solid var(--textLink);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--textNormal);
+    transition: all 0.3s ease;
+  }
+  
+  .tagCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .tagCard h2 {
+    margin: 0 0 0.5rem;
+    color: var(--textLink);
+    font-size: 1.2rem;
+  }
+  
+  .tagCard p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.7;
+  }
