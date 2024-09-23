@@ -28,6 +28,8 @@ module.exports = {
         path: `${__dirname}/content`,
       },
     },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -35,7 +37,9 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 630,
+              maxWidth: 600,
+              linkImagesToOriginal: false,
+              srcSetBreakpoints: [200, 400, 600, 800]
             },
           },
           {
