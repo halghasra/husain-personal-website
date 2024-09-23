@@ -17,38 +17,96 @@
   }
   
   .tagsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+  }
+  
+  .tagButton {
+    background-color: var(--bg);
+    color: var(--textLink);
+    border: 1px solid var(--textLink);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .tagButton:hover, .activeTag {
+    background-color: var(--textLink);
+    color: var(--bg);
+  }
+  
+  .postsGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
     padding: 0 1rem;
     max-width: 1200px;
     margin: 0 auto;
   }
   
-  .tagCard {
+  .postCard {
     background-color: var(--bg);
-    border: 2px solid var(--textLink);
     border-radius: 8px;
-    padding: 1.5rem;
-    text-align: center;
-    text-decoration: none;
-    color: var(--textNormal);
-    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease;
   }
   
-  .tagCard:hover {
+  .postCard:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   }
   
-  .tagCard h2 {
-    margin: 0 0 0.5rem;
+  .coverImage {
+    width: 100%;
+    height: 200px;
+  }
+  
+  .postContent {
+    padding: 1.5rem;
+  }
+  
+  .postContent h2 {
+    margin: 0 0 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .postContent h2 a {
     color: var(--textLink);
-    font-size: 1.2rem;
+    text-decoration: none;
   }
   
-  .tagCard p {
-    margin: 0;
+  .postContent h2 a:hover {
+    text-decoration: underline;
+  }
+  
+  .postDate {
     font-size: 0.9rem;
+    color: var(--textNormal);
     opacity: 0.7;
+    margin-bottom: 1rem;
+  }
+  
+  .postExcerpt {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+  
+  .readMoreLink {
+    display: inline-block;
+    background-color: var(--textLink);
+    color: var(--bg);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+  }
+  
+  .readMoreLink:hover {
+    background-color: var(--textNormal);
   }

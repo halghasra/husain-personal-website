@@ -143,20 +143,20 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     })
   })
 
-  // Create tag pages
-  const tagTemplate = path.resolve('src/templates/tag.js')
-  const tags = result.data.tagsGroup.group
+//   // Create tag pages
+//   const tagTemplate = path.resolve('src/templates/tag.js')
+//   const tags = result.data.tagsGroup.group
 
-  tags.forEach(tag => {
-    createPage({
-      path: `/tag/${_.kebabCase(tag.fieldValue)}/`,
-      component: tagTemplate,
-      context: {
-        tag: tag.fieldValue,
-      },
-    })
-  })
-}
+//   tags.forEach(tag => {
+//     createPage({
+//       path: `/tag/${_.kebabCase(tag.fieldValue)}/`,
+//       component: tagTemplate,
+//       context: {
+//         tag: tag.fieldValue,
+//       },
+//     })
+//   })
+ }
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({

@@ -1,71 +1,92 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, graphql } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import Layout from '../components/Layout'
-import * as styles from '../styles/tag.module.css'
+import * as styles from '../styles/tags.module.css'
 
-const TagTemplate = ({ pageContext, data }) => {
-  const { tag } = pageContext
-  const { edges, totalCount } = data.allMarkdownRemark
+const TagsPage = ({ data }) => {
+  const allTags = data.tagsGroup.group
+  const allPosts = data.allMarkdownRemark.nodes
+  const [selectedTag, setSelectedTag] = useState(null)
+
+  const filteredPosts = selectedTag
+    ? allPosts.filter(post => post.frontmatter.tags.includes(selectedTag))
+    : allPosts
 
   return (
     <Layout>
-      <div className={styles.tagHeader}>
-        <h1>#{tag}</h1>
-        <p>{totalCount} post{totalCount === 1 ? '' : 's'} tagged with "{tag}"</p>
+      <div className={styles.tagsHeader}>
+        <h1>Tags</h1>
+        <p>Browse all topics covered in the blog and learning hub</p>
       </div>
-      <div className={styles.taggedPostGrid}>
-        {edges.map(({ node }) => {
-          const { title, date, coverImage } = node.frontmatter
-          const { slug } = node.fields
-          const image = getImage(coverImage)
+      <div className={styles.tagsContainer}>
+        <button
+          className={`${styles.tagButton} ${!selectedTag ? styles.activeTag : ''}`}
+          onClick={() => setSelectedTag(null)}
+        >
+          All
+        </button>
+        {allTags.map(tag => (
+          <button
+            key={tag.fieldValue}
+            className={`${styles.tagButton} ${selectedTag === tag.fieldValue ? styles.activeTag : ''}`}
+            onClick={() => setSelectedTag(tag.fieldValue)}
+          >
+            {tag.fieldValue} ({tag.totalCount})
+          </button>
+        ))}
+      </div>
+      <div className={styles.postsGrid}>
+        {filteredPosts.map(post => {
+          const coverImage = getImage(post.frontmatter.coverImage)
           return (
-            <article key={slug} className={styles.taggedPostCard}>
-              {image && (
-                <GatsbyImage image={image} alt={title} className={styles.coverImage} />
+            <article key={post.fields.slug} className={styles.postCard}>
+              {coverImage && (
+                <GatsbyImage image={coverImage} alt={post.frontmatter.title} className={styles.coverImage} />
               )}
-              <div className={styles.cardContent}>
+              <div className={styles.postContent}>
                 <h2>
-                  <Link to={slug}>{title}</Link>
+                  <Link to={post.fields.slug}>{post.frontmatter.title}</Link>
                 </h2>
-                <p className={styles.postDate}>{date}</p>
-                <p className={styles.postExcerpt}>{node.excerpt}</p>
-                <Link to={slug} className={styles.readMoreLink}>Read more</Link>
+                <p className={styles.postDate}>{post.frontmatter.date}</p>
+                <p className={styles.postExcerpt}>{post.excerpt}</p>
+                <Link to={post.fields.slug} className={styles.readMoreLink}>
+                  Read more
+                </Link>
               </div>
             </article>
           )
         })}
       </div>
-      <Link to="/tags" className={styles.allTagsLink}>View all tags</Link>
     </Layout>
   )
 }
 
-export default TagTemplate
+export default TagsPage
 
 export const pageQuery = graphql`
-  query($tag: String) {
-    allMarkdownRemark(
-      limit: 2000
-      sort: { frontmatter: { date: DESC }}
-      filter: { frontmatter: { tags: { in: [$tag] } } }
-    ) {
-      totalCount
-      edges {
-        node {
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            date(formatString: "MMMM DD, YYYY")
-            coverImage {
-              childImageSharp {
-                gatsbyImageData(width: 600, height: 300, layout: CONSTRAINED)
-              }
+  query {
+    tagsGroup: allMarkdownRemark(limit: 2000) {
+      group(field: { frontmatter: { tags: SELECT } }) {
+        fieldValue
+        totalCount
+      }
+    }
+    allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
+      nodes {
+        excerpt(pruneLength: 160)
+        fields {
+          slug
+        }
+        frontmatter {
+          date(formatString: "MMMM DD, YYYY")
+          title
+          tags
+          coverImage {
+            childImageSharp {
+              gatsbyImageData(width: 600, height: 300, layout: CONSTRAINED)
             }
           }
-          excerpt(pruneLength: 160)
         }
       }
     }
