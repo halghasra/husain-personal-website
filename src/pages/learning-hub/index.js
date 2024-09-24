@@ -34,7 +34,7 @@ const LearningHubPage = ({ data }) => {
               </Link>
               <div className={styles.tags}>
                 {lesson.frontmatter.tags && lesson.frontmatter.tags.map(tag => (
-                  <Link to={`/tag/${tag}`} key={tag} className={styles.tag}>
+                  <Link to={`/tags?tag=${tag}`} key={tag} className={styles.tag}>
                     {tag}
                   </Link>
                 ))}

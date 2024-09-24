@@ -40,7 +40,7 @@ const BlogList = ({ data, pageContext }) => {
                 <p className={styles.postExcerpt}>{node.excerpt}</p>
                 <div className={styles.tags}>
                   {node.frontmatter.tags && node.frontmatter.tags.map(tag => (
-                    <Link to={`/tag/${tag}`} key={tag} className={styles.tag}>
+                    <Link to={`/tags?tag=${tag}`} key={tag} className={styles.tag}>
                       {tag}
                     </Link>
                   ))}

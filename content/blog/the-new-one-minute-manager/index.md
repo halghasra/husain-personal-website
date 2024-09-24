@@ -2,7 +2,7 @@
 title: "Book review: The New One Minute Manager"
 date: "2021-10-15"
 categories: ["Blog", "Book Reviews"]
-tags: ["Ken Blanchard", "Leadership", "Management", "Spencer Johnson", "The One Minute Manager"]
+tags: ["Ken Blanchard", "Leadership", "Management", "Spencer Johnson", "The One Minute Manager", "Book Reviews"]
 coverImage: "./images/The-new-one-minute-manager.png"
 ---
 

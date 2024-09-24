@@ -2,7 +2,7 @@
 title: "Diving into Philosophy: My Experience with Josiah Royce's 'The World and the Individual'"
 date: "2021-02-08"
 categories: ["Blog", "Book Reviews"]
-tags: ["The World and the Individual", "Existence", "Josiah Royce", "Philosophy"]
+tags: ["The World and the Individual", "Existence", "Josiah Royce", "Philosophy", "Book Reviews"]
 coverImage: "./images/alalam-wal-fard.png"
 ---
 

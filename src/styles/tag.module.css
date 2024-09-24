@@ -20,15 +20,17 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
-  margin-bottom: 2rem;
+  padding: 0 1rem;
+  max-width: 1200px;
+  margin: 0 auto 2rem;
 }
 
 .taggedPostCard {
   background-color: var(--bg);
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
   overflow: hidden;
+  transition: transform 0.2s ease;
 }
 
 .taggedPostCard:hover {
@@ -38,24 +40,23 @@
 .coverImage {
   width: 100%;
   height: 200px;
-  object-fit: cover;
 }
 
 .cardContent {
   padding: 1.5rem;
 }
 
-.taggedPostCard h2 {
+.cardContent h2 {
   margin: 0 0 1rem;
   font-size: 1.5rem;
 }
 
-.taggedPostCard h2 a {
+.cardContent h2 a {
   color: var(--textLink);
   text-decoration: none;
 }
 
-.taggedPostCard h2 a:hover {
+.cardContent h2 a:hover {
   text-decoration: underline;
 }
 
@@ -87,16 +88,14 @@
 }
 
 .allTagsLink {
-  display: inline-block;
+  display: block;
+  text-align: center;
   margin-top: 2rem;
-  padding: 0.5rem 1rem;
-  background-color: var(--textLink);
-  color: var(--bg);
+  color: var(--textLink);
   text-decoration: none;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+  font-weight: bold;
 }
 
 .allTagsLink:hover {
-  background-color: var(--textNormal);
+  text-decoration: underline;
 }

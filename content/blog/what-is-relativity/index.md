@@ -2,7 +2,7 @@
 title: "What is Relativity? by François Vannucci: A Disappointing Exploration"
 date: "2021-01-14"
 categories: ["Blog", "Book Reviews"]
-tags: ["Einstein", "Relativity Theory", "Galileo", "Science", "Physics"]
+tags: ["Einstein", "Relativity Theory", "Galileo", "Science", "Physics", "Book Reviews"]
 coverImage: "./images/quest-ce-qua-la-relativite.png"
 ---
 

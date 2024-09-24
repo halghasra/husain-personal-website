@@ -24,10 +24,10 @@ const LessonTemplate = ({ data, pageContext }) => {
         <header>
           <h1>{lesson.frontmatter.title}</h1>
           <p>{lesson.frontmatter.date}</p>
-          {lesson.frontmatter.tags && (
+          {lesson.frontmatter.tags && lesson.frontmatter.tags.length > 0 && (
             <div className={styles.tags}>
               {lesson.frontmatter.tags.map(tag => (
-                <Link to={`/tag/${tag}`} key={tag} className={styles.tag}>
+                <Link to={`/tags?tag=${tag}`} key={tag} className={styles.tag}>
                   {tag}
                 </Link>
               ))}

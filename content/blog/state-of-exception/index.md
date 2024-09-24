@@ -2,7 +2,7 @@
 title: "Understanding Modern Politics through Giorgio Agamben's State of Exception"
 date: "2017-03-16"
 categories: ["Blog", "Book Reviews"]
-tags: ["State of Exception", "Giorgio Agamben", "Politics", "Philosophy"]
+tags: ["State of Exception", "Giorgio Agamben", "Politics", "Philosophy", "Book Reviews"]
 coverImage: "./images/halat-alestithnaa.png"
 ---
 

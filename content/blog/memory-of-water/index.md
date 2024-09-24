@@ -2,6 +2,7 @@
 title: "The Thirst for Freedom: A Review of Emmi Itäranta’s Memory of Water"
 date: "2017-03-24"
 categories: ["Blog", "Book Reviews"]
+tags: ["Book Reviews", "Novels", "Emmi Itaranta"]
 coverImage: "./images/memory-of-water.png"
 ---
 

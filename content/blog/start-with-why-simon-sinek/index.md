@@ -2,7 +2,7 @@
 title: "Start With Why - Simon Sinek"
 date: "2021-08-10"
 categories: ["Blog", "Book Reviews"]
-tags: ["Business", "Reviews", "Simon Sinek", "Start with Why"]
+tags: ["Business", "Book Reviews", "Simon Sinek", "Start With Why"]
 coverImage: "./images/Start-with-why-review.png"
 ---
 

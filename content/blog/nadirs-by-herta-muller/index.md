@@ -2,6 +2,7 @@
 title: "Exploring the Strange Beauty of The Appointment by Herta Müller"
 date: "2021-02-19"
 categories: ["Blog", "Book Reviews"]
+tags: ["Book Reviews", "Novels", "Herta Muller"]
 coverImage: "./images/Isqatat.png"
 ---
 

@@ -2,7 +2,7 @@
 title: "A Thousand Splendid Suns': A Story of Love, Loss, and Survival in War-Torn Afghanistan"
 date: "2017-01-31"
 categories: ["Blog", "Book Reviews"]
-tags: ["Book Reviews", "Novels", "Readers", "Thousand Splendid Suns"]
+tags: ["Book Reviews", "Novels", "Thousand Splendid Suns"]
 coverImage: "./images/thousand-splendid-suns.png"
 ---
 

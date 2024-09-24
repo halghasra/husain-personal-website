@@ -2,6 +2,7 @@
 title: "A Review of Listen, Little Man! by Wilhelm Reich"
 date: "2017-03-25"
 categories: ["Blog", "Book Reviews"]
+tags: ["Philosophy", "Book Reviews", "Wilhelm Reich"]
 coverImage: "./images/listen-small-man.png"
 ---
 

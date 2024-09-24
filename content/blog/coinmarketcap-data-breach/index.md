@@ -2,7 +2,7 @@
 title: "CoinMarketCap Data Breach"
 date: "2021-10-22"
 categories: ["Articles", "Cyber Security", "Technology"]
-tags: ["blockchain", "coinmarketcap", "cyber-security", "data-breach", "data-leaks", "decentralization", "security"] 
+tags: ["Blockchain", "CoinMarketCap", "Cyber Security", "Data Breach", "Data Leaks", "Decentralisation", "Security"] 
 coverImage: "./images/CoinMarketCap-data-breach.png"
 ---
 

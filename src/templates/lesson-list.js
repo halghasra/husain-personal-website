@@ -39,7 +39,7 @@ const LessonList = ({ data, pageContext }) => {
               </Link>
               <div className={styles.tags}>
                 {node.frontmatter.tags && node.frontmatter.tags.map(tag => (
-                  <Link to={`/tag/${tag}`} key={tag} className={styles.tag}>
+                  <Link to={`/tags?tag=${tag}`} key={tag} className={styles.tag}>
                     {tag}
                   </Link>
                 ))}

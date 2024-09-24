@@ -35,7 +35,7 @@ const BlogPage = ({ data }) => {
                 <p className={styles.postExcerpt}>{post.excerpt}</p>
                 <div className={styles.tags}>
                   {post.frontmatter.tags && post.frontmatter.tags.map(tag => (
-                    <Link to={`/tag/${tag}`} key={tag} className={styles.tag}>
+                    <Link to={`/tags?tag=${tag}`} key={tag} className={styles.tag}>
                       {tag}
                     </Link>
                   ))}

@@ -25,10 +25,10 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         <header>
           <h1>{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
-          {post.frontmatter.tags && (
+          {post.frontmatter.tags && post.frontmatter.tags.length > 0 && (
             <div className={styles.tags}>
               {post.frontmatter.tags.map(tag => (
-                <Link to={`/tag/${tag}`} key={tag} className={styles.tag}>
+                <Link to={`/tags?tag=${tag}`} key={tag} className={styles.tag}>
                   {tag}
                 </Link>
               ))}
