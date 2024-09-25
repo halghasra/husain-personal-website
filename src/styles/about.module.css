@@ -1,43 +1,75 @@
 .aboutHeader {
-    text-align: center;
-    padding: 3rem 0;
-    background: linear-gradient(135deg, var(--bg), var(--textLink));
-    color: var(--bg);
-    margin-bottom: 2rem;
-  }
-  
+  text-align: center;
+  padding: 3rem 0;
+  background: linear-gradient(135deg, var(--bg), var(--textLink));
+  color: var(--bg);
+  margin-bottom: 2rem;
+}
+
+.aboutHeader h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.aboutHeader p {
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+
+.aboutContent {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.aboutContent h2 {
+  color: var(--textLink);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.aboutContent p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.aboutContent ul {
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+}
+
+.aboutContent li {
+  margin-bottom: 0.5rem;
+}
+
+/* New styles for blockquote */
+blockquote {
+  font-style: italic;
+  border-left: 4px solid var(--textLink);
+  padding-left: 1rem;
+  margin: 2rem 0;
+}
+
+blockquote p {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+blockquote footer {
+  font-size: 1rem;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
   .aboutHeader h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 2.5rem;
   }
-  
+
   .aboutHeader p {
-    font-size: 1.2rem;
-    opacity: 0.8;
+    font-size: 1.1rem;
   }
-  
-  .aboutContent {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-  
+
   .aboutContent h2 {
-    color: var(--textLink);
-    margin-top: 2rem;
-    margin-bottom: 1rem;
+    font-size: 1.8rem;
   }
-  
-  .aboutContent p {
-    margin-bottom: 1rem;
-    line-height: 1.6;
-  }
-  
-  .aboutContent ul {
-    margin-bottom: 1rem;
-    padding-left: 2rem;
-  }
-  
-  .aboutContent li {
-    margin-bottom: 0.5rem;
-  }
+}
