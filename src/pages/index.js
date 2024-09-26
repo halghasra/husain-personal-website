@@ -13,16 +13,16 @@ const IndexPage = ({ data }) => {
       <div className={styles.hero}>
         <Logo />
         <h1 className={styles.heroTitle}>Husain Alghasra</h1>
-        <p className={styles.heroSubtitle}>The world belongs to the curious!</p>
+        <p className={styles.heroSubtitle}>THE FUTURE BELONGS TO THE CURIOUS!</p>
       </div>
 
       <div className={styles.introduction}>
         <h2>Welcome to a World Driven by Curiosity</h2>
         <p>Hello, I'm Husain.</p>
-        <p>Curiosity isn't just a word to me—it's a manifesto. It's the courage to question the norms, the known, and even the unknown. Here, in my corner of the internet, we don't just accept the world as it is; we poke, prod, and ponder over every "why" and "what if" that crosses our minds.</p>
-        <p>From the depths of intricate ideas to the simple joy of a new discovery, this space is dedicated to those who believe that learning never ends. I share insights, dissect book reviews, and unravel the fabric of thoughts on seemingly random musings.</p>
-        <p>But here's the thing: I detest the mundane. "What if…?" isn't just a phrase—it's the lens through which I view the world. If you're intrigued by the endless possibilities that questions can unravel, then you're in the right place.</p>
-        <p><strong>Welcome to the Curious Movement, where every question is the key to a new door. Let's embark on this journey of discovery together, because the future? It belongs to us—the eternally curious.</strong></p>
+        <p>Curiosity isn't just a word to me—it's my way of life. It's the spark that drives me to question everything, from the everyday to the extraordinary. Here, in my little corner of the internet, we don't settle for the status quo. Instead, we explore every "why" and "what if" that comes our way.</p>
+        <p>Whether diving into complex ideas or celebrating the joy of a new discovery, this space is for anyone who believes that learning never stops. I share my thoughts, review books, and explore random musings that fuel our endless quest for knowledge.</p>
+        <p>I can't stand the mundane. For me, "What if…?" is more than a question—it's the lens through which I see the world. If you're fascinated by the endless possibilities that curiosity can unlock, you've come to the right place.</p>
+        <p><strong>Join the Curious Movement</strong>, where every question opens a new door. Let's embark on this journey of discovery together because the future? It belongs to us—the eternally curious.</p>
       </div>
 
       <div className={styles.featuredContent}>
