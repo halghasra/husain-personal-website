@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { Link } from 'gatsby';
 import { ThemeContext } from './ThemeContext';
+import ThemeToggle from './ThemeToggle';
 import * as styles from '../styles/layout.module.css';
 
 const Layout = ({ children }) => {
@@ -20,9 +21,7 @@ const Layout = ({ children }) => {
             <Link to="/blog" className={styles.navLink}>Blog</Link>
             <Link to="/learning-hub" className={styles.navLink}>Learning Hub</Link>
           </nav>
-          <button onClick={toggleTheme} aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}>
-            {isDarkMode ? '🌞' : '🌙'}
-          </button>
+          <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
         </div>
       </header>
       <main className={styles.main}>{children}</main>

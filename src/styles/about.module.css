@@ -26,6 +26,15 @@
   color: var(--textLink);
   margin-top: 2rem;
   margin-bottom: 1rem;
+  font-size: 2.2rem;
+  margin-top: 3rem;
+}
+
+.aboutContent h3 {
+  font-size: 1.8rem;
+  color: var(--textLink);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 
 .aboutContent p {
@@ -47,17 +56,21 @@ blockquote {
   font-style: italic;
   border-left: 4px solid var(--textLink);
   padding-left: 1rem;
-  margin: 2rem 0;
+  margin: 3rem 0;
+  padding: 1.5rem;
+  background-color: rgba(var(--textLing-rgb), 0.1);
+  border-radius: 8px;
 }
 
 blockquote p {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   margin-bottom: 0.5rem;
 }
 
 blockquote footer {
   font-size: 1rem;
   text-align: right;
+  margin-top: 1rem;
 }
 
 @media (max-width: 768px) {
@@ -70,6 +83,10 @@ blockquote footer {
   }
 
   .aboutContent h2 {
-    font-size: 1.8rem;
+    font-size: 2rem;
+  }
+
+  .aboutContent h3 {
+    font-size: 1.6rem;
   }
 }
