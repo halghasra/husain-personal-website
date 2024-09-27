@@ -1,0 +1,25 @@
+.postMeta {
+    margin-bottom: 2rem;
+  }
+  
+  .readingTime {
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+  
+  .tableOfContents h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .tableOfContents ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .tableOfContents li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .depth2 { padding-left: 1rem; }
+  .depth3 { padding-left: 2rem; }

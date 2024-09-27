@@ -2,6 +2,8 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Layout from "../components/Layout"
+import SEO from "../components/SEO"
+import PostMeta from "../components/PostMeta"
 import AuthorBio from "../components/AuthorBio"
 import ShareButtons from "../components/ShareButtons"
 import Comments from "../components/Comments"
@@ -16,6 +18,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 
   return (
     <Layout>
+      <SEO post={post} siteMetadata={data.site.siteMetadata} />
       <article className={styles.blogPost}>
         {coverImage && (
           <GatsbyImage 
@@ -37,17 +40,18 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             </div>
           )}
         </header>
+        <PostMeta post={post} />
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
         <ShareButtons
-        url={`${siteUrl}${post.fields.slug}`}
-        title={post.frontmatter.title}
-        description={post.excerpt}
-      />
-      <AuthorBio />
-      <div className={styles.comments}>
-        <Comments post={post} siteUrl={siteUrl} />
-      </div>
-    </article>
+          url={`${siteUrl}${post.fields.slug}`}
+          title={post.frontmatter.title}
+          description={post.excerpt}
+        />
+        <AuthorBio />
+        <div className={styles.comments}>
+          <Comments post={post} siteUrl={siteUrl} />
+        </div>
+      </article>
       <nav className={styles.blogPostNav}>
         <ul>
           <li>
@@ -70,7 +74,6 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   )
 }
 
-
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
@@ -79,6 +82,9 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         siteUrl
+        author {
+          name
+        }
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
@@ -97,6 +103,14 @@ export const pageQuery = graphql`
             gatsbyImageData(width: 800, height: 400, layout: CONSTRAINED)
           }
         }
+      }
+      headings {
+        id
+        value
+        depth
+      }
+      wordCount {
+        words
       }
     }
   }
