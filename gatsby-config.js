@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Husain Alghasra`,
@@ -9,7 +13,7 @@ module.exports = {
     social: {
       twitter: `j0se1n`,
     },
-    siteUrl: `https://husainalghasra.com`,
+    siteUrl: `https://husainalghasra.netlify.app/`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -27,6 +31,12 @@ module.exports = {
         name: `content`,
         path: `${__dirname}/content`,
       },
+    },
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+          shortname: process.env.GATSBY_DISQUS_NAME
+      }
     },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,

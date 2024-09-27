@@ -4,11 +4,13 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Layout from "../components/Layout"
 import AuthorBio from "../components/AuthorBio"
 import ShareButtons from "../components/ShareButtons"
+import Comments from "../components/Comments"
 import * as styles from "../styles/blog-post.module.css"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
+  const siteUrl = data.site.siteMetadata?.siteUrl || ``
   const { previous, next } = pageContext
   const coverImage = getImage(post.frontmatter.coverImage)
 
@@ -37,12 +39,15 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
         <ShareButtons
-          url={`${data.site.siteMetadata.siteUrl}${post.fields.slug}`}
-          title={post.frontmatter.title}
-          description={post.excerpt}
-        />
-        <AuthorBio />
-      </article>
+        url={`${siteUrl}${post.fields.slug}`}
+        title={post.frontmatter.title}
+        description={post.excerpt}
+      />
+      <AuthorBio />
+      <div className={styles.comments}>
+        <Comments post={post} siteUrl={siteUrl} />
+      </div>
+    </article>
       <nav className={styles.blogPostNav}>
         <ul>
           <li>
