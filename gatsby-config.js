@@ -33,6 +33,24 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-webfonts',
+      options: {
+        fonts: {
+          google: [
+            {
+              family: "Montserrat",
+              variants: ["400", "500", "700"],
+            },
+            {
+              family: "Merriweather",
+              variants: ["300", "400", "700"],
+            },
+          ],
+        },
+      },
+    },
+    'gatsby-plugin-minify',
+    {
       resolve: `gatsby-plugin-disqus`,
       options: {
           shortname: process.env.GATSBY_DISQUS_NAME

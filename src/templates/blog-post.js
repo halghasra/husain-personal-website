@@ -25,6 +25,9 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             image={coverImage} 
             alt={post.frontmatter.title} 
             className={styles.coverImage}
+            loading="eager" // Load the image immediately
+            fadeIn={true}
+            placeholder="blurred"
           />
         )}
         <header>
