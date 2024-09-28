@@ -5,6 +5,18 @@
   color: var(--bg);
 }
 
+.heroLogo {
+  font-family: 'Machiato', sans-serif;
+  font-size: 8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.heroLogo:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
 .heroTitle {
   font-size: 3rem;
   margin-bottom: 1rem;

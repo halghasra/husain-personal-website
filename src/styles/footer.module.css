@@ -1,0 +1,46 @@
+.footer {
+    margin-top: 2rem;
+    padding: 1rem 0;
+    background: var(--bg);
+    border-top: 1px solid var(--hr);
+    transition: background-color 0.3s ease;
+  }
+  
+  .footerContent {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .footerLogo {
+    font-family: 'Machiato', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-title);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footerLogo:hover {
+    color: var(--accent);
+    transform: scale(1.1) rotate(5deg);
+    text-decoration: none;
+  }
+  
+  .copyright {
+    font-size: var(--font-size-small);
+    color: var(--text-normal);
+  }
+  
+  @media (max-width: 768px) {
+    .footerContent {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .footerLogo {
+      margin-bottom: 1rem;
+    }
+  }

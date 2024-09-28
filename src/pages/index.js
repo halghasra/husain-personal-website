@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import Layout from '../components/Layout';
-import Logo from '../components/Logo';
 import * as styles from '../styles/home.module.css';
 
 const IndexPage = ({ data }) => {
@@ -11,7 +10,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <div className={styles.hero}>
-        <Logo />
+        <h1 className={styles.heroLogo}>HG</h1>
         <h1 className={styles.heroTitle}>Husain Alghasra</h1>
         <p className={styles.heroSubtitle}>THE FUTURE BELONGS TO THE CURIOUS!</p>
       </div>
