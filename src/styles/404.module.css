@@ -1,0 +1,62 @@
+.notFoundContainer {
+    text-align: center;
+    padding: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .title {
+    font-size: 6rem;
+    margin-bottom: 0;
+    color: var(--textLink);
+  }
+  
+  .subtitle {
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+  
+  .description {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .suggestion {
+    font-style: italic;
+  }
+  
+  .linkList {
+    list-style-type: none;
+    padding: 0;
+    margin: 2rem 0;
+  }
+  
+  .linkList li {
+    display: inline-block;
+    margin: 0 1rem;
+  }
+  
+  .linkList a {
+    color: var(--textLink);
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .linkList a:hover {
+    text-decoration: underline;
+  }
+  
+  .homeButton {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--textLink);
+    color: var(--bg);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .homeButton:hover {
+    background-color: var(--textNormal);
+  }
