@@ -1,6 +1,31 @@
-const path = require('path')
-const _ = require('lodash')
 const { createFilePath } = require(`gatsby-source-filesystem`)
+const path = require(`path`)
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  const typeDefs = `
+    type MarkdownRemark implements Node {
+      frontmatter: Frontmatter
+      fields: Fields
+    }
+    type Frontmatter {
+      title: String!
+      date: Date @dateformat
+      category: String
+      topic: String
+      unit: String
+      order: Int
+      tags: [String]
+    }
+    type Fields {
+      slug: String!
+      categorySlug: String
+      topicSlug: String
+      unitSlug: String
+    }
+  `
+  createTypes(typeDefs)
+}
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
@@ -11,16 +36,35 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       name: `slug`,
       value: slug,
     })
+
+    const parts = slug.split('/').filter(Boolean)
+    if (parts[0] === 'learning-hub') {
+      createNodeField({
+        node,
+        name: 'categorySlug',
+        value: parts[1] ? `/learning-hub/${parts[1]}` : null,
+      })
+      createNodeField({
+        node,
+        name: 'topicSlug',
+        value: parts[2] ? `/learning-hub/${parts[1]}/${parts[2]}` : null,
+      })
+      createNodeField({
+        node,
+        name: 'unitSlug',
+        value: parts[3] ? `/learning-hub/${parts[1]}/${parts[2]}/${parts[3]}` : null,
+      })
+    }
   }
 }
 
-exports.createPages = async ({ actions, graphql, reporter }) => {
+exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-
-  // Query for markdown nodes to use in creating pages.
   const result = await graphql(`
     query {
-      allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
+      allMarkdownRemark(
+        sort: { fields: [frontmatter___date], order: DESC }
+      ) {
         edges {
           node {
             fields {
@@ -28,41 +72,40 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             }
             frontmatter {
               title
-              categories
               tags
-              coverImage {
-                childImageSharp {
-                  gatsbyImageData(width: 800, height: 400, layout: CONSTRAINED)
-                }
-              }
             }
           }
-        }
-      }
-      categoriesGroup: allMarkdownRemark(limit: 2000) {
-        group(field: { frontmatter: { categories: SELECT } }) {
-          fieldValue
-        }
-      }
-      tagsGroup: allMarkdownRemark(limit: 2000) {
-        group(field: { frontmatter: { tags: SELECT } }) {
-          fieldValue
         }
       }
     }
   `)
 
   if (result.errors) {
-    reporter.panicOnBuild(`Error while running GraphQL query.`)
+    console.error(result.errors)
     return
   }
 
-  // Create blog post pages
-  const posts = result.data.allMarkdownRemark.edges.filter(
-    edge => edge.node.fields.slug.startsWith('/blog/')
-  )
+  const posts = result.data.allMarkdownRemark.edges
+
+  // Create blog posts pages
+  posts.forEach((post, index) => {
+    const previous = index === posts.length - 1 ? null : posts[index + 1].node
+    const next = index === 0 ? null : posts[index - 1].node
+
+    createPage({
+      path: post.node.fields.slug,
+      component: path.resolve(`./src/templates/${post.node.fields.slug.startsWith('/learning-hub/') ? 'lesson.js' : 'blog-post.js'}`),
+      context: {
+        slug: post.node.fields.slug,
+        previous,
+        next,
+      },
+    })
+  })
+
+  // Create blog list pages
   const postsPerPage = 6
-  const numPages = Math.ceil(posts.length / postsPerPage)
+  const numPages = Math.ceil(posts.filter(post => post.node.fields.slug.startsWith('/blog/')).length / postsPerPage)
 
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
@@ -77,28 +120,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     })
   })
 
-  // Create individual blog post pages
-  posts.forEach(({ node }, index) => {
-    const previous = index === posts.length - 1 ? null : posts[index + 1].node
-    const next = index === 0 ? null : posts[index - 1].node
-
-    createPage({
-      path: node.fields.slug,
-      component: path.resolve(`./src/templates/blog-post.js`),
-      context: {
-        slug: node.fields.slug,
-        previous,
-        next,
-      },
-    })
-  })
-
-  // Create learning hub pages (similar to blog posts)
-  const lessons = result.data.allMarkdownRemark.edges.filter(
-    edge => edge.node.fields.slug.startsWith('/learning-hub/')
-  )
+  // Create learning hub list pages
   const lessonsPerPage = 6
-  const numLessonPages = Math.ceil(lessons.length / lessonsPerPage)
+  const numLessonPages = Math.ceil(posts.filter(post => post.node.fields.slug.startsWith('/learning-hub/')).length / lessonsPerPage)
 
   Array.from({ length: numLessonPages }).forEach((_, i) => {
     createPage({
@@ -111,59 +135,5 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         currentPage: i + 1,
       },
     })
-  })
-
-  // Create individual lesson pages
-  lessons.forEach((lesson, index) => {
-    const previous = index === lessons.length - 1 ? null : lessons[index + 1].node
-    const next = index === 0 ? null : lessons[index - 1].node
-
-    createPage({
-      path: lesson.node.fields.slug,
-      component: path.resolve(`./src/templates/lesson.js`),
-      context: {
-        slug: lesson.node.fields.slug,
-        previous,
-        next,
-      },
-    })
-  })
-
-  // Create category pages
-  const categoryTemplate = path.resolve('src/templates/category.js')
-  const categories = result.data.categoriesGroup.group
-
-  categories.forEach(category => {
-    createPage({
-      path: `/category/${_.kebabCase(category.fieldValue)}/`,
-      component: categoryTemplate,
-      context: {
-        category: category.fieldValue,
-      },
-    })
-  })
-
-//   // Create tag pages
-//   const tagTemplate = path.resolve('src/templates/tag.js')
-//   const tags = result.data.tagsGroup.group
-
-//   tags.forEach(tag => {
-//     createPage({
-//       path: `/tag/${_.kebabCase(tag.fieldValue)}/`,
-//       component: tagTemplate,
-//       context: {
-//         tag: tag.fieldValue,
-//       },
-//     })
-//   })
- }
-
-exports.onCreateWebpackConfig = ({ actions }) => {
-  actions.setWebpackConfig({
-    resolve: {
-      alias: {
-        '../components/layout': path.resolve(__dirname, 'src/components/Layout.js'),
-      },
-    },
   })
 }
