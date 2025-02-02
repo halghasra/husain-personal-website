@@ -103,3 +103,152 @@
 .paginationLink:hover {
   background-color: var(--textNormal);
 }
+
+.learningHubContainer {
+  display: grid;
+  grid-template-columns: 300px minmax(600px, 1fr) 250px;
+  min-height: calc(100vh - var(--header-height));
+  background-color: var(--bg);
+  width: 100%;
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.sidebar {
+  border-right: 1px solid var(--hr);
+  padding: 2rem;
+  height: calc(100vh - var(--header-height));
+  position: sticky;
+  top: var(--header-height);
+  overflow-y: auto;
+  background-color: var(--bg);
+}
+
+.mainContent {
+  padding: 3rem;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+.tableOfContents {
+  border-left: 1px solid var(--hr);
+  padding: 2rem;
+  height: calc(100vh - var(--header-height));
+  position: sticky;
+  top: var(--header-height);
+  overflow-y: auto;
+  background-color: var(--bg);
+}
+
+.breadcrumbs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  color: var(--textNormal);
+  font-size: 0.9rem;
+}
+
+.breadcrumbs a {
+  color: var(--textLink);
+  text-decoration: none;
+}
+
+.breadcrumbs span {
+  color: var(--textNormal);
+  opacity: 0.5;
+}
+
+.content {
+  max-width: 100%;
+  padding-right: 2rem;
+}
+
+.content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--textTitle);
+  word-break: break-word;
+}
+
+.introduction {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+  color: var(--textNormal);
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+.courseGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.courseCard {
+  padding: 1.5rem;
+  border: 1px solid var(--hr);
+  border-radius: 8px;
+  background-color: var(--bg);
+  transition: all 0.3s ease;
+}
+
+.courseCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.courseCard h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--textTitle);
+}
+
+.courseCard p {
+  color: var(--textNormal);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.courseLink {
+  display: inline-flex;
+  align-items: center;
+  color: var(--textLink);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.courseLink:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .learningHubContainer {
+    grid-template-columns: 250px 1fr;
+  }
+  
+  .tableOfContents {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .learningHubContainer {
+    grid-template-columns: 1fr;
+  }
+  
+  .sidebar {
+    display: none;
+  }
+  
+  .mainContent {
+    padding: 1rem;
+  }
+}

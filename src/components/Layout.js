@@ -5,15 +5,19 @@ import ThemeToggle from './ThemeToggle';
 import Footer from './Footer';
 import * as styles from '../styles/layout.module.css';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, fullWidth }) => {
   const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', isDarkMode);
   }, [isDarkMode]);
 
+  const wrapperClass = `${styles.siteWrapper} ${
+    fullWidth ? styles.siteWrapperFull : styles.siteWrapperDefault
+  }`;
+
   return (
-    <div className={styles.siteWrapper}>
+    <div className={wrapperClass}>
       <header className={styles.header}>
         <div className={styles.headerContent}>
           <Link to="/" className={`${styles.logo} ${styles.logoLink}`}>HG</Link>
@@ -30,7 +34,7 @@ const Layout = ({ children }) => {
           </div>
         </div>
       </header>
-      <main className={styles.main}>{children}</main>
+      <main>{children}</main>
       <Footer />
     </div>
   );

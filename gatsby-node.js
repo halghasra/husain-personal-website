@@ -16,6 +16,9 @@ exports.createSchemaCustomization = ({ actions }) => {
       unit: String
       order: Int
       tags: [String]
+      description: String
+      isMainCourse: Boolean
+      coverImage: File @fileByRelativePath
     }
     type Fields {
       slug: String!
@@ -85,6 +88,9 @@ exports.createPages = async ({ graphql, actions }) => {
             frontmatter {
               title
               tags
+              description
+              isMainCourse
+              order
             }
           }
         }

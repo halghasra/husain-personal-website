@@ -1,47 +1,62 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import Layout from '../../components/Layout';
-import Search from '../../components/Search';
+import Sidebar from '../../components/Sidebar';
+import TableOfContents from '../../components/TableOfContents';
 import * as styles from '../../styles/learning-hub.module.css';
 
 const LearningHubPage = ({ data }) => {
   const lessons = data.allMarkdownRemark.nodes;
 
   return (
-    <Layout>
-      <div className={styles.learningHubHeader}>
-        <h1>Learning Hub</h1>
-        <p>Explore lessons on technology, computer science, and more!</p>
-      </div>
-      <Search posts={lessons} />
-      <div className={styles.lessonGrid}>
-        {lessons.map((lesson) => {
-          const coverImage = getImage(lesson.frontmatter.coverImage);
-          return (
-            <article key={lesson.fields.slug} className={styles.lessonCard}>
-              {coverImage && (
-                <GatsbyImage 
-                  image={coverImage} 
-                  alt={lesson.frontmatter.title} 
-                  className={styles.coverImage}
-                />
-              )}
-              <Link to={lesson.fields.slug}>
-                <h2>{lesson.frontmatter.title}</h2>
-                <p className={styles.lessonDate}>{lesson.frontmatter.date}</p>
-                <p className={styles.lessonExcerpt}>{lesson.excerpt}</p>
-              </Link>
-              <div className={styles.tags}>
-                {lesson.frontmatter.tags && lesson.frontmatter.tags.map(tag => (
-                  <Link to={`/tags?tag=${tag}`} key={tag} className={styles.tag}>
-                    {tag}
-                  </Link>
-                ))}
+    <Layout fullWidth>
+      <div className={styles.learningHubContainer}>
+        {/* Left Sidebar */}
+        <aside className={styles.sidebar}>
+          <Sidebar />
+        </aside>
+
+        {/* Main Content */}
+        <main className={styles.mainContent}>
+          <div className={styles.breadcrumbs}>
+            <Link to="/">Home</Link>
+            <span>/</span>
+            <Link to="/learning-hub">Learning Hub</Link>
+          </div>
+
+          <article className={styles.content}>
+            <h1>Welcome to the Learning Hub</h1>
+            <p className={styles.introduction}>
+              Explore comprehensive lessons on distributed systems, computer science fundamentals, 
+              and more. Select a course from the sidebar to begin your learning journey.
+            </p>
+
+            <section className={styles.availableCourses}>
+              <h2>Available Courses</h2>
+              <div className={styles.courseGrid}>
+                {lessons
+                  .filter(lesson => lesson.frontmatter.isMainCourse)
+                  .map((course) => (
+                    <div key={course.fields.slug} className={styles.courseCard}>
+                      <h3>{course.frontmatter.title}</h3>
+                      <p>{course.frontmatter.description}</p>
+                      <Link to={course.fields.slug} className={styles.courseLink}>
+                        Start Learning →
+                      </Link>
+                    </div>
+                  ))}
               </div>
-            </article>
-          );
-        })}
+            </section>
+          </article>
+        </main>
+
+        {/* Right TOC */}
+        <aside className={styles.tableOfContents}>
+          <TableOfContents headings={[
+            { value: 'Welcome to the Learning Hub', id: 'welcome-to-the-learning-hub', depth: 1 },
+            { value: 'Available Courses', id: 'available-courses', depth: 2 }
+          ]} />
+        </aside>
       </div>
     </Layout>
   );
@@ -50,8 +65,10 @@ const LearningHubPage = ({ data }) => {
 export const query = graphql`
   query {
     allMarkdownRemark(
-      sort: { frontmatter: { date: DESC } }
-      filter: { fileAbsolutePath: { regex: "/content/learning-hub/" } }
+      sort: { frontmatter: { order: ASC } }
+      filter: { 
+        fileAbsolutePath: { regex: "/content/learning-hub/" }
+      }
     ) {
       nodes {
         excerpt
@@ -59,14 +76,10 @@ export const query = graphql`
           slug
         }
         frontmatter {
-          date(formatString: "MMMM DD, YYYY")
           title
-          tags
-          coverImage {
-            childImageSharp {
-              gatsbyImageData(width: 600, height: 300, layout: CONSTRAINED)
-            }
-          }
+          description
+          isMainCourse
+          order
         }
       }
     }
