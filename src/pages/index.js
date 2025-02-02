@@ -1,11 +1,28 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import Layout from '../components/Layout';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import * as styles from '../styles/home.module.css';
 
 const IndexPage = ({ data }) => {
-  const latestPosts = data.allMarkdownRemark.nodes.filter(node => node.fields.slug.startsWith('/blog/'));
-  const latestLessons = data.allMarkdownRemark.nodes.filter(node => node.fields.slug.startsWith('/learning-hub/'));
+  // Log all nodes first
+  console.log("All nodes:", data.allMarkdownRemark.nodes.map(node => ({
+    slug: node.fields.slug,
+    source: node.parent?.sourceInstanceName,
+    title: node.frontmatter.title
+  })));
+  
+  // Try filtering by slug pattern instead
+  const latestPosts = data.allMarkdownRemark.nodes
+    .filter(node => node.fields.slug.startsWith('/blog/'))
+    .slice(0, 3);
+  
+  const latestLessons = data.allMarkdownRemark.nodes
+    .filter(node => node.fields.slug.startsWith('/learning-hub/'))
+    .slice(0, 3);
+
+  console.log("Found blog posts:", latestPosts.length);
+  console.log("Found lessons:", latestLessons.length);
 
   return (
     <Layout>
@@ -27,32 +44,56 @@ const IndexPage = ({ data }) => {
       <div className={styles.featuredContent}>
         <section className={styles.featuredSection}>
           <h2>Latest Blog Posts</h2>
-          <ul className={styles.postList}>
-            {latestPosts.slice(0, 3).map(post => (
-              <li key={post.fields.slug} className={styles.postItem}>
-                <Link to={post.fields.slug}>
-                  <h3>{post.frontmatter.title}</h3>
-                  <p>{post.frontmatter.date}</p>
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <Link to="/blog" className={styles.viewAllLink}>See all posts</Link>
+          {latestPosts.length > 0 ? (
+            <>
+              <ul className={styles.postList}>
+                {latestPosts.map(post => (
+                  <li key={post.fields.slug} className={styles.postItem}>
+                    <Link to={post.fields.slug}>
+                      {post.frontmatter.coverImage?.childImageSharp && (
+                        <GatsbyImage 
+                          image={getImage(post.frontmatter.coverImage)} 
+                          alt={post.frontmatter.title} 
+                        />
+                      )}
+                      <h3>{post.frontmatter.title}</h3>
+                      <p>{post.frontmatter.date}</p>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <Link to="/blog" className={styles.viewAllLink}>See all posts</Link>
+            </>
+          ) : (
+            <p>No blog posts found</p>
+          )}
         </section>
 
         <section className={styles.featuredSection}>
           <h2>Latest Lessons</h2>
-          <ul className={styles.postList}>
-            {latestLessons.slice(0, 3).map(lesson => (
-              <li key={lesson.fields.slug} className={styles.postItem}>
-                <Link to={lesson.fields.slug}>
-                  <h3>{lesson.frontmatter.title}</h3>
-                  <p>{lesson.frontmatter.date}</p>
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <Link to="/learning-hub" className={styles.viewAllLink}>See all lessons</Link>
+          {latestLessons.length > 0 ? (
+            <>
+              <ul className={styles.postList}>
+                {latestLessons.map(lesson => (
+                  <li key={lesson.fields.slug} className={styles.postItem}>
+                    <Link to={lesson.fields.slug}>
+                      {lesson.frontmatter.coverImage?.childImageSharp && (
+                        <GatsbyImage 
+                          image={getImage(lesson.frontmatter.coverImage)} 
+                          alt={lesson.frontmatter.title} 
+                        />
+                      )}
+                      <h3>{lesson.frontmatter.title}</h3>
+                      <p>{lesson.frontmatter.date}</p>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <Link to="/learning-hub" className={styles.viewAllLink}>See all lessons</Link>
+            </>
+          ) : (
+            <p>No lessons found</p>
+          )}
         </section>
       </div>
     </Layout>
@@ -63,15 +104,29 @@ export const query = graphql`
   query {
     allMarkdownRemark(
       sort: { frontmatter: { date: DESC } }
-      limit: 6
     ) {
       nodes {
         fields {
           slug
         }
+        parent {
+          ... on File {
+            sourceInstanceName
+          }
+        }
         frontmatter {
           date(formatString: "MMMM DD, YYYY")
           title
+          coverImage {
+            childImageSharp {
+              gatsbyImageData(
+                width: 300
+                height: 200
+                placeholder: BLURRED
+                transformOptions: { fit: COVER }
+              )
+            }
+          }
         }
       }
     }

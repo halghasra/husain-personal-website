@@ -30,7 +30,19 @@ exports.createSchemaCustomization = ({ actions }) => {
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
   if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode, basePath: `pages` })
+    const parent = getNode(node.parent)
+    if (!parent) {
+      return
+    }
+
+    let slug
+    if (parent.sourceInstanceName === 'blog' || parent.sourceInstanceName === 'learning-hub') {
+      slug = createFilePath({ node, getNode, basePath: `content` })
+      slug = `/${parent.sourceInstanceName}${slug}`
+    } else {
+      slug = createFilePath({ node, getNode })
+    }
+
     createNodeField({
       node,
       name: `slug`,
@@ -105,7 +117,8 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Create blog list pages
   const postsPerPage = 6
-  const numPages = Math.ceil(posts.filter(post => post.node.fields.slug.startsWith('/blog/')).length / postsPerPage)
+  const blogPosts = posts.filter(post => post.node.fields.slug.startsWith('/blog/'))
+  const numPages = Math.ceil(blogPosts.length / postsPerPage)
 
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
@@ -122,7 +135,8 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Create learning hub list pages
   const lessonsPerPage = 6
-  const numLessonPages = Math.ceil(posts.filter(post => post.node.fields.slug.startsWith('/learning-hub/')).length / lessonsPerPage)
+  const learningHubPosts = posts.filter(post => post.node.fields.slug.startsWith('/learning-hub/'))
+  const numLessonPages = Math.ceil(learningHubPosts.length / lessonsPerPage)
 
   Array.from({ length: numLessonPages }).forEach((_, i) => {
     createPage({
@@ -137,3 +151,4 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 }
+

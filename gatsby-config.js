@@ -33,6 +33,20 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `blog`,
+        path: `${__dirname}/content/blog`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `learning-hub`,
+        path: `${__dirname}/content/learning-hub`,
+      },
+    },
+    {
       resolve: 'gatsby-plugin-webfonts',
       options: {
         fonts: {
@@ -67,7 +81,8 @@ module.exports = {
             options: {
               maxWidth: 600,
               linkImagesToOriginal: false,
-              srcSetBreakpoints: [200, 400, 600, 800]
+              //srcSetBreakpoints: [200, 400, 600, 800]
+              withWebp: true,
             },
           },
           {

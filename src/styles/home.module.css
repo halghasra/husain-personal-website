@@ -77,13 +77,15 @@
   display: inline-block;
   margin-top: 1rem;
   padding: 0.5rem 1rem;
-  background-color: var(--textLink);
-  color: var(--bg);
-  text-decoration: none;
+  border: 2px solid var(--color-primary);
   border-radius: 4px;
-  transition: background-color 0.2s ease;
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
 .viewAllLink:hover {
-  background-color: var(--textTitle);
+  background-color: var(--color-primary);
+  color: var(--color-background);
 }
