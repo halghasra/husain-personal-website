@@ -20,12 +20,7 @@ const IndexPage = ({ data }) => {
     .filter(node => node.fields.slug.startsWith("/blog/"))
     .slice(0, 3)
 
-  const latestLessons = data.allMarkdownRemark.nodes
-    .filter(node => node.fields.slug.startsWith("/learning-hub/"))
-    .slice(0, 3)
-
   console.log("Found blog posts:", latestPosts.length)
-  console.log("Found lessons:", latestLessons.length)
 
   return (
     <Layout>
@@ -39,28 +34,28 @@ const IndexPage = ({ data }) => {
 
       <div className={styles.introduction}>
         <h2>Welcome to My World</h2>
-        <p>Somewhere between curiosity and obsession, you’ll find me.</p>
+        <p>Somewhere between curiosity and obsession, you'll find me.</p>
         <p>
-          I’m Husain. For as long as I can remember, I’ve had this itch—the kind
+          I'm Husain. For as long as I can remember, I've had this itch—the kind
           that makes you take things apart just to see if you can put them back
-          together. Sometimes it’s tech, sometimes it’s ideas, and sometimes
-          it’s just a stubborn need to understand the why behind everything.
+          together. Sometimes it's tech, sometimes it's ideas, and sometimes
+          it's just a stubborn need to understand the why behind everything.
         </p>
         <p>
-          This site? It’s not some polished brand or a perfectly curated
-          knowledge hub. It’s just me, in my element—tinkering with thoughts,
+          This site? It's not some polished brand or a perfectly curated
+          knowledge hub. It's just me, in my element—tinkering with thoughts,
           building things that (hopefully) work, and writing about whatever
           refuses to leave my head.
         </p>
         <p>
           By day, I build software for the insurance world—because, believe it
-          or not, there’s something fascinating about taking an ancient industry
-          and making it move faster. By night, I’m probably knee-deep in a side
-          project, arguing with a bug that shouldn’t exist, or wondering why I
+          or not, there's something fascinating about taking an ancient industry
+          and making it move faster. By night, I'm probably knee-deep in a side
+          project, arguing with a bug that shouldn't exist, or wondering why I
           thought a double espresso at 11 PM was a good idea.
         </p>
         <p>
-          There’s no grand vision here, no life-changing manifesto—just a place
+          There's no grand vision here, no life-changing manifesto—just a place
           where I write, think, and share. If you like ideas, odd questions, and
           the kind of curiosity that makes you lose track of time, then stick
           around. We might have some things in common.
@@ -69,7 +64,7 @@ const IndexPage = ({ data }) => {
 
       <div className={styles.featuredContent}>
         <section className={styles.featuredSection}>
-          <h2>Latest Blog Posts</h2>
+          <h2>Latest Posts</h2>
           {latestPosts.length > 0 ? (
             <>
               <ul className={styles.postList}>
@@ -93,36 +88,7 @@ const IndexPage = ({ data }) => {
               </Link>
             </>
           ) : (
-            <p>No blog posts found</p>
-          )}
-        </section>
-
-        <section className={styles.featuredSection}>
-          <h2>Latest Lessons</h2>
-          {latestLessons.length > 0 ? (
-            <>
-              <ul className={styles.postList}>
-                {latestLessons.map(lesson => (
-                  <li key={lesson.fields.slug} className={styles.postItem}>
-                    <Link to={lesson.fields.slug}>
-                      {lesson.frontmatter.coverImage?.childImageSharp && (
-                        <GatsbyImage
-                          image={getImage(lesson.frontmatter.coverImage)}
-                          alt={lesson.frontmatter.title}
-                        />
-                      )}
-                      <h3>{lesson.frontmatter.title}</h3>
-                      <p>{lesson.frontmatter.date}</p>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              <Link to="/learning-hub" className={styles.viewAllLink}>
-                See all lessons
-              </Link>
-            </>
-          ) : (
-            <p>No lessons found</p>
+            <p>No posts found</p>
           )}
         </section>
       </div>
@@ -132,27 +98,23 @@ const IndexPage = ({ data }) => {
 
 export const query = graphql`
   query {
-    allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
+    allMarkdownRemark(
+      filter: { fields: { slug: { regex: "/^/blog/" } } }
+      sort: { frontmatter: { date: DESC } }
+      limit: 6
+    ) {
       nodes {
+        excerpt
         fields {
           slug
-        }
-        parent {
-          ... on File {
-            sourceInstanceName
-          }
         }
         frontmatter {
           date(formatString: "MMMM DD, YYYY")
           title
+          description
           coverImage {
             childImageSharp {
-              gatsbyImageData(
-                width: 300
-                height: 200
-                placeholder: BLURRED
-                transformOptions: { fit: COVER }
-              )
+              gatsbyImageData(width: 600, height: 300, layout: CONSTRAINED)
             }
           }
         }
