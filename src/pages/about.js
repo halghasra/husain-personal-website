@@ -6,33 +6,41 @@ const AboutPage = () => {
   return (
     <Layout>
       <div className={styles.aboutHeader}>
-        <h1>Welcome to My Personal Exploration</h1>
-        <p>The Journey Begins with a Question</p>
+        <h1>Who I Am (And How I Got Here)</h1>
       </div>
       <div className={styles.aboutContent}>
-        <p>Hi there, and thanks for visiting my world of endless inquiry and exploration. I'm Husain, a lifelong learner and passionate explorer of all things tech and beyond. This blog is my space to voice thoughts, ask questions, and let curiosity guide every step.</p>
-        <p>From a young age, I've been captivated by questions that challenge our beliefs and push us to think deeper. These quiet moments of wondering shape who we are and carve our unique paths.</p>
-        <p>On this site, you'll find me weaving through ideas, diving into books and the latest research, and sharing insights on everything that sparks my curiosity. I invite you to join me on this adventure of discovery and growth. Let's question, learn, and evolve together.</p>
+        <p>I don’t remember the moment I fell in love with technology. It wasn’t some grand epiphany, no lightning-strike realization. It was just there, like breathing—woven into the way I saw the world.</p>
+        <p>Maybe it started when my father bought me my first computer as a birthday gift—a machine that felt like a portal to another universe. Or maybe it was that night in 2002, when I fell asleep and missed Argentina’s opening match against Nigeria in the World Cup. I woke up too late, grabbed the newspaper, and realized I had no way of knowing the score <strong>when it actually happened</strong>. What if there was a way to see football results instantly?</p>
+        <p>So, I built one.</p>
+        <p>I didn’t know anything about making websites, but I learned. I threw together a simple page in HTML and started updating it with match scores as I watched them. It wasn’t fancy, and it wasn’t a hit, but it served its purpose. More importantly, it <strong>showed me something I’d never forget</strong>: I could teach myself anything if I needed to.</p>
+        <p>That’s the pattern my life has followed ever since. An idea gets stuck in my head, and suddenly, I <em>have</em> to chase it. I have to tinker, to push, to break things apart and rebuild them better.</p>
 
-        <h2>My Dual Worlds: Professional and Personal Passions</h2>
-        <h3>Shaping the Future of Insurance</h3>
-        <p>Living in the vibrant city of London, I work as a Product Manager at Aventum Group, a leader in insurance innovation. Every weekday from nine to five, I collaborate with a creative team of engineers to build advanced platforms that transform the insurance industry. Our mission is to revolutionize how insurance operates worldwide, making our work both exciting and impactful.</p>
-        <p>Being part of Aventum Group allows me to blend my love for technology with a drive to make meaningful changes. It's not just about keeping up with the industry—it's about pushing it forward, one innovative solution at a time.</p>
+        <h2>Breaking Things to Make Them Better</h2>
+        <p>When I stepped into the world of <strong>software development</strong>, I wasn’t just looking for a career—I wanted to <strong>make a change</strong>. I’ve always believed that no matter how rigid, how deeply entrenched a system is, it can be torn down and rebuilt into something better.</p>
+        <p>The insurance industry? It’s just one example. I’ve worked in places where change was something that happened <strong>slowly—painfully slowly</strong>. Where innovation was a buzzword, not a reality. Where ideas sat in meetings instead of making it into the world.</p>
+        <p>I hated that.</p>
+        <p>So I decided to do what I’ve always done: <strong>take something monolithic, break it apart, and build something new from its ashes.</strong></p>
+        <p>Today, I’m not just working in insurance tech—I’m reshaping it. I’m building the <strong>insurance platform of the future</strong>, one that doesn’t just improve what exists but <strong>redefines how the entire industry operates</strong>. And I’m not stopping there. I don’t just want to be part of change—I want to be the <strong>disruption</strong>.</p>
+        <p>One day, I want to look back and say, with absolute certainty, <strong>I changed this industry for the better.</strong></p>
 
-        <h3>A Lifelong Passion for Learning</h3>
-        <p>Outside of work, my love for technology continues to grow. I'm deeply engaged in computer science, focusing on areas like deep learning, quantum computing, edge computing, and artificial intelligence. These fields aren't just academic interests—they're gateways to new possibilities, showing us how technology can interact with the world in amazing ways.</p>
-        <p>I believe in applying these advancements in practical, meaningful ways to solve real-world problems. On this website, I share my journey through the vast landscape of computer science, offering insights into recent research and emerging technologies. My goal is to ignite your curiosity, whether you're a student, a fellow tech enthusiast, or someone fascinated by the future of technology.</p>
+        <h2>Why I Never Stop Learning</h2>
+        <p>Even outside of work, I’m drawn to <strong>new ideas, complex problems, and impossible questions</strong>. I don’t just love technology—I love understanding it <strong>at its core</strong>. Not just how things work, but <em>why</em> they work.</p>
+        <p>I thrive on the <strong>intersection of theory and reality</strong>. I dive into research papers, <strong>tearing through ideas</strong> to understand them at a fundamental level—then I think, <em>How do I take this and make it real?</em></p>
+        <p>This website reflects that. It’s not just about what I do, but what I think about. The concepts that fascinate me. The problems that keep me up at night. The endless pursuit of <strong>learning, questioning, and creating.</strong></p>
 
-        <h2>A Glimpse into My Journey</h2>
-        <h3>From a Young Explorer to a Tech Enthusiast</h3>
-        <p>When I was seven, my father gifted me my first computer. Although we didn't get our first modem until a few years later, my curiosity wasn't dampened. By nine, during the 2002 World Cup, I built my first website to share my love for football, specifically my favorite team, Argentina, and my favorite player, Pablo Aimar. Watching matches live online was a thrill, and I wanted to make it easier for others to follow along in real-time.</p>
-        <p>As a child, I dreamed of building a time machine. I scoured the streets for discarded electronics, tearing them apart and trying to piece them together. While my attempts ended in a small home fire and a shift away from hardware, they cemented my passion for computers, electronics, and technology.</p>
-        <p>My second dream was to create the largest database of everything—relationships, family trees, cars, mobile phone brands, and more. I've always been fascinated by finding patterns and meaningful connections within vast datasets. Graduating high school at 16 and continuing my studies in computer science have allowed me to pursue these passions further.</p>
-        <p>Today, with over a decade of experience in the software development industry within insurance, I continue to build innovative solutions that redefine how insurance is underwritten. Living in London, my favorite city in the world, I balance my professional life with ongoing studies and a relentless desire to learn and share knowledge.</p>
+        <h2>What This Place Is (And What It Isn’t)</h2>
+        <p>This isn’t some neatly packaged, marketable personal brand. It’s not a blog that exists for clicks. It’s <strong>just me</strong>, documenting what I build, what I think about, and the ideas that won’t leave my head.</p>
+        <ul>
+          <li>Sometimes it’s about the <strong>systems I’m designing</strong>.</li>
+          <li>Sometimes it’s about <strong>a concept I just learned</strong>.</li>
+          <li>Sometimes it’s just <strong>a thought, a question, a spark that might turn into something bigger</strong>.</li>
+        </ul>
+        <p>If you’re here, maybe you’re like me. Maybe you see something old and think, <em>this could be so much better</em>. Maybe you’ve never been satisfied with “just the way things are.” Maybe, like me, you don’t just want to <strong>exist in an industry</strong>—you want to <strong>change it</strong>.</p>
+        <p>If that’s the case, welcome. We might have a lot to talk about.</p>
 
         <blockquote>
-          <p>"When you change the way you look at things, the things you look at change."</p>
-          <footer>— Wayne Dyer —</footer>
+          <p>"The reasonable man adapts himself to the world: the unreasonable one persists in trying to adapt the world to himself. Therefore all progress depends on the unreasonable man."</p>
+          <footer>— George Bernard Shaw</footer>
         </blockquote>
       </div>
     </Layout>

@@ -26,7 +26,14 @@ const Layout = ({ children, fullWidth }) => {
               <Link to="/" className={styles.navLink} activeClassName={styles.activeLink}>Home</Link>
               <Link to="/about" className={styles.navLink} activeClassName={styles.activeLink}>About</Link>
               <Link to="/blog" className={styles.navLink} activeClassName={styles.activeLink}>Blog</Link>
-              <Link to="/learning-hub" className={styles.navLink} activeClassName={styles.activeLink}>Learning Hub</Link>
+              <a 
+                href="https://curiosynapse.com" 
+                className={styles.navLink} 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                Learning Hub
+              </a>
             </nav>
             <div className={styles.themeToggleWrapper}>
               <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />

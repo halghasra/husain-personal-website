@@ -1,83 +1,106 @@
 import React from 'react';
 import { Link, useStaticQuery, graphql } from 'gatsby';
+import * as styles from '../styles/sidebar.module.css';
 
 const Sidebar = () => {
   const data = useStaticQuery(graphql`
     query {
       allMarkdownRemark(
-        filter: {fields: {slug: {regex: "/^\/learning-hub\//"}}},
-        sort: {fields: {slug: ASC}}
+        filter: { fields: { slug: { regex: "/^/learning-hub/" } } }
+        sort: { fields: [frontmatter___order, frontmatter___title], order: [ASC, ASC] }
       ) {
-        edges {
-          node {
-            fields {
-              slug
-              categorySlug
-              topicSlug
-              unitSlug
-            }
-            frontmatter {
-              title
-              category
-              topic
-              unit
-            }
+        nodes {
+          frontmatter {
+            title
+            category
+            topic
+            unit
+            order
+            isMainCourse
+          }
+          fields {
+            slug
           }
         }
       }
     }
   `);
 
-  const organizeHierarchy = (edges) => {
-    const hierarchy = {};
-    edges.forEach(({ node }) => {
-      const { category, topic, unit } = node.frontmatter;
-      if (category) {
-        if (!hierarchy[category]) hierarchy[category] = {};
-        if (topic) {
-          if (!hierarchy[category][topic]) hierarchy[category][topic] = {};
-          if (unit) {
-            hierarchy[category][topic][unit] = node;
-          } else {
-            hierarchy[category][topic] = node;
-          }
-        } else {
-          hierarchy[category] = node;
+  // Organize the data into a hierarchical structure
+  const organizeContent = (nodes) => {
+    const structure = {};
+    
+    nodes.forEach(node => {
+      const { category, topic, unit, isMainCourse, title } = node.frontmatter;
+      
+      if (isMainCourse) {
+        if (!structure[category]) {
+          structure[category] = {
+            title: category,
+            mainCourse: { title, slug: node.fields.slug },
+            topics: {}
+          };
         }
+      } else if (category && topic) {
+        if (!structure[category]) {
+          structure[category] = { title: category, topics: {} };
+        }
+        if (!structure[category].topics[topic]) {
+          structure[category].topics[topic] = {
+            title: topic,
+            units: []
+          };
+        }
+        structure[category].topics[topic].units.push({
+          title: unit || title,
+          slug: node.fields.slug
+        });
       }
     });
-    return hierarchy;
+
+    return structure;
   };
 
-  const hierarchy = organizeHierarchy(data.allMarkdownRemark.edges);
+  const contentStructure = organizeContent(data.allMarkdownRemark.nodes);
 
   return (
-    <nav className="sidebar">
-      {Object.entries(hierarchy).map(([category, topics]) => (
-        <div key={category}>
-          <h3>{category}</h3>
-          {typeof topics === 'object' && !topics.fields ? (
-            Object.entries(topics).map(([topic, units]) => (
-              <div key={topic}>
-                <h4>{topic}</h4>
-                {typeof units === 'object' && !units.fields ? (
-                  <ul>
-                    {Object.entries(units).map(([unit, node]) => (
-                      <li key={unit}>
-                        <Link to={node.fields.slug}>{unit}</Link>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <Link to={units.fields.slug}>{units.frontmatter.title}</Link>
-                )}
+    <nav className={styles.sidebar}>
+      <div className={styles.sidebarContent}>
+        {Object.entries(contentStructure).map(([categoryKey, category]) => (
+          <div key={categoryKey} className={styles.category}>
+            <h2 className={styles.categoryTitle}>{category.title}</h2>
+            
+            {category.mainCourse && (
+              <Link 
+                to={category.mainCourse.slug}
+                className={styles.mainCourseLink}
+                activeClassName={styles.active}
+              >
+                {category.mainCourse.title}
+              </Link>
+            )}
+
+            {Object.entries(category.topics).map(([topicKey, topic]) => (
+              <div key={topicKey} className={styles.topic}>
+                <h3 className={styles.topicTitle}>{topic.title}</h3>
+                <ul className={styles.unitList}>
+                  {topic.units.map((unit, index) => (
+                    <li key={index}>
+                      <Link 
+                        to={unit.slug}
+                        className={styles.unitLink}
+                        activeClassName={styles.active}
+                      >
+                        {unit.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            ))
-          ) : (
-            <Link to={topics.fields.slug}>{topics.frontmatter.title}</Link>
-          )}
-        </div>
-      ))}
+            ))}
+          </div>
+        ))}
+      </div>
     </nav>
   );
 };
