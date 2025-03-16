@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import * as styles from '../styles/sidebar.module.css';
+import SidebarToggle from './SidebarToggle';
 
 const Sidebar = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const data = useStaticQuery(graphql`
     query {
       allMarkdownRemark(
@@ -64,44 +66,47 @@ const Sidebar = () => {
   const contentStructure = organizeContent(data.allMarkdownRemark.nodes);
 
   return (
-    <nav className={styles.sidebar}>
-      <div className={styles.sidebarContent}>
-        {Object.entries(contentStructure).map(([categoryKey, category]) => (
-          <div key={categoryKey} className={styles.category}>
-            <h2 className={styles.categoryTitle}>{category.title}</h2>
-            
-            {category.mainCourse && (
-              <Link 
-                to={category.mainCourse.slug}
-                className={styles.mainCourseLink}
-                activeClassName={styles.active}
-              >
-                {category.mainCourse.title}
-              </Link>
-            )}
+    <>
+      <nav className={`${styles.sidebar} ${isOpen ? styles.sidebarOpen : ''}`}>
+        <div className={styles.sidebarContent}>
+          {Object.entries(contentStructure).map(([categoryKey, category]) => (
+            <div key={categoryKey} className={styles.category}>
+              <h2 className={styles.categoryTitle}>{category.title}</h2>
+              
+              {category.mainCourse && (
+                <Link 
+                  to={category.mainCourse.slug}
+                  className={styles.mainCourseLink}
+                  activeClassName={styles.active}
+                >
+                  {category.mainCourse.title}
+                </Link>
+              )}
 
-            {Object.entries(category.topics).map(([topicKey, topic]) => (
-              <div key={topicKey} className={styles.topic}>
-                <h3 className={styles.topicTitle}>{topic.title}</h3>
-                <ul className={styles.unitList}>
-                  {topic.units.map((unit, index) => (
-                    <li key={index}>
-                      <Link 
-                        to={unit.slug}
-                        className={styles.unitLink}
-                        activeClassName={styles.active}
-                      >
-                        {unit.title}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
-    </nav>
+              {Object.entries(category.topics).map(([topicKey, topic]) => (
+                <div key={topicKey} className={styles.topic}>
+                  <h3 className={styles.topicTitle}>{topic.title}</h3>
+                  <ul className={styles.unitList}>
+                    {topic.units.map((unit, index) => (
+                      <li key={index}>
+                        <Link 
+                          to={unit.slug}
+                          className={styles.unitLink}
+                          activeClassName={styles.active}
+                        >
+                          {unit.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </nav>
+      <SidebarToggle isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
+    </>
   );
 };
 

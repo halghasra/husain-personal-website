@@ -9,8 +9,8 @@ const AboutPage = () => {
         <h1>Who I Am (And How I Got Here)</h1>
       </div>
       <div className={styles.aboutContent}>
-        <p>I don’t remember the moment I fell in love with technology. It wasn’t some grand epiphany, no lightning-strike realization. It was just there, like breathing—woven into the way I saw the world.</p>
-        <p>Maybe it started when my father bought me my first computer as a birthday gift—a machine that felt like a portal to another universe. Or maybe it was that night in 2002, when I fell asleep and missed Argentina’s opening match against Nigeria in the World Cup. I woke up too late, grabbed the newspaper, and realized I had no way of knowing the score <strong>when it actually happened</strong>. What if there was a way to see football results instantly?</p>
+        <p>I don’t remember the moment I fell in love with technology. It wasn’t some grand epiphany, no lightning-strike realisation. It was just there, like breathing—woven into the way I saw the world.</p>
+        <p>Maybe it started when my father bought me my first computer as a birthday gift—a machine that felt like a portal to another universe. Or maybe it was that night in 2002, when I fell asleep and missed Argentina’s opening match against Nigeria in the World Cup. I woke up too late, grabbed the newspaper, and realised I had no way of knowing the score <strong>when it actually happened</strong>. What if there was a way to see football results instantly?</p>
         <p>So, I built one.</p>
         <p>I didn’t know anything about making websites, but I learned. I threw together a simple page in HTML and started updating it with match scores as I watched them. It wasn’t fancy, and it wasn’t a hit, but it served its purpose. More importantly, it <strong>showed me something I’d never forget</strong>: I could teach myself anything if I needed to.</p>
         <p>That’s the pattern my life has followed ever since. An idea gets stuck in my head, and suddenly, I <em>have</em> to chase it. I have to tinker, to push, to break things apart and rebuild them better.</p>
