@@ -11,9 +11,11 @@ module.exports = {
       summary: `who lives and works in London building useful things.`,
     },
     social: {
-      twitter: `j0se1n`,
+      twitter: `husainalghasra`,
+      github: `halghasra`,
+      linkedin: `halghasra`
     },
-    siteUrl: `https://husainalghasra.netlify.app/`,
+    siteUrl: `https://husainalghasra.com/`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
