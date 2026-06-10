@@ -35,18 +35,68 @@
   margin: 0;
 }
 
-.graphNotice {
+/* Controls row: view toggle + filters */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.viewToggle {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.viewBtn {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  padding: 0.3rem 0.85rem;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.viewBtn + .viewBtn {
+  border-left: 1px solid var(--border);
+}
+
+.viewBtnActive {
+  background: var(--amber-dim);
+  color: var(--accent);
+}
+
+/* Graph canvas area */
+.graphViewArea {
+  margin-bottom: 1.5rem;
+}
+
+.graphPlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: var(--bg-subtle);
   border: 1px solid var(--border);
   border-radius: 4px;
-  padding: 1rem 1.25rem;
-  margin-bottom: 1.75rem;
+  color: var(--text-muted);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-small);
 }
 
-.graphNotice p {
-  font-size: var(--font-size-small);
+.graphHint {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xs);
   color: var(--text-muted);
-  margin: 0;
+  text-align: center;
+  margin: 0.5rem 0 0;
+  opacity: 0.7;
 }
 
 /* Filters */
@@ -232,4 +282,19 @@
   font-family: var(--font-primary);
   font-size: var(--font-size-xs);
   color: var(--text-muted);
+}
+
+.edgeLegend {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.edgeLegend .legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }

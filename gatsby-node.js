@@ -15,20 +15,29 @@ exports.createSchemaCustomization = ({ actions }) => {
     type Frontmatter {
       title: String!
       date: Date @dateformat
+      created: Date @dateformat
+      updated: Date @dateformat
       type: String
       status: String
       summary: String
       topics: [String]
+      tags: [String]
+      linked_notes: [String]
       category: String
       topic: String
       unit: String
       order: Int
-      tags: [String]
       description: String
       isMainCourse: Boolean
       coverImage: File @fileByRelativePath
       planted: String
       last_tended: String
+      graph: GraphConfig
+    }
+    type GraphConfig {
+      show: Boolean
+      weight: Int
+      cluster: String
     }
     type Fields {
       slug: String!
