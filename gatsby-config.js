@@ -5,15 +5,16 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `Husain Alghasra`,
-    description: `Personal website of Husain Alghasra featuring a blog and learning hub`,
+    description: `A public notebook for curiosity, research, AI, systems, and knowledge work.`,
     author: {
       name: `Husain Alghasra`,
-      summary: `who lives and works in London building useful things.`,
+      summary: `Curious about how things work. Based in London.`,
     },
     social: {
       twitter: `husainalghasra`,
       github: `halghasra`,
-      linkedin: `halghasra`
+      linkedin: `halghasra`,
+      x: `husainalghasra`,
     },
     siteUrl: `https://husainalghasra.com/`,
   },
@@ -30,15 +31,43 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `content`,
-        path: `${__dirname}/content`,
+        name: `blog`,
+        path: `${__dirname}/content/blog`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `blog`,
-        path: `${__dirname}/content/blog`,
+        name: `notes`,
+        path: `${__dirname}/content/notes`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `essays`,
+        path: `${__dirname}/content/essays`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `research-seeds`,
+        path: `${__dirname}/content/research-seeds`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `paper-notes`,
+        path: `${__dirname}/content/paper-notes`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `builds`,
+        path: `${__dirname}/content/builds`,
       },
     },
     {
@@ -55,7 +84,7 @@ module.exports = {
           google: [
             {
               family: "Montserrat",
-              variants: ["400", "500", "700"],
+              variants: ["400", "500", "600", "700"],
             },
             {
               family: "Merriweather",
@@ -69,8 +98,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-disqus`,
       options: {
-          shortname: process.env.GATSBY_DISQUS_NAME
-      }
+        shortname: process.env.GATSBY_DISQUS_NAME,
+      },
     },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
@@ -81,9 +110,8 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 600,
+              maxWidth: 720,
               linkImagesToOriginal: false,
-              //srcSetBreakpoints: [200, 400, 600, 800]
               withWebp: true,
             },
           },
@@ -102,18 +130,16 @@ module.exports = {
         ],
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Husain Alghasra's Personal Website`,
-        short_name: `Husain Alghasra`,
+        name: `Husain Alghasra`,
+        short_name: `HG`,
         start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#663399`,
+        background_color: `#141210`,
+        theme_color: `#f59e0b`,
         display: `minimal-ui`,
-        icon: `src/images/favicon-16x16.png`, // This path is relative to the root of the site.
+        icon: `src/images/favicon-32x32.png`,
       },
     },
   ],

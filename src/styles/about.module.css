@@ -1,92 +1,151 @@
-.aboutHeader {
-  text-align: center;
+.aboutWrapper {
   padding: 3rem 0;
-  background: linear-gradient(135deg, var(--bg), var(--textLink));
-  color: var(--bg);
-  margin-bottom: 2rem;
 }
 
-.aboutHeader h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+/* Header */
+.aboutHeader {
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 3rem;
+  max-width: 720px;
 }
 
-.aboutHeader p {
-  font-size: 1.2rem;
-  opacity: 0.8;
+.headerLabel {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.25rem;
 }
 
+.headerHeading {
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-title);
+  margin: 0 0 1rem;
+}
+
+.headerSubtitle {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-large);
+  font-style: italic;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Content */
 .aboutContent {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 1rem;
+  max-width: 680px;
 }
 
 .aboutContent h2 {
-  color: var(--textLink);
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  font-size: 2.2rem;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--text-title);
   margin-top: 3rem;
-}
-
-.aboutContent h3 {
-  font-size: 1.8rem;
-  color: var(--textLink);
-  margin-top: 2rem;
   margin-bottom: 1rem;
 }
 
 .aboutContent p {
-  margin-bottom: 1rem;
-  line-height: 1.6;
+  color: var(--text-normal);
+  margin-bottom: 1.25rem;
+  line-height: 1.8;
 }
 
-.aboutContent ul {
-  margin-bottom: 1rem;
-  padding-left: 2rem;
-}
-
-.aboutContent li {
-  margin-bottom: 0.5rem;
-}
-
-/* New styles for blockquote */
-blockquote {
+.aboutContent em {
   font-style: italic;
-  border-left: 4px solid var(--textLink);
-  padding-left: 1rem;
+  color: var(--text-title);
+}
+
+.aboutContent blockquote {
+  border-left: 3px solid var(--accent);
+  background: var(--bg-subtle);
+  padding: 1.5rem 2rem;
   margin: 3rem 0;
-  padding: 1.5rem;
-  background-color: rgba(var(--textLing-rgb), 0.1);
-  border-radius: 8px;
+  border-radius: 0 4px 4px 0;
 }
 
-blockquote p {
-  font-size: 1.4rem;
-  margin-bottom: 0.5rem;
+.aboutContent blockquote p {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-medium);
+  font-style: italic;
+  color: var(--text-title);
+  margin-bottom: 0.75rem;
 }
 
-blockquote footer {
-  font-size: 1rem;
-  text-align: right;
-  margin-top: 1rem;
+.aboutContent blockquote footer {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-small);
+  color: var(--text-muted);
+  font-style: normal;
+}
+
+/* Formal card */
+.formalCard {
+  margin-top: 3.5rem;
+  padding: 2rem;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.formalLabel {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.formalText {
+  font-size: var(--font-size-small);
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+.socialRow {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.socialItem {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-small);
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.socialItem:hover {
+  opacity: 0.7;
+  text-decoration: none;
 }
 
 @media (max-width: 768px) {
-  .aboutHeader h1 {
-    font-size: 2.5rem;
+  .aboutWrapper {
+    padding: 2rem 0;
   }
 
-  .aboutHeader p {
-    font-size: 1.1rem;
+  .aboutHeader {
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
   }
 
-  .aboutContent h2 {
-    font-size: 2rem;
+  .aboutContent blockquote {
+    padding: 1.25rem 1.5rem;
+    margin: 2rem 0;
   }
 
-  .aboutContent h3 {
-    font-size: 1.6rem;
+  .formalCard {
+    padding: 1.5rem;
   }
 }

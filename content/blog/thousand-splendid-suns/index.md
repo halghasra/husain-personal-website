@@ -1,8 +1,11 @@
 ---
-title: "A Thousand Splendid Suns': A Story of Love, Loss, and Survival in War-Torn Afghanistan"
+title: "A Thousand Splendid Suns: A Story of Love, Loss, and Survival in War-Torn Afghanistan"
 date: "2017-01-31"
+type: "note"
+status: "published"
+summary: "Hosseini's second novel is relentless and moving. A story of two women, decades of war, and the weight of staying alive."
 categories: ["Blog", "Book Reviews"]
-tags: ["Book Reviews", "Novels", "Thousand Splendid Suns"]
+tags: ["Book Reviews", "Novels", "Khaled Hosseini", "Afghanistan", "Literature"]
 coverImage: "./images/thousand-splendid-suns.png"
 ---
 

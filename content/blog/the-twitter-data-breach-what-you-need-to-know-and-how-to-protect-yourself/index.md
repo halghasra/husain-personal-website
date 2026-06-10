@@ -1,8 +1,11 @@
 ---
 title: "The Twitter Data Breach: What You Need to Know and How to Protect Yourself"
 date: "2023-01-06"
+type: "article"
+status: "published"
+summary: "200 million email addresses exposed. What the Twitter breach tells us about API security, data minimisation, and why email addresses are more dangerous than people think."
 categories: ["Blog", "Articles", "Technology"]
-tags: ["Cybersecurity", "Data Breach", "Data", "Email Protection", "Twitter"]
+tags: ["Cybersecurity", "Data Breach", "Twitter", "Security", "Email Protection"]
 coverImage: "./images/pexels-photo-5952651.jpeg"
 ---
 

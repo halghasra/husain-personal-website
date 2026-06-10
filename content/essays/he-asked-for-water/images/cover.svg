@@ -1,0 +1,37 @@
+<svg width="100%" viewBox="0 0 690 282" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>He Asked for Water. His Son Threw Him in the Sea. This is an AI Problem.</title>
+  <desc>Dark navy canvas with layered ocean waves at the bottom, a minimal glass icon on the left, and the article title in editorial serif type.</desc>
+
+  <rect width="680" height="272" fill="#080F1E"/>
+
+  <path d="M0 188 C40 178 80 192 120 182 C160 172 200 186 240 177 C280 168 320 181 360 173 C400 165 440 178 480 170 C520 162 560 176 600 168 C635 161 658 170 680 165 L680 272 L0 272 Z" fill="#0C1D35"/>
+  <path d="M0 202 C45 192 90 205 135 196 C180 187 220 200 265 191 C310 182 350 195 390 187 C430 179 475 192 520 183 C560 175 610 188 650 180 L680 178 L680 272 L0 272 Z" fill="#10253F"/>
+  <path d="M0 218 C50 208 100 220 150 212 C200 204 245 216 290 208 C335 200 380 212 425 204 C470 196 515 208 560 201 C600 194 640 205 680 198 L680 272 L0 272 Z" fill="#152D4A"/>
+  <path d="M0 232 C55 223 110 234 165 226 C220 218 270 230 320 222 C370 214 420 226 470 218 C515 211 560 223 610 215 C645 210 665 218 680 214 L680 272 L0 272 Z" fill="#1A3556"/>
+
+  <path d="M0 188 C40 178 80 192 120 182 C160 172 200 186 240 177 C280 168 320 181 360 173 C400 165 440 178 480 170 C520 162 560 176 600 168 C635 161 658 170 680 165" fill="none" stroke="#2368A0" stroke-width="1"/>
+  <path d="M0 218 C50 208 100 220 150 212 C200 204 245 216 290 208 C335 200 380 212 425 204 C470 196 515 208 560 201 C600 194 640 205 680 198" fill="none" stroke="#1E5280" stroke-width="0.7"/>
+  <path d="M0 188 C40 178 80 192 120 182" fill="none" stroke="#38B2E8" stroke-width="1.2" opacity="0.5"/>
+  <path d="M240 177 C280 168 320 181 360 173" fill="none" stroke="#38B2E8" stroke-width="1" opacity="0.4"/>
+  <path d="M480 170 C520 162 560 176 600 168" fill="none" stroke="#38B2E8" stroke-width="0.9" opacity="0.35"/>
+
+  <path d="M44 72 L44 128 Q44 133 49 133 L77 133 Q82 133 82 128 L82 72 Z" fill="none" stroke="#38B2E8" stroke-width="1.3" opacity="0.9"/>
+  <path d="M45 108 L45 128 Q45 132 49 132 L77 132 Q81 132 81 128 L81 108 Z" fill="#142D49"/>
+  <path d="M45 108 C52 103 60 107 70 104 C76 102 80 106 81 108" fill="none" stroke="#38B2E8" stroke-width="0.8" opacity="0.7"/>
+  <line x1="42" y1="74" x2="84" y2="74" stroke="#38B2E8" stroke-width="0.7" opacity="0.5"/>
+  <line x1="44" y1="72" x2="40" y2="63" stroke="#38B2E8" stroke-width="0.9" opacity="0.5"/>
+  <line x1="82" y1="72" x2="86" y2="63" stroke="#38B2E8" stroke-width="0.9" opacity="0.5"/>
+  <line x1="40" y1="63" x2="86" y2="63" stroke="#38B2E8" stroke-width="0.9" opacity="0.5"/>
+
+  <line x1="100" y1="50" x2="100" y2="175" stroke="#1A3A56" stroke-width="0.5"/>
+
+  <text x="118" y="90" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-weight="bold" fill="#EAF4FB">He Asked for Water.</text>
+  <text x="118" y="126" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#7BB0CC">His Son Threw Him in the Sea.</text>
+
+  <line x1="118" y1="144" x2="570" y2="144" stroke="#173451" stroke-width="0.5"/>
+
+  <text x="120" y="163" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="500" fill="#38B2E8" letter-spacing="2.8">THIS IS AN AI PROBLEM.</text>
+
+  <text x="118" y="255" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#1E4869" font-style="italic">&#x627;&#x644;&#x633;&#x624;&#x627;&#x644; &#x646;&#x635;&#x641; &#x627;&#x644;&#x639;&#x644;&#x645;</text>
+  <text x="640" y="255" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#1E4869" text-anchor="end">@husainalghasra</text>
+</svg>

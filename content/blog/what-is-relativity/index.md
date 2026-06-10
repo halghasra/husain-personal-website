@@ -1,8 +1,11 @@
 ---
 title: "What is Relativity? by François Vannucci: A Disappointing Exploration"
 date: "2021-01-14"
+type: "note"
+status: "published"
+summary: "A book that promises an accessible introduction to relativity and delivers a poor translation. A useful lesson in what happens when precision in language is missing."
 categories: ["Blog", "Book Reviews"]
-tags: ["Einstein", "Relativity Theory", "Galileo", "Science", "Physics", "Book Reviews"]
+tags: ["Einstein", "Relativity Theory", "Science", "Physics", "Book Reviews", "Translation"]
 coverImage: "./images/quest-ce-qua-la-relativite.png"
 ---
 

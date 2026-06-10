@@ -1,8 +1,11 @@
 ---
-title: "Start With Why - Simon Sinek"
+title: "Start With Why: Simon Sinek"
 date: "2021-08-10"
+type: "note"
+status: "published"
+summary: "The Golden Circle is a genuinely useful mental model even if the book overstates its case. Worth reading for the core idea."
 categories: ["Blog", "Book Reviews"]
-tags: ["Business", "Book Reviews", "Simon Sinek", "Start With Why"]
+tags: ["Business", "Book Reviews", "Simon Sinek", "Start With Why", "Leadership"]
 coverImage: "./images/Start-with-why-review.png"
 ---
 

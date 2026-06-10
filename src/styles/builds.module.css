@@ -1,0 +1,237 @@
+.buildsWrapper {
+  padding: 3rem 0;
+}
+
+.pageHeader {
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2.5rem;
+  max-width: 720px;
+}
+
+.pageLabel {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.pageHeading {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--text-title);
+  margin: 0 0 0.75rem;
+  line-height: 1.2;
+}
+
+.pageSubtitle {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-medium);
+  font-style: italic;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.pageBody {
+  color: var(--text-muted);
+  font-size: var(--font-size-small);
+  margin: 0;
+}
+
+.section {
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.sectionHeading {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--text-title);
+  margin: 0 0 1.5rem;
+}
+
+/* Build grid */
+.buildGrid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.buildCard {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: border-color 0.2s ease;
+}
+
+.buildCard:hover {
+  border-color: var(--accent);
+}
+
+.buildCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.buildTitle {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-medium);
+  font-weight: 600;
+  color: var(--text-title);
+  margin: 0;
+}
+
+.buildStatus {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  padding: 0.1em 0.55em;
+  border-radius: 2px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.status_active {
+  background: rgba(34, 197, 94, 0.12);
+  color: #16a34a;
+}
+
+.status_archived {
+  background: rgba(156, 163, 175, 0.12);
+  color: #6b7280;
+}
+
+.status_wip {
+  background: rgba(245, 158, 11, 0.12);
+  color: #b45309;
+}
+
+.buildDescription {
+  font-size: var(--font-size-small);
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.buildTags {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.buildTag {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 0.1em 0.45em;
+  border-radius: 2px;
+}
+
+.buildLink {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-small);
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  align-self: flex-start;
+}
+
+.buildLink:hover {
+  opacity: 0.7;
+  text-decoration: none;
+}
+
+/* Post list */
+.postList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.postItem {
+  border-bottom: 1px solid var(--border);
+}
+
+.postItem:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.postLink {
+  display: block;
+  padding: 1rem 0;
+  text-decoration: none;
+  color: inherit;
+  transition: padding-left 0.15s ease;
+}
+
+.postLink:hover {
+  padding-left: 0.5rem;
+  text-decoration: none;
+  opacity: 1;
+}
+
+.postDate {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+  display: block;
+}
+
+.postTitle {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-medium);
+  font-weight: 600;
+  color: var(--text-title);
+  margin: 0 0 0.4rem;
+  line-height: 1.3;
+  transition: color 0.2s ease;
+}
+
+.postLink:hover .postTitle {
+  color: var(--accent);
+}
+
+.postSummary {
+  font-size: var(--font-size-small);
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.githubSection {
+  margin-top: 1rem;
+}
+
+.githubSection p {
+  color: var(--text-muted);
+  font-size: var(--font-size-small);
+}
+
+.githubSection a {
+  color: var(--accent);
+}
+
+@media (max-width: 600px) {
+  .buildGrid {
+    grid-template-columns: 1fr;
+  }
+}

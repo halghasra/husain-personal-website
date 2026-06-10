@@ -1,8 +1,11 @@
 ---
 title: "CoinMarketCap Data Breach"
 date: "2021-10-22"
+type: "article"
+status: "published"
+summary: "3.1 million user emails compromised. A breakdown of what happened, what it means, and what you should do if your email was in the breach."
 categories: ["Articles", "Cyber Security", "Technology"]
-tags: ["Blockchain", "CoinMarketCap", "Cyber Security", "Data Breach", "Data Leaks", "Decentralisation", "Security"] 
+tags: ["Blockchain", "CoinMarketCap", "Cyber Security", "Data Breach", "Security"]
 coverImage: "./images/CoinMarketCap-data-breach.png"
 ---
 

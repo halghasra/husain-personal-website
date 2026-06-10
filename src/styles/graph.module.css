@@ -1,0 +1,235 @@
+.graphWrapper {
+  padding: 3rem 0;
+}
+
+.pageHeader {
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2rem;
+  max-width: 720px;
+}
+
+.pageLabel {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.pageHeading {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--text-title);
+  margin: 0 0 0.75rem;
+  line-height: 1.2;
+}
+
+.pageSubtitle {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-medium);
+  font-style: italic;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.graphNotice {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.graphNotice p {
+  font-size: var(--font-size-small);
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.filterBtn {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.filterBtn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.filterBtnActive {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--amber-dim);
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.statItem {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+}
+
+.statDivider {
+  color: var(--border);
+}
+
+/* Node list */
+.nodeList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 3rem;
+}
+
+.nodeItem {
+  border-bottom: 1px solid var(--border);
+}
+
+.nodeItem:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.nodeLink {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 0;
+  text-decoration: none;
+  color: inherit;
+  transition: padding-left 0.15s ease;
+}
+
+.nodeLink:hover {
+  padding-left: 0.35rem;
+  text-decoration: none;
+  opacity: 1;
+}
+
+.nodeDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 0.45rem;
+}
+
+.nodeContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.nodeMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.3rem;
+}
+
+.nodeType {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.nodeDate {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+}
+
+.nodeTitle {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--text-title);
+  margin: 0 0 0.35rem;
+  line-height: 1.3;
+  transition: color 0.2s ease;
+}
+
+.nodeLink:hover .nodeTitle {
+  color: var(--accent);
+}
+
+.nodeTags {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.nodeTag {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  padding: 0.05em 0.4em;
+  border-radius: 2px;
+}
+
+/* Legend */
+.legendSection {
+  border-top: 1px solid var(--border);
+  padding-top: 2rem;
+}
+
+.legendLabel {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.legendDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legendName {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+}

@@ -1,6 +1,9 @@
 ---
 title: "Understanding Modern Politics through Giorgio Agamben's State of Exception"
 date: "2017-03-16"
+type: "note"
+status: "published"
+summary: "Agamben argues that emergency powers are not a temporary suspension of the law but a permanent feature of modern governance. Dense and important."
 categories: ["Blog", "Book Reviews"]
 tags: ["State of Exception", "Giorgio Agamben", "Politics", "Philosophy", "Book Reviews"]
 coverImage: "./images/halat-alestithnaa.png"

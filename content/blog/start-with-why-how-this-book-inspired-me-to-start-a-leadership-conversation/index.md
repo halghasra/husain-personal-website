@@ -1,8 +1,11 @@
 ---
-title: "Unlocking Leadership's Hidden Power: How 'Start with Why' Changed My Perspective"
+title: "What Start With Why Actually Changed in How I Think"
 date: "2021-08-14"
-categories: ["Blog", "General", "Articles"]
-tags: ["Business", "Leadership", "High Impact Leadership", "Start With Why", "Thought Leadership"]
+type: "essay"
+status: "published"
+summary: "Sinek's book is easy to dismiss as business self-help. But asking why before what changed how I approach problems in ways I did not expect."
+categories: ["Blog", "Articles"]
+tags: ["Business", "Leadership", "Start With Why", "Thinking"]
 coverImage: "./images/Start-with-why-how-this-book-inspired-me.png"
 ---
 

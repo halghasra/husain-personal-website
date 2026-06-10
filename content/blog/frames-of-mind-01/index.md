@@ -1,8 +1,11 @@
 ---
-title: "Exploring Multiple Intelligences: A Review of Frames of Mind by Dr. Howard Gardner - Part 1"
+title: "Frames of Mind: The Theory of Multiple Intelligences by Howard Gardner (Part 1)"
 date: "2022-02-08"
-categories: ["Articles", "Blog", "Book Reviews", "Science"]
-tags: ["Brain", "Education", "Frames of Mind", "Howard Gardner", "Intelligence", "Neuroscience", "Talents"]
+type: "article"
+status: "published"
+summary: "Gardner's challenge to the IQ monoculture. A still-contested framework that asks whether linguistic-logical intelligence is the only kind worth measuring."
+categories: ["Articles", "Blog", "Science"]
+tags: ["Brain", "Education", "Frames of Mind", "Howard Gardner", "Intelligence", "Neuroscience", "Learning"]
 coverImage: "./images/Frames-of-Mind-2.png"
 ---
 

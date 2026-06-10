@@ -1,8 +1,11 @@
 ---
-title: "Diving into Philosophy: My Experience with Josiah Royce's 'The World and the Individual'"
+title: "Diving into Philosophy: My Experience with Josiah Royce's The World and the Individual"
 date: "2021-02-08"
+type: "note"
+status: "published"
+summary: "Royce's idealist philosophy is unfashionable and demanding. But thinking through why he was wrong turns out to be useful."
 categories: ["Blog", "Book Reviews"]
-tags: ["The World and the Individual", "Existence", "Josiah Royce", "Philosophy", "Book Reviews"]
+tags: ["The World and the Individual", "Existence", "Josiah Royce", "Philosophy", "Book Reviews", "Idealism"]
 coverImage: "./images/alalam-wal-fard.png"
 ---
 

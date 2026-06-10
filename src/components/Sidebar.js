@@ -9,7 +9,7 @@ const Sidebar = () => {
     query {
       allMarkdownRemark(
         filter: { fields: { slug: { regex: "/^/learning-hub/" } } }
-        sort: { fields: [frontmatter___order, frontmatter___title], order: [ASC, ASC] }
+        sort: [{ frontmatter: { order: ASC } }, { frontmatter: { title: ASC } }]
       ) {
         nodes {
           frontmatter {

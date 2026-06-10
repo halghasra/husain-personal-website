@@ -1,8 +1,11 @@
 ---
-title: "Exploring Multiple Intelligences: A Review of Frames of Mind by Dr. Howard Gardner – Part 2"
+title: "Frames of Mind: The Theory of Multiple Intelligences by Howard Gardner (Part 2)"
 date: "2022-02-17"
-categories: ["Blog", "Book Reviews", "Articles", "Science"]
-tags: ["Frames of Mind", "Multiple Intelligences", "The Theory of Multiple Intelligences", "Theory", "Book Reviews"]
+type: "article"
+status: "published"
+summary: "Continuing through Gardner's intelligences: bodily-kinaesthetic, musical, spatial, intrapersonal, interpersonal. What the framework gets right and where it gets contested."
+categories: ["Blog", "Articles", "Science"]
+tags: ["Frames of Mind", "Multiple Intelligences", "Howard Gardner", "Intelligence", "Neuroscience", "Education"]
 coverImage: "./images/Frames-of-Mind-part-2-2.png"
 ---
 

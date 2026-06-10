@@ -1,8 +1,11 @@
 ---
 title: "The Thirst for Freedom: A Review of Emmi Itäranta’s Memory of Water"
 date: "2017-03-24"
+type: "note"
+status: "published"
+summary: "A quiet, haunting novel set in a world where water is power. Itäranta builds a future that feels uncomfortably close."
 categories: ["Blog", "Book Reviews"]
-tags: ["Book Reviews", "Novels", "Emmi Itaranta"]
+tags: ["Book Reviews", "Novels", "Emmi Itaranta", "Science Fiction", "Climate"]
 coverImage: "./images/memory-of-water.png"
 ---
 

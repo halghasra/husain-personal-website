@@ -1,8 +1,11 @@
 ---
-title: "Book review: The New One Minute Manager"
+title: "The New One Minute Manager"
 date: "2021-10-15"
+type: "note"
+status: "published"
+summary: "Simple management principles wrapped in a fable. The ideas are obvious once stated, but that is the point."
 categories: ["Blog", "Book Reviews"]
-tags: ["Ken Blanchard", "Leadership", "Management", "Spencer Johnson", "The One Minute Manager", "Book Reviews"]
+tags: ["Ken Blanchard", "Leadership", "Management", "Spencer Johnson", "Book Reviews"]
 coverImage: "./images/The-new-one-minute-manager.png"
 ---
 

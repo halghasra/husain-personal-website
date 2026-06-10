@@ -1,8 +1,11 @@
 ---
 title: "Exploring the Strange Beauty of The Appointment by Herta Müller"
 date: "2021-02-19"
+type: "note"
+status: "published"
+summary: "Müller writes under surveillance, both literal and psychological. Her prose is fractured and precise in a way that matches the subject perfectly."
 categories: ["Blog", "Book Reviews"]
-tags: ["Book Reviews", "Novels", "Herta Muller"]
+tags: ["Book Reviews", "Novels", "Herta Muller", "Literature", "Romania", "Surveillance"]
 coverImage: "./images/Isqatat.png"
 ---
 

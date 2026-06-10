@@ -1,8 +1,11 @@
 ---
 title: "A Review of Listen, Little Man! by Wilhelm Reich"
 date: "2017-03-25"
+type: "note"
+status: "published"
+summary: "Reich's passionate critique of mass psychology and self-inflicted oppression. A short, uncomfortable, and necessary book."
 categories: ["Blog", "Book Reviews"]
-tags: ["Philosophy", "Book Reviews", "Wilhelm Reich"]
+tags: ["Philosophy", "Book Reviews", "Wilhelm Reich", "Psychology"]
 coverImage: "./images/listen-small-man.png"
 ---
 

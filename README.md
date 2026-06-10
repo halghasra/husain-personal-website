@@ -1,99 +1,190 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.com">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's default starter
-</h1>
+# Husain Alghasra Personal Website
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+This is the source code for my personal website and public notebook at [husainalghasra.com](https://husainalghasra.com).
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.com/docs/gatsby-starters/)._
+The site is built around a Markdown-first publishing workflow. Notes, essays, research seeds, paper notes, builds, and book notes live in `/content` and are transformed into pages, archives, and a neural map during the Gatsby build process.
 
-## 🚀 Quick start
+The goal of the site is not to be a static portfolio. It is a living knowledge system.
 
-1.  **Create a Gatsby site.**
+---
 
-    Use the Gatsby CLI ([install instructions](https://www.gatsbyjs.com/docs/tutorial/getting-started/part-0/#gatsby-cli)) to create a new site, specifying the default starter.
+## Tech stack
 
-    ```shell
-    # create a new Gatsby site using the default starter
-    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
-    ```
+- **Framework:** Gatsby 5
+- **Language:** JavaScript / React 18
+- **Styling:** CSS Modules with CSS Variables (dark/light mode)
+- **Content:** Markdown with YAML frontmatter
+- **Hosting:** Netlify
+- **Images:** Gatsby Image (Sharp)
+- **Fonts:** Montserrat, Merriweather, Machiato (custom)
+- **Comments:** Disqus (optional, via env var)
 
-1.  **Start developing.**
+---
 
-    Navigate into your new site’s directory and start it up.
+## Folder structure
 
-    ```shell
-    cd my-default-starter/
-    gatsby develop
-    ```
+```text
+/content
+  /blog              Existing blog posts (legacy, served at /blog/*)
+  /notes             Short notes and evergreen thoughts
+  /essays            Longer-form writing
+  /research-seeds    Early-stage research questions
+  /paper-notes       Academic paper reading notes
+  /builds            Build logs and project notes
+/src
+  /components        Layout, Footer, SEO, AuthorBio, etc.
+  /config            siteConfig.js (central metadata and social links)
+  /pages             index.js, about.js, notebook.js, research.js, reading.js, builds.js, graph.js
+  /styles            CSS Modules per component and page
+  /templates         blog-post.js, blog-list.js, lesson.js, lesson-list.js
+```
 
-1.  **Open the source code and start editing!**
+---
 
-    Your site is now running at `http://localhost:8000`!
+## Running locally
 
-    Note: You'll also see a second link: `http://localhost:8000/___graphql`. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby Tutorial](https://www.gatsbyjs.com/docs/tutorial/getting-started/part-4/#use-graphiql-to-explore-the-data-layer-and-write-graphql-queries).
+```bash
+# Install dependencies
+npm install
 
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+# Start development server
+npm run develop
 
-## 🚀 Quick start (Netlify)
+# Build for production
+npm run build
 
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
+# Serve production build locally
+npm run serve
 
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
+# Clean Gatsby cache
+npm run clean
+```
 
-## 🧐 What's inside?
+The dev server runs at `http://localhost:8000`.
+GraphiQL is available at `http://localhost:8000/___graphql`.
 
-A quick look at the top-level files and directories you'll see in a typical Gatsby project.
+---
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package.json
-    └── README.md
+## Content model
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+All content uses YAML frontmatter. The full target model is:
 
-1.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+```yaml
+---
+title: ""
+slug: ""
+type: "note"       # note | essay | research-seed | paper-note | build | article
+status: "draft"    # draft | published | evergreen | active-question | reading | reviewed
+summary: ""
+created: "YYYY-MM-DD"
+updated: "YYYY-MM-DD"
+topics: []
+tags: []
+linked_notes: []
+sources: []
+coverImage: "./images/filename.png"
+graph:
+  show: true
+  weight: 1
+  cluster: ""
+seo:
+  title: ""
+  description: ""
+---
+```
 
-1.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+Not every field is required on old posts. Add what you know.
 
-1.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-browser/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+---
 
-1.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/) for more detail).
+## How to add a new note
 
-1.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
+1. Create a folder in `/content/notes/your-note-slug/`
+2. Add `index.md` with frontmatter and body
+3. Add any images to `/content/notes/your-note-slug/images/`
+4. Run `npm run develop` to see it
 
-1.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-ssr/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
+The note will appear automatically in `/notebook` and `/graph`.
 
-1.  **`LICENSE`**: This Gatsby starter is licensed under the 0BSD license. This means that you can see this file as a placeholder and replace it with your own license.
+---
 
-1.  **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+## How to add a new essay
 
-1.  **`README.md`**: A text file containing useful reference information about your project.
+Same as a note but use `/content/essays/` and set `type: "essay"`.
+Essays also appear in the notebook archive.
 
-## 🎓 Learning Gatsby
+---
 
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.com/). Here are some places to start:
+## How to add a paper note
 
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.com/docs/tutorial/getting-started/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
+Create in `/content/paper-notes/` with:
 
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.com/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
+```yaml
+type: "paper-note"
+status: "reading"   # or reviewed / evergreen
+```
 
-## 💫 Deploy
+The reading page at `/reading` will pick it up automatically.
 
-[Build, Deploy, and Host On Netlify](https://netlify.com)
+---
 
-The fastest way to combine your favorite tools and APIs to build the fastest sites, stores, and apps for the web. And also the best place to build, deploy, and host your Gatsby sites.
+## How to add a build note
 
-<!-- AUTO-GENERATED-CONTENT:END -->
+Create in `/content/builds/` with `type: "build"`.
+It will appear on the `/builds` page.
+
+---
+
+## Navigation
+
+| Nav label     | Route       | Source                              |
+|---------------|-------------|-------------------------------------|
+| Home          | /           | src/pages/index.js                  |
+| Notebook      | /notebook   | src/pages/notebook.js               |
+| Research      | /research   | src/pages/research.js               |
+| Reading       | /reading    | src/pages/reading.js                |
+| Builds        | /builds     | src/pages/builds.js                 |
+| About         | /about      | src/pages/about.js                  |
+| Curio Synapse | external    | <https://curiosynapse.com>          |
+
+Legacy blog posts are also served at `/blog/*` for link compatibility.
+
+---
+
+## Central config
+
+All personal metadata and social links live in `src/config/siteConfig.js`.
+Do not hardcode URLs or names in components — import from there.
+
+---
+
+## Neural Map
+
+The `/graph` page currently renders a filterable list view of all content with type indicators and tags.
+
+A future version will render a real force-directed graph (D3 or Cytoscape) driven by:
+
+- `linked_notes` frontmatter arrays
+- `[[wikilinks]]` in Markdown body
+- Shared tags and topics
+
+---
+
+## Deployment
+
+The site deploys automatically to Netlify on push to `main`.
+
+Build command: `gatsby build`
+Publish directory: `public`
+Node version: 18
+
+Environment variables needed:
+
+- `GATSBY_DISQUS_NAME` — your Disqus shortname (optional, comments disabled if missing)
+
+---
+
+## Dark / light mode
+
+Themes are managed via `ThemeContext.js`. The user's preference is persisted in `localStorage`.
+The `dark` class is toggled on `<html>` and drives all CSS variables.
