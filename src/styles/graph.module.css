@@ -3,10 +3,10 @@
 }
 
 .pageHeader {
-  padding-bottom: 2.5rem;
+  padding-bottom: 3rem;
   border-bottom: 1px solid var(--border);
-  margin-bottom: 2rem;
-  max-width: 720px;
+  margin-bottom: 3rem;
+  max-width: 680px;
 }
 
 .pageLabel {
@@ -23,7 +23,7 @@
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: 700;
   color: var(--text-title);
-  margin: 0 0 0.75rem;
+  margin: 0 0 1.25rem;
   line-height: 1.2;
 }
 
@@ -57,6 +57,7 @@
   font-size: var(--font-size-xs);
   font-weight: 500;
   padding: 0.3rem 0.85rem;
+  line-height: 1.4;
   background: transparent;
   border: none;
   color: var(--text-muted);
@@ -112,6 +113,7 @@
   font-size: var(--font-size-xs);
   font-weight: 500;
   padding: 0.3rem 0.75rem;
+  line-height: 1.4;
   border: 1px solid var(--border);
   border-radius: 3px;
   background: transparent;
