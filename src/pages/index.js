@@ -150,14 +150,45 @@ const IndexPage = ({ data }) => {
         </div>
         <div className={styles.graphCard}>
           <div className={styles.graphPreview} aria-hidden="true">
-            <div className={styles.graphDot} style={{ top: "40%", left: "20%" }} />
-            <div className={styles.graphDot} style={{ top: "25%", left: "45%" }} />
-            <div className={styles.graphDot} style={{ top: "60%", left: "55%" }} />
-            <div className={styles.graphDot} style={{ top: "35%", left: "70%" }} />
-            <div className={styles.graphDot} style={{ top: "70%", left: "30%" }} />
-            <div className={styles.graphLine} style={{ top: "42%", left: "22%", width: "24%", transform: "rotate(-12deg)" }} />
-            <div className={styles.graphLine} style={{ top: "30%", left: "47%", width: "24%", transform: "rotate(15deg)" }} />
-            <div className={styles.graphLine} style={{ top: "55%", left: "35%", width: "22%", transform: "rotate(-20deg)" }} />
+            <svg
+              viewBox="0 0 280 170"
+              className={styles.graphPreviewSvg}
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              {/* Shared-tag edges (dashed) */}
+              <line x1="68" y1="72" x2="110" y2="128" stroke="currentColor" strokeOpacity="0.15" strokeWidth="0.8" strokeDasharray="4,3" />
+              <line x1="110" y1="128" x2="52" y2="140" stroke="currentColor" strokeOpacity="0.15" strokeWidth="0.8" strokeDasharray="4,3" />
+              <line x1="215" y1="75" x2="205" y2="140" stroke="currentColor" strokeOpacity="0.15" strokeWidth="0.8" strokeDasharray="4,3" />
+              <line x1="150" y1="42" x2="110" y2="128" stroke="currentColor" strokeOpacity="0.15" strokeWidth="0.8" strokeDasharray="4,3" />
+
+              {/* Explicit edges (solid amber) */}
+              <line x1="68" y1="72" x2="150" y2="42" stroke="rgba(245,158,11,0.55)" strokeWidth="1.5" />
+              <line x1="150" y1="42" x2="215" y2="75" stroke="rgba(245,158,11,0.55)" strokeWidth="1.5" />
+              <line x1="215" y1="75" x2="110" y2="128" stroke="rgba(245,158,11,0.35)" strokeWidth="1" />
+
+              {/* note (amber) */}
+              <circle cx="68" cy="72" r="8" fill="#f59e0b" fillOpacity="0.88" stroke="#f59e0b" strokeWidth="2" strokeOpacity="0.3" />
+              <text x="68" y="88" textAnchor="middle" fontSize="7.5" fill="currentColor" fillOpacity="0.5" fontFamily="sans-serif">note</text>
+
+              {/* essay (blue) — hub, slightly larger */}
+              <circle cx="150" cy="42" r="11" fill="#3b82f6" fillOpacity="0.88" stroke="#3b82f6" strokeWidth="2" strokeOpacity="0.3" />
+              <text x="150" y="60" textAnchor="middle" fontSize="7.5" fill="currentColor" fillOpacity="0.5" fontFamily="sans-serif">essay</text>
+
+              {/* research-seed (green) */}
+              <circle cx="215" cy="75" r="9" fill="#10b981" fillOpacity="0.88" stroke="#10b981" strokeWidth="2" strokeOpacity="0.3" />
+              <text x="215" y="92" textAnchor="middle" fontSize="7.5" fill="currentColor" fillOpacity="0.5" fontFamily="sans-serif">research</text>
+
+              {/* article (cyan) */}
+              <circle cx="110" cy="128" r="7" fill="#06b6d4" fillOpacity="0.88" stroke="#06b6d4" strokeWidth="2" strokeOpacity="0.3" />
+              <text x="110" y="142" textAnchor="middle" fontSize="7.5" fill="currentColor" fillOpacity="0.5" fontFamily="sans-serif">article</text>
+
+              {/* build (orange) */}
+              <circle cx="205" cy="140" r="8" fill="#f97316" fillOpacity="0.88" stroke="#f97316" strokeWidth="2" strokeOpacity="0.3" />
+              <text x="205" y="155" textAnchor="middle" fontSize="7.5" fill="currentColor" fillOpacity="0.5" fontFamily="sans-serif">build</text>
+
+              {/* note 2 (amber, smaller) */}
+              <circle cx="52" cy="140" r="6" fill="#f59e0b" fillOpacity="0.75" stroke="#f59e0b" strokeWidth="1.5" strokeOpacity="0.25" />
+            </svg>
           </div>
           <div className={styles.graphText}>
             <p>
