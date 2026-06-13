@@ -129,7 +129,7 @@ const AboutPage = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                X / Twitter
+                X
               </a>
               <a
                 href={siteConfig.socials.linkedin}

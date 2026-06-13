@@ -11,10 +11,9 @@ module.exports = {
       summary: `Curious about how things work. Based in London.`,
     },
     social: {
-      twitter: `husainalghasra`,
+      x: `husainalghasra`,
       github: `halghasra`,
       linkedin: `halghasra`,
-      x: `husainalghasra`,
     },
     siteUrl: `https://husainalghasra.com/`,
   },
