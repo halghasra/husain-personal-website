@@ -50,7 +50,7 @@ const Footer = () => {
               className={styles.socialLink}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="X (Twitter)"
+              aria-label="X"
             >
               <XIcon />
             </a>
