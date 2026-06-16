@@ -1,270 +1,255 @@
-.learningHubHeader {
-  text-align: center;
-  padding: 3rem 0;
-  background: linear-gradient(135deg, var(--bg), var(--textLink));
-  color: var(--bg);
-  margin-bottom: 2rem;
+/* =============================================
+   Learning Hub index page
+   ============================================= */
+
+.hubPage {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 2rem 6rem;
 }
 
-.learningHubHeader h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+/* ---- Page header ---- */
+.hubHeader {
+  margin-bottom: 3.5rem;
 }
 
-.learningHubHeader p {
-  font-size: 1.2rem;
-  opacity: 0.8;
+.hubEyebrow {
+  display: inline-block;
+  font-family: var(--font-primary);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.hubTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+  margin: 0 0 0.75rem;
+  color: var(--text-title);
+}
+
+.hubLede {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ---- Section labels ---- */
+.sectionLabel {
+  font-family: var(--font-primary);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 1rem 0;
+  opacity: 0.75;
+}
+
+/* ---- Featured card ---- */
+.featuredSection {
+  margin-bottom: 4rem;
+}
+
+.featuredCard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--bg-card);
+  text-decoration: none;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.featuredCard:hover {
+  text-decoration: none;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.featuredImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  min-height: 300px;
+}
+
+.featuredImagePlaceholder {
+  width: 100%;
+  min-height: 300px;
+  background: var(--bg-subtle);
+}
+
+.featuredBody {
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.featuredMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.categoryTag {
+  font-family: var(--font-primary);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+.metaDate {
+  font-family: var(--font-primary);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.featuredTitle {
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  line-height: 1.2;
+  margin: 0;
+  color: var(--text-title);
+}
+
+.featuredExcerpt {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.featuredCta {
+  font-family: var(--font-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-link);
+  margin-top: 0.5rem;
+}
+
+/* ---- Lesson grid (remaining lessons) ---- */
+.allSection {
+  margin-top: 1rem;
 }
 
 .lessonGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .lessonCard {
-  background-color: var(--bg);
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
+  border: 1px solid var(--border);
+  border-radius: 12px;
   overflow: hidden;
+  background: var(--bg-card);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .lessonCard:hover {
-  transform: translateY(-5px);
-}
-
-.coverImage {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.lessonCard a {
-  display: block;
-  padding: 1.5rem;
   text-decoration: none;
-  color: var(--textNormal);
-}
-
-.lessonCard h2 {
-  margin: 0 0 1rem;
-  color: var(--textLink);
-}
-
-.lessonDate {
-  font-size: 0.9rem;
-  opacity: 0.7;
-  margin-bottom: 1rem;
-}
-
-.lessonExcerpt {
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 1.5rem 1.5rem;
-}
-
-.tag {
-  background-color: var(--textLink);
-  color: var(--bg);
-  padding: 0.3rem 0.6rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-}
-
-.tag:hover {
-  background-color: var(--textNormal);
-}
-
-.pagination {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 2rem;
-}
-
-.paginationLink {
-  padding: 0.5rem 1rem;
-  background-color: var(--textLink);
-  color: var(--bg);
-  text-decoration: none;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-.paginationLink:hover {
-  background-color: var(--textNormal);
-}
-
-.learningHubContainer {
-  display: grid;
-  grid-template-columns: 300px minmax(600px, 1fr) 250px;
-  min-height: calc(100vh - var(--header-height));
-  background-color: var(--bg);
-  width: 100%;
-  max-width: 1800px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.sidebar {
-  border-right: 1px solid var(--hr);
-  padding: 2rem;
-  height: calc(100vh - var(--header-height));
-  position: sticky;
-  top: var(--header-height);
-  overflow-y: auto;
-  background-color: var(--bg);
-}
-
-.mainContent {
-  padding: 3rem;
-  width: 100%;
-  max-width: 100%;
-  margin: 0;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  hyphens: auto;
-}
-
-.tableOfContents {
-  border-left: 1px solid var(--hr);
-  padding: 2rem;
-  height: calc(100vh - var(--header-height));
-  position: sticky;
-  top: var(--header-height);
-  overflow-y: auto;
-  background-color: var(--bg);
-}
-
-.breadcrumbs {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
-  color: var(--textNormal);
-  font-size: 0.9rem;
-}
-
-.breadcrumbs a {
-  color: var(--textLink);
-  text-decoration: none;
-}
-
-.breadcrumbs span {
-  color: var(--textNormal);
-  opacity: 0.5;
-}
-
-.content {
-  max-width: 100%;
-  padding-right: 2rem;
-}
-
-.content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: var(--textTitle);
-  word-break: break-word;
-}
-
-.introduction {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 3rem;
-  color: var(--textNormal);
-  max-width: 100%;
-  overflow-wrap: break-word;
-}
-
-.courseGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 1.5rem;
-}
-
-.courseCard {
-  padding: 1.5rem;
-  border: 1px solid var(--hr);
-  border-radius: 8px;
-  background-color: var(--bg);
-  transition: all 0.3s ease;
-}
-
-.courseCard:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.courseCard h3 {
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
-  color: var(--textTitle);
+.cardImageWrap {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  background: var(--bg-subtle);
+  flex-shrink: 0;
 }
 
-.courseCard p {
-  color: var(--textNormal);
-  margin-bottom: 1.5rem;
-  line-height: 1.5;
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
 }
 
-.courseLink {
-  display: inline-flex;
+.lessonCard:hover .cardImage {
+  transform: scale(1.03);
+}
+
+.cardImagePlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
   align-items: center;
-  color: var(--textLink);
-  text-decoration: none;
-  font-weight: 500;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--bg-subtle), var(--border));
+  font-size: 2rem;
+  color: var(--text-muted);
+  opacity: 0.4;
 }
 
-.courseLink:hover {
-  text-decoration: underline;
+.cardBody {
+  padding: 1.25rem 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
 }
 
-/* Tablet */
-@media (max-width: 1200px) {
-  .learningHubContainer {
-    grid-template-columns: 250px 1fr;
-  }
-
-  .tableOfContents {
-    display: none;
-  }
+.cardTitle {
+  font-size: 1.05rem;
+  line-height: 1.3;
+  margin: 0;
+  color: var(--text-title);
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-  .learningHubContainer {
+.cardExcerpt {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 860px) {
+  .featuredCard {
     grid-template-columns: 1fr;
-    padding: 0 0.5rem;
   }
 
-  .sidebar {
-    display: none;
+  .featuredImage,
+  .featuredImagePlaceholder {
+    min-height: 220px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hubPage {
+    padding: 2rem 1rem 4rem;
   }
 
-  .mainContent {
-    padding: 1rem;
+  .hubTitle {
+    font-size: 1.8rem;
   }
 
-  .courseGrid {
+  .featuredBody {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .lessonGrid {
     grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .breadcrumbs {
-    font-size: 0.8rem;
-    margin-bottom: 1rem;
-  }
-
-  .content h1 {
-    font-size: 2rem;
   }
 }

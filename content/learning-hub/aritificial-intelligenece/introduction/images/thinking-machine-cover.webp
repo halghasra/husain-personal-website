@@ -1,0 +1,89 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Thinking Machine: From First Principles — cover image">
+  <title>The Thinking Machine: From First Principles</title>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0d1117"/>
+
+  <!-- Neural network connections (background layer, subtle) -->
+  <g stroke="#1e2d3d" stroke-width="1" fill="none">
+    <!-- left cluster connections -->
+    <line x1="80" y1="95" x2="195" y2="148"/>
+    <line x1="195" y1="148" x2="155" y2="268"/>
+    <line x1="195" y1="148" x2="318" y2="196"/>
+    <line x1="155" y1="268" x2="62" y2="368"/>
+    <line x1="62" y1="368" x2="252" y2="415"/>
+    <line x1="252" y1="415" x2="108" y2="502"/>
+    <line x1="252" y1="415" x2="318" y2="196"/>
+    <line x1="318" y1="196" x2="365" y2="320"/>
+    <line x1="365" y1="320" x2="252" y2="415"/>
+    <!-- right cluster connections -->
+    <line x1="840" y1="112" x2="960" y2="165"/>
+    <line x1="960" y1="165" x2="920" y2="290"/>
+    <line x1="960" y1="165" x2="1080" y2="220"/>
+    <line x1="920" y1="290" x2="840" y2="410"/>
+    <line x1="840" y1="410" x2="960" y2="468"/>
+    <line x1="960" y1="468" x2="1100" y2="395"/>
+    <line x1="1080" y1="220" x2="1100" y2="395"/>
+    <line x1="920" y1="290" x2="1080" y2="220"/>
+    <line x1="840" y1="410" x2="920" y2="290"/>
+    <!-- cross connections (centre) -->
+    <line x1="365" y1="320" x2="840" y2="410"/>
+    <line x1="318" y1="196" x2="840" y2="112"/>
+    <line x1="365" y1="320" x2="920" y2="290"/>
+  </g>
+
+  <!-- Highlighted connections (orange-tinted) -->
+  <g stroke="#ff6600" stroke-width="1.2" fill="none" opacity="0.35">
+    <line x1="365" y1="320" x2="580" y2="315"/>
+    <line x1="580" y1="315" x2="840" y2="410"/>
+    <line x1="318" y1="196" x2="580" y2="315"/>
+    <line x1="580" y1="315" x2="920" y2="290"/>
+  </g>
+
+  <!-- Neural network nodes (background, dim) -->
+  <g fill="#1e3248">
+    <circle cx="80" cy="95" r="6"/>
+    <circle cx="155" cy="268" r="7"/>
+    <circle cx="62" cy="368" r="5"/>
+    <circle cx="108" cy="502" r="5"/>
+    <circle cx="252" cy="415" r="8"/>
+    <circle cx="840" cy="112" r="6"/>
+    <circle cx="1080" cy="220" r="7"/>
+    <circle cx="1100" cy="395" r="5"/>
+    <circle cx="960" cy="468" r="7"/>
+  </g>
+
+  <!-- Neural network nodes (mid-layer, slightly brighter) -->
+  <g fill="#1e4060">
+    <circle cx="195" cy="148" r="9"/>
+    <circle cx="318" cy="196" r="11"/>
+    <circle cx="920" cy="290" r="10"/>
+    <circle cx="840" cy="410" r="9"/>
+    <circle cx="960" cy="165" r="9"/>
+  </g>
+
+  <!-- Key nodes (orange-accent) -->
+  <circle cx="365" cy="320" r="15" fill="#ff6600" opacity="0.9"/>
+  <circle cx="580" cy="315" r="20" fill="#ff6600"/>
+  <circle cx="580" cy="315" r="30" fill="none" stroke="#ff6600" stroke-width="1" opacity="0.3"/>
+  <circle cx="580" cy="315" r="44" fill="none" stroke="#ff6600" stroke-width="0.5" opacity="0.15"/>
+
+  <!-- Divider line -->
+  <line x1="100" y1="490" x2="1100" y2="490" stroke="#ff6600" stroke-width="1" opacity="0.4"/>
+
+  <!-- Series label (small, top) -->
+  <text x="100" y="130" font-family="'Montserrat', sans-serif" font-size="14" font-weight="500" fill="#ff6600" letter-spacing="3" opacity="0.9">ARTIFICIAL INTELLIGENCE · A MODERN APPROACH</text>
+
+  <!-- Main title -->
+  <text x="100" y="270" font-family="'Montserrat', sans-serif" font-size="72" font-weight="700" fill="#ffffff" letter-spacing="-1">The Thinking</text>
+  <text x="100" y="360" font-family="'Montserrat', sans-serif" font-size="72" font-weight="700" fill="#ffffff" letter-spacing="-1">Machine</text>
+
+  <!-- Subtitle -->
+  <text x="100" y="430" font-family="'Merriweather', Georgia, serif" font-size="24" font-weight="300" fill="#8ba3bc" font-style="italic">From First Principles</text>
+
+  <!-- Chapter label -->
+  <text x="100" y="526" font-family="'Montserrat', sans-serif" font-size="13" font-weight="500" fill="#4a6070" letter-spacing="2">CHAPTER ONE · WHAT INTELLIGENCE EVEN MEANS</text>
+
+  <!-- HG brand mark (bottom right) -->
+  <text x="1100" y="526" text-anchor="end" font-family="'Montserrat', sans-serif" font-size="22" font-weight="700" fill="#ff6600" opacity="0.8">HG</text>
+</svg>

@@ -1,0 +1,115 @@
+/* =========================================================
+   Lesson callouts — add this block to your global.css
+   (or create a lesson-callouts.css and import it there)
+   ========================================================= */
+
+.callout {
+  border-left: 3px solid var(--hr);
+  padding: 0.875rem 1.25rem;
+  margin: 1.75rem 0;
+  border-radius: 0 4px 4px 0;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.callout > p:last-child {
+  margin-bottom: 0;
+}
+
+.callout > p:first-child > strong:first-child {
+  display: block;
+  font-family: var(--font-primary);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 0.5rem;
+}
+
+/* Hint / intuition — teal */
+.callout-hint {
+  border-color: #0e7c86;
+  background: rgba(14, 124, 134, 0.05);
+}
+.callout-hint > p:first-child > strong:first-child {
+  color: #0e7c86;
+}
+
+/* Definition — purple */
+.callout-definition {
+  border-color: #5d4f9e;
+  background: rgba(93, 79, 158, 0.05);
+}
+.callout-definition > p:first-child > strong:first-child {
+  color: #5d4f9e;
+}
+
+/* Worked example / insight — orange (site accent) */
+.callout-example {
+  border-color: var(--text-link);
+  background: rgba(255, 102, 0, 0.05);
+}
+.callout-example > p:first-child > strong:first-child {
+  color: var(--text-link);
+}
+
+/* Connection / insight — green */
+.callout-insight {
+  border-color: #27ae60;
+  background: rgba(39, 174, 96, 0.05);
+}
+.callout-insight > p:first-child > strong:first-child {
+  color: #27ae60;
+}
+
+/* Warning / pitfall — red */
+.callout-warning {
+  border-color: #c0392b;
+  background: rgba(192, 57, 43, 0.05);
+}
+.callout-warning > p:first-child > strong:first-child {
+  color: #c0392b;
+}
+
+/* Checkpoint — orange, slightly heavier treatment */
+.callout-checkpoint {
+  border-left: 3px solid var(--text-link);
+  border-radius: 0 4px 4px 0;
+  padding: 1rem 1.25rem;
+  margin: 1.25rem 0;
+  background: rgba(255, 102, 0, 0.06);
+}
+.callout-checkpoint > p:first-child > strong:first-child {
+  display: block;
+  font-family: var(--font-primary);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-link);
+  margin-bottom: 0.5rem;
+}
+.callout-checkpoint > p:last-child {
+  margin-bottom: 0;
+}
+
+/* Dark mode adjustments */
+.dark .callout {
+  background: rgba(255, 255, 255, 0.04);
+}
+.dark .callout-hint   { background: rgba(14, 124, 134, 0.1); }
+.dark .callout-definition { background: rgba(93, 79, 158, 0.1); }
+.dark .callout-example    { background: rgba(255, 102, 0, 0.09); }
+.dark .callout-insight    { background: rgba(39, 174, 96, 0.09); }
+.dark .callout-warning    { background: rgba(192, 57, 43, 0.1); }
+.dark .callout-checkpoint { background: rgba(255, 102, 0, 0.09); }
+
+/* Figure / SVG captions in lesson posts */
+figure {
+  margin: 2rem 0;
+}
+figcaption {
+  font-family: var(--font-primary);
+  font-size: 0.85rem;
+  color: var(--text-normal);
+  opacity: 0.75;
+  margin-top: 0.75rem;
+  text-align: center;
+}
