@@ -20,7 +20,7 @@ const SEO = ({ title, description, post, siteMetadata: propsMeta }) => {
 
   const meta = propsMeta || data.site.siteMetadata
   const siteTitle = meta?.title || "Husain Alghasra"
-  const siteUrl = meta?.siteUrl || "https://husainalghasra.com"
+  const siteUrl = (meta?.siteUrl || "https://husainalghasra.com").replace(/\/$/, '')
 
   const pageTitle = post?.frontmatter?.title || title || siteTitle
   const pageDescription =
@@ -28,9 +28,13 @@ const SEO = ({ title, description, post, siteMetadata: propsMeta }) => {
 
   const coverImageSrc =
     post?.frontmatter?.coverImage?.childImageSharp?.gatsbyImageData?.images
-      ?.fallback?.src
+      ?.fallback?.src || post?.frontmatter?.coverImage?.publicURL
 
-  const ogImage = coverImageSrc ? `${siteUrl}${coverImageSrc}` : ""
+  const ogImage = coverImageSrc
+    ? coverImageSrc.startsWith('http')
+      ? coverImageSrc
+      : `${siteUrl}${coverImageSrc}`
+    : ""
 
   const schemaOrgJSONLD = {
     "@context": "http://schema.org",
