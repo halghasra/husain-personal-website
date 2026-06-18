@@ -1,0 +1,70 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Intelligent Agents: Making Rational Concrete — cover image">
+  <title>Intelligent Agents: Making Rational Concrete</title>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0d1117"/>
+
+  <!-- Agent-environment loop diagram (background, large) -->
+  <!-- Environment circle -->
+  <circle cx="800" cy="315" r="220" fill="none" stroke="#1e3248" stroke-width="1.5"/>
+  <circle cx="800" cy="315" r="160" fill="none" stroke="#1a2d40" stroke-width="1"/>
+
+  <!-- Agent box (background decoration) -->
+  <rect x="690" y="225" width="220" height="180" rx="18" fill="#0f1a24" stroke="#1e3d52" stroke-width="1.5"/>
+
+  <!-- Percepts arrow (environment → agent, top arc) -->
+  <path d="M 920 245 Q 980 180 1020 315 Q 980 450 920 385" fill="none" stroke="#1e3248" stroke-width="1.2"/>
+
+  <!-- Actions arrow (agent → environment, bottom arc) -->
+  <path d="M 690 385 Q 580 450 560 315 Q 580 180 690 245" fill="none" stroke="#1e3248" stroke-width="1.2"/>
+
+  <!-- Highlighted arrows (orange) -->
+  <path d="M 912 258 Q 968 195 1008 315 Q 968 435 912 372" fill="none" stroke="#ff6600" stroke-width="2" opacity="0.5"/>
+  <path d="M 688 372 Q 578 435 558 315 Q 578 195 688 258" fill="none" stroke="#ff6600" stroke-width="2" opacity="0.3"/>
+
+  <!-- Arrowheads -->
+  <polygon points="910,254 924,248 918,264" fill="#ff6600" opacity="0.6"/>
+  <polygon points="690,376 676,370 682,386" fill="#ff6600" opacity="0.4"/>
+
+  <!-- Agent label -->
+  <text x="800" y="308" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="18" font-weight="700" fill="#2a4a60">AGENT</text>
+  <text x="800" y="332" text-anchor="middle" font-family="monospace" font-size="12" fill="#1e3d52">sensors → ? → actuators</text>
+
+  <!-- Percepts label (right side) -->
+  <text x="1040" y="295" font-family="monospace" font-size="12" fill="#1e3d52">percepts</text>
+  <!-- Actions label (left side) -->
+  <text x="490" y="325" font-family="monospace" font-size="12" fill="#1e3d52">actions</text>
+
+  <!-- Five agent design rings (left decoration) -->
+  <g opacity="0.3">
+    <rect x="60" y="180" width="300" height="36" rx="6" fill="none" stroke="#0e7c86" stroke-width="1"/>
+    <rect x="75" y="224" width="270" height="36" rx="6" fill="none" stroke="#3f7a4d" stroke-width="1"/>
+    <rect x="90" y="268" width="240" height="36" rx="6" fill="none" stroke="#a9701a" stroke-width="1"/>
+    <rect x="105" y="312" width="210" height="36" rx="6" fill="none" stroke="#5d4f9e" stroke-width="1"/>
+    <rect x="120" y="356" width="180" height="36" rx="6" fill="none" stroke="#ff6600" stroke-width="1.5"/>
+    <text x="78" y="204" font-family="sans-serif" font-size="11" fill="#0e7c86">5 · Learning</text>
+    <text x="93" y="248" font-family="sans-serif" font-size="11" fill="#3f7a4d">4 · Utility-based</text>
+    <text x="108" y="292" font-family="sans-serif" font-size="11" fill="#a9701a">3 · Goal-based</text>
+    <text x="123" y="336" font-family="sans-serif" font-size="11" fill="#5d4f9e">2 · Model-based</text>
+    <text x="138" y="380" font-family="sans-serif" font-size="11" fill="#ff6600">1 · Simple reflex</text>
+  </g>
+
+  <!-- Divider line -->
+  <line x1="100" y1="490" x2="1100" y2="490" stroke="#ff6600" stroke-width="1" opacity="0.4"/>
+
+  <!-- Series label -->
+  <text x="100" y="130" font-family="'Montserrat', sans-serif" font-size="14" font-weight="500" fill="#ff6600" letter-spacing="3" opacity="0.9">ARTIFICIAL INTELLIGENCE · A MODERN APPROACH</text>
+
+  <!-- Main title -->
+  <text x="100" y="270" font-family="'Montserrat', sans-serif" font-size="68" font-weight="700" fill="#ffffff" letter-spacing="-1">Intelligent</text>
+  <text x="100" y="355" font-family="'Montserrat', sans-serif" font-size="68" font-weight="700" fill="#ffffff" letter-spacing="-1">Agents</text>
+
+  <!-- Subtitle -->
+  <text x="100" y="422" font-family="Georgia, serif" font-size="24" font-weight="300" fill="#8ba3bc" font-style="italic">Making "rational" concrete</text>
+
+  <!-- Chapter label -->
+  <text x="100" y="526" font-family="'Montserrat', sans-serif" font-size="13" font-weight="500" fill="#4a6070" letter-spacing="2">CHAPTER TWO · THE AGENT LOOP</text>
+
+  <!-- HG brand mark -->
+  <text x="1100" y="526" text-anchor="end" font-family="'Montserrat', sans-serif" font-size="22" font-weight="700" fill="#ff6600" opacity="0.8">HG</text>
+</svg>
