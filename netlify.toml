@@ -12,6 +12,40 @@
 # [functions]
 #   directory = "netlify/functions"
 
+# ---------------------------------------------------------------
+# The learning hub was retired on 2026-10-04. Its lessons became
+# notebook notes. Keep these so old links and search results work.
+# ---------------------------------------------------------------
+[[redirects]]
+  from = "/learning-hub/aritificial-intelligenece/introduction/thinking-machine-ch1/"
+  to = "/notes/what-are-we-actually-trying-to-build/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/learning-hub/aritificial-intelligenece/intellignet-agents/intelligent-agents-ch2/"
+  to = "/notes/an-agent-and-its-world/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/learning-hub/computer-science-fundamentals/1-laying-the-groundwork/1-basic-concepts-of-data-processing/1-1-data-information-and-messages/"
+  to = "/notes/data-is-not-information/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/learning-hub/*"
+  to = "/notebook/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/learning-hub"
+  to = "/notebook/"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]

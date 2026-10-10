@@ -1,0 +1,397 @@
+/* =============================================
+   Note page: long-form reading layout
+   left: sticky contents | right: the note
+   Used by src/templates/note.js for content/notes
+   ============================================= */
+
+.noteContainer {
+  display: grid;
+  grid-template-columns: 256px minmax(0, 1fr);
+  min-height: calc(100vh - 65px);
+}
+
+/* ---- Left sidebar ---- */
+.noteSidebar {
+  position: sticky;
+  top: 65px;
+  height: calc(100vh - 65px);
+  overflow-y: auto;
+  border-right: 1px solid var(--border);
+  background: var(--bg-subtle);
+  flex-shrink: 0;
+}
+
+.sidebarInner {
+  padding: 2rem 1.25rem 3rem;
+}
+
+.sidebarBack {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-family: var(--font-primary);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: color 0.15s ease;
+  margin-bottom: 1.5rem;
+}
+
+.sidebarBack:hover {
+  color: var(--text-link);
+  text-decoration: none;
+  opacity: 1;
+}
+
+.sidebarMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebarCategory {
+  font-family: var(--font-primary);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.sidebarTopic {
+  font-family: var(--font-primary);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.sidebarLabel {
+  font-family: var(--font-primary);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 0.6rem 0;
+  opacity: 0.7;
+}
+
+.sidebarToc {
+  display: flex;
+  flex-direction: column;
+}
+
+.tocLink {
+  display: block;
+  margin-left: 0;
+  padding: 0.32rem 0 0.32rem 0.85rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-family: var(--font-primary);
+  font-size: 0.82rem;
+  line-height: 1.45;
+  border-left: 2px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.tocLink:hover {
+  color: var(--text-title);
+  text-decoration: none;
+  opacity: 1;
+}
+
+.tocLinkSub {
+  padding-left: 1.6rem;
+  font-size: 0.77rem;
+  opacity: 0.85;
+}
+
+.tocLinkActive {
+  color: var(--text-link);
+  border-left-color: var(--text-link);
+  opacity: 1;
+}
+
+/* ---- Main column ---- */
+.noteMain {
+  padding: 3rem clamp(1.5rem, 5vw, 4rem) 6rem;
+  min-width: 0;
+}
+
+.noteContent {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.noteHeader {
+  display: block;
+  margin-bottom: 2.5rem;
+  padding: 0 0 1.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.noteEyebrow {
+  font-family: var(--font-primary);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.75rem;
+}
+
+.noteTitle {
+  font-size: clamp(1.9rem, 3.2vw, 2.7rem);
+  line-height: 1.12;
+  margin: 0 0 1rem;
+}
+
+.noteLede {
+  font-family: var(--font-secondary);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin: 0 0 1.25rem;
+}
+
+.noteMeta {
+  font-family: var(--font-primary);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: 0 0 1rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag {
+  font-family: var(--font-primary);
+  font-size: 0.72rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.tag:hover {
+  color: var(--text-link);
+  border-color: var(--text-link);
+  text-decoration: none;
+}
+
+/* ---- Prose ---- */
+.noteBody {
+  line-height: 1.85;
+  font-size: 1.05rem;
+}
+
+.noteBody h2 {
+  font-size: 1.6rem;
+  margin-top: 3.25rem;
+  margin-bottom: 0.6rem;
+}
+
+.noteBody h3 {
+  font-size: 1.22rem;
+  margin-top: 2.25rem;
+  margin-bottom: 0.4rem;
+}
+
+.noteBody h4 {
+  font-size: 1.05rem;
+  margin-top: 1.75rem;
+}
+
+.noteBody p {
+  margin-bottom: 1.3rem;
+}
+
+.noteBody img,
+.noteBody svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.noteBody figure {
+  margin: 2.25rem 0;
+}
+
+.noteBody figcaption {
+  font-family: var(--font-primary);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+.noteBody table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.9rem;
+  border: 1px solid var(--border);
+  display: block;
+  overflow-x: auto;
+}
+
+.noteBody th {
+  background: var(--bg-subtle);
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-title);
+  padding: 0.6rem 0.85rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.noteBody td {
+  padding: 0.55rem 0.85rem;
+  border-top: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.55;
+}
+
+.noteBody pre {
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+/* A displayed formula: <div class="formula">P(A | B) = P(B | A) P(A) / P(B)</div> */
+.noteBody :global(.formula) {
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 0.98rem;
+  text-align: center;
+  padding: 1rem 1.25rem;
+  margin: 1.75rem 0;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow-x: auto;
+  white-space: nowrap;
+  color: var(--text-title);
+}
+
+/* Diagram vocabulary for inline SVG, so diagrams follow light and dark mode.
+   Use class names instead of hard-coded colours. */
+.noteBody :global(.dg-ink) { fill: var(--text-title); }
+.noteBody :global(.dg-text) { fill: var(--text-normal); font-family: var(--font-primary); }
+.noteBody :global(.dg-muted) { fill: var(--text-muted); font-family: var(--font-primary); }
+.noteBody :global(.dg-accent) { fill: var(--accent); }
+.noteBody :global(.dg-accent-stroke) { stroke: var(--accent); fill: none; }
+.noteBody :global(.dg-line) { stroke: var(--text-muted); fill: none; }
+.noteBody :global(.dg-box) { fill: var(--bg-card); stroke: var(--border); }
+.noteBody :global(.dg-subtle) { fill: var(--bg-subtle); stroke: var(--border); }
+.noteBody :global(.dg-highlight) { fill: var(--amber-dim); stroke: var(--accent); }
+
+/* ---- Connected notes ---- */
+.connected {
+  margin: 3.5rem 0 2rem;
+  padding: 1.5rem 1.5rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-subtle);
+}
+
+.connected ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+
+.connected li {
+  margin: 0 0 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.connected li a {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.connected li span {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.graphLink {
+  font-family: var(--font-primary);
+  font-size: 0.8rem;
+}
+
+.comments {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-primary);
+  font-size: 0.85rem;
+}
+
+.pager a {
+  margin-left: 0;
+}
+
+.pager span:last-child {
+  text-align: right;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 960px) {
+  .noteContainer {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .noteSidebar {
+    display: none;
+  }
+
+  .noteMain {
+    padding: 2rem 1.5rem 4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .noteMain {
+    padding: 1.5rem 1rem 3rem;
+  }
+
+  .noteTitle {
+    font-size: 1.7rem;
+  }
+
+  .noteBody {
+    font-size: 1rem;
+  }
+
+  .pager {
+    flex-direction: column;
+  }
+
+  .pager span:last-child {
+    text-align: left;
+  }
+}

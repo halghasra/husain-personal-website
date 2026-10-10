@@ -17,7 +17,7 @@ const TagsPage = ({ data }) => {
     <Layout>
       <div className={styles.tagsHeader}>
         <h1>Tags</h1>
-        <p>Browse all topics covered in the blog and learning hub</p>
+        <p>Browse all topics covered across the notebook</p>
       </div>
       <div className={styles.tagsContainer}>
         <button
@@ -66,13 +66,16 @@ export default TagsPage
 
 export const pageQuery = graphql`
   query {
-    tagsGroup: allMarkdownRemark(limit: 2000) {
+    tagsGroup: allMarkdownRemark(limit: 2000, filter: { frontmatter: { status: { ne: "draft" } } }) {
       group(field: { frontmatter: { tags: SELECT } }) {
         fieldValue
         totalCount
       }
     }
-    allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
+    allMarkdownRemark(
+      sort: { frontmatter: { date: DESC } }
+      filter: { frontmatter: { status: { ne: "draft" } } }
+    ) {
       nodes {
         excerpt(pruneLength: 160)
         fields {

@@ -192,7 +192,7 @@ const IndexPage = ({ data }) => {
           </div>
           <div className={styles.graphText}>
             <p>
-              A living map of notes, readings, research seeds, and Curio Synapse lessons.
+              A living map of notes, essays, readings and research seeds.
             </p>
             <p>
               It shows how ideas connect, where questions are forming, and which thoughts are
@@ -228,6 +228,7 @@ export const query = graphql`
   query {
     allMarkdownRemark(
       sort: { frontmatter: { date: DESC } }
+      filter: { frontmatter: { status: { ne: "draft" } } }
       limit: 10
     ) {
       nodes {

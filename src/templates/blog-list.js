@@ -75,7 +75,10 @@ export const blogListQuery = graphql`
       sort: { frontmatter: { date: DESC } }
       limit: $limit
       skip: $skip
-      filter: { fileAbsolutePath: { regex: "/content/blog/" } }
+      filter: {
+        fileAbsolutePath: { regex: "/content/blog/" }
+        frontmatter: { status: { ne: "draft" } }
+      }
     ) {
       edges {
         node {

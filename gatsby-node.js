@@ -66,40 +66,22 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     } else {
       slug = `/${source}${slug}`
     }
-  } else if (source === 'learning-hub') {
-    slug = createFilePath({ node, getNode, basePath: `content` })
-    slug = `/learning-hub${slug}`
   } else {
     slug = createFilePath({ node, getNode })
   }
 
   createNodeField({ node, name: `slug`, value: slug })
 
-  if (source === 'learning-hub') {
-    const parts = slug.split('/').filter(Boolean)
-    createNodeField({
-      node,
-      name: 'categorySlug',
-      value: parts[1] ? `/learning-hub/${parts[1]}` : null,
-    })
-    createNodeField({
-      node,
-      name: 'topicSlug',
-      value: parts[2] ? `/learning-hub/${parts[1]}/${parts[2]}` : null,
-    })
-    createNodeField({
-      node,
-      name: 'unitSlug',
-      value: parts[3] ? `/learning-hub/${parts[1]}/${parts[2]}/${parts[3]}` : null,
-    })
-  }
 }
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const result = await graphql(`
     query {
-      allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
+      allMarkdownRemark(
+        sort: { frontmatter: { date: DESC } }
+        filter: { frontmatter: { status: { ne: "draft" } } }
+      ) {
         edges {
           node {
             fields {
@@ -109,8 +91,7 @@ exports.createPages = async ({ graphql, actions }) => {
               title
               tags
               description
-              isMainCourse
-              order
+              linked_notes
             }
           }
         }
@@ -125,22 +106,37 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const posts = result.data.allMarkdownRemark.edges
 
-  posts.forEach((post, index) => {
-    const previous = index === posts.length - 1 ? null : posts[index + 1].node
-    const next = index === 0 ? null : posts[index - 1].node
-    const slug = post.node.fields.slug
+  // Notes get the long-form reading template (table of contents, connected notes).
+  // Everything else keeps the original blog post template.
+  const notes = posts.filter(p => p.node.fields.slug.startsWith('/notes/'))
+  const others = posts.filter(p => !p.node.fields.slug.startsWith('/notes/'))
 
-    let template = 'blog-post.js'
-    if (slug.startsWith('/learning-hub/')) {
-      template = 'lesson.js'
-    }
-
-    createPage({
-      path: slug,
-      component: path.resolve(`./src/templates/${template}`),
-      context: { slug, previous, next },
-    })
+  // linked_notes in frontmatter hold the last part of a slug ("how-a-machine-searches").
+  // Map them to full slugs so a page can list its connected notes.
+  const tailToSlug = {}
+  posts.forEach(p => {
+    const parts = p.node.fields.slug.split('/').filter(Boolean)
+    tailToSlug[parts[parts.length - 1]] = p.node.fields.slug
   })
+
+  const makePages = (list, template) => {
+    list.forEach((post, index) => {
+      const previous = index === list.length - 1 ? null : list[index + 1].node
+      const next = index === 0 ? null : list[index - 1].node
+      const slug = post.node.fields.slug
+      const linked = (post.node.frontmatter.linked_notes || [])
+        .map(tail => tailToSlug[tail])
+        .filter(Boolean)
+      createPage({
+        path: slug,
+        component: path.resolve(`./src/templates/${template}`),
+        context: { slug, previous, next, linked },
+      })
+    })
+  }
+
+  makePages(notes, 'note.js')
+  makePages(others, 'blog-post.js')
 
   // Paginated blog list (legacy /blog route kept for compatibility)
   const postsPerPage = 6
@@ -159,24 +155,4 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
-
-  // Learning hub list
-  const lessonsPerPage = 6
-  const learningHubPosts = posts.filter(p => p.node.fields.slug.startsWith('/learning-hub/'))
-  const numLessonPages = Math.ceil(learningHubPosts.length / lessonsPerPage)
-
-  if (numLessonPages > 0) {
-    Array.from({ length: numLessonPages }).forEach((_, i) => {
-      createPage({
-        path: i === 0 ? `/learning-hub` : `/learning-hub/${i + 1}`,
-        component: path.resolve('./src/templates/lesson-list.js'),
-        context: {
-          limit: lessonsPerPage,
-          skip: i * lessonsPerPage,
-          numPages: numLessonPages,
-          currentPage: i + 1,
-        },
-      })
-    })
-  }
 }

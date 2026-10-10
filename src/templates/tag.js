@@ -17,7 +17,7 @@ const TagsPage = ({ data }) => {
     <Layout>
       <div className={styles.tagsHeader}>
         <h1>Tags</h1>
-        <p>Browse all topics covered in the blog and learning hub</p>
+        <p>Browse all topics covered across the notebook</p>
       </div>
       <div className={styles.tagsContainer}>
         <button

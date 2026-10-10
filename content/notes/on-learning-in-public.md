@@ -29,7 +29,7 @@ There is a version of learning in public that is performance. Tweet threads abou
 
 This is not that version.
 
-The reason I keep this notebook public is simpler. When I know something might be read, I write it more carefully. I catch the gaps. I am less satisfied with vague handwaving. The audience is almost incidental — it is the act of writing for an audience, even a hypothetical one, that does the work.
+The reason I keep this notebook public is simpler. When I know something might be read, I write it more carefully. I catch the gaps. I am less satisfied with vague handwaving. The audience is almost incidental. It is the act of writing for an audience, even a hypothetical one, that does the work.
 
 Richard Feynman had a method. When he wanted to understand something, he would try to explain it simply. Not because simple explanations are dumbed down, but because if you cannot explain something simply, you do not understand it yet. The gaps in your explanation are a map of the gaps in your thinking.
 
@@ -39,7 +39,7 @@ This notebook is my attempt at a version of that.
 
 Not everything I think or read or work on. Just the things that need somewhere to sit while I think about them more. Sometimes a note matures into an essay. Sometimes it just stays a note. Sometimes I write it and realise partway through that I had the question wrong.
 
-The imperfection is intentional. A notebook that only contains finished thoughts is not a notebook — it is an archive.
+The imperfection is intentional. A notebook that only contains finished thoughts is not a notebook. It is an archive.
 
 ## What does not go here
 

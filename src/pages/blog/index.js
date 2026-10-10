@@ -54,7 +54,10 @@ export const query = graphql`
   query {
     allMarkdownRemark(
       sort: {frontmatter: {date: DESC}}
-      filter: { fileAbsolutePath: { regex: "/content/blog/" } }
+      filter: {
+        fileAbsolutePath: { regex: "/content/blog/" }
+        frontmatter: { status: { ne: "draft" } }
+      }
     ) {
       nodes {
         excerpt

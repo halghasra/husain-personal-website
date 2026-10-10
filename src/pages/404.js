@@ -18,7 +18,8 @@ const NotFoundPage = () => {
         <ul className={styles.linkList}>
           <li><Link to="/">Home</Link></li>
           <li><Link to="/blog">Blog</Link></li>
-          <li><Link to="/learning-hub">Learning Hub</Link></li>
+          <li><Link to="/notebook">Notebook</Link></li>
+          <li><Link to="/graph">Neural Map</Link></li>
           <li><Link to="/about">About</Link></li>
         </ul>
         <Link to="/" className={styles.homeButton}>

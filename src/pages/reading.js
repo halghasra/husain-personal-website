@@ -146,6 +146,7 @@ export const query = graphql`
         }
         frontmatter: {
           tags: { in: ["Book Reviews", "Paper Notes", "Reading", "Literature", "Novels"] }
+          status: { ne: "draft" }
         }
       }
       sort: { frontmatter: { date: DESC } }

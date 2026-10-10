@@ -135,7 +135,7 @@ export const query = graphql`
         fields: {
           slug: { regex: "/^/(blog|notes|essays|research-seeds|paper-notes|builds)/" }
         }
-        frontmatter: { type: { in: ["research-seed", "essay"] } }
+        frontmatter: { type: { in: ["research-seed", "essay"] }, status: { ne: "draft" } }
       }
       sort: { frontmatter: { date: DESC } }
     ) {
