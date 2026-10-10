@@ -126,7 +126,7 @@ const GraphPage = ({ data }) => {
     <Layout>
       <SEO
         title="Neural Map"
-        description="A living map of notes, readings, research seeds, and Curio Synapse lessons showing how ideas connect."
+        description="A living map of notes, essays, readings and research seeds, showing how ideas connect."
       />
       <div className={styles.graphWrapper}>
         <header className={styles.pageHeader}>
@@ -276,6 +276,7 @@ export const query = graphql`
         fields: {
           slug: { regex: "/^/(blog|notes|essays|research-seeds|paper-notes|builds)/" }
         }
+        frontmatter: { status: { ne: "draft" } }
       }
       sort: { frontmatter: { date: DESC } }
     ) {

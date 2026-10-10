@@ -121,8 +121,8 @@ export const query = graphql`
   query BuildsQuery {
     allMarkdownRemark(
       filter: {
-        fields: { slug: { regex: "/^/blog/" } }
-        frontmatter: { type: { eq: "build" } }
+        fields: { slug: { regex: "/^/(blog|builds)/" } }
+        frontmatter: { type: { eq: "build" }, status: { ne: "draft" } }
       }
       sort: { frontmatter: { date: DESC } }
     ) {

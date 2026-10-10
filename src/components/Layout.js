@@ -42,8 +42,8 @@ const Layout = ({ children, fullWidth }) => {
               <Link to="/notebook" className={styles.navLink} activeClassName={styles.activeLink} partiallyActive>
                 Notebook
               </Link>
-              <Link to="/learning-hub" className={styles.navLink} activeClassName={styles.activeLink}>
-                Learning Hub
+              <Link to="/graph" className={styles.navLink} activeClassName={styles.activeLink}>
+                Neural Map
               </Link>
               <Link to="/research" className={styles.navLink} activeClassName={styles.activeLink}>
                 Research

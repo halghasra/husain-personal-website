@@ -70,13 +70,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `learning-hub`,
-        path: `${__dirname}/content/learning-hub`,
-      },
-    },
-    {
       resolve: 'gatsby-plugin-webfonts',
       options: {
         fonts: {
@@ -112,6 +105,14 @@ module.exports = {
               maxWidth: 720,
               linkImagesToOriginal: false,
               withWebp: true,
+            },
+          },
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              offsetY: 90,
+              icon: false,
+              removeAccents: true,
             },
           },
           {
