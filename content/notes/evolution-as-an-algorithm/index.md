@@ -4,9 +4,9 @@ slug: "evolution-as-an-algorithm"
 type: "note"
 status: "evergreen"
 summary: "A genetic algorithm found the best route through six cities in a blink, and it was the right answer to the wrong question. How a search that copies evolution works, what its three dials really do, and why it can throw away its best answer and still win."
-date: "2026-10-10"
-created: "2026-10-10"
-updated: "2026-10-10"
+date: "2026-08-03"
+created: "2026-08-03"
+updated: "2026-08-03"
 topics: ["Artificial Intelligence", "Optimisation", "Evolutionary Computation"]
 tags: ["AI", "Optimisation", "Search", "Python", "Problem Framing"]
 linked_notes:

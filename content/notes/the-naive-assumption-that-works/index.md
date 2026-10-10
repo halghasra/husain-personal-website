@@ -4,9 +4,9 @@ slug: "the-naive-assumption-that-works"
 type: "note"
 status: "evergreen"
 summary: "Naive Bayes multiplies probabilities as if the words in a review had nothing to do with each other. They plainly do. Why that false assumption still picks the right answer so often, what one zero count can do to it, and the small experiment where it finally breaks."
-date: "2026-10-10"
-created: "2026-10-10"
-updated: "2026-10-10"
+date: "2026-09-20"
+created: "2026-09-20"
+updated: "2026-09-20"
 topics: ["Artificial Intelligence", "Probability", "Natural Language Processing"]
 tags: ["AI", "Probability", "Machine Learning", "NLP", "Python"]
 linked_notes:

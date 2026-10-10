@@ -4,9 +4,9 @@ slug: "the-shape-of-data"
 type: "note"
 status: "evergreen"
 summary: "Four datasets share a mean, a spread, a correlation and a fitted line, and look nothing alike. A walk through the numbers we use to summarise data, what each one hides, and the question I should have asked before any of them."
-date: "2026-10-10"
-created: "2026-10-10"
-updated: "2026-10-10"
+date: "2026-07-31"
+created: "2026-07-31"
+updated: "2026-07-31"
 topics: ["Statistics", "Data Analysis"]
 tags: ["Statistics", "Data", "Probability", "Python"]
 linked_notes:

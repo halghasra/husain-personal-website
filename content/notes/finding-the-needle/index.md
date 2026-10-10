@@ -4,9 +4,9 @@ slug: "finding-the-needle"
 type: "note"
 status: "evergreen"
 summary: "A search engine does not read your documents when you ask. It read them once, in advance, and filed them under every word. Then comes the harder part: ranking what it finds, and checking that the score you trust is really a score."
-date: "2026-10-10"
-created: "2026-10-10"
-updated: "2026-10-10"
+date: "2026-09-29"
+created: "2026-09-29"
+updated: "2026-09-29"
 topics: ["Information Retrieval", "Natural Language Processing"]
 tags: ["NLP", "Search", "Python", "Mathematics", "Data"]
 linked_notes:

@@ -4,9 +4,9 @@ slug: "how-a-convolutional-network-sees"
 type: "note"
 status: "evergreen"
 summary: "A plain network and a convolutional one read the same handwritten digits, and one of them needs 127 times fewer adjustable numbers. Where the saving comes from, checked by hand, and what happens when you borrow, stretch or forge pictures to train with."
-date: "2026-10-10"
-created: "2026-10-10"
-updated: "2026-10-10"
+date: "2026-09-24"
+created: "2026-09-24"
+updated: "2026-09-24"
 topics: ["Artificial Intelligence", "Computer Vision", "Neural Networks"]
 tags: ["AI", "Computer Vision", "Neural Networks", "Machine Learning", "Python"]
 linked_notes:

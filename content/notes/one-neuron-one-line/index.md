@@ -4,9 +4,9 @@ slug: "one-neuron-one-line"
 type: "note"
 status: "evergreen"
 summary: "Four points on a square and a rule a child can state, which a single artificial neuron can never learn. Why it cannot, what one extra layer changes, and what the popular story about a frozen field gets right and wrong."
-date: "2026-10-10"
-created: "2026-10-10"
-updated: "2026-10-10"
+date: "2026-08-08"
+created: "2026-08-08"
+updated: "2026-08-08"
 topics: ["Artificial Intelligence", "Neural Networks"]
 tags: ["AI", "Neural Networks", "History of AI", "Python", "Mathematics"]
 linked_notes:

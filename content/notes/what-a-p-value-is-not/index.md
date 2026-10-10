@@ -4,9 +4,9 @@ slug: "what-a-p-value-is-not"
 type: "note"
 status: "evergreen"
 summary: "A machine that never finds a real effect still announces a discovery about once in twenty runs. Running it 10,000 times is the quickest way I know to see what p < 0.05 does and does not say."
-date: "2026-10-10"
-created: "2026-10-10"
-updated: "2026-10-10"
+date: "2026-08-02"
+created: "2026-08-02"
+updated: "2026-08-02"
 topics: ["Statistics", "Probability"]
 tags: ["Statistics", "Probability", "Python", "Data", "Mathematics"]
 linked_notes:

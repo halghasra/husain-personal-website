@@ -4,9 +4,9 @@ slug: "drawing-uncertainty-bayesian-networks"
 type: "note"
 status: "evergreen"
 summary: "Five yes-or-no facts about a house need 31 numbers to describe completely. Draw the arrows between them honestly and ten will do. A runnable burglar alarm, and what a neighbour's phone call is really worth."
-date: "2026-10-10"
-created: "2026-10-10"
-updated: "2026-10-10"
+date: "2026-07-21"
+created: "2026-07-21"
+updated: "2026-07-21"
 topics: ["Artificial Intelligence", "Probability"]
 tags: ["AI", "Probability", "Python", "Knowledge Representation", "Mathematics"]
 linked_notes:

@@ -4,9 +4,9 @@ slug: "bayes-or-how-to-change-your-mind"
 type: "note"
 status: "evergreen"
 summary: "A test that catches 80 per cent of cases comes back positive, and your chance of being ill is about 7.5 per cent. The gap is the whole of Bayes' rule: how to let evidence move a belief without letting it replace the belief."
-date: "2026-10-10"
-created: "2026-10-10"
-updated: "2026-10-10"
+date: "2026-07-18"
+created: "2026-07-18"
+updated: "2026-07-18"
 topics: ["Artificial Intelligence", "Probability"]
 tags: ["AI", "Probability", "Mathematics", "Python", "Statistics"]
 linked_notes:

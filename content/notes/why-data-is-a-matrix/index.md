@@ -4,9 +4,9 @@ slug: "why-data-is-a-matrix"
 type: "note"
 status: "evergreen"
 summary: "A photograph, a customer list and three film reviews look nothing alike, yet inside a model they are the same object. How a grid of numbers turns similarity into angles, a layer into one product, and a table into something that can act."
-date: "2026-10-10"
-created: "2026-10-10"
-updated: "2026-10-10"
+date: "2026-07-30"
+created: "2026-07-30"
+updated: "2026-07-30"
 topics: ["Mathematics", "Machine Learning"]
 tags: ["Mathematics", "Machine Learning", "Data", "Neural Networks", "Python"]
 linked_notes:
