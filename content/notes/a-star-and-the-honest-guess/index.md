@@ -4,9 +4,9 @@ slug: "a-star-and-the-honest-guess"
 type: "note"
 status: "evergreen"
 summary: "Four tiles are out of place, so the puzzle takes four moves. It does not, and the gap between that quick count and the truth is the whole art of A*. One honest guess saves the search from wandering, and a boastful one quietly breaks it."
-date: "2026-10-10"
-created: "2026-10-10"
-updated: "2026-10-10"
+date: "2026-07-11"
+created: "2026-07-11"
+updated: "2026-07-11"
 topics: ["Artificial Intelligence", "Search"]
 tags: ["AI", "Search", "Python", "Optimisation", "Problem Framing"]
 linked_notes:

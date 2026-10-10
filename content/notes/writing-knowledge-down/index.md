@@ -4,9 +4,9 @@ slug: "writing-knowledge-down"
 type: "note"
 status: "evergreen"
 summary: "Tweety is a bird, so Tweety flies. Opus is a bird too. What happens when you try to give a machine a rule and an exception, why a graph of facts can resolve which Apple you meant, and the price of a language that can say anything."
-date: "2026-10-10"
-created: "2026-10-10"
-updated: "2026-10-10"
+date: "2026-10-03"
+created: "2026-10-03"
+updated: "2026-10-03"
 topics: ["Artificial Intelligence", "Knowledge Representation"]
 tags: ["AI", "Knowledge Representation", "History of AI", "Python"]
 linked_notes:

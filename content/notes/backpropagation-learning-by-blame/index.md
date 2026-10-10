@@ -4,9 +4,9 @@ slug: "backpropagation-learning-by-blame"
 type: "note"
 status: "evergreen"
 summary: "The sentence I first met was that the error is fed back and the weights are adjusted. Here is what that actually means: one tiny network, every number worked out and checked, and why the blame has to be shared out layer by layer."
-date: "2026-10-10"
-created: "2026-10-10"
-updated: "2026-10-10"
+date: "2026-08-09"
+created: "2026-08-09"
+updated: "2026-08-09"
 topics: ["Artificial Intelligence", "Neural Networks", "Optimisation"]
 tags: ["AI", "Neural Networks", "Optimisation", "Mathematics", "Python"]
 linked_notes:

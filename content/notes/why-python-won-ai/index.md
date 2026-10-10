@@ -4,9 +4,9 @@ slug: "why-python-won-ai"
 type: "note"
 status: "evergreen"
 summary: "The language the whole field runs on is one of the slow ones. I timed it, and then followed the puzzle down to what Python is really doing: calling other people's fast code, behind an interface that makes trying the next idea cheap."
-date: "2026-10-10"
-created: "2026-10-10"
-updated: "2026-10-10"
+date: "2026-06-24"
+created: "2026-06-24"
+updated: "2026-06-24"
 topics: ["Programming", "Artificial Intelligence"]
 tags: ["Python", "AI", "Machine Learning", "Data"]
 linked_notes:

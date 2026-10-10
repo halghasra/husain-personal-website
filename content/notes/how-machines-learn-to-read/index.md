@@ -4,9 +4,9 @@ slug: "how-machines-learn-to-read"
 type: "note"
 status: "evergreen"
 summary: "A person reads a sentence in a second. A machine has to cut it, count it, place it in space and weigh it, and every step either fixes a problem left by the last one or deletes something you needed. A walk through the stages, with code you can run."
-date: "2026-10-10"
-created: "2026-10-10"
-updated: "2026-10-10"
+date: "2026-09-11"
+created: "2026-09-11"
+updated: "2026-09-11"
 topics: ["Artificial Intelligence", "Natural Language Processing"]
 tags: ["AI", "NLP", "Machine Learning", "Python", "Data"]
 linked_notes:

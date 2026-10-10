@@ -4,9 +4,9 @@ slug: "memorising-is-not-learning"
 type: "note"
 status: "evergreen"
 summary: "A curve that passes through all twelve points exactly, with a training error of 0.0000, and an error of 5.89 on new ones. Overfitting, the two ways a model can be wrong, why the test set is honest only once, and a perfect score earned on pure noise."
-date: "2026-10-10"
-created: "2026-10-10"
-updated: "2026-10-10"
+date: "2026-09-07"
+created: "2026-09-07"
+updated: "2026-09-07"
 topics: ["Machine Learning", "Statistics", "Evaluation"]
 tags: ["Machine Learning", "Statistics", "Data", "Python", "Problem Framing"]
 linked_notes:

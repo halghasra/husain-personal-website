@@ -4,9 +4,9 @@ slug: "how-a-machine-searches"
 type: "note"
 status: "evergreen"
 summary: "Take the oldest item off the waiting list and you get ripples. Take the newest and you get a hiker who never turns back. One small swap, opposite behaviour, and why the route with fewer turns is not always the cheaper one."
-date: "2026-10-10"
-created: "2026-10-10"
-updated: "2026-10-10"
+date: "2026-07-10"
+created: "2026-07-10"
+updated: "2026-07-10"
 topics: ["Artificial Intelligence", "Search"]
 tags: ["AI", "Search", "Problem Framing", "Python", "Optimisation"]
 linked_notes:
