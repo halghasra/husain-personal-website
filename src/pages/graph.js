@@ -3,17 +3,10 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import ForceGraph from "../components/ForceGraph"
+import { Sheet, Row, PageHead, sheetStyles as sheet } from "../components/Sheet"
+import { useCatalogue } from "../hooks/useCatalogue"
+import { TYPE_COLORS, typeLabel } from "../config/entryTypes"
 import * as styles from "../styles/graph.module.css"
-
-const TYPE_COLORS = {
-  note: "#f59e0b",
-  essay: "#3b82f6",
-  "research-seed": "#10b981",
-  "paper-note": "#8b5cf6",
-  "learning-log": "#ec4899",
-  build: "#f97316",
-  article: "#06b6d4",
-}
 
 const TAG_FREQ_CAP = 7
 
@@ -122,149 +115,132 @@ const GraphPage = ({ data }) => {
     [allNodes, activeType]
   )
 
+  const { numberOf } = useCatalogue()
+  const typeCount = t => allNodes.filter(n => (n.frontmatter.type || "note") === t).length
+
   return (
     <Layout>
       <SEO
         title="Neural Map"
         description="A living map of notes, essays, readings and research seeds, showing how ideas connect."
       />
-      <div className={styles.graphWrapper}>
-        <header className={styles.pageHeader}>
-          <p className={styles.pageLabel}>Neural Map</p>
-          <h1 className={styles.pageHeading}>A living map of ideas.</h1>
-          <p className={styles.pageSubtitle}>
-            The graph is not here to look clever. It is here to show how one thought becomes another.
-          </p>
-        </header>
+      <Sheet>
+        <PageHead
+          title="A living map of ideas."
+          margin={<><b>Neural Map</b><br />{graphNodes.length} nodes<br />{graphEdges.length} connections</>}
+        >
+          <p>The graph is not here to look clever. It is here to show how one thought becomes another.</p>
+        </PageHead>
 
-        <div className={styles.controls}>
-          <div className={styles.viewToggle}>
-            <button
-              className={`${styles.viewBtn} ${activeView === "graph" ? styles.viewBtnActive : ""}`}
-              onClick={() => setActiveView("graph")}
-            >
-              Graph
-            </button>
-            <button
-              className={`${styles.viewBtn} ${activeView === "list" ? styles.viewBtnActive : ""}`}
-              onClick={() => setActiveView("list")}
-            >
-              List
-            </button>
-          </div>
-
-          <div className={styles.filters}>
-            {types.map(type => (
+        <Row margin={<b>View</b>} className={styles.controlRow}>
+          <div className={sheet.filters} role="group" aria-label="Choose a view">
+            {["graph", "list"].map(v => (
               <button
-                key={type}
-                onClick={() => setActiveType(type)}
-                className={`${styles.filterBtn} ${activeType === type ? styles.filterBtnActive : ""}`}
-                style={
-                  activeType === type && type !== "all"
-                    ? { borderColor: TYPE_COLORS[type], color: TYPE_COLORS[type] }
-                    : {}
-                }
+                key={v}
+                type="button"
+                aria-pressed={activeView === v}
+                className={`${sheet.filter} ${activeView === v ? sheet.filterActive : ""}`}
+                onClick={() => setActiveView(v)}
               >
-                {type === "all" ? "All" : type}
+                {v}
               </button>
             ))}
           </div>
-        </div>
-
-        <div className={styles.stats}>
-          <span className={styles.statItem}>{filteredGraphNodes.length} nodes</span>
-          <span className={styles.statDivider}>/</span>
-          <span className={styles.statItem}>{filteredGraphEdges.length} connections</span>
-          <span className={styles.statDivider}>/</span>
-          <span className={styles.statItem}>{graphNodes.length} total</span>
-        </div>
+        </Row>
+        <Row margin={<b>Filter</b>} className={styles.controlRow}>
+          <div className={sheet.filters} role="group" aria-label="Filter by type">
+            {types.map(type => (
+              <button
+                key={type}
+                type="button"
+                onClick={() => setActiveType(type)}
+                aria-pressed={activeType === type}
+                className={`${sheet.filter} ${activeType === type ? sheet.filterActive : ""}`}
+                style={activeType === type && type !== "all" ? { borderBottomColor: TYPE_COLORS[type] } : {}}
+              >
+                {type === "all" ? "all" : typeLabel(type).toLowerCase()}
+                <sup>{type === "all" ? allNodes.length : typeCount(type)}</sup>
+              </button>
+            ))}
+          </div>
+        </Row>
 
         {activeView === "graph" && (
-          <div className={styles.graphViewArea}>
+          <figure className={styles.plate}>
             {isClient ? (
-              <>
-                <ForceGraph
-                  nodes={filteredGraphNodes}
-                  edges={filteredGraphEdges}
-                  typeColors={TYPE_COLORS}
-                  height={540}
-                />
-                <p className={styles.graphHint}>
-                  Scroll to zoom &middot; Drag to pan &middot; Double-click to reset &middot; Click a node to open
-                </p>
-              </>
+              <ForceGraph
+                nodes={filteredGraphNodes}
+                edges={filteredGraphEdges}
+                typeColors={TYPE_COLORS}
+                height={560}
+              />
             ) : (
-              <div className={styles.graphPlaceholder} style={{ height: 540 }}>
+              <div className={styles.graphPlaceholder} style={{ height: 560 }}>
                 <span>Loading graph&hellip;</span>
               </div>
             )}
-          </div>
+            <figcaption className={styles.caption}>
+              <span className={styles.plateNo}>Plate II.</span> {filteredGraphNodes.length} entries
+              and {filteredGraphEdges.length} connections. Solid lines are links I made on purpose;
+              dashed lines join entries that share a tag. Hover a node for its title, scroll to zoom
+              in and read every title, drag to pan, double-click to reset, and click a node to open it.
+            </figcaption>
+          </figure>
         )}
 
         {activeView === "list" && (
-          <ul className={styles.nodeList}>
+          <ol className={styles.nodeList}>
             {filteredListNodes.map(node => {
               const type = node.frontmatter.type || "note"
-              const color = TYPE_COLORS[type] || "#f59e0b"
+              const n = numberOf(node.fields.slug)
               return (
-                <li key={node.fields.slug} className={styles.nodeItem}>
+                <li key={node.fields.slug} className={styles.nodeItem} style={{ "--c": TYPE_COLORS[type] }}>
+                  <div className={styles.nodeMargin}>
+                    {n && <span className={styles.nodeNum}>N° {n}</span>}
+                    <time>{node.frontmatter.date}</time>
+                  </div>
                   <Link to={node.fields.slug} className={styles.nodeLink}>
-                    <span
-                      className={styles.nodeDot}
-                      style={{ background: color }}
-                      aria-hidden="true"
-                    />
-                    <div className={styles.nodeContent}>
-                      <div className={styles.nodeMeta}>
-                        <span className={styles.nodeType} style={{ color }}>
-                          {type}
-                        </span>
-                        <time className={styles.nodeDate}>{node.frontmatter.date}</time>
-                      </div>
-                      <h3 className={styles.nodeTitle}>{node.frontmatter.title}</h3>
+                    <span className={styles.nodeDot} aria-hidden="true" />
+                    <span className={styles.nodeTitle}>{node.frontmatter.title}</span>
+                    <span className={styles.nodeMeta}>
+                      <span className={styles.nodeType}>{typeLabel(type).toLowerCase()}</span>
                       {node.frontmatter.tags && node.frontmatter.tags.length > 0 && (
-                        <div className={styles.nodeTags}>
-                          {node.frontmatter.tags.slice(0, 4).map(tag => (
-                            <span key={tag} className={styles.nodeTag}>{tag}</span>
-                          ))}
-                        </div>
+                        <> · {node.frontmatter.tags.slice(0, 4).join(", ").toLowerCase()}</>
                       )}
-                    </div>
+                    </span>
                   </Link>
                 </li>
               )
             })}
-          </ul>
+          </ol>
         )}
 
-        <div className={styles.legendSection}>
-          <p className={styles.legendLabel}>Node types</p>
+        <Row margin={<b>Key</b>} className={styles.legendRow}>
           <div className={styles.legend}>
             {Object.entries(TYPE_COLORS).map(([type, color]) => (
-              <div key={type} className={styles.legendItem}>
-                <span className={styles.legendDot} style={{ background: color }} />
-                <span className={styles.legendName}>{type}</span>
-              </div>
+              <span key={type} className={styles.legendItem} style={{ "--c": color }}>
+                {typeLabel(type).toLowerCase()}
+              </span>
             ))}
           </div>
           {activeView === "graph" && (
-            <div className={styles.edgeLegend}>
-              <div className={styles.legendItem}>
-                <svg width="24" height="10">
-                  <line x1="0" y1="5" x2="24" y2="5" stroke="rgba(245,158,11,0.5)" strokeWidth="1.5" />
+            <div className={styles.legend}>
+              <span className={styles.edgeItem}>
+                <svg width="24" height="10" aria-hidden="true">
+                  <line x1="0" y1="5" x2="24" y2="5" style={{ stroke: "var(--cyan)" }} strokeWidth="1.5" />
                 </svg>
-                <span className={styles.legendName}>explicit link</span>
-              </div>
-              <div className={styles.legendItem}>
-                <svg width="24" height="10">
-                  <line x1="0" y1="5" x2="24" y2="5" stroke="rgba(255,255,255,0.35)" strokeWidth="0.75" strokeDasharray="4,4" />
+                explicit link
+              </span>
+              <span className={styles.edgeItem}>
+                <svg width="24" height="10" aria-hidden="true">
+                  <line x1="0" y1="5" x2="24" y2="5" style={{ stroke: "var(--ink-faint)" }} strokeWidth="0.75" strokeDasharray="4,4" />
                 </svg>
-                <span className={styles.legendName}>shared tag</span>
-              </div>
+                shared tag
+              </span>
             </div>
           )}
-        </div>
-      </div>
+        </Row>
+      </Sheet>
     </Layout>
   )
 }
@@ -284,7 +260,7 @@ export const query = graphql`
         fields { slug }
         frontmatter {
           title
-          date(formatString: "DD MMM YYYY")
+          date(formatString: "D MMM YYYY")
           type
           tags
           topics

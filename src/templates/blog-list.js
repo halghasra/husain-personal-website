@@ -1,12 +1,15 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Layout from "../components/Layout";
+import SEO from "../components/SEO";
 import Search from "../components/Search";
+import EntryList from "../components/EntryList";
+import { Sheet, Row, PageHead } from "../components/Sheet";
 import * as styles from "../styles/blog-list.module.css";
 
+// Legacy /blog route, kept for old links. The notebook is the main index now.
 const BlogList = ({ data, pageContext }) => {
-  const posts = data.allMarkdownRemark.edges
+  const posts = data.allMarkdownRemark.edges.map(({ node }) => node)
   const { currentPage, numPages } = pageContext
   const isFirst = currentPage === 1
   const isLast = currentPage === numPages
@@ -15,54 +18,38 @@ const BlogList = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <div className={styles.blogHeader}>
-        <h1>Blog</h1>
-        <p>Explore my thoughts, ideas, and experiences</p>
-      </div>
-      <Search posts={posts.map(({ node }) => node)} />
-      <div className={styles.blogGrid}>
-        {posts.map(({ node }) => {
-          const coverImage = getImage(node.frontmatter.coverImage);
-          return (
-            <article key={node.fields.slug} className={styles.blogPostCard}>
-              {coverImage && (
-                <GatsbyImage 
-                  image={coverImage} 
-                  alt={node.frontmatter.title} 
-                  className={styles.coverImage}
-                />
+      <SEO title="Blog" description="Older writing: book notes, reviews and articles." />
+      <Sheet>
+        <PageHead
+          title="The old blog."
+          margin={<><b>Archive</b><br />page {currentPage} of {numPages}</>}
+        >
+          <p>Book notes, reviews and articles from before the notebook.</p>
+          <p>
+            Everything here also lives in the <Link to="/notebook">notebook</Link>.
+          </p>
+        </PageHead>
+        <Row margin={<b>Search</b>} className={styles.searchRow}>
+          <Search posts={posts} />
+        </Row>
+        <div className={styles.list}>
+          <EntryList posts={posts} />
+        </div>
+        <Row margin={null}>
+          <nav className={styles.pagination} aria-label="Pages">
+            <span>
+              {!isFirst && (
+                <Link to={prevPage} rel="prev">← newer</Link>
               )}
-              <div className={styles.cardContent}>
-                <h2>
-                  <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
-                </h2>
-                <p className={styles.postDate}>{node.frontmatter.date}</p>
-                <p className={styles.postExcerpt}>{node.excerpt}</p>
-                <div className={styles.tags}>
-                  {node.frontmatter.tags && node.frontmatter.tags.map(tag => (
-                    <Link to={`/tags?tag=${tag}`} key={tag} className={styles.tag}>
-                      {tag}
-                    </Link>
-                  ))}
-                </div>
-                <Link to={node.fields.slug} className={styles.readMoreLink}>Read more</Link>
-              </div>
-            </article>
-          );
-        })}
-      </div>
-      <nav className={styles.pagination}>
-        {!isFirst && (
-          <Link to={prevPage} rel="prev" className={styles.paginationLink}>
-            ← Previous Page
-          </Link>
-        )}
-        {!isLast && (
-          <Link to={nextPage} rel="next" className={styles.paginationLink}>
-            Next Page →
-          </Link>
-        )}
-      </nav>
+            </span>
+            <span>
+              {!isLast && (
+                <Link to={nextPage} rel="next">older →</Link>
+              )}
+            </span>
+          </nav>
+        </Row>
+      </Sheet>
     </Layout>
   );
 };
@@ -87,14 +74,11 @@ export const blogListQuery = graphql`
             slug
           }
           frontmatter {
-            date(formatString: "MMMM DD, YYYY")
+            date(formatString: "D MMM YYYY")
             title
+            type
+            summary
             tags
-            coverImage {
-              childImageSharp {
-                gatsbyImageData(width: 600, height: 300, layout: CONSTRAINED)
-              }
-            }
           }
         }
       }

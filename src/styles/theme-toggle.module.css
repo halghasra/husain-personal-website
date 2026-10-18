@@ -1,69 +1,33 @@
-.toggleSwitch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 30px;
-  }
-  
-  .toggleSwitch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-    border-radius: 30px;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 2px;
-    bottom: 2px;
-    background-color: white;
-    transition: .4s;
-    border-radius: 50%;
-  }
-  
-  input:checked + .slider {
-    background-color: #ff6600;
-  }
-  
-  input:checked + .slider:before {
-    transform: translateX(30px);
-  }
-  
-  .icon {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: .4s;
-    font-size: 16px;
-    z-index: 1;
-  }
-  
-  .sunIcon {
-    left: 6px;
-  }
-  
-  .moonIcon {
-    right: 6px;
-  }
-  
-  input:checked + .slider .sunIcon {
-    opacity: 0;
-  }
-  
-  input:not(:checked) + .slider .moonIcon {
-    opacity: 0;
-  }
+.lamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--mono);
+  font-size: var(--s-1);
+  line-height: 1.4;
+  color: var(--ink-soft);
+  background: none;
+  border: 1px solid var(--rule);
+  padding: 0.2rem 0.6rem;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.lamp:hover {
+  color: var(--ink);
+  border-color: var(--ink-faint);
+}
+
+.dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 8px var(--cyan);
+}
+
+:global(.light) .dot {
+  background: transparent;
+  border: 1px solid var(--cyan);
+  box-shadow: none;
+}

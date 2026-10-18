@@ -1,0 +1,198 @@
+/* The ruled sheet shared by every page */
+.sheet {
+  position: relative;
+}
+
+/* The margin rule of a lab notebook */
+.sheet::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--margin-w) + var(--gap) / 2);
+  width: 1px;
+  background: var(--rule);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: var(--margin-w) minmax(0, var(--measure));
+  column-gap: var(--gap);
+}
+
+.rowWide {
+  grid-template-columns: var(--margin-w) minmax(0, 1fr);
+}
+
+.margin {
+  font-family: var(--mono);
+  font-size: var(--s-1);
+  color: var(--ink-faint);
+  line-height: 1.6;
+  text-align: right;
+  min-width: 0;
+}
+
+.margin b {
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+
+.margin a {
+  color: var(--ink-soft);
+}
+
+.margin a:hover {
+  color: var(--cyan);
+}
+
+.main {
+  min-width: 0;
+}
+
+/* Annotation in iron-gall ink: status, marginal remarks */
+.gall {
+  color: var(--gall);
+  font-style: italic;
+}
+
+/* ---------- Page heads ---------- */
+.pageHead {
+  padding-block: 3.5rem 2.25rem;
+}
+
+.pageTitle {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--s4);
+  font-variation-settings: "opsz" 96;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin: 0 0 1.1rem;
+}
+
+.pageLede p {
+  margin: 0 0 0.75rem;
+  max-width: 34rem;
+  color: var(--ink-soft);
+}
+
+.pageLede p:first-child {
+  color: var(--ink);
+  font-size: var(--s1);
+  font-style: italic;
+  line-height: 1.55;
+}
+
+/* ---------- Sections ---------- */
+.section {
+  padding-block: 2.75rem;
+  border-top: 1px solid var(--rule);
+}
+
+.sectionTitle {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: var(--s2);
+  line-height: 1.15;
+  margin: 0 0 1.25rem;
+}
+
+.section p {
+  max-width: var(--measure);
+}
+
+/* ---------- Theorem-style question (home, research) ---------- */
+.problem p {
+  margin: 0 0 1rem;
+}
+
+.statement {
+  font-style: italic;
+  font-size: var(--s1);
+  line-height: 1.55;
+}
+
+.problemLabel {
+  font-style: normal;
+  font-weight: 600;
+  font-variant: small-caps;
+  letter-spacing: 0.04em;
+  font-size: 1.1rem;
+}
+
+.remarks {
+  color: var(--ink-soft);
+}
+
+.remarks i {
+  color: var(--ink);
+}
+
+.qed {
+  float: right;
+  width: 0.6rem;
+  height: 0.6rem;
+  border: 1px solid var(--ink-faint);
+  margin-top: 0.55rem;
+}
+
+/* ---------- Text filters (notebook, graph, tags) ---------- */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.4rem;
+  font-family: var(--mono);
+  font-size: var(--s-1);
+}
+
+.filter {
+  background: none;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  padding: 0.1rem 0;
+  font: inherit;
+  color: var(--ink-faint);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.filter:hover {
+  color: var(--ink);
+}
+
+.filterActive {
+  color: var(--ink);
+  border-bottom-color: var(--cyan);
+}
+
+.filter sup {
+  font-size: 0.7em;
+  margin-left: 0.15rem;
+  color: var(--ink-faint);
+}
+
+@media (max-width: 760px) {
+  .sheet::before {
+    display: none;
+  }
+
+  .row,
+  .rowWide {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .margin {
+    text-align: left;
+    margin-bottom: 0.75rem;
+  }
+
+  .margin:empty {
+    display: none;
+  }
+
+  .pageHead {
+    padding-block: 2.25rem 1.5rem;
+  }
+}

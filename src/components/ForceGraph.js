@@ -28,7 +28,11 @@ const ForceGraph = ({ nodes, edges, typeColors, height = 540 }) => {
 
       const zoomBehavior = d3.zoom()
         .scaleExtent([0.15, 5])
-        .on("zoom", event => g.attr("transform", event.transform))
+        .on("zoom", event => {
+          g.attr("transform", event.transform)
+          // Titles fade in as you zoom; at the overview scale they would only overlap
+          g.selectAll(".node-label").style("opacity", Math.max(0, Math.min(0.85, (event.transform.k - 1.1) * 1.5)))
+        })
 
       svg.call(zoomBehavior)
       svg.on("dblclick.zoom", () => {
@@ -64,8 +68,8 @@ const ForceGraph = ({ nodes, edges, typeColors, height = 540 }) => {
         .selectAll("line")
         .data(simEdges)
         .join("line")
-        .style("stroke", d => d.edgeType === "explicit" ? "rgba(245,158,11,0.4)" : "var(--text-muted)")
-        .style("stroke-opacity", d => d.edgeType === "explicit" ? 1 : 0.18)
+        .style("stroke", d => d.edgeType === "explicit" ? "var(--cyan)" : "var(--ink-faint)")
+        .style("stroke-opacity", d => d.edgeType === "explicit" ? 0.6 : 0.35)
         .style("stroke-width", d => d.edgeType === "explicit" ? "1.5" : "0.75")
         .style("stroke-dasharray", d => d.edgeType === "shared-tag" ? "4,4" : null)
 
@@ -112,19 +116,21 @@ const ForceGraph = ({ nodes, edges, typeColors, height = 540 }) => {
 
       nodeGroup.append("circle")
         .attr("r", d => (d.weight || 1) * 5 + 5)
-        .attr("fill", d => typeColors[d.type] || "#f59e0b")
+        // style(), not attr(): CSS variables only resolve in styles, and they keep the theme
+        .style("fill", d => typeColors[d.type] || "var(--t-note)")
         .attr("fill-opacity", 0.85)
-        .attr("stroke", d => typeColors[d.type] || "#f59e0b")
+        .style("stroke", d => typeColors[d.type] || "var(--t-note)")
         .attr("stroke-width", 2)
         .attr("stroke-opacity", 0.35)
 
       nodeGroup.append("text")
+        .attr("class", "node-label")
         .attr("text-anchor", "middle")
         .attr("dy", d => (d.weight || 1) * 5 + 18)
         .style("font-size", "9px")
-        .style("font-family", "var(--font-primary, sans-serif)")
-        .style("fill", "var(--text-muted)")
-        .style("opacity", "0.75")
+        .style("font-family", "var(--mono)")
+        .style("fill", "var(--ink-faint)")
+        .style("opacity", "0")
         .style("pointer-events", "none")
         .style("user-select", "none")
         .text(d => d.label.length > 24 ? d.label.substring(0, 22) + "…" : d.label)
@@ -154,7 +160,7 @@ const ForceGraph = ({ nodes, edges, typeColors, height = 540 }) => {
           <span className={styles.tooltipMeta}>
             <span
               className={styles.tooltipType}
-              style={{ color: typeColors[tooltip.node.type] || "#f59e0b" }}
+              style={{ color: typeColors[tooltip.node.type] || "var(--t-note)" }}
             >
               {tooltip.node.type}
             </span>

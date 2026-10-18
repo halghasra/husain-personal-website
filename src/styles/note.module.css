@@ -1,218 +1,172 @@
 /* =============================================
-   Note page: long-form reading layout
-   left: sticky contents | right: the note
-   Used by src/templates/note.js for content/notes
+   Note page: long-form reading on the ruled sheet.
+   Margin: catalogue data + sticky numbered contents.
+   Used by src/templates/note.js (and blog-post.js reuses the prose rules).
    ============================================= */
 
-.noteContainer {
-  display: grid;
-  grid-template-columns: 256px minmax(0, 1fr);
-  min-height: calc(100vh - 65px);
+.noteHead {
+  padding-block: 3.25rem 2.25rem;
 }
 
-/* ---- Left sidebar ---- */
-.noteSidebar {
-  position: sticky;
-  top: 65px;
-  height: calc(100vh - 65px);
-  overflow-y: auto;
-  border-right: 1px solid var(--border);
-  background: var(--bg-subtle);
-  flex-shrink: 0;
-}
-
-.sidebarInner {
-  padding: 2rem 1.25rem 3rem;
-}
-
-.sidebarBack {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  color: var(--text-muted);
-  text-decoration: none;
-  font-family: var(--font-primary);
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  transition: color 0.15s ease;
+.back {
+  display: inline-block;
   margin-bottom: 1.5rem;
-}
-
-.sidebarBack:hover {
-  color: var(--text-link);
+  color: var(--ink-soft);
   text-decoration: none;
-  opacity: 1;
 }
 
-.sidebarMeta {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  margin-bottom: 1.75rem;
-  padding-bottom: 1.25rem;
-  border-bottom: 1px solid var(--border);
+.back:hover {
+  color: var(--cyan);
+  text-decoration: none;
 }
 
-.sidebarCategory {
-  font-family: var(--font-primary);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-.sidebarTopic {
-  font-family: var(--font-primary);
-  font-size: 0.82rem;
-  color: var(--text-muted);
-  line-height: 1.4;
-}
-
-.sidebarLabel {
-  font-family: var(--font-primary);
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin: 0 0 0.6rem 0;
-  opacity: 0.7;
-}
-
-.sidebarToc {
-  display: flex;
-  flex-direction: column;
-}
-
-.tocLink {
+.metaBlock {
   display: block;
-  margin-left: 0;
-  padding: 0.32rem 0 0.32rem 0.85rem;
-  color: var(--text-muted);
-  text-decoration: none;
-  font-family: var(--font-primary);
-  font-size: 0.82rem;
-  line-height: 1.45;
-  border-left: 2px solid transparent;
-  transition: color 0.15s ease, border-color 0.15s ease;
-}
-
-.tocLink:hover {
-  color: var(--text-title);
-  text-decoration: none;
-  opacity: 1;
-}
-
-.tocLinkSub {
-  padding-left: 1.6rem;
-  font-size: 0.77rem;
-  opacity: 0.85;
-}
-
-.tocLinkActive {
-  color: var(--text-link);
-  border-left-color: var(--text-link);
-  opacity: 1;
-}
-
-/* ---- Main column ---- */
-.noteMain {
-  padding: 3rem clamp(1.5rem, 5vw, 4rem) 6rem;
-  min-width: 0;
-}
-
-.noteContent {
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-.noteHeader {
-  display: block;
-  margin-bottom: 2.5rem;
-  padding: 0 0 1.75rem;
-  border-bottom: 1px solid var(--border);
-}
-
-.noteEyebrow {
-  font-family: var(--font-primary);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin: 0 0 0.75rem;
 }
 
 .noteTitle {
-  font-size: clamp(1.9rem, 3.2vw, 2.7rem);
-  line-height: 1.12;
-  margin: 0 0 1rem;
-}
-
-.noteLede {
-  font-family: var(--font-secondary);
-  font-size: 1.15rem;
-  line-height: 1.6;
-  color: var(--text-muted);
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(2.1rem, 5vw, 3.4rem);
+  font-variation-settings: "opsz" 72;
+  line-height: 1.08;
   margin: 0 0 1.25rem;
 }
 
-.noteMeta {
-  font-family: var(--font-primary);
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  margin: 0 0 1rem;
+.noteLede {
+  font-style: italic;
+  font-size: var(--s1);
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0 0 1.25rem;
+}
+
+.topics {
+  font-family: var(--text);
+  font-variant: small-caps;
+  letter-spacing: 0.05em;
+  font-size: 1rem;
+  color: var(--ink);
+  margin: 0 0 0.6rem;
 }
 
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 0.3rem 1rem;
 }
 
-.tag {
-  font-family: var(--font-primary);
-  font-size: 0.72rem;
-  padding: 0.2rem 0.6rem;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  color: var(--text-muted);
+/* ---- Contents in the margin ---- */
+.toc {
+  position: sticky;
+  top: calc(env(safe-area-inset-top, 0px) + 1.5rem);
+  text-align: right;
+  max-height: calc(100vh - 3rem);
+  overflow-y: auto;
+}
+
+.toc ol {
+  list-style: none;
+  margin: 0.6rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.toc li {
+  margin: 0;
+}
+
+.tocLink {
+  display: block;
+  color: var(--ink-faint);
+  text-decoration: none;
+  line-height: 1.35;
+}
+
+.tocLink:hover {
+  color: var(--ink);
   text-decoration: none;
 }
 
-.tag:hover {
-  color: var(--text-link);
-  border-color: var(--text-link);
-  text-decoration: none;
+.tocLinkSub {
+  font-size: 0.75rem;
+  opacity: 0.85;
+}
+
+.tocLinkActive {
+  color: var(--cyan);
+}
+
+.tocNum {
+  margin-right: 0.4rem;
+}
+
+.tocNum::after {
+  content: " ·";
 }
 
 /* ---- Prose ---- */
 .noteBody {
-  line-height: 1.85;
-  font-size: 1.05rem;
+  font-size: 1.12rem;
+  line-height: 1.75;
+  counter-reset: sec fig;
+}
+
+.noteBody > p:first-child::first-letter {
+  font-family: var(--display);
+  float: left;
+  font-size: 3.6em;
+  line-height: 0.85;
+  padding: 0.08em 0.1em 0 0;
+  color: var(--cyan);
 }
 
 .noteBody h2 {
-  font-size: 1.6rem;
-  margin-top: 3.25rem;
-  margin-bottom: 0.6rem;
+  font-size: var(--s2);
+  margin: 3rem 0 1rem;
+  scroll-margin-top: 2rem;
+  counter-increment: sec;
+}
+
+.noteBody h2::before {
+  content: "§" counter(sec);
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--ink-faint);
+  margin-right: 0.75rem;
+  vertical-align: 0.35rem;
 }
 
 .noteBody h3 {
-  font-size: 1.22rem;
-  margin-top: 2.25rem;
-  margin-bottom: 0.4rem;
+  font-size: 1.3rem;
+  margin: 2.25rem 0 0.6rem;
+  scroll-margin-top: 2rem;
 }
 
 .noteBody h4 {
+  font-family: var(--text);
+  font-variant: small-caps;
+  letter-spacing: 0.05em;
+  font-weight: 600;
   font-size: 1.05rem;
-  margin-top: 1.75rem;
+  margin: 1.75rem 0 0.5rem;
 }
 
 .noteBody p {
-  margin-bottom: 1.3rem;
+  margin-bottom: 1.35rem;
+}
+
+.noteBody a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 0.2em;
+}
+
+.noteBody a:hover {
+  text-decoration-color: var(--cyan);
 }
 
 .noteBody img,
@@ -223,175 +177,230 @@
 
 .noteBody figure {
   margin: 2.25rem 0;
+  padding: 1.25rem;
+  border: 1px solid var(--rule);
+  background: var(--ground-2);
+  counter-increment: fig;
 }
 
 .noteBody figcaption {
-  font-family: var(--font-primary);
-  font-size: 0.82rem;
-  line-height: 1.5;
-  color: var(--text-muted);
-  margin-top: 0.75rem;
-  text-align: center;
+  font-size: var(--s-1);
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin-top: 0.9rem;
+  text-align: left;
+}
+
+.noteBody figcaption::before {
+  content: "Fig. " counter(fig) ". ";
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--ink);
 }
 
 .noteBody table {
   width: 100%;
   border-collapse: collapse;
   margin: 2rem 0;
-  font-size: 0.9rem;
-  border: 1px solid var(--border);
+  font-size: 0.92rem;
   display: block;
   overflow-x: auto;
+  border-block: 1px solid var(--ink-faint);
 }
 
 .noteBody th {
-  background: var(--bg-subtle);
-  font-family: var(--font-primary);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: var(--text-title);
+  font-family: var(--mono);
+  font-size: var(--s-2);
+  font-weight: 400;
+  color: var(--ink-soft);
   padding: 0.6rem 0.85rem;
   text-align: left;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--rule);
 }
 
 .noteBody td {
   padding: 0.55rem 0.85rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px dotted var(--rule);
   vertical-align: top;
   line-height: 1.55;
 }
 
-.noteBody pre {
-  font-size: 0.85rem;
-  line-height: 1.6;
-}
-
 /* A displayed formula: <div class="formula">P(A | B) = P(B | A) P(A) / P(B)</div> */
 .noteBody :global(.formula) {
-  font-family: 'Fira Code', 'Courier New', monospace;
-  font-size: 0.98rem;
+  font-family: var(--text);
+  font-style: italic;
+  font-size: 1.15rem;
   text-align: center;
-  padding: 1rem 1.25rem;
-  margin: 1.75rem 0;
-  background: var(--bg-subtle);
-  border: 1px solid var(--border);
-  border-radius: 6px;
+  padding: 1rem 0;
+  margin: 0 0 1.35rem;
+  border-block: 1px solid var(--rule);
   overflow-x: auto;
   white-space: nowrap;
-  color: var(--text-title);
+  color: var(--ink);
 }
 
-/* Diagram vocabulary for inline SVG, so diagrams follow light and dark mode.
-   Use class names instead of hard-coded colours. */
-.noteBody :global(.dg-ink) { fill: var(--text-title); }
-.noteBody :global(.dg-text) { fill: var(--text-normal); font-family: var(--font-primary); }
-.noteBody :global(.dg-muted) { fill: var(--text-muted); font-family: var(--font-primary); }
-.noteBody :global(.dg-accent) { fill: var(--accent); }
-.noteBody :global(.dg-accent-stroke) { stroke: var(--accent); fill: none; }
-.noteBody :global(.dg-line) { stroke: var(--text-muted); fill: none; }
-.noteBody :global(.dg-box) { fill: var(--bg-card); stroke: var(--border); }
-.noteBody :global(.dg-subtle) { fill: var(--bg-subtle); stroke: var(--border); }
-.noteBody :global(.dg-highlight) { fill: var(--amber-dim); stroke: var(--accent); }
+/* Diagram vocabulary for inline SVG, so diagrams follow both themes.
+   Use these class names instead of hard-coded colours. */
+.noteBody :global(.dg-ink) { fill: var(--ink); }
+.noteBody :global(.dg-text) { fill: var(--ink); font-family: var(--mono); }
+.noteBody :global(.dg-muted) { fill: var(--ink-faint); font-family: var(--mono); }
+.noteBody :global(.dg-accent) { fill: var(--cyan); }
+.noteBody :global(.dg-accent-stroke) { stroke: var(--cyan); fill: none; }
+.noteBody :global(.dg-line) { stroke: var(--ink-faint); fill: none; }
+.noteBody :global(.dg-box) { fill: var(--ground-3); stroke: var(--rule); }
+.noteBody :global(.dg-subtle) { fill: var(--ground); stroke: var(--rule); }
+.noteBody :global(.dg-highlight) { fill: var(--cyan-dim); stroke: var(--cyan); }
 
 /* ---- Connected notes ---- */
 .connected {
   margin: 3.5rem 0 2rem;
-  padding: 1.5rem 1.5rem 1.25rem;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--bg-subtle);
+  border-top: 1px solid var(--rule);
+  padding-top: 1.5rem;
 }
 
-.connected ul {
-  list-style: none;
-  padding: 0;
+.connectedTitle {
+  font-family: var(--text);
+  font-variant: small-caps;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  font-size: 1.05rem;
   margin: 0 0 1rem;
 }
 
+.connected ol {
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  display: grid;
+  gap: 0.9rem;
+}
+
 .connected li {
-  margin: 0 0 0.9rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+  margin: 0;
+}
+
+.connNum {
+  font-family: var(--mono);
+  font-size: var(--s-1);
+  color: var(--ink-faint);
+  padding-top: 0.25rem;
 }
 
 .connected li a {
-  font-family: var(--font-primary);
-  font-weight: 600;
-  font-size: 0.95rem;
+  font-family: var(--display);
+  font-size: 1.15rem;
+  color: var(--ink);
+  text-decoration: none;
 }
 
-.connected li span {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  line-height: 1.5;
+.connected li a:hover {
+  color: var(--cyan);
 }
 
-.graphLink {
-  font-family: var(--font-primary);
-  font-size: 0.8rem;
+.connected li p {
+  margin: 0.15rem 0 0;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+/* ---- End matter ---- */
+.endmatter {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  display: grid;
+  gap: 1.25rem;
 }
 
 .comments {
   margin-top: 2rem;
   padding-top: 2rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--rule);
+}
+
+.comments h3 {
+  font-family: var(--text);
+  font-variant: small-caps;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-top: 0;
 }
 
 .pager {
   display: flex;
   justify-content: space-between;
   gap: 1.5rem;
-  margin-top: 3rem;
+  margin-top: 2.5rem;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--border);
-  font-family: var(--font-primary);
-  font-size: 0.85rem;
+  border-top: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: var(--s-1);
+}
+
+.pager span {
+  max-width: 48%;
 }
 
 .pager a {
-  margin-left: 0;
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.pager a:hover {
+  color: var(--cyan);
 }
 
 .pager span:last-child {
   text-align: right;
 }
 
-/* ---- Responsive ---- */
-@media (max-width: 960px) {
-  .noteContainer {
-    grid-template-columns: minmax(0, 1fr);
+/* ---- Narrow ---- */
+@media (max-width: 760px) {
+  .noteHead {
+    padding-block: 2rem 1.5rem;
   }
 
-  .noteSidebar {
-    display: none;
+  .back {
+    margin-bottom: 0.75rem;
   }
 
-  .noteMain {
-    padding: 2rem 1.5rem 4rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .noteMain {
-    padding: 1.5rem 1rem 3rem;
-  }
-
-  .noteTitle {
-    font-size: 1.7rem;
+  .toc {
+    position: static;
+    text-align: left;
+    max-height: none;
+    border: 1px solid var(--rule);
+    padding: 0.9rem 1rem;
+    margin-bottom: 1rem;
   }
 
   .noteBody {
-    font-size: 1rem;
+    font-size: 1.04rem;
+  }
+
+  .noteBody figure {
+    padding: 0.75rem;
   }
 
   .pager {
     flex-direction: column;
   }
 
+  .pager span {
+    max-width: none;
+  }
+
   .pager span:last-child {
     text-align: left;
   }
+}
+
+/* Cover image on older posts (blog-post.js) */
+.cover {
+  margin: 0 0 2rem;
+  border: 1px solid var(--rule);
 }

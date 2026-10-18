@@ -1,0 +1,40 @@
+.frame {
+  position: relative;
+  border: 1px solid var(--rule);
+  background: var(--ground-2);
+  height: 380px;
+}
+
+.canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+}
+
+.corner {
+  position: absolute;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+  pointer-events: none;
+  max-width: 60%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tl { top: 0.6rem; left: 0.8rem; }
+.tr { top: 0.6rem; right: 0.8rem; }
+.bl { bottom: 0.6rem; left: 0.8rem; }
+.br { bottom: 0.6rem; right: 0.8rem; color: var(--ink-soft); }
+
+@media (max-width: 760px) {
+  .frame {
+    height: 300px;
+  }
+
+  .bl {
+    display: none;
+  }
+}

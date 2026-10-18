@@ -26,7 +26,7 @@ const Search = ({ posts }) => {
     <div className={styles.searchContainer}>
       <input
         type="text"
-        placeholder="Search posts..."
+        placeholder="search the archive"
         value={query}
         onChange={handleSearch}
         className={styles.searchInput}

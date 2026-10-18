@@ -1,79 +1,69 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useState } from "react"
 import { Link } from "gatsby"
 import { ThemeContext } from "./ThemeContext"
 import ThemeToggle from "./ThemeToggle"
 import Footer from "./Footer"
 import * as styles from "../styles/layout.module.css"
 
+const NAV = [
+  { to: "/", label: "home" },
+  { to: "/notebook", label: "notebook", partial: true },
+  { to: "/graph", label: "neural map" },
+  { to: "/research", label: "research" },
+  { to: "/reading", label: "reading" },
+  { to: "/builds", label: "builds" },
+  { to: "/about", label: "about" },
+]
+
 const Layout = ({ children, fullWidth }) => {
   const { isDarkMode, toggleTheme } = useContext(ThemeContext)
   const [menuOpen, setMenuOpen] = useState(false)
 
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", isDarkMode)
-  }, [isDarkMode])
-
-  const wrapperClass = `${styles.siteWrapper} ${
-    fullWidth ? styles.siteWrapperFull : styles.siteWrapperDefault
-  }`
-
   return (
-    <div className={wrapperClass}>
-      <header className={styles.header}>
-        <div className={styles.headerContent}>
-          <Link to="/" className={styles.logoLink}>
-            <span className={styles.logo}>HG</span>
-          </Link>
+    <div className={`${styles.siteWrapper} ${fullWidth ? styles.siteWrapperFull : ""}`}>
+      <header className={styles.mast}>
+        <Link to="/" className={styles.sig} aria-label="Husain Alghasra, home">
+          Husain <i>Alghasra</i>
+        </Link>
 
-          <button
-            className={styles.menuToggle}
-            onClick={() => setMenuOpen(o => !o)}
-            aria-label="Toggle navigation"
-            aria-expanded={menuOpen}
-          >
-            <span className={menuOpen ? styles.menuIconOpen : styles.menuIcon} />
-          </button>
+        <button
+          type="button"
+          className={styles.menuToggle}
+          onClick={() => setMenuOpen(o => !o)}
+          aria-label="Toggle navigation"
+          aria-expanded={menuOpen}
+          aria-controls="site-nav"
+        >
+          {menuOpen ? "close" : "index"}
+        </button>
 
-          <div className={`${styles.navAndToggle} ${menuOpen ? styles.navOpen : ""}`}>
-            <nav className={styles.nav} onClick={() => setMenuOpen(false)}>
-              <Link to="/" className={styles.navLink} activeClassName={styles.activeLink}>
-                Home
-              </Link>
-              <Link to="/notebook" className={styles.navLink} activeClassName={styles.activeLink} partiallyActive>
-                Notebook
-              </Link>
-              <Link to="/graph" className={styles.navLink} activeClassName={styles.activeLink}>
-                Neural Map
-              </Link>
-              <Link to="/research" className={styles.navLink} activeClassName={styles.activeLink}>
-                Research
-              </Link>
-              <Link to="/reading" className={styles.navLink} activeClassName={styles.activeLink}>
-                Reading
-              </Link>
-              <Link to="/builds" className={styles.navLink} activeClassName={styles.activeLink}>
-                Builds
-              </Link>
-              <Link to="/about" className={styles.navLink} activeClassName={styles.activeLink}>
-                About
-              </Link>
-              <a
-                href="https://curiosynapse.com"
-                className={`${styles.navLink} ${styles.navLinkExternal}`}
-                target="_blank"
-                rel="noopener noreferrer"
+        <div className={`${styles.mastRight} ${menuOpen ? styles.navOpen : ""}`}>
+          <nav id="site-nav" className={styles.nav} aria-label="Site" onClick={() => setMenuOpen(false)}>
+            {NAV.map(item => (
+              <Link
+                key={item.to}
+                to={item.to}
+                className={styles.navLink}
+                activeClassName={styles.activeLink}
+                partiallyActive={item.partial || false}
               >
-                Curio Synapse
-              </a>
-            </nav>
-            <div className={styles.themeToggleWrapper}>
-              <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
-            </div>
-          </div>
+                {item.label}
+              </Link>
+            ))}
+            <a
+              href="https://curiosynapse.com"
+              className={`${styles.navLink} ${styles.navLinkExternal}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              curio synapse ↗
+            </a>
+          </nav>
+          <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
         </div>
       </header>
 
-      <main>{children}</main>
+      <main className={styles.main}>{children}</main>
       <Footer />
     </div>
   )

@@ -1,8 +1,10 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import { siteConfig } from "../config/siteConfig"
+import EntryList from "../components/EntryList"
+import { Sheet, Row, PageHead, Section, sheetStyles as sheet } from "../components/Sheet"
 import * as styles from "../styles/builds.module.css"
 
 const FEATURED_BUILDS = [
@@ -35,84 +37,56 @@ const BuildsPage = ({ data }) => {
         title="Builds"
         description="Prototypes, tools, experiments, and software projects. Things that started as questions."
       />
-      <div className={styles.buildsWrapper}>
-        <header className={styles.pageHeader}>
-          <p className={styles.pageLabel}>Builds</p>
-          <h1 className={styles.pageHeading}>Projects &amp; Experiments</h1>
-          <p className={styles.pageSubtitle}>
-            This is where I keep track of what I am building.
+      <Sheet>
+        <PageHead
+          title="Projects & experiments."
+          margin={<><b>Builds</b><br />{FEATURED_BUILDS.length} active</>}
+        >
+          <p>This is where I keep track of what I am building.</p>
+          <p>
+            Some are small experiments. Some are prototypes. Some are attempts to understand an
+            idea by forcing it to become real.
           </p>
-          <p className={styles.pageBody}>
-            Some are small experiments. Some are prototypes. Some are attempts to understand
-            an idea by forcing it to become real.
-          </p>
-        </header>
+        </PageHead>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionHeading}>Active projects</h2>
-          <ul className={styles.buildGrid}>
+        <Section margin={<b>On the bench</b>} title="Active projects">
+          <ul className={styles.builds}>
             {FEATURED_BUILDS.map(build => (
-              <li key={build.title} className={styles.buildCard}>
-                <div className={styles.buildCardHeader}>
-                  <h3 className={styles.buildTitle}>{build.title}</h3>
-                  <span className={`${styles.buildStatus} ${styles["status_" + build.status]}`}>
-                    {build.status}
-                  </span>
-                </div>
+              <li key={build.title} className={styles.build}>
+                <h3 className={styles.buildTitle}>
+                  {build.title} <span className={sheet.gall}>{build.status}</span>
+                </h3>
                 <p className={styles.buildDescription}>{build.description}</p>
-                <div className={styles.buildTags}>
-                  {build.tags.map(tag => (
-                    <span key={tag} className={styles.buildTag}>{tag}</span>
-                  ))}
-                </div>
+                <p className={styles.buildTags}>{build.tags.join(" · ").toLowerCase()}</p>
                 {build.link && (
-                  <a
-                    href={build.link}
-                    className={styles.buildLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Visit &rarr;
+                  <a href={build.link} className="more" target="_blank" rel="noopener noreferrer">
+                    Visit ↗
                   </a>
                 )}
               </li>
             ))}
           </ul>
-        </section>
+        </Section>
 
         {buildPosts.length > 0 && (
-          <section className={styles.section}>
-            <h2 className={styles.sectionHeading}>Build notes</h2>
-            <ul className={styles.postList}>
-              {buildPosts.map(post => (
-                <li key={post.fields.slug} className={styles.postItem}>
-                  <Link to={post.fields.slug} className={styles.postLink}>
-                    <time className={styles.postDate}>{post.frontmatter.date}</time>
-                    <h3 className={styles.postTitle}>{post.frontmatter.title}</h3>
-                    {post.frontmatter.summary && (
-                      <p className={styles.postSummary}>{post.frontmatter.summary}</p>
-                    )}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
+          <div className={styles.group}>
+            <Row margin={<b>Build notes</b>}>
+              <h2 className={styles.groupTitle}>Build notes</h2>
+            </Row>
+            <EntryList posts={buildPosts} showType={false} />
+          </div>
         )}
 
-        <section className={styles.githubSection}>
+        <Section margin={<b>Elsewhere</b>}>
           <p>
             More code and experiments on{" "}
-            <a
-              href={siteConfig.socials.github}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href={siteConfig.socials.github} target="_blank" rel="noopener noreferrer">
               GitHub
             </a>
             .
           </p>
-        </section>
-      </div>
+        </Section>
+      </Sheet>
     </Layout>
   )
 }
@@ -130,7 +104,7 @@ export const query = graphql`
         fields { slug }
         frontmatter {
           title
-          date(formatString: "DD MMM YYYY")
+          date(formatString: "D MMM YYYY")
           summary
           tags
         }

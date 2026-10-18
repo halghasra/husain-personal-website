@@ -1,151 +1,50 @@
-.aboutWrapper {
-  padding: 3rem 0;
+.part {
+  padding-block: 1.75rem 0.5rem;
 }
 
-/* Header */
-.aboutHeader {
-  padding-bottom: 3rem;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 3rem;
-  max-width: 720px;
-}
-
-.headerLabel {
-  font-family: var(--font-primary);
-  font-size: var(--font-size-xs);
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 1.25rem;
-}
-
-.headerHeading {
-  font-size: clamp(1.75rem, 4vw, 2.75rem);
-  font-weight: 700;
-  line-height: 1.2;
-  color: var(--text-title);
+.part h2 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: var(--s2);
   margin: 0 0 1rem;
 }
 
-.headerSubtitle {
-  font-family: var(--font-secondary);
-  font-size: var(--font-size-large);
+.part p {
+  font-size: 1.08rem;
+}
+
+.gall {
+  color: var(--gall);
   font-style: italic;
-  color: var(--text-muted);
-  margin: 0;
 }
 
-/* Content */
-.aboutContent {
-  max-width: 680px;
-}
-
-.aboutContent h2 {
-  font-family: var(--font-primary);
-  font-size: var(--font-size-xl);
-  font-weight: 600;
-  color: var(--text-title);
-  margin-top: 3rem;
-  margin-bottom: 1rem;
-}
-
-.aboutContent p {
-  color: var(--text-normal);
-  margin-bottom: 1.25rem;
-  line-height: 1.8;
-}
-
-.aboutContent em {
-  font-style: italic;
-  color: var(--text-title);
-}
-
-.aboutContent blockquote {
-  border-left: 3px solid var(--accent);
-  background: var(--bg-subtle);
-  padding: 1.5rem 2rem;
-  margin: 3rem 0;
-  border-radius: 0 4px 4px 0;
-}
-
-.aboutContent blockquote p {
-  font-family: var(--font-secondary);
-  font-size: var(--font-size-medium);
-  font-style: italic;
-  color: var(--text-title);
-  margin-bottom: 0.75rem;
-}
-
-.aboutContent blockquote footer {
-  font-family: var(--font-primary);
-  font-size: var(--font-size-small);
-  color: var(--text-muted);
-  font-style: normal;
-}
-
-/* Formal card */
-.formalCard {
-  margin-top: 3.5rem;
-  padding: 2rem;
-  background: var(--bg-subtle);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-}
-
-.formalLabel {
-  font-family: var(--font-primary);
-  font-size: var(--font-size-xs);
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 0.75rem;
+.formal {
+  border-top: 1px solid var(--rule);
+  padding-block: 2rem 1rem;
+  margin-top: 1.5rem;
 }
 
 .formalText {
-  font-size: var(--font-size-small);
-  color: var(--text-muted);
-  margin-bottom: 1.5rem;
-  line-height: 1.7;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin: 0 0 1rem;
 }
 
 .socialRow {
   display: flex;
-  gap: 1.25rem;
   flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  font-family: var(--mono);
+  font-size: var(--s-1);
 }
 
 .socialItem {
-  font-family: var(--font-primary);
-  font-size: var(--font-size-small);
-  font-weight: 500;
-  color: var(--accent);
+  color: var(--ink-soft);
   text-decoration: none;
-  transition: opacity 0.2s ease;
+  border-bottom: 1px solid var(--rule);
 }
 
 .socialItem:hover {
-  opacity: 0.7;
+  color: var(--cyan);
   text-decoration: none;
-}
-
-@media (max-width: 768px) {
-  .aboutWrapper {
-    padding: 2rem 0;
-  }
-
-  .aboutHeader {
-    padding-bottom: 2rem;
-    margin-bottom: 2rem;
-  }
-
-  .aboutContent blockquote {
-    padding: 1.25rem 1.5rem;
-    margin: 2rem 0;
-  }
-
-  .formalCard {
-    padding: 1.5rem;
-  }
 }

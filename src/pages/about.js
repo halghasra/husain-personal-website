@@ -2,24 +2,22 @@ import React from "react"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import { siteConfig } from "../config/siteConfig"
+import { Sheet, Row, PageHead } from "../components/Sheet"
 import * as styles from "../styles/about.module.css"
 
 const AboutPage = () => {
   return (
     <Layout>
       <SEO title="About" description="Who Husain Alghasra is, where he came from, and what he cares about." />
-      <div className={styles.aboutWrapper}>
-        <header className={styles.aboutHeader}>
-          <p className={styles.headerLabel}>About</p>
-          <h1 className={styles.headerHeading}>
-            I have always been bothered by not knowing how things work.
-          </h1>
-          <p className={styles.headerSubtitle}>
-            Not in a dramatic way. More like an itch.
-          </p>
-        </header>
+      <Sheet>
+        <PageHead
+          title="I have always been bothered by not knowing how things work."
+          margin={<><b>About</b><br />Husain Alghasra<br />London</>}
+        >
+          <p>Not in a dramatic way. More like an itch.</p>
+        </PageHead>
 
-        <div className={styles.aboutContent}>
+        <Row className={styles.part} margin={<b>Preface</b>}>
           <p>
             The pattern has followed me for years. I find something that feels confusing,
             broken, hidden, or strangely powerful, and I start pulling at the thread. Sometimes
@@ -27,6 +25,8 @@ const AboutPage = () => {
             that lasts longer than I expected.
           </p>
 
+        </Row>
+        <Row className={styles.part} margin={<><b>Early curiosity</b><br />self-taught<br /><span className={styles.gall}>June 2002, the World Cup</span></>}>
           <h2>Early curiosity</h2>
           <p>
             My relationship with technology started through self-learning. I was drawn to the
@@ -46,6 +46,8 @@ const AboutPage = () => {
             anything if I needed to.
           </p>
 
+        </Row>
+        <Row className={styles.part} margin={<><b>Laboratory</b><br />insurance technology</>}>
           <h2>The real-world laboratory</h2>
           <p>
             My professional work has mostly lived inside insurance technology. It sounds dry from
@@ -61,6 +63,8 @@ const AboutPage = () => {
             that people can actually use, trust, and maintain.
           </p>
 
+        </Row>
+        <Row className={styles.part} margin={<><b>Academia</b><br />AI, ML, deep learning</>}>
           <h2>Why academia matters to me</h2>
           <p>
             I am now moving deeper into artificial intelligence, machine learning, deep learning,
@@ -76,6 +80,8 @@ const AboutPage = () => {
             explainability, human-AI collaboration, and knowledge systems.
           </p>
 
+        </Row>
+        <Row className={styles.part} margin={<><b>Elsewhere</b><br />curiosynapse.com</>}>
           <h2>Curio Synapse</h2>
           <p>
             Curio Synapse is where some of my thinking becomes more public and more structured.
@@ -88,6 +94,8 @@ const AboutPage = () => {
             explanations that are clear, memorable, and worth sharing.
           </p>
 
+        </Row>
+        <Row className={styles.part} margin={<><b>The thread</b></>}>
           <h2>The thread underneath it all</h2>
           <p>
             I care about curiosity because it is the beginning of almost everything useful.
@@ -106,9 +114,10 @@ const AboutPage = () => {
             <footer>George Bernard Shaw</footer>
           </blockquote>
 
-          <div className={styles.formalCard}>
-            <p className={styles.formalLabel}>Formal summary</p>
-            <p className={styles.formalText}>
+          </Row>
+        <Row className={styles.formal} margin={<b>Formal summary</b>}>
+          <div>
+                        <p className={styles.formalText}>
               I work across product, technology, insurance systems, AI-assisted workflows, and
               knowledge platforms. My professional experience gives me a practical laboratory for
               understanding complex systems, while my academic direction is increasingly focused
@@ -149,8 +158,8 @@ const AboutPage = () => {
               </a>
             </div>
           </div>
-        </div>
-      </div>
+        </Row>
+      </Sheet>
     </Layout>
   )
 }

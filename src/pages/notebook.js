@@ -1,33 +1,29 @@
 import React, { useState } from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
+import EntryList from "../components/EntryList"
+import { Sheet, Row, PageHead, sheetStyles as sheet } from "../components/Sheet"
+import { useCatalogue } from "../hooks/useCatalogue"
+import { typeLabel } from "../config/entryTypes"
 import * as styles from "../styles/notebook.module.css"
-
-const TYPE_LABELS = {
-  note: "Note",
-  essay: "Essay",
-  "research-seed": "Research Seed",
-  "paper-note": "Paper Note",
-  "learning-log": "Learning Log",
-  build: "Build",
-  article: "Article",
-}
 
 const NotebookPage = ({ data }) => {
   const [activeFilter, setActiveFilter] = useState("all")
+  const { total, firstYear, lastYear } = useCatalogue()
 
   const allPosts = data.allMarkdownRemark.nodes
+  const typeOf = p => p.frontmatter.type || "note"
+  const filtered = activeFilter === "all" ? allPosts : allPosts.filter(p => typeOf(p) === activeFilter)
+  const types = ["all", ...Array.from(new Set(allPosts.map(typeOf)))]
 
-  const filtered =
-    activeFilter === "all"
-      ? allPosts
-      : allPosts.filter(p => {
-          const t = p.frontmatter.type || "note"
-          return t === activeFilter
-        })
-
-  const types = ["all", ...Array.from(new Set(allPosts.map(p => p.frontmatter.type || "note")))]
+  // Group by year, newest first: the notebook reads as a chronicle
+  const years = []
+  filtered.forEach(p => {
+    const y = p.frontmatter.year
+    if (!years.length || years[years.length - 1].year !== y) years.push({ year: y, posts: [] })
+    years[years.length - 1].posts.push(p)
+  })
 
   return (
     <Layout>
@@ -35,62 +31,51 @@ const NotebookPage = ({ data }) => {
         title="Notebook"
         description="A living archive of thoughts, notes, essays, and research seeds. Imperfect and evolving."
       />
-      <div className={styles.notebookWrapper}>
-        <header className={styles.pageHeader}>
-          <p className={styles.pageLabel}>Notebook</p>
-          <h1 className={styles.pageHeading}>A living archive of thoughts.</h1>
-          <p className={styles.pageSubtitle}>
-            Notes, essays, research seeds, and learning logs. Imperfect and evolving.
-          </p>
-        </header>
+      <Sheet>
+        <PageHead
+          title="A living archive of thoughts."
+          margin={<><b>Notebook</b><br />{firstYear}–{lastYear}<br />{total} entries</>}
+        >
+          <p>Notes, essays, research seeds and reading notes, numbered in the order I wrote them.</p>
+          <p>Imperfect and evolving.</p>
+        </PageHead>
 
-        <div className={styles.filters}>
-          {types.map(type => (
-            <button
-              key={type}
-              onClick={() => setActiveFilter(type)}
-              className={`${styles.filterBtn} ${activeFilter === type ? styles.filterBtnActive : ""}`}
-            >
-              {type === "all" ? "All" : TYPE_LABELS[type] || type}
-            </button>
-          ))}
-        </div>
+        <Row margin={<b>Filter</b>} className={styles.filterRow}>
+          <div className={sheet.filters} role="group" aria-label="Filter entries by type">
+            {types.map(type => {
+              const count = type === "all" ? allPosts.length : allPosts.filter(p => typeOf(p) === type).length
+              const active = activeFilter === type
+              return (
+                <button
+                  key={type}
+                  type="button"
+                  onClick={() => setActiveFilter(type)}
+                  aria-pressed={active}
+                  className={`${sheet.filter} ${active ? sheet.filterActive : ""}`}
+                >
+                  {type === "all" ? "all" : typeLabel(type).toLowerCase()}
+                  <sup>{count}</sup>
+                </button>
+              )
+            })}
+          </div>
+        </Row>
 
-        {filtered.length > 0 ? (
-          <ul className={styles.postList}>
-            {filtered.map(post => (
-              <li key={post.fields.slug} className={styles.postItem}>
-                <Link to={post.fields.slug} className={styles.postLink}>
-                  <div className={styles.postMeta}>
-                    <span className={styles.postType}>
-                      {TYPE_LABELS[post.frontmatter.type] || "Note"}
-                    </span>
-                    {post.frontmatter.status && (
-                      <span className={styles.postStatus}>{post.frontmatter.status}</span>
-                    )}
-                    <time className={styles.postDate}>{post.frontmatter.date}</time>
-                  </div>
-                  <h2 className={styles.postTitle}>{post.frontmatter.title}</h2>
-                  {(post.frontmatter.summary || post.excerpt) && (
-                    <p className={styles.postExcerpt}>
-                      {post.frontmatter.summary || post.excerpt}
-                    </p>
-                  )}
-                  {post.frontmatter.tags && post.frontmatter.tags.length > 0 && (
-                    <div className={styles.postTags}>
-                      {post.frontmatter.tags.slice(0, 4).map(tag => (
-                        <span key={tag} className={styles.postTag}>{tag}</span>
-                      ))}
-                    </div>
-                  )}
-                </Link>
-              </li>
-            ))}
-          </ul>
+        {years.length > 0 ? (
+          years.map(({ year, posts }) => (
+            <section key={year} className={styles.year} aria-label={year}>
+              <Row margin={<span className={styles.yearLabel}>{year}</span>}>
+                <span className={styles.yearCount}>
+                  {posts.length} {posts.length === 1 ? "entry" : "entries"}
+                </span>
+              </Row>
+              <EntryList posts={posts} />
+            </section>
+          ))
         ) : (
-          <p className={styles.empty}>No entries match this filter.</p>
+          <Row><p className={styles.empty}>No entries match this filter.</p></Row>
         )}
-      </div>
+      </Sheet>
     </Layout>
   )
 }
@@ -113,7 +98,8 @@ export const query = graphql`
         }
         frontmatter {
           title
-          date(formatString: "DD MMM YYYY")
+          date(formatString: "D MMM")
+          year: date(formatString: "YYYY")
           type
           status
           summary

@@ -1,51 +1,36 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import Layout from '../../components/Layout';
+import SEO from '../../components/SEO';
 import Search from '../../components/Search';
+import EntryList from '../../components/EntryList';
+import { Sheet, Row, PageHead } from '../../components/Sheet';
 import * as styles from '../../styles/blog-list.module.css';
 
+// Legacy /blog index: every older post on one page. The notebook is the main index now.
 const BlogPage = ({ data }) => {
   const posts = data.allMarkdownRemark.nodes;
 
   return (
     <Layout>
-      <div className={styles.blogHeader}>
-        <h1>Blog</h1>
-        <p>Explore my thoughts, ideas, and experiences</p>
-      </div>
-      <Search posts={posts} />
-      <div className={styles.blogGrid}>
-        {posts.map((post) => {
-          const coverImage = getImage(post.frontmatter.coverImage);
-          return (
-            <article key={post.fields.slug} className={styles.blogPostCard}>
-              {coverImage && (
-                <GatsbyImage 
-                  image={coverImage} 
-                  alt={post.frontmatter.title} 
-                  className={styles.coverImage}
-                />
-              )}
-              <div className={styles.cardContent}>
-                <h2>
-                  <Link to={post.fields.slug}>{post.frontmatter.title}</Link>
-                </h2>
-                <p className={styles.postDate}>{post.frontmatter.date}</p>
-                <p className={styles.postExcerpt}>{post.excerpt}</p>
-                <div className={styles.tags}>
-                  {post.frontmatter.tags && post.frontmatter.tags.map(tag => (
-                    <Link to={`/tags?tag=${tag}`} key={tag} className={styles.tag}>
-                      {tag}
-                    </Link>
-                  ))}
-                </div>
-                <Link to={post.fields.slug} className={styles.readMoreLink}>Read more</Link>
-              </div>
-            </article>
-          );
-        })}
-      </div>
+      <SEO title="Blog" description="Older writing: book notes, reviews and articles." />
+      <Sheet>
+        <PageHead
+          title="The old blog."
+          margin={<><b>Archive</b><br />{posts.length} posts</>}
+        >
+          <p>Book notes, reviews and articles from before the notebook.</p>
+          <p>
+            Everything here also lives in the <Link to="/notebook">notebook</Link>.
+          </p>
+        </PageHead>
+        <Row margin={<b>Search</b>} className={styles.searchRow}>
+          <Search posts={posts} />
+        </Row>
+        <div className={styles.list}>
+          <EntryList posts={posts} />
+        </div>
+      </Sheet>
     </Layout>
   );
 };
@@ -65,14 +50,11 @@ export const query = graphql`
           slug
         }
         frontmatter {
-          date(formatString: "MMMM DD, YYYY")
+          date(formatString: "D MMM YYYY")
           title
+          type
+          summary
           tags
-          coverImage {
-            childImageSharp {
-              gatsbyImageData(width: 600, height: 300, layout: CONSTRAINED)
-            }
-          }
         }
       }
     }

@@ -2,6 +2,8 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
+import EntryList from "../components/EntryList"
+import { Sheet, Row, PageHead, Section, Problem } from "../components/Sheet"
 import * as styles from "../styles/research.module.css"
 
 const FOCUS_AREAS = [
@@ -36,19 +38,15 @@ const ResearchPage = ({ data }) => {
         title="Research"
         description="Active questions, research seeds, and academic direction in AI, machine learning, trustworthy systems, and traceability."
       />
-      <div className={styles.researchWrapper}>
-        <header className={styles.pageHeader}>
-          <p className={styles.pageLabel}>Research</p>
-          <h1 className={styles.pageHeading}>
-            Questions I might spend years trying to answer.
-          </h1>
-          <p className={styles.pageSubtitle}>
-            This is not a finished research profile yet.
-            It is where I keep the questions.
-          </p>
-        </header>
+      <Sheet>
+        <PageHead
+          title="Questions I might spend years trying to answer."
+          margin={<><b>Research</b><br />{FOCUS_AREAS.length} areas<br />1 open question</>}
+        >
+          <p>This is not a finished research profile yet. It is where I keep the questions.</p>
+        </PageHead>
 
-        <div className={styles.statement}>
+        <Section margin={<b>Abstract</b>} className={styles.abstract}>
           <p>
             My work is currently moving towards artificial intelligence, machine learning,
             deep learning, trustworthy AI, traceability, explainability, and human-AI decision support.
@@ -59,71 +57,55 @@ const ResearchPage = ({ data }) => {
             fundamentally hard problem in epistemics, system design, and the relationship between
             algorithmic reasoning and human judgement.
           </p>
-        </div>
+          <p className={styles.keywords}>
+            <b>Keywords:</b> {FOCUS_AREAS.map(a => a.title.toLowerCase()).join("; ")}.
+          </p>
+        </Section>
 
-        <section className={styles.focusSection}>
-          <h2 className={styles.sectionHeading}>Research focus areas</h2>
-          <div className={styles.focusGrid}>
+        <Section margin={<b>Focus areas</b>} title="Research focus areas">
+          <dl className={styles.areas}>
             {FOCUS_AREAS.map(area => (
-              <div key={area.title} className={styles.focusCard}>
-                <h3 className={styles.focusTitle}>{area.title}</h3>
-                <p className={styles.focusBody}>{area.body}</p>
+              <div key={area.title} className={styles.area}>
+                <dt>{area.title}</dt>
+                <dd>{area.body}</dd>
               </div>
             ))}
-          </div>
-        </section>
+          </dl>
+        </Section>
 
-        <section className={styles.activeSection}>
-          <h2 className={styles.sectionHeading}>Active question</h2>
-          <div className={styles.activeCard}>
-            <p className={styles.activeQuestion}>
-              How do we build AI systems that can explain where their answers came from?
-            </p>
-            <p className={styles.activeDetail}>
-              Not just with a citation pasted underneath, but with a real trail of reasoning,
-              evidence, uncertainty, and context. The answer sits somewhere between knowledge
-              graphs, natural language reasoning, information retrieval, and the philosophy of
-              evidence.
-            </p>
-          </div>
-        </section>
+        <Section margin={<><b>Open question</b><br />active</>} title="Active question">
+          <Problem
+            label="Question 1"
+            tag="traceability"
+            statement="How do we build AI systems that can explain where their answers came from?"
+          >
+            Not just with a citation pasted underneath, but with a real trail of reasoning,
+            evidence, uncertainty, and context. The answer sits somewhere between knowledge
+            graphs, natural language reasoning, information retrieval, and the philosophy of
+            evidence.
+          </Problem>
+        </Section>
 
         {researchPosts.length > 0 && (
-          <section className={styles.postsSection}>
-            <h2 className={styles.sectionHeading}>Research seeds</h2>
-            <p className={styles.postsIntro}>
-              These are early-stage notes connected to research questions. Some will grow into
-              proper essays or paper notes.
-            </p>
-            <ul className={styles.postList}>
-              {researchPosts.map(post => (
-                <li key={post.fields.slug} className={styles.postItem}>
-                  <Link to={post.fields.slug} className={styles.postLink}>
-                    <div className={styles.postMeta}>
-                      <span className={styles.postType}>
-                        {post.frontmatter.type || "note"}
-                      </span>
-                      <time className={styles.postDate}>{post.frontmatter.date}</time>
-                    </div>
-                    <h3 className={styles.postTitle}>{post.frontmatter.title}</h3>
-                    {post.frontmatter.summary && (
-                      <p className={styles.postSummary}>{post.frontmatter.summary}</p>
-                    )}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
+          <div className={styles.group}>
+            <Row margin={<><b>Seeds</b><br />&amp; essays</>}>
+              <h2 className={styles.groupTitle}>Research seeds</h2>
+              <p className={styles.intro}>
+                These are early-stage notes connected to research questions. Some will grow into
+                proper essays or paper notes.
+              </p>
+            </Row>
+            <EntryList posts={researchPosts} />
+          </div>
         )}
 
-        <section className={styles.curioSection}>
-          <h2 className={styles.sectionHeading}>Neural Map</h2>
+        <Section margin={<b>See also</b>}>
           <p>
             See how research seeds, reading notes, and essays connect in the{" "}
             <Link to="/graph">Neural Map</Link>.
           </p>
-        </section>
-      </div>
+        </Section>
+      </Sheet>
     </Layout>
   )
 }
@@ -143,7 +125,7 @@ export const query = graphql`
         fields { slug }
         frontmatter {
           title
-          date(formatString: "DD MMM YYYY")
+          date(formatString: "D MMM YYYY")
           type
           summary
           tags

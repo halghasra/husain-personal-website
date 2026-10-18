@@ -69,23 +69,6 @@ module.exports = {
         path: `${__dirname}/content/builds`,
       },
     },
-    {
-      resolve: 'gatsby-plugin-webfonts',
-      options: {
-        fonts: {
-          google: [
-            {
-              family: "Montserrat",
-              variants: ["400", "500", "600", "700"],
-            },
-            {
-              family: "Merriweather",
-              variants: ["300", "400", "700"],
-            },
-          ],
-        },
-      },
-    },
     'gatsby-plugin-minify',
     {
       resolve: `gatsby-plugin-disqus`,
@@ -136,8 +119,8 @@ module.exports = {
         name: `Husain Alghasra`,
         short_name: `HG`,
         start_url: `/`,
-        background_color: `#141210`,
-        theme_color: `#f59e0b`,
+        background_color: `#0d1a2b`,
+        theme_color: `#0d1a2b`,
         display: `minimal-ui`,
         icon: `src/images/favicon-32x32.png`,
       },

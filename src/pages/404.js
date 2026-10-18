@@ -1,31 +1,31 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import Layout from '../components/Layout'
+import SEO from '../components/SEO'
+import { Sheet, PageHead, Section } from '../components/Sheet'
 import * as styles from '../styles/404.module.css'
 
 const NotFoundPage = () => {
   return (
     <Layout>
-      <div className={styles.notFoundContainer}>
-        <h1 className={styles.title}>404</h1>
-        <h2 className={styles.subtitle}>Page Not Found</h2>
-        <p className={styles.description}>
-          Oops! The page you're looking for has vanished into the digital void.
-        </p>
-        <p className={styles.suggestion}>
-          Perhaps you'd like to explore one of these instead?
-        </p>
-        <ul className={styles.linkList}>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/blog">Blog</Link></li>
-          <li><Link to="/notebook">Notebook</Link></li>
-          <li><Link to="/graph">Neural Map</Link></li>
-          <li><Link to="/about">About</Link></li>
-        </ul>
-        <Link to="/" className={styles.homeButton}>
-          Back to Home
-        </Link>
-      </div>
+      <SEO title="Page not found" />
+      <Sheet>
+        <PageHead
+          title="No entry at this address."
+          margin={<><b>Error 404</b><br /><span className={styles.gall}>page not found</span></>}
+        >
+          <p>The page may have moved when the notebook was reorganised, or the link has a typo.</p>
+        </PageHead>
+        <Section margin={<b>Try instead</b>}>
+          <ul className={styles.linkList}>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/notebook">The notebook</Link></li>
+            <li><Link to="/graph">The Neural Map</Link></li>
+            <li><Link to="/tags">Tags</Link></li>
+            <li><Link to="/about">About me</Link></li>
+          </ul>
+        </Section>
+      </Sheet>
     </Layout>
   )
 }
