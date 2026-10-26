@@ -3,7 +3,7 @@ title: "He Asked for Water. His Son Threw Him in the Sea. This is an AI Problem.
 slug: "he-asked-for-water"
 type: "essay"
 status: "published"
-summary: "What a Arabic proverb and a drowning man can teach us about how we state problems in AI. The right question is half the answer. The wrong goal is all the danger."
+summary: "An Arabic saying and a deliberately absurd story reveal the difficulty at the centre of AI problem formulation: specify too little and the system pursues the wrong outcome; specify too much and it never finds the better path."
 date: "2026-06-10"
 created: "2026-06-09"
 updated: "2026-06-10"
@@ -23,59 +23,56 @@ graph:
   cluster: "trustworthy-ai"
 seo:
   title: "He Asked for Water. His Son Threw Him in the Sea. This is an AI Problem."
-  description: "What a Arabic proverb and a drowning man teach us about problem formulation in AI. When a goal is poorly stated, optimising faithfully toward it is the danger."
+  description: "What an Arabic saying and a drowning man teach us about problem formulation in AI. When a goal is poorly stated, optimising faithfully towards it becomes the danger."
 ---
 
 <figure>
 <img src="./images/cover.svg" alt="He Asked for Water. His Son Threw Him in the Sea. This is an AI Problem." style="width:100%;border-radius:4px;" />
 </figure>
 
-> *السؤال نصف العلم*
-> The question is half the knowledge.
+> *السؤال نصف العلم*<br />
+> The question is half of knowledge.
 
-A problem well stated is a problem half solved. So said Charles Kettering, inventor and engineer, long before artificial intelligence became the discipline it is today.
+I grew up with this Arabic saying, and with a related one: *السؤال نصف الإجابة*, the question is half the answer. Neither promises that asking is enough. They suggest that a well-formed question already contains part of the work needed to answer it.
 
-But in Arabic, we have a saying that goes a little deeper: *السؤال نصف العلم* -- the question is half the knowledge. In another form, *السؤال نصف الإجابة* -- the right question is half the answer.
-
-The difference matters. Kettering speaks about stating. The Arabic saying speaks about asking, which implies curiosity, humility, and the willingness to search. What is knowledge without a question? What is a search without the willingness to find?
-
-Articulating the question properly is already halfway through the answer. And I think that feels very true in AI.
+That feels particularly true in artificial intelligence, where a system may optimise exactly what we ask for while missing what we meant. The failure can begin before the model runs, in the language with which we define success.
 
 ## The man and the sea
 
-To illustrate what happens when a problem is poorly stated, consider this: an elderly man asks his son for water. The son throws him into the sea.
+Consider a deliberately absurd scene. An elderly man asks his son for water, and the son throws him into the sea.
 
-You could argue the son did exactly what was asked. But the father did not specify he needed water to drink, in a cup, at a reasonable temperature, without drowning. Maybe he was too thirsty to list every constraint. Maybe he assumed the outcome was obvious. But he had an expectation -- a broad, human expectation -- and it was catastrophically missed.
+In the narrowest sense, the son supplied water. He ignored the purpose concealed inside the request: relief from thirst, delivered without causing harm. The father did not specify a cup, a drinkable quantity, a reasonable temperature, or the constraint that he should remain alive. He relied on shared human understanding to carry what the sentence left unsaid.
 
-This is one of the most important implications for AI. An agent operating on a poorly stated problem will optimise faithfully toward the wrong thing. It will complete the task and consider itself successful.
+That gap between an objective and the intention behind it is a recognised AI-safety problem. Amodei and colleagues describe specification failures in which a system satisfies the formal objective while producing an unwanted result [1]. Russell's formulation reaches the same difficulty from another direction: if a machine treats a stated objective as complete and certain, human correction becomes an obstacle rather than useful evidence about what was intended [2].
 
-And the danger is compounded by the fact that we often only see outcomes, not process. We may perceive a correct answer arrived at through entirely wrong reasoning, which is a separate problem in itself.
+There is another complication. We often inspect only the outcome, so a correct answer may conceal unreliable reasoning or unsupported evidence. That is the problem I am exploring separately in [AI Traceability: The Gap Between Answer and Trust](/research-seeds/ai-traceability-the-gap-between-answer-and-trust/).
 
-The goal, the boundary, and the solution space must be defined, even if broadly. Not every constraint needs to be listed, but the intended outcome must be clear. The father wanted relief from thirst. That should have been the goal state.
+The response is not to enumerate every imaginable constraint. It is to define the purpose, the important boundaries, and the conditions under which the system should stop and ask. The father wanted relief from thirst. That purpose matters more than the noun *water* taken alone.
 
 ## Can a problem be over-stated?
 
-Yes. And I think this failure mode is underappreciated.
+Yes, and this failure can be less obvious because it often arrives disguised as precision.
 
-Russell and Norvig describe the quest for artificial flight, and how it only succeeded when engineers stopped trying to imitate birds and started studying aerodynamics. Those early attempts failed, I would argue, because the problem was over-stated. Too many constraints were built around mimicking the solution rather than achieving the goal. The over-statement prevented people from seeing the wider solution space entirely.
+Russell and Norvig use artificial flight to distinguish reproducing an outcome from imitating every detail of the natural process that inspired it [3]. Aircraft became possible through an account of aerodynamics, not by requiring machines to copy birds feather by feather. In problem-formulation terms, “build a machine that flies” leaves room to discover a solution; “build a mechanical bird” has already smuggled one solution into the question.
 
 In my own field, we actively remind stakeholders not to "solutionise" when describing a problem. When someone frames a requirement as a specific solution rather than a need, it does three things:
 
-- It narrows the search space artificially.
-- It embeds assumptions invisibly.
-- It often delivers something that does not actually eliminate the problem it was meant to solve.
+- It narrows the search space before the alternatives have been understood.
+- It turns assumptions into requirements without making them visible.
+- It can deliver the requested mechanism without resolving the need that produced the request.
 
-Over-stating a problem shifts focus from the destination to the road. And sometimes, the best road is one you have not drawn yet.
+Over-stating a problem confuses the destination with a road someone has already drawn. Sometimes the useful work begins by separating the two.
 
 ## Bringing it together
 
-Perhaps the art of AI problem design is not so different from good requirements work: define the outcome clearly, resist the urge to define the path, and leave enough space for the solution to surprise you.
+AI problem design has more in common with good requirements work than I first expected. Both demand enough precision to identify the desired outcome and the harms that must be avoided, without prescribing the route so tightly that the search for a better solution becomes impossible.
 
-A problem well stated sets the goal.
-A problem over-stated builds the cage.
+I am writing this midway through studying AI, not from the position of someone who has solved specification. What interests me is that the further I move into its technical foundations, the more often the problem returns to something recognisably human: we communicate through incomplete language because other people usually supply the missing context. Machines make that habit visible.
 
-I am writing this as someone mid-way through studying AI, not as an expert, but as someone who finds that the deeper you go into the technical side of artificial intelligence, the more human the fundamental questions become.
+The objective defines what counts as success; the constraints mark unacceptable ways of reaching it; uncertainty tells the system when it should invite correction. None of these removes the difficulty of expressing human intentions completely. They do, however, give us a better question than “did the system do what we asked?” We should also ask whether we gave it a defensible account of what we meant.
 
-How we frame a problem shapes everything that follows. The goal state determines what success looks like. The constraints determine what the agent can and cannot do. The absence of a constraint is not freedom -- it is an invitation for the river to flood.
+## References
 
-And that, I think, is worth pausing on. Whether you are building an AI system, leading a team, or just asking an elderly man if he needs a glass of water.
+1. Amodei, D. et al. (2016). [Concrete Problems in AI Safety](https://arxiv.org/abs/1606.06565).
+2. Hadfield-Menell, D., Dragan, A., Abbeel, P., & Russell, S. (2017). [The Off-Switch Game](https://arxiv.org/abs/1611.08219). *Proceedings of IJCAI 2017*.
+3. Russell, S. J., & Norvig, P. (2021). *Artificial Intelligence: A Modern Approach* (4th ed.). Pearson, Chapter 1.

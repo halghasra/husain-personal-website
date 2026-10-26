@@ -133,7 +133,7 @@ In computing, a **message** is a unit of communication passed from one system or
 
 What I missed when I first wrote that down is that metadata is not a different kind of substance. It is more data, and it only works because both ends agreed in advance how to read it. An email can carry a header line like `Content-Type: text/plain; charset=utf-8`. That line is the sender telling the receiver which encoding to apply to the body. It works because the email standards define what the line means and mail programs were built to follow them. Context does not travel inside a message. Pointers to context do, and they only point somewhere if the receiver holds the same map.
 
-This is why every working communication system rests on a **protocol**: a written agreement about what each field means, in what order, under what conditions. A protocol is context made explicit, so that sender and receiver do not have to share a brain. When it is missing or mismatched, you get familiar small disasters. The name "José", saved as UTF-8 and read back as Latin-1, turns into "JosÃ©": the five bytes are untouched, the agreement is wrong. Spreadsheets that silently turned gene names such as SEPT2 into dates caused errors that researchers found throughout the published genetics literature, and in 2020 the committee that names human genes renamed several of them rather than wait for spreadsheets to change.
+This is why every working communication system rests on a **protocol**: a written agreement about what each field means, in what order, under what conditions. A protocol is context made explicit, so that sender and receiver do not have to share a brain. When it is missing or mismatched, you get familiar small disasters. The name "José", saved as UTF-8 and read back as Latin-1, turns into "JosÃ©": the five bytes are untouched, the agreement is wrong. Spreadsheets that silently turned gene names such as SEPT2 into dates caused errors that researchers found throughout the published genetics literature. The HUGO Gene Nomenclature Committee says it decided in 2019 to change the affected approved symbols rather than wait for spreadsheet software to change.
 
 Every one of those failures is a level B failure. The symbols arrived. The meaning did not.
 
@@ -186,13 +186,15 @@ Bits travel well. Meaning has to be waiting when they arrive.
 
 ---
 
-**Sources**
+## References
 
-- C. E. Shannon, "A Mathematical Theory of Communication", *Bell System Technical Journal*, 27, 1948.
-- C. E. Shannon, "Prediction and Entropy of Printed English", *Bell System Technical Journal*, 30, 1951.
+- C. E. Shannon, ["A Mathematical Theory of Communication"](https://doi.org/10.1002/j.1538-7305.1948.tb01338.x), *Bell System Technical Journal*, 27(3–4), 1948, 379–423 and 623–656.
+- C. E. Shannon, ["Prediction and Entropy of Printed English"](https://doi.org/10.1002/j.1538-7305.1951.tb01366.x), *Bell System Technical Journal*, 30(1), 1951, 50–64.
 - C. E. Shannon and W. Weaver, *The Mathematical Theory of Communication*, 1949 (Weaver's introduction sets out the three levels).
 - R. L. Ackoff, "From Data to Wisdom", *Journal of Applied Systems Analysis*, 16, 1989.
-- J. Rowley, "The wisdom hierarchy: representations of the DIKW hierarchy", *Journal of Information Science*, 33(2), 2007.
-- M. Frické, "The knowledge pyramid: a critique of the DIKW hierarchy", *Journal of Information Science*, 35(2), 2009.
+- T. S. Eliot, *The Rock*, Faber and Faber, 1934.
+- J. Rowley, ["The wisdom hierarchy: representations of the DIKW hierarchy"](https://doi.org/10.1177/0165551506070706), *Journal of Information Science*, 33(2), 2007, 163–180.
+- M. Frické, ["The knowledge pyramid: a critique of the DIKW hierarchy"](https://doi.org/10.1177/0165551508094050), *Journal of Information Science*, 35(2), 2009, 131–142.
 - L. Gitelman (ed.), *"Raw Data" Is an Oxymoron*, MIT Press, 2013.
-- M. Ziemann, Y. Eren and A. El-Osta, "Gene name errors are widespread in the scientific literature", *Genome Biology*, 17, 2016.
+- M. Ziemann, Y. Eren and A. El-Osta, ["Gene name errors are widespread in the scientific literature"](https://doi.org/10.1186/s13059-016-1044-7), *Genome Biology*, 17, 2016, 177.
+- HUGO Gene Nomenclature Committee, ["Why is Excel corrupting some of my gene symbols?"](https://www.genenames.org/help/faq/), FAQ (decision to change affected symbols in 2019).

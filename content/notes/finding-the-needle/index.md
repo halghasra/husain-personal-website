@@ -3,7 +3,7 @@ title: "Finding the Needle: How Retrieval Ranks Documents"
 slug: "finding-the-needle"
 type: "note"
 status: "evergreen"
-summary: "A search engine does not read your documents when you ask. It read them once, in advance, and filed them under every word. Then comes the harder part: ranking what it finds, and checking that the score you trust is really a score."
+summary: "Search begins by reading in advance, but finding a word is only the easy part. I work through indexing, ranking and the surprisingly fragile business of deciding whether retrieval actually worked."
 date: "2026-09-29"
 created: "2026-09-29"
 updated: "2026-09-29"
@@ -22,15 +22,15 @@ seo:
   description: "How search finds and ranks documents: the inverted index, cosine similarity, BM25, and a retrieval score that was secretly always 1.0. With runnable Python."
 ---
 
-Nobody finds "photosynthesis" in a biology textbook by reading the book. You turn to the index at the back, find the word, and read the page numbers beside it. The reading was done once, by someone else, long before you arrived. All you do when you need the answer is look it up.
+If I need "photosynthesis" in a biology textbook, I do not begin at page one. I use the index, trusting that somebody has already read the book closely enough to file the subject under the right word. The index turns a slow reading problem into a quick lookup.
 
-A search engine strikes the same bargain with billions of pages instead of five hundred. When you type a query, nothing reads anything. Two harder questions sit behind that lookup, though, and they took me longer to appreciate than the lookup itself. Of all the pages that contain your words, which should come first? And once a system claims it finds the right page nine times in ten, how would you know whether to believe it?
+A search engine makes a similar bargain at a scale a printed index could never survive. It processes the collection in advance, records where terms occur, and consults that structure when a query arrives. Yet locating the documents that contain a word is only the beginning. Search still has to decide which result deserves the first position, and we still need a way to tell whether that ordering is any good.
 
-I will take them in that order: the index, the ranking, and the number that checks the ranking. The last one holds the best cautionary tale I know in this area.
+Those two problems, ranking and evaluation, are where this note eventually leads. I begin with the inverted index because everything else depends on it, move through cosine similarity and BM25, and finish with a retrieval metric that returned an excellent score even when every answer was wrong.
 
 ## Filing the answer in advance
 
-Start with the structure that makes search fast. Normally a collection is stored document by document, each with its words. An **inverted index** flips that around: for every word, it stores the list of documents that contain it, called the **postings list**. The back-of-the-book index is exactly this, with page numbers standing in for document numbers.
+Documents are naturally stored one at a time, each carrying its own text. Search reverses that arrangement. An **inverted index** starts with a term and points to the documents that contain it; the document identifiers attached to each term form its **postings list**. A book index does the same thing with page numbers.
 
 Here is one for four tiny documents. I drop a few stop words and record each remaining word's document and position:
 
@@ -79,15 +79,15 @@ cat OR dog [1, 2, 3]
 [(1, 1), (2, 4)] [(1, 2), (3, 2)]
 ```
 
-Look at how "cat AND sat" runs. It fetches two short lists, `[1, 2]` and `[1, 3]`, and walks along both at once. Because both are sorted, this is a merge, and it took 2 comparisons to find document 1. No document text was opened. The work depends on the length of the lists it touches, not on how many documents the collection holds. OR is a union of the lists, and NOT is a difference.
+For `cat AND sat`, the engine retrieves `[1, 2]` and `[1, 3]`, then walks through the sorted lists together. It finds document 1 after two comparisons without opening any of the four documents. The immediate cost depends on the postings being merged, not on the full length of every text in the collection. OR takes their union; NOT removes one list from another.
 
 The last line shows the positional version. "Cat" sits at position 1 in document 1 and position 4 in document 2. Keep positions and you can answer a phrase query by checking that two words are neighbours.
 
-It also shows the limit. The index matches strings, so "cat" never finds document 4, which says "cats". Whatever the tokeniser and the stop list did when the index was built is baked in for good: they decide what can ever be found. Joining words to meanings is a different problem, and I come back to it at the end.
+The result also exposes an early design decision. `cat` does not retrieve document 4 because that document contains `cats`, a different token in this tiny index. Tokenisation, stemming and stop-word removal happen before the query, but they determine what the query can later recover. An index is therefore not a neutral filing cabinet. Its preprocessing rules decide what receives a drawer and which words are treated as the same thing.
 
 ## Relevance as an angle
 
-An index tells you which documents contain your words. It does not tell you which one to read first. "How relevant is this page?" is a vague question until you turn it into geometry.
+The index supplies candidates, not an ordering. To rank them, one classical approach turns text into geometry and asks how closely a document points in the direction of the query.
 
 Give every word in the vocabulary its own axis. A document becomes an arrow from the origin, with a coordinate on each axis equal to the word's weight in that document. A query is an arrow too. Two arrows pointing the same way describe similar content. The standard measure is the **cosine** of the angle between them:
 
@@ -110,7 +110,7 @@ print(round(a @ a10 / (np.linalg.norm(a) * np.linalg.norm(a10)), 4), a @ a10, ro
 1.0 100.0 28.46
 ```
 
-A document ten times longer, with every count multiplied by ten, points in exactly the same direction: cosine 1.0. The raw dot product (100) and the straight-line distance (28.46) both call it very different. Cosine measures what a document is about, not how much of it there is.
+A vector multiplied by ten keeps the same direction, so its cosine with the original remains 1.0. The raw dot product grows to 100 and the Euclidean distance to 28.46, both dominated by magnitude. Cosine deliberately ignores that magnitude. In a text model, this helps prevent a long document from looking dissimilar merely because it contains more words.
 
 The weights matter as much as the geometry. If every word counts equally, "the" outvotes "mortgage". **TF-IDF** fixes that by multiplying how often a word appears in this document by how rare the word is across the collection, so words found everywhere count for little. (I cover the same idea from the classification side in [How Machines Learn to Read](/notes/how-machines-learn-to-read/).) Now a real search over the same four documents, with the query "cat sat":
 
@@ -132,11 +132,13 @@ print(T[0].toarray().round(3), q.toarray().round(3))
 [[0.526 0.    0.    0.    0.    0.    0.668 0.526]] [[0.707 0.    0.    0.    0.    0.    0.    0.707]]
 ```
 
-Document 1 contains both query words, so it wins: 0.526 × 0.707 + 0.526 × 0.707 = 0.7444. Documents 2 and 3 each match one word and tie at 0.3722. Document 4 scores zero, because "cats" is a different axis from "cat". In this geometry the axes are perpendicular, so "car" and "automobile" have nothing to say to each other. That is the weakness I most want you to remember from this section.
+Document 1 contains both query terms and scores 0.7444. Documents 2 and 3 match one term each and tie at 0.3722. Document 4 again disappears because `cats` occupies a different dimension from `cat`.
+
+That last result is not an accidental flaw in the example. In a bag-of-words space, unrelated axes are orthogonal by construction. `car` and `automobile` are no closer than `car` and `photosynthesis` unless another method supplies their relationship. The geometry can rank lexical overlap elegantly, but meaning is not automatically inside it.
 
 ## Two dials on the formula
 
-TF-IDF with cosine is the textbook answer, but it has two habits I find hard to defend. Saying a word sixteen times does not make a document sixteen times more relevant. And a long document is not more relevant for being long.
+TF-IDF and cosine give a useful baseline, but term frequency still needs restraint. Repeating a query word sixteen times should not usually make a page sixteen times more relevant, and document length should not become an unearned advantage.
 
 **BM25** is a ranking formula that fixes both with two dials. It grew out of the Okapi retrieval work of Stephen Robertson and colleagues in the 1990s, and it is still a strong baseline that newer methods have to beat. Open-source search software such as Lucene uses it. For a query Q and document D:
 
@@ -184,11 +186,11 @@ By hand for d1. "Cat" and "sat" each appear in 2 of the 6 documents, so IDF = ln
 
 The last two lists are the two dials, printed. The first is the repetition part of the score for 1, 2, 3, 4, 8 and 16 occurrences in a document of average length. It climbs towards a ceiling of k₁ + 1 = 2.5 and never gets there. Four mentions are worth 1.82 times one mention, not four times, and sixteen are worth 2.29. The second list is the length effect on a single occurrence: 1.37 in a document of 2 words, 1.0 at the average of 5, and 0.43 in a document of 20.
 
-Good ranking turns out to be mostly a matter of deciding what repetition and length are worth.
+The formula looks forbidding until those two controls are visible. Much of BM25's behaviour comes from an argument about evidence: how much an additional occurrence should add, and how much of that evidence should be discounted because the document had more opportunities to contain the word.
 
 ## The first half of an answer
 
-Ranking pages is useful on its own, and it is also the first stage of something larger. A question answering system splits the job in two. A **retriever** narrows a huge collection to a handful of passages. A **reader** then extracts the answer from them. The cleverest reader in the world has nothing to read if the retriever dropped the right passage, so retrieval puts a ceiling on everything after it.
+Ranking also becomes the first stage of many question-answering systems. A **retriever** reduces a large collection to a small set of candidate passages; a **reader** or language model works from those candidates. If the relevant passage is absent, later sophistication cannot recover evidence it was never given. Retrieval therefore places a ceiling on the answer before generation begins.
 
 The same work matters wherever an assistant answers from a company's own documents. I work close to insurance, where the shape is familiar: a person asks which clause applies, a retriever fetches candidates, and someone needs to see which passage the answer came from.
 
@@ -229,13 +231,15 @@ What is the capital of Portugal? -> [(4, 0.59), (2, 0.21), (1, 0.17)] gold at ra
 hit@3: 1.0 MRR: 0.7778
 ```
 
-Questions 1 and 3 work. Question 2 is the instructive one. Nobody wrote "holiday" in any paragraph, so the query keeps only "portugal", and a short paragraph about cork and wine outranks the right one, which scrapes into third place. The retriever is not wrong by its own rules. It matches strings, and the user chose a different word from the page. This is the vocabulary mismatch problem, and it is why modern systems add embeddings, which place related words near each other, and often combine them with BM25 instead of replacing it.
+Questions 1 and 3 put the correct paragraph first. The second question uses `holiday`, a word that appears nowhere in the collection. After preprocessing, little remains beyond `portugal`, so a short paragraph about cork and wine outranks the intended passage, which reaches third place only because it mentions the country.
+
+The ranking is consistent with the representation it was given. The failure belongs to the gap between the user's vocabulary and the document's. Embedding-based retrieval tries to reduce that gap by representing related language nearby, and practical systems often combine dense retrieval with lexical methods such as BM25 rather than assuming either one is sufficient alone.
 
 The last line gives two numbers. **Hit at 3** asks whether the right paragraph is anywhere in the top three. **Mean reciprocal rank** (MRR) averages 1 divided by the rank of the right answer: (1 + 1/3 + 1) / 3 = 0.7778. One says every question was covered. The other says one of them was covered only just. Neither is wrong, and they tell different stories, which is worth remembering before you pick one to report.
 
 ## The score that was always 1.0
 
-While learning this, I read a tutorial notebook that built exactly this kind of retriever, TF-IDF vectors and cosine distance, over 18,891 paragraphs and 87,599 questions, returning the top three paragraphs for each question. It reported a top-3 accuracy of 98.92 per cent. That is 86,650 of 87,599. It is a high figure for a plain bag-of-words matcher, and a figure that high is a reason to read the function that produced it.
+While learning this, I found a tutorial notebook that applied TF-IDF and cosine similarity to 18,891 paragraphs and 87,599 questions, returning three candidates for each question. It reported 98.92 per cent top-three accuracy, or 86,650 successful questions. For a plain bag-of-words retriever, that result was striking enough that the evaluation deserved as much attention as the model.
 
 The check, as I reconstructed it from the notebook's description, had this shape: for each true paragraph id, test whether it appears in the predictions. The predictions were a two-dimensional array, one row per question. Python's `in` on a NumPy array asks whether the value appears anywhere in the array, not in that question's own row. So a question counted as correct if its right paragraph was retrieved for any question at all.
 
@@ -265,9 +269,11 @@ print(hit_at_k_buggy(y_true, y_pred), round(hit_at_k(y_true, y_pred), 3))
 1.0 0.004
 ```
 
-The first toy answers both questions wrongly and scores a perfect 1.0. The second is a system that guesses at random. With 6,000 guesses spread over 500 paragraphs, almost every paragraph appears somewhere in the array, so the buggy check says 1.0, while the honest hit rate is 0.004, close to the 3 in 500 that chance predicts. A score that stays at 1.0 however badly the system behaves measures nothing. The 98.92 per cent in that notebook was therefore not a top-3 accuracy, and I have not computed the right figure, since I could not rerun the notebook.
+The first example gets both questions wrong and still receives 1.0. The second guesses randomly. Its 6,000 guesses cover almost every one of the 500 paragraph identifiers somewhere in the matrix, so the buggy function again returns 1.0; the row-wise version gives 0.004, close to the chance expectation of 3/500.
 
-I do not tell this story to mock a notebook. I tell it because the evaluation code is code too, and nothing in it throws an error when it is wrong. We inspect models with suspicion and then trust the line that grades them. A cheap defence is to test the metric on a case where you already know the answer: a system that always fails, a system that guesses, a system that cannot lose. If the metric cannot tell them apart, it is not ready to judge anything else.
+The notebook's 98.92 per cent was therefore not measuring top-three retrieval accuracy as claimed. I have not substituted a corrected headline figure because I could not reproduce the original run. The point is narrower and more useful: the metric had stopped associating each question with its own predictions.
+
+This is not a story about an unusually careless author. It is an ordinary programming mistake in the line of code granted authority over the rest of the experiment. Metrics deserve unit tests of their own: a ranking that is entirely wrong, one that is perfect, and one that guesses. If the implementation cannot distinguish those cases, no dataset can rescue the number it reports.
 
 There are more honest metrics than hit rate and MRR, and they reward different things. Take one ranked list of ten documents where d2, d4 and d5 are relevant and found, and d11 is relevant but never retrieved:
 
@@ -297,14 +303,14 @@ The columns are k, precision at k (the share of the top k that is relevant) and 
 
 ## Where the reading goes
 
-Everything here still treats text as strings. The index finds words, the cosine compares weights, BM25 tunes the weights, and none of them knows that a holiday is a vacation. Fixing that is a separate story, and part of it is about writing down what words refer to, which I touch on in [Writing Knowledge Down](/notes/writing-knowledge-down/). The evaluation lesson belongs to a wider family of ways a number can look right and be wrong, which I collect in [Garbage In](/notes/garbage-in/).
+Everything here still begins with strings. The inverted index finds them, cosine compares their weights, and BM25 adjusts what repetition and length should contribute. None of those operations knows on its own that a holiday may be a vacation. Explicit representations of meaning lead towards [Writing Knowledge Down](/notes/writing-knowledge-down/); learned representations lead elsewhere.
 
-Search is fast because the reading happened once, in advance, and the answer was filed under every word. It is trustworthy only after someone has read the line that computed the score.
+The more immediate lesson is about trust. Search becomes fast because much of the reading and filing happened before the query arrived. Evaluating search requires another kind of reading after the experiment: the code that decided what counted as a correct result. As [Garbage In](/notes/garbage-in/) explores more broadly, a convincing score is an output too, and it can inherit every mistake that came before it.
 
 ---
 
-**Sources**
+## References
 
-- C. D. Manning, P. Raghavan and H. Schütze, *Introduction to Information Retrieval*, 2008.
-- S. Robertson and H. Zaragoza, "The Probabilistic Relevance Framework: BM25 and Beyond", *Foundations and Trends in Information Retrieval*, 3(4), 2009.
-- S. Russell and P. Norvig, *Artificial Intelligence: A Modern Approach*, 4th ed., 2021.
+- C. D. Manning, P. Raghavan and H. Schütze, [*Introduction to Information Retrieval*](https://nlp.stanford.edu/IR-book/), Cambridge University Press, 2008.
+- S. Robertson and H. Zaragoza, ["The Probabilistic Relevance Framework: BM25 and Beyond"](https://doi.org/10.1561/1500000019), *Foundations and Trends in Information Retrieval*, 3(4), 2009, 333–389.
+- S. Russell and P. Norvig, [*Artificial Intelligence: A Modern Approach*](https://www.pearson.com/en-us/subject-catalog/p/artificial-intelligence-a-modern-approach/P200000003500), 4th ed., Pearson, 2021.

@@ -262,12 +262,12 @@ The fix was one line. The distance back to the start, added to the fitness. But 
 
 One small mercy: a genetic algorithm ends with a whole population of good routes, so a person can pick the second best when the best breaks a rule the score never knew about.
 
-Evolution has no idea where it is going, and a good search does not need to. You do.
+The search itself does not need to know what a sensible route looks like. It does need a fitness function that rewards the route I actually wanted. The six-city mistake is a useful reminder that a search can be impressively successful while the question inside its score is wrong.
 
 ---
 
-**Sources**
+## References
 
 - J. H. Holland, *Adaptation in Natural and Artificial Systems*, 1975.
-- S. Russell and P. Norvig, *Artificial Intelligence: A Modern Approach*, 4th ed., Pearson, 2021. Local search and optimisation.
+- S. Russell and P. Norvig, [*Artificial Intelligence: A Modern Approach*](https://www.pearson.com/en-us/subject-catalog/p/artificial-intelligence-a-modern-approach/P200000003500), 4th ed., Pearson, 2021 (local search and optimisation).
 - S. Wright, "The roles of mutation, inbreeding, crossbreeding and selection in evolution", *Proceedings of the Sixth International Congress of Genetics*, 1, 1932, 356 to 366.

@@ -210,7 +210,7 @@ I find this one of the better design decisions in the whole ecosystem. A label s
 
 Python was created by Guido van Rossum, first released in 1991, and named after *Monty Python's Flying Circus*, not the snake. The language itself is easy to read. Printing a greeting is a single `print` call, where some other languages need several lines. It is free and open source. Those things surely helped.
 
-There is also an irony I like. The thing that makes Python slow is also what makes it pleasant: Python is interpreted, which means your code is read and run as it goes, with no separate build step. That is exactly why you can type one line, see its answer straight away, change it and try again. For work where you do not yet know what you are looking for, that quick back and forth is, I think, worth a good deal more than raw speed, particularly once the heavy lifting has been handed to compiled libraries.
+There is also an irony I like. Python is interpreted and interactive, so the ordinary working loop does not ask you to manage a separate build before trying an idea. CPython still compiles source to bytecode behind the scenes, and "interpreted" by itself is not a complete explanation of performance. What matters to the person exploring data is the quick exchange: type one line, see its answer, change it and try again. For work where you do not yet know what you are looking for, that back and forth is worth a great deal, particularly once the heavy lifting has been handed to compiled libraries.
 
 But I do not want to overclaim. Plenty of languages are readable. What Python has is the pile of libraries above, each of which hides compiled code behind a short, readable call, and a community that writes its tutorials, answers and examples in one language. Once most of the examples are in Python, the next library is written for Python too. I suspect that loop, where use feeds libraries and libraries feed use, explains more than the syntax does. I have not found a clean way to measure it, and I will not pretend to.
 
@@ -221,11 +221,14 @@ Some limits are worth stating plainly:
 - "Most used" is not "best for every job". R remains strong for statistical analysis, and much of the heavy lifting under these libraries is compiled code written in languages such as C and C++.
 - The ecosystem moves quickly. The code above ran on Python 3.13, NumPy 2.5, pandas 3.0 and scikit-learn 1.9. If a call has been renamed by the time you read this, check the current documentation before blaming the idea.
 
-The speed was never in Python. It was in everything Python is willing to call.
+Python did not win this work by making every loop fast. It made fast numerical libraries easy to call, combine and inspect, while keeping the exploratory part of the work in one readable language.
 
 ---
 
-**Sources**
+## References
 
-- J. Hao and T. K. Ho, "Machine Learning Made Easy: A Review of Scikit-learn Package in Python Programming Language", *Journal of Educational and Behavioral Statistics*, 44(3), 2019.
-- C. R. Harris et al., "Array programming with NumPy", *Nature*, 585, 2020.
+- Python Software Foundation, ["General Python FAQ"](https://docs.python.org/3/faq/general.html) (history, name and execution model) and ["About Python"](https://www.python.org/about/) (licensing and ecosystem).
+- NumPy, [2.5 release record](https://numpy.org/news/); pandas, [3.0 release notes](https://pandas.pydata.org/docs/whatsnew/v3.0.0.html); and scikit-learn, [1.9 release notes](https://scikit-learn.org/stable/whats_new/v1.9.html), checked for the versions named in this note.
+- pandas, ["Indexing and selecting data"](https://pandas.pydata.org/docs/user_guide/indexing.html) (`.loc`, `.iloc` and label alignment).
+- J. Hao and T. K. Ho, ["Machine Learning Made Easy: A Review of Scikit-learn Package in Python Programming Language"](https://doi.org/10.3102/1076998619832248), *Journal of Educational and Behavioral Statistics*, 44(3), 2019, 348–361.
+- C. R. Harris et al., ["Array programming with NumPy"](https://doi.org/10.1038/s41586-020-2649-2), *Nature*, 585, 2020, 357–362.

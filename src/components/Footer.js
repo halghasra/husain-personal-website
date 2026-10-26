@@ -3,7 +3,7 @@ import { siteConfig } from "../config/siteConfig"
 import { useCatalogue } from "../hooks/useCatalogue"
 import * as styles from "../styles/footer.module.css"
 
-// The colophon: who keeps the notebook, how it is set, and where else to find me.
+// The colophon: who keeps the notebook and where else to find me.
 const Footer = () => {
   const { total } = useCatalogue()
 
@@ -14,8 +14,8 @@ const Footer = () => {
       </div>
       <div className={styles.body}>
         <p>
-          Kept by Husain Alghasra in London. Set in Bodoni Moda, Literata and Fragment Mono.
-          Built with Gatsby and Markdown.
+          Kept by Husain Alghasra in London. A record of questions, working notes,
+          and the connections I do not want to lose.
         </p>
         <div className={styles.links}>
           <a href={siteConfig.socials.github} target="_blank" rel="noopener noreferrer">github</a>

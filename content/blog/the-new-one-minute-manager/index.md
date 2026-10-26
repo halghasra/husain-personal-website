@@ -9,22 +9,24 @@ tags: ["Ken Blanchard", "Leadership", "Management", "Spencer Johnson", "Book Rev
 coverImage: "./images/The-new-one-minute-manager.png"
 ---
 
-If I learned one thing from this book, that would be:
+If I learnt one thing from this book, it was an interpretation the authors probably did not intend: to become a One Minute Manager, deal with your team the way you deal with your dog.
 
-To become a one minute manager, deal with your team the way you deal with your dog. I always hated stereotypical organisations and employees/managers dilemma… I always regarded it as the “new slavery”.
+That sounds unfair, but it is where my resistance began. I have always hated the stereotypical organisation and its employee-manager dilemma. At its worst, I have regarded it as a polite form of ownership: one person controls another person's time, behaviour, and permission to act, then calls the arrangement culture.
 
-I worked in organisations for many years, I’ve been an entry level staff, I’ve been in a supervisory roles, and I became a manager myself. I formed up a concept of demolishing organisations, taking every single policy and burning it to the ground…. I believe in manager-less, limit-less, boundary-less organisations where people work for themselves, accounted for their production and their inputs, and get paid for that….
+I have worked in organisations for many years. I have been an entry-level employee, a supervisor, and a manager. Somewhere along that path I developed a fantasy of demolishing the organisation, taking every policy, and burning it to the ground. I imagined managerless and boundaryless work in which people were accountable for what they produced, paid fairly for it, and free to return to their lives when the work was done.
 
-An organisation where employees become an external contractors; they don’t have to be forced into a “culture” or being controlled by someone, they just finish what you want you hired them to do, and leave to live their own lives once they finish the inputs.
+In that organisation, people would not be forced into a manufactured culture or controlled for the comfort of a hierarchy. The idea is still rough, and I can now see problems that my first enthusiasm ignored, but the underlying desire remains: work should not require adults to surrender adulthood.
 
-This is my vision and someday I will make it happen, it’s crazy enough idea but I think it will work.
+I know I have drifted away from the review. The book itself is not bad. Its short fable promotes clear goals, timely praise, and correction directed at behaviour rather than a person's worth [1]. Those habits could benefit both an organisation and the people within it.
 
-I know I drifted away in my review of the book, the book itself isn’t bad, it promotes a healthy managerial behavior that if applied, would actually benefit the organisation, and the people within the team — but, that would be possible only in very ideal reality, maybe in a different universe.
+My objection is that work is more complicated than the fable allows. People do not arrive in identical blocks, and consistency does not require treating everybody in precisely the same way.
 
-The way businesses are run, is far more complex than that…. Team members are not all coming in a similar blocks, there are so many different personalities out there, and dealing with everyone the same way won’t work, believe me. I know what I am talking about..
+Some people understand a task before the minute begins; others need hours, a different explanation, or a manager willing to ask whether the task itself makes sense.
 
-There are people who get it straight away that you won’t even need a minute, there are others who need countless hours of your time to understand a basic concept.
+I appreciate the principles more than the promise in the title. They are useful prompts, not a complete philosophy of management, and they will fail whenever brevity becomes a substitute for knowing the person in front of you.
 
-So long story short, I appreciate what is delivered by this book, but I think it would only work in very few situations, however it won’t be effective in so so so many others.
+P.S. The book might have been an even greater hit under the title *How to Take Care of Your Pets and Make Them Loyal to You in Just One Minute* ;)
 
-P.S: This book would become a hit if if was entitled: “How to take care of your pets and make them loyal to you in just one minute” ;)
+## Reference
+
+1. Blanchard, K., & Johnson, S. (2015). *The New One Minute Manager*. William Morrow.

@@ -346,7 +346,7 @@ Before you calculate anything, ask what the numbers are allowed to mean. Before 
 
 ---
 
-**Sources**
+## References
 
-- F. J. Anscombe, "Graphs in Statistical Analysis", *The American Statistician*, 27(1), 1973.
-- F. Kaliyadan and V. Kulkarni, "Types of Variables, Descriptive Statistics, and Sample Size", *Indian Dermatology Online Journal*, 10(1), 2019.
+- F. J. Anscombe, ["Graphs in Statistical Analysis"](https://doi.org/10.1080/00031305.1973.10478966), *The American Statistician*, 27(1), 1973, 17–21.
+- F. Kaliyadan and V. Kulkarni, ["Types of Variables, Descriptive Statistics, and Sample Size"](https://doi.org/10.4103/idoj.IDOJ_468_18), *Indian Dermatology Online Journal*, 10(1), 2019, 82–86.

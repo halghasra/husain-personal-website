@@ -9,11 +9,9 @@ tags: ["Brain", "Education", "Frames of Mind", "Howard Gardner", "Intelligence",
 coverImage: "./images/Frames-of-Mind-2.png"
 ---
 
-Intelligence has always been a rich topic for debate and comparison. We often hear people saying that someone is smarter than someone else or that a child shows great potential and might become very intelligent in the future.
+We are remarkably comfortable calling one person intelligent and another less so, even when the two are doing entirely different things. A mathematician, a poet, a navigator, and a surgeon can each display extraordinary judgement, yet the word *intelligence* often collapses those abilities into a single imagined scale.
 
-This conversation extends beyond individuals and small communities. On an international and institutional level, newly elected leaders are often assessed based on their intelligence compared to their predecessors or peers. Scientists, politicians, authors, critics, and even athletes are frequently evaluated and compared by their intelligence scores.
-
-In the academic world, universities and research institutions have been constantly developing and updating tests and standards to measure intelligence, aiming for a universal standard. Among these, the IQ test – Intelligence Quotient – has become the most recognised international standard for measuring individual intelligence.
+Psychometric tests make a more specific claim than everyday conversation sometimes gives them credit for. They sample performance on defined cognitive tasks and can predict some educational and occupational outcomes, but they do not measure every ability a culture might value. Reading Howard Gardner's *Frames of Mind* made me question what disappears when a useful measurement becomes our complete definition of a person.
 
 **But the key question remains: Is it fair to rely on a single test to measure intelligence?**
 
@@ -29,15 +27,13 @@ In the academic world, universities and research institutions have been constant
 
 </figure>
 
-IQ tests traditionally focus on two main areas: linguistic communication and logical thinking. These areas are limited in assessing the intelligence of various segments of society, many of whom excel in areas that do not necessarily require linguistic or logical abilities.
+Gardner's criticism was that conventional testing privileged linguistic and logical-mathematical performance. His response was not merely to add more questions to an IQ test, but to propose that human competence might consist of several intelligences with partly distinct developmental histories [1].
 
 This raises several questions for researchers in the field of intelligence measurement:
 
 Is intelligence a general individual trait? How accurate are the available intelligence tests, whether online or at certified testing centres? Is intelligence the same for everyone around the world, with only varying levels? Is it fair to say that one person is more or less intelligent than another? Can we adopt a single perspective on intelligence despite the diverse areas of human excellence?
 
-In 1983, psychologist and Harvard University professor of cognition and education, Dr. Howard Gardner, introduced his theory of multiple intelligences in his book _Frames of Mind_. Over the next twenty years, he continued to develop this theory.
-
-**Gardner's theory posits that the human mind has seven different types of intelligence that function independently from one another.**
+In 1983, psychologist Howard Gardner introduced the theory of multiple intelligences in _Frames of Mind_. The original account described seven intelligences and argued for their relative autonomy [1]. The word *relative* is important. Later empirical work has found substantial correlations among tests designed to represent the proposed intelligences, and systematic reviews have not established that teaching students according to a supposed intelligence profile improves learning [2, 3]. I find the framework provocative; I should not present it as settled cognitive science.
 
 <figure>
 
@@ -51,19 +47,17 @@ Professor Howard Gardner, the creator of the theory of multiple intelligences - 
 
 </figure>
 
-In reading this book, several examples presented by the author stood out to me, illustrating the different types of intelligence and the invalidity of comparing them:
+Several examples in the book stayed with me because they make the cost of using one narrow comparison vivid:
 
 1. A 12-year-old Caribbean boy from a family of sailors who have passed down the trade from generation to generation. This boy, despite his young age, is a skilled sailor. His proficiency requires extensive knowledge of wind patterns, weather forecasts, celestial navigation, and geography, relying entirely on traditional methods without advanced navigation devices.
 
-3. An Iranian child who amazed the media with his memorisation of the Quran at a very young age. He speaks Arabic fluently alongside his native Persian and excels in religious studies, potentially becoming a religious leader in the future.
+2. An Iranian child who memorised the Quran at a very young age, spoke Arabic alongside his native Persian, and excelled in religious study.
 
-5. A 14-year-old Parisian girl who has mastered a complex music application to produce unique and sophisticated musical compositions.
+3. A 14-year-old Parisian girl who had mastered a demanding musical system and produced sophisticated compositions.
 
-Each of these individuals can be considered proficient in their field, similar to sports legends in football or golf. They have achieved remarkable success in highly competitive fields.
+Each example involves knowledge, memory, perception, and judgement, but in different proportions. A conventional cognitive test may capture some of those abilities and miss others. That is a reason to resist over-interpreting a score, although it does not by itself prove that each ability is an independent intelligence.
 
-However, traditional measures of intelligence might not capture their achievements because these measures are designed to assess only one type of intelligence.
-
-If we conducted a public survey asking people to name the smartest person ever, most would likely choose names like Einstein or Newton, overlooking other highly successful individuals in their fields. This bias highlights the limitations of conventional intelligence measures.
+Ask for the “smartest person ever” and the question itself pushes us towards scientists whose achievements resemble the abilities associated with intelligence in school. The answer may reveal as much about our cultural definition of intelligence as it does about the people named.
 
 In this book, or rather this theory, the author identifies seven types of intelligence, also known as multiple intelligences:
 
@@ -81,22 +75,24 @@ In this book, or rather this theory, the author identifies seven types of intell
 
 - Intrapersonal intelligence
 
-One criterion Gardner used to define these types of intelligence is the possibility of their isolation if the brain suffers damage. If a part of the brain responsible for a specific type of intelligence is damaged, the associated abilities are lost without affecting other types of intelligence.
+One criterion Gardner used was evidence that an ability could be selectively impaired after brain damage while other abilities remained comparatively intact. This was evidence for separability, not a claim that every intelligence occupies one isolated piece of brain tissue [1].
 
-Another criterion is that each type of intelligence should enable problem-solving. This is why abilities like facial recognition are not considered intelligence in Gardner's view; they may meet the first criterion but not the second, as they do not aid in problem-solving or acquiring new knowledge.
+He also required an intelligence to support problem-solving or the creation of products valued within a culture. His criteria drew on developmental, neurological, evolutionary, and symbolic evidence rather than one decisive experiment [1].
 
 **This leads to another question: Why should we identify and understand different types of intelligence?**
 
-To answer this, we must first ask: Is intelligence influenced by genetics?
+The educational attraction is easy to understand. If ability has several forms, a school that notices only one may overlook genuine strengths. Yet this is also where the theory is most often stretched beyond its evidence. A useful reminder to vary examples and value different forms of competence does not prove that each learner has a fixed “intelligence type”, or that a lesson becomes more effective when matched to it [3].
 
-While some scientists believe that up to 80% of intelligence differences can be attributed to genes, others argue that genetics play a minimal role, not exceeding 20%, while some dismiss heredity entirely as a determinant of intelligence.
+Genes and environments both contribute to differences in cognitive performance, and their effects cannot be reduced to one universal percentage. Heritability is a population statistic, not a forecast of an individual's potential, and it can change across populations and environments [4]. Whatever capacities a person begins with, expertise still requires access, instruction, practice, and a culture that makes the activity imaginable. A child with unusual potential for chess cannot develop it without encountering chess.
 
-Although one can estimate that a person has a high potential for excellence in a certain trait, if an individual with the potential to become the best chess player in the world is never taught the game or even made aware of its existence, their chances of achieving such greatness are nearly impossible.
-
-Gardner's theory of multiple intelligences can help identify and develop individuals' hidden potentials.
-
-From a genetic perspective, a stimulating environment has the greatest impact on enabling individuals to reach the highest levels of proficiency in areas that match their genetic traits. However, it is theoretically impossible to distinguish and separate genetic traits from those acquired environmentally.
-
-This is where neuroscience comes in to explain and understand human cognitive traits. Fortunately, two principles from neuroscience can help us understand these traits: compensation and plasticity.
+This leaves me with a more careful reason to read Gardner. His framework is valuable as a challenge to narrow educational judgement and as a vocabulary for discussing varied human competence. Whether the proposed intelligences are psychometrically independent is a separate empirical question, and the evidence there is much less friendly to the theory [2, 3, 5].
 
 In the next part of this article, we will explore this relationship further and continue reading about the theory of multiple intelligences. We will also learn about internal and external sources of intelligence and the author's suggestions for establishing scientific frameworks for measuring individual intelligence (especially in students) and how this measurement can improve the educational process.
+
+## References
+
+1. Gardner, H. (1983). *Frames of Mind: The Theory of Multiple Intelligences*. Basic Books.
+2. Visser, B. A., Ashton, M. C., & Vernon, P. A. (2006). [Beyond g: Putting multiple intelligences theory to the test](https://doi.org/10.1016/j.intell.2006.02.004). *Intelligence*, 34(5), 487–502.
+3. Ferrero, M., Vadillo, M. A., & León, S. P. (2021). [A valid evaluation of the theory of multiple intelligences is not yet possible: Problems of methodological quality for intervention studies](https://doi.org/10.1016/j.intell.2021.101566). *Intelligence*, 88.
+4. Plomin, R., & Deary, I. J. (2015). [Genetics and intelligence differences: five special findings](https://doi.org/10.1038/mp.2014.105). *Molecular Psychiatry*, 20, 98–108.
+5. Waterhouse, L. (2006). [Multiple Intelligences, the Mozart Effect, and Emotional Intelligence: A Critical Review](https://doi.org/10.1207/s15326985ep4104_1). *Educational Psychologist*, 41(4), 207–225.

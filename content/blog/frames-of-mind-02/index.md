@@ -9,51 +9,43 @@ tags: ["Frames of Mind", "Multiple Intelligences", "Howard Gardner", "Intelligen
 coverImage: "./images/Frames-of-Mind-part-2-2.png"
 ---
 
-In the [first part](../frames-of-mind-01/index.md) of this article, we discussed the origins and emergence of the theory of multiple intelligences, the types of intelligences according to Dr. Howard Gardner, the reasons for identifying and understanding these types of intelligence, and how they can help identify and develop individuals' hidden potentials.
+In the [first part](/blog/frames-of-mind-01), I introduced Howard Gardner's theory and the question that drew me to it: what do we lose when intelligence is treated as one rankable quantity? I also added an important qualification. The theory is influential in education, but evidence does not clearly support the claim that its proposed intelligences operate independently or that instruction should be matched to a learner's supposed profile [2, 3].
 
-In this second and final part, we will explore these relationships further and continue reading about the theory of multiple intelligences. We will also learn about internal and external sources of intelligence. Finally, we will look at Gardner's suggestions for establishing scientific frameworks to measure individual intelligence (specifically in students) and how these measurements can improve the educational process.
+This second part returns to Gardner's descriptions of the intelligences and his educational argument. I am reading them as a framework to examine, not a map of the mind whose borders neuroscience has confirmed.
 
 ![](./images/pexels-photo-207924-1.jpg)
 
 **Using Neuroscience to Understand Cognitive Traits**
 
-As we mentioned earlier, a stimulating environment has the greatest impact on enabling individuals to reach the highest levels of proficiency in areas that match their genetic traits. However, it is theoretically impossible to separate genetic traits from those acquired environmentally.
-
-Therefore, neuroscience is often used to explain and understand cognitive traits. Fortunately, there are two principles from neuroscience that can help us understand these traits: canalization and plasticity.
+Development emerges from interaction between biology and environment, so neither a gene-only nor an environment-only story is adequate. Gardner draws on two relevant ideas, canalisation and plasticity, but neither one establishes the existence of his seven intelligences.
 
 The concept of canalization, proposed by British biologist Conrad Waddington in the late 1940s, simply means the tendency of organic systems to follow specific developmental paths. For example, the development of the human nervous system is remarkably predictable: cells first appear in the neural tube of the embryo, then gradually move towards the areas forming the brain and spinal cord to become part of it.
 
-Plasticity, on the other hand, a concept developed by Polish neuroscientist Jerzy Konorski, describes the brain's ability to be shaped by a wide range of environments. For example, regarding languages, the brain has the flexibility to adapt. If the left hemisphere of a child's brain is removed in their first year, they will still be able to learn languages and speak fluently later on.
+Plasticity describes the nervous system's capacity to change with development, experience, and injury. Outcomes after hemispherectomy show that young brains can reorganise some language functions remarkably well, but the result is not guaranteed fluency without cost, and age is not the only variable. A review of language after childhood hemispherectomy found substantial variability in vocabulary, grammar, and processing [6]. I have therefore removed the earlier absolute comparison between infants and adults; it claimed far more than the evidence justified.
 
-However, for an adult who undergoes the same procedure, it will be very difficult to speak and construct sentences for the rest of their life, even if they were fluent in several languages before the surgery.
+Plasticity gives education a reason to take experience seriously. It does not tell us that every child has one dominant intelligence or that teaching should be labelled accordingly.
 
-Here lies the importance of the theory of multiple intelligences, as it allows societies to focus on the brain's flexibility in young children and use it to design the educational process.
+## Reading Gardner's categories
 
-**External Intelligences**
+### Linguistic intelligence
 
-****Linguistic Intelligence** involves a high awareness of language and its features.**
+Gardner uses linguistic intelligence for sensitivity to the meanings, sounds, rhythms, and practical uses of language. Poetry makes those sensitivities unusually visible, but persuasion, storytelling, translation, and ordinary conversation also require them.
 
-Poets are the best example of individuals with high linguistic intelligence. Poetry is not just about combining similar words and syllables; it also involves the harmony and sound of words, making poems smooth and pleasant to listen to.
+But it is not only poetry that defines linguistic intelligence. Eloquence, the ability to use words persuasively enough to change an opinion or inspire action, is another example, as seen in political leaders.
 
-But it's not just poetry that defines linguistic intelligence. Eloquence – the ability to use words in a powerful and convincing way to persuade others, change their opinions, or inspire them to take action – is another example, as seen in political leaders.
+Language in most adults is strongly left-lateralised, but it depends on distributed networks rather than one “language centre”. Damage associated with Broca's aphasia commonly disrupts fluent speech and grammatical production; comprehension may be better preserved than production and is not accurately described as simply lost [7].
 
-For most individuals, linguistic abilities are centred in the left hemisphere of the brain. Therefore, any damage to certain areas in this part of the brain can affect linguistic abilities.
-
-For example, damage to Broca's area – located in the frontal lobe at the front of the brain – can result in Broca's aphasia, which significantly impairs the ability to speak and write, and understand spoken and written language. Even after treating the underlying cause, patients often need to relearn language skills and communication methods.
-
-****Musical Intelligence** involves sensitivity to the characteristics of sounds.**
+### Musical intelligence
 
 Musical intelligence is linked to auditory and verbal abilities. Individuals with high musical intelligence can understand the properties of rhythms and reproduce them accurately.
 
-Studies have shown that most people have some level of this intelligence, allowing them to distinguish melodies and identify good from bad music, as well as create and compose new harmonious sounds – even if they are simple.
+Most people can perceive pitch, rhythm, and melodic relations to some degree, while training and culture shape how those relations are organised and named. Calling this an intelligence is Gardner's theoretical choice, not a conclusion forced by the existence of musical skill.
 
 Although music is similar to languages in terms of structure and reliance on sounds, musical intelligence is different from linguistic intelligence because the brain processes and stores musical compositions differently than it does words.
 
-To prove this, British psychologist Diana Deutsch conducted tests where participants listened to a series of melodies and were asked to remember them. Then, she played different melodies and asked if they had heard them before. The error rate in remembering melodies exceeded 40%.
+Music and language overlap in some cognitive resources and differ in others. The earlier version of this article gave precise error rates from an experiment without a traceable citation. I have removed them rather than preserve numbers I cannot verify.
 
-Conversely, when listening to sounds containing verbal components – numbers or words – the error rate dropped to just 2%.
-
-****Logical-Mathematical Intelligence** revolves around abstract logic.**
+### Logical-mathematical intelligence
 
 This type of intelligence begins with interacting with the world of objects and gradually evolves into abstract worlds of logic and science.
 
@@ -61,7 +53,7 @@ When it comes to mathematics, memory strength is not a crucial feature for mathe
 
 Mathematics is similar to poetry or painting, as all three focus on patterns, connections, and ideas rather than languages or sounds.
 
-****Spatial Intelligence** is used for visualisation and orientation.**
+### Spatial intelligence
 
 This intelligence involves the ability to accurately perceive the visual world and transform, modify, or recreate that perception, even if the visual stimulus is no longer present.
 
@@ -71,9 +63,9 @@ Those with high spatial intelligence can navigate their way, whether in a small 
 
 In fact, spatial intelligence can be used in a more abstract manner, such as drawing connections between different fields that may not appear related at first glance.
 
-For example, chemist John Dalton visualised atoms as miniature solar systems, combining concepts from both chemistry and astronomy.
+Scientific models often use spatial representation to make an otherwise abstract relationship inspectable. That connection is interesting without attaching an unverified anecdote to a particular scientist.
 
-****Masterful Use of the Body Shows Bodily-Kinesthetic Intelligence****
+### Bodily-kinaesthetic intelligence
 
 Although many people do not associate physical activities and skills with intelligence, this is not true at all.
 
@@ -83,44 +75,44 @@ However, upon closer examination, we notice that many precise tasks also involve
 
 Therefore, it is incorrect to claim that the brain does not play a role in physical movement. On the contrary, the brain helps improve, redirect, and adapt physical behaviour to better serve individual goals. The brain and body constantly communicate to execute many fine motor tasks.
 
-**Internal Intelligences**
+## The personal intelligences
 
-****Personal Intelligence** focuses on understanding oneself and others.**
+### Intrapersonal and interpersonal intelligence
 
 Internal personal intelligence involves an individual's ability to connect with their inner thoughts, feelings, and emotions.
 
 In contrast, external personal intelligence revolves around understanding others, specifically their moods, mental states, motivations, and intentions.
 
-Both types of intelligence are located in the frontal lobes of the brain, where sensory information and limbic system data merge. This is where an individual's perceptions of themselves or others combine with information related to their emotional state.
+These abilities involve several interacting systems for memory, emotion, social perception, and executive control. Locating both “in the frontal lobes”, as the earlier version did, turns a distributed and contested account into a false anatomical certainty.
 
-****The Need to Develop Educational Systems to Reflect the Theory of Multiple Intelligences****
+## What should education do with the theory?
 
 If you wanted to teach someone computer programming, what intelligences would you use? Most people would choose the most obvious answer: logical-mathematical intelligence. Some might say linguistic intelligence is also important, as programming involves learning programming languages.
 
-But what if we said that musical intelligence is also important for learning programming? By teaching the student to link algorithms and code snippets to form a coherent and effective program.
+Diagrams can make program structure visible; pair programming can expose a learner to another person's reasoning; spoken explanation can uncover gaps in understanding. These are defensible teaching options because they represent the material in different ways and support different learning activities. It does not follow that a student should receive one of them because a test has labelled the student “spatial”, “interpersonal”, or “linguistic”. Reviews of matching instruction to multiple-intelligence profiles have not produced a sound evidential basis for that practice [3].
 
-What if we said that spatial abilities – related to spatial intelligence – can also help teach programming effectively? This can be done by starting with diagrams like UML, flowcharts, and use cases.
-
-For individuals with high personal intelligence, they could be taught through group work (like coding boot camps) or pair programming.
-
-These examples show that although some intelligences are better suited for certain tasks, making the educational process more flexible by considering the different types of intelligences can make teaching methods more effective.
-
-The author believes that the first step in applying the theory of multiple intelligences in education is to develop a more accurate intelligence test – or rather a set of tests. Intelligence should be assessed at different ages and monitored throughout students' development. Early testing of children's intelligences can help them advance quickly in areas where they are particularly skilled and receive support in areas where they struggle.
+Gardner proposed broader forms of assessment, repeated across development and grounded in meaningful activities rather than a single short test [1]. The aspiration is humane, although a profile can become another label if its uncertainty and context are forgotten.
 
 The second step, according to the author, is for educational institutions to review their goals. For example, if a program's goal is "to educate individuals and help them achieve their full potential," this goal is too general to be useful. On the contrary, the more specific the goal, the easier it is to analyse the intellectual skills needed to teach and learn it.
 
 Next, educators should identify ways to use intelligence as both a means and an end. In other words, they should explore how intelligence can be used to teach a skill and how intelligence itself is part of that skill. For example, a child who struggles to learn to read through traditional methods might benefit from learning through physical exploration to understand the shapes of letters.
 
-In conclusion, combining cultural awareness and knowledge of multiple intelligences can revolutionise education, potentially transforming the future of humanity and unleashing their unimaginable potential.
+My conclusion is more restrained than the one I originally wrote. Education should recognise a wider range of human competence, use varied representations, and give students more than one way to demonstrate understanding. Multiple-intelligences theory helped popularise that conversation. Those values can survive even if the theory's strongest psychological claims do not.
 
 **Reflection: Relevance to Artificial Intelligence**
 
-The theory of multiple intelligences is not only relevant to understanding human potential but also has significant implications for the development of artificial intelligence (AI). In the field of AI, the concept of intelligence is often narrowly defined, focusing primarily on logical and mathematical abilities, much like traditional IQ tests.
+Gardner's categories should not be copied directly into AI. A system that processes music has not thereby acquired “musical intelligence” in the human developmental and cultural sense. Nor does combining language, vision, and audio models demonstrate that the theory was neurologically correct.
 
-However, if we apply Gardner's theory to AI, we can start to see the importance of creating more diverse and flexible AI systems. For example, linguistic intelligence can be crucial for natural language processing and communication technologies, enabling AI to understand and generate human language more effectively.
+The connection I still find useful is methodological. AI researchers also have to decide what they will recognise as intelligence and how they will measure it. A benchmark can become as distorting as an IQ score when performance on a narrow task quietly stands in for every form of competence. Gardner's framework reminds me to ask what a measurement excludes, even when I do not accept each intelligence as an independent faculty.
 
-Musical intelligence can be integrated into AI to enhance audio processing and generation, leading to more sophisticated and creative applications in music composition and sound design. Spatial intelligence can improve AI's ability to navigate and interact with physical environments, which is essential for robotics and autonomous systems.
+That is the part of the theory I want to keep: not seven new boxes into which every mind must fit, but resistance to the idea that one convenient measurement exhausts a complicated phenomenon.
 
-By recognising and incorporating these different types of intelligence, we can develop AI that is not only more versatile and capable but also more aligned with the complex and varied nature of human intelligence. This approach can lead to AI systems that better understand and support human activities, making technology more intuitive and effective in real-world applications.
+## References
 
-In conclusion, the theory of multiple intelligences offers valuable insights for both education and the development of AI, highlighting the need for a broader and more inclusive understanding of intelligence that encompasses the full range of human abilities.
+1. Gardner, H. (1983). *Frames of Mind: The Theory of Multiple Intelligences*. Basic Books.
+2. Visser, B. A., Ashton, M. C., & Vernon, P. A. (2006). [Beyond g: Putting multiple intelligences theory to the test](https://doi.org/10.1016/j.intell.2006.02.004). *Intelligence*, 34(5), 487–502.
+3. Ferrero, M., Vadillo, M. A., & León, S. P. (2021). [A valid evaluation of the theory of multiple intelligences is not yet possible: Problems of methodological quality for intervention studies](https://doi.org/10.1016/j.intell.2021.101566). *Intelligence*, 88.
+4. Waterhouse, L. (2006). [Multiple Intelligences, the Mozart Effect, and Emotional Intelligence: A Critical Review](https://doi.org/10.1207/s15326985ep4104_1). *Educational Psychologist*, 41(4), 207–225.
+5. Plomin, R., & Deary, I. J. (2015). [Genetics and intelligence differences: five special findings](https://doi.org/10.1038/mp.2014.105). *Molecular Psychiatry*, 20, 98–108.
+6. Curtiss, S., de Bode, S., & Mathern, G. W. (2001). [Spoken language outcomes after hemispherectomy: Factoring in etiology](https://doi.org/10.1093/brain/124.3.642). *Brain*, 124(3), 642–653.
+7. Fridriksson, J. et al. (2015). [Anatomy of aphasia revisited](https://doi.org/10.1093/brain/awv234). *Brain*, 138(12), 3414–3429.

@@ -3,7 +3,7 @@ title: "How a Convolutional Network Sees"
 slug: "how-a-convolutional-network-sees"
 type: "note"
 status: "evergreen"
-summary: "A plain network and a convolutional one read the same handwritten digits, and one of them needs 127 times fewer adjustable numbers. Where the saving comes from, checked by hand, and what happens when you borrow, stretch or forge pictures to train with."
+summary: "Two networks can inspect the same pixels while making very different assumptions about them. I follow the nine shared numbers that give convolution its advantage, then test what happens when visual features are borrowed, stretched and generated."
 date: "2026-09-24"
 created: "2026-09-24"
 updated: "2026-09-24"
@@ -23,17 +23,15 @@ seo:
   description: "Convolution worked by hand, why a CNN needs far fewer parameters than a dense network, and what transfer learning, augmentation and GANs add."
 ---
 
-Take handwritten digits, each a grid of 28 by 28 pixels. Here are two networks that could learn to read them.
+A handwritten digit can be stored as 784 pixel values. Once those values are flattened into a list, a dense neural network has no built-in reason to treat neighbouring pixels as neighbours. The first and last positions are simply two inputs among 784.
 
-The first is plain. It flattens the picture into a list of 784 numbers and passes it through three dense layers of 512, 512 and 10 units. Counting every weight and bias, it has 669,706 adjustable numbers. The second is a small convolutional network, which I set out below. It has 5,258.
+I compared two networks that could be used for this task. The dense one has layers of 512, 512 and 10 units, giving it 669,706 weights and biases. The small convolutional design developed later in this note has 5,258. It reaches that number by making a strong assumption about images: a useful pattern can be recognised with the same small detector wherever it appears.
 
-That is 127 times fewer. So where did the other 664,448 numbers go, and what did the second network have to give up to lose them?
-
-The answer turns out to fit on a postcard. It is nine numbers, a picture, and a refusal to forget that pixels have neighbours.
+That assumption removes 664,448 adjustable numbers, a reduction by a factor of about 127. It also tells us what convolution gives up in exchange. The network no longer learns an unrelated rule for every pixel position. It preserves the spatial arrangement of the image and reuses nine numbers at a time.
 
 ## Nine numbers on a picture
 
-A **convolution** slides a small grid of numbers over an image. At each position it multiplies the grid with the patch of image underneath, number by number, and adds up the results. That small grid is a **filter** (or kernel).
+A **convolution** moves a small grid of numbers across an image. At every position, it multiplies that grid by the pixels underneath and sums the products. The grid is called a **filter** or **kernel**, and its output records how strongly the local patch matches the pattern encoded by those numbers.
 
 Here is the smallest picture that shows something happening: a 5 by 5 image, dark on the left (0) and bright on the right (9), with a vertical edge between the third and fourth columns. The filter has -1 down its left column, 0 down the middle and 1 down the right, so it computes right minus left.
 
@@ -150,11 +148,15 @@ print(slide(img, np.ones((3, 3)) / 9).round(2))
  [0. 3. 6.]]
 ```
 
-The output is 0 where the picture is flat and 27 exactly where the dark side meets the bright side. Flip the filter and every sign flips, so it now answers "bright to dark". Replace it with a 3 by 3 grid of 1/9 and you get a blur instead: the sharp step from 0 to 9 becomes the ramp 0, 3, 6. Same operation, different nine numbers, entirely different question asked of the picture.
+The result is zero across flat regions and 27 where the dark pixels meet the bright ones. Reversing the filter reverses the signs, distinguishing the opposite edge direction. Replacing it with nine values of 1/9 changes the operation again: instead of detecting an edge, it averages each patch and turns the abrupt step from 0 to 9 into the sequence 0, 3, 6.
+
+Nothing about the sliding operation itself means "edge" or "blur". The meaning comes from the nine values. Convolution supplies a way to ask the same local question across an image; the filter decides what that question is.
 
 ## The same nine numbers everywhere
 
-Here is the part that carries the whole idea. The filter is the same at every position. It does not know where it is. The patch at the top-left and the patch at the bottom-right are checked with identical numbers, so a pattern the filter has learned to find is found wherever it turns up. A network does not need to learn "edge" separately for each corner of the picture, and a pattern that moves across the picture is still found. Rotation and size are not handled for free, which is part of why augmentation exists.
+The same filter is used at every position. A patch in the top-left and one in the bottom-right are tested with identical weights, so the detector can respond to the same pattern wherever it appears. This **weight sharing** is the central economy of a convolutional layer. The network does not have to relearn a vertical edge separately for each region of the image.
+
+Translation is only partly handled by this design. Moving a feature moves the activation map, and later pooling may make small shifts matter less, but rotation and scale are not automatically solved. A filter trained on one orientation does not become a detector for every orientation for free.
 
 That is where the saving comes from. One 3 by 3 filter has 9 weights plus 1 bias, so 10 numbers, reused at every position. A dense layer connecting a 28 by 28 image (784 inputs) to 784 units has 784 × 784 + 784 = 615,440 numbers. The comparison is unfair in one way, since a real layer uses many filters, but even a dozen filters would not close the gap.
 
@@ -166,11 +168,13 @@ For a 28-pixel image, a 3 by 3 filter with no padding gives 26. With one pixel o
 
 The second is a naming quirk. The textbook operation flips the filter before sliding it. Deep learning libraries do not, so what they compute is technically cross-correlation, though they still call it convolution. It makes no practical difference, because the filter values are learned.
 
-Nobody designs those values, by the way. Filters start random and are adjusted by [backpropagation](/notes/backpropagation-learning-by-blame/) like any other weight. A trained network typically ends up with edge-like detectors in its first layer without anyone telling it what an edge is.
+In a trained CNN, those filter values are usually not written by hand. They begin as parameters and are adjusted through [backpropagation](/notes/backpropagation-learning-by-blame/). Edge-like filters often emerge in early layers because local changes in brightness are useful ingredients for the classification objective, not because the network was given a definition of an edge.
 
 ## Stacking the layers
 
-A **convolutional neural network** stacks these operations. A convolutional layer applies a set of filters and produces one feature map per filter. An activation (usually ReLU, which sets negative values to zero) follows. **Pooling** then shrinks each map, most often by keeping only the largest value in each small block. Near the end, dense layers turn the surviving features into class scores. Because each layer looks at the previous layer's features and not at raw pixels, what the layers pick up goes from simple to complex: small edges first, then textures and parts, then whole objects. The stacking is what grows a window of nine pixels into something that can see a face.
+A **convolutional neural network** applies many filters and stacks their feature maps. An activation such as ReLU introduces non-linearity by replacing negative values with zero. **Pooling** can then reduce the spatial resolution, commonly by keeping the maximum within each small block. Near the output, the accumulated features are converted into class scores.
+
+With each additional convolution, a unit depends on a larger region of the original image. This growing **receptive field** is what allows local detectors to contribute to wider patterns. It is tempting to describe the progression as edges becoming textures, parts and finally objects. That is a useful intuition, but it should not be mistaken for a guarantee that each internal feature has a clean human name.
 
 Pooling is easy to check. Cut a 4 by 4 map into four 2 by 2 blocks and keep the largest value in each. The top-left block holds 1, 3, 4 and 6, so it keeps 6. The same by code, where the reshape groups the map into those blocks:
 
@@ -221,15 +225,15 @@ total 5258
 dense network 669706
 ```
 
-The two convolutional layers cost 80 and 1,168 numbers. Most of the 5,258 sit in the last dense layer, 4,010 of them. A 2016 review of deep learning for visual understanding (Guo and others) reports the same pattern at full scale: fully connected layers can hold about 90% of a large network's parameters, which is why later architectures moved away from them.
+The two convolutional layers require 80 and 1,168 parameters. The final dense layer alone requires 4,010, more than three-quarters of this model's total. That concentration is one reason later vision architectures found ways to reduce or replace large fully connected stages: location-specific connections rapidly dominate the parameter count.
 
-One honest edge. I counted this small network but did not train it, so I am making no claim about how accurately it reads digits. The claim is only about where the numbers go. They did not vanish. They were never needed, because a dense layer stores a separate rule for every position, and a shared filter replaces all of those rules with one. What the network gives up is the freedom to treat each position differently, and the ability to relate two distant pixels in a single step. Distant pixels only meet in later layers, once the windows have grown.
+I counted this network but did not train it, so the comparison establishes parameter use rather than predictive accuracy. The missing parameters have not been compressed into a cleverer form; the architecture has ruled them out. A shared filter replaces many position-specific connections with one reusable detector. In return, early layers cannot give every location an entirely independent rule, and distant pixels interact only after successive layers have enlarged the receptive field.
 
-The same review reports ImageNet classification error falling from 15.3% in 2012, with AlexNet, to 4.82% in 2015. It also cites something much stranger: images that look like noise to a person, which a leading network classified with 99.99% confidence. A hierarchy of filters is a powerful way to be right. It is not the same as understanding.
+The history of image classification shows how effective this architecture can be, but confidence can hide a very different failure. Nguyen, Yosinski and Clune generated images that were unrecognisable to people while state-of-the-art networks assigned familiar object classes with 99.99 per cent confidence. The system had found evidence that strongly activated its learned decision boundary. Whether that evidence deserved the human label was another question.
 
 ## Borrowing someone else's eyes
 
-Training a network from nothing needs a great deal of labelled data. **Transfer learning** avoids that by starting from a network already trained on a large, broad task. The reason it can work is those early layers. The edge and texture detectors learned for one job are useful for many others. You can freeze them and train only a small new head on top, or continue training everything gently.
+Training a large visual model from random parameters can require more labelled examples than a new task provides. **Transfer learning** begins with a model trained elsewhere, then either freezes part of it and learns a new output layer or fine-tunes some of the borrowed weights. The hope is that the earlier representation contains visual features that remain useful for the new question.
 
 ImageNet is too big to try here, so I made a small version of the experiment. scikit-learn ships a set of 1,797 handwritten digits, each 8 by 8 pixels. One caveat first: the network I use is a plain one-hidden-layer network, not a CNN. The idea being tested is the borrowing of a hidden layer, not the convolution.
 
@@ -292,9 +296,9 @@ odd or even, 50 labels: [0.846 0.889]
 5 to 9 from a 0 to 4 network: [0.898 0.776]
 ```
 
-In each pair the first number is the raw pixels and the second is the borrowed layer. With 10 labelled examples, borrowing lifts accuracy from 67.2% to 75.8%. With 50 the gap narrows to 84.6% against 88.9%. That fits the story: the less data you have for the new task, the more the borrowed features are worth.
+In each pair, the first result uses raw pixels and the second uses the frozen hidden layer. With ten labelled examples, the borrowed representation raises mean accuracy from 67.2 to 75.8 per cent. With fifty labels, the difference narrows to 84.6 against 88.9 per cent. In this particular experiment, the representation is most helpful when labels for the new task are scarce.
 
-The last line of the output is the failure, and it is the more instructive one. A network that spent its life separating 0 to 4 kept only what that job needed. Handed digits it had never seen, its hidden layer did worse (77.6%) than the raw pixels (89.8%). This is **negative transfer**. What you borrow has to be broad enough for the new question. ImageNet works as a starting point largely because it is broad. The effect here is modest and the setting is tiny, so treat it as an illustration and not a benchmark.
+The final line is the counterexample. A network trained only to separate digits 0 to 4 produces a representation that performs worse on the unseen digits 5 to 9: 77.6 per cent against 89.8 from raw pixels. This is **negative transfer**. Pretraining does not provide universally useful vision; it preserves features selected by the source task. The experiment is intentionally small and should be read as a worked illustration, not a benchmark for transfer learning in general.
 
 ## Stretching the pictures you have
 
@@ -318,11 +322,13 @@ print(len(orientations(img)), len(orientations(sym)))
 
 Four rotations times a mirror flip give eight distinct versions of the lopsided image, so one picture becomes eight. The symmetric one gives one: it gains nothing.
 
-Two cautions, both of which I think are worth more than the technique. First, the transformation must preserve the label. Turn a handwritten 6 upside down and you have a 9. The trick that makes the training set bigger can quietly relabel it, and which changes are safe depends on the domain. Second, a copy is not a new fact. The extra examples are strongly correlated with the originals, so they add variety and not information, and they must go into the training set only, because transformed copies of test images that leak into training make the test meaningless.
+The transformation is useful only if it preserves the label. A horizontal flip may leave an animal photograph meaningful while reversing text; rotating a handwritten 6 may produce a 9. Safe augmentation is therefore domain knowledge written as an image operation.
+
+The generated examples are also dependent on their originals. They can teach invariance to a transformation, but they do not provide the same evidence as independently collected images. All variants of an observation must remain on the same side of a train-test split. Otherwise, a transformed copy in training allows the model to recognise what the evaluation presents as unseen.
 
 ## A forger and a detective
 
-There is a third way to make pictures, and it is the strangest. In a **generative adversarial network** (introduced in 2014) two networks play a game. A generator turns random noise into fake images. A discriminator looks at a mix of real and fake and tries to tell them apart. Nobody tells the generator what a face looks like. It only learns what the detective cannot catch, and the detective keeps getting better.
+A **generative adversarial network**, introduced by Goodfellow and colleagues in 2014, replaces fixed image transformations with a learned game. A generator maps random inputs to synthetic samples. A discriminator sees both real and generated samples and learns to distinguish them. The generator improves through the discriminator's response, learning which changes make its outputs harder to reject.
 
 The maths of the game can be checked in one dimension. Let the real data be a bell curve centred on 0, and the generator's output a bell curve centred on 1: still wrong. The best possible discriminator says "real" with probability real ÷ (real + fake) at each point.
 
@@ -356,15 +362,16 @@ GANs have known troubles: a generator can collapse to a few convincing outputs, 
 
 ## What the network does not see
 
-Put the pieces together and a picture of seeing emerges, and it is not the human one. The network does not see a face. It asks small questions about edges, at every position, with the same shared numbers, and stacks the answers until they add up to one.
+What I had called "seeing" at the start now looks more precise. A convolutional network applies learned local tests, reuses them across positions, and composes their responses over increasingly large receptive fields. Transfer learning reuses some of those responses for another task; augmentation declares which visual changes should not matter; a GAN learns to imitate a distribution well enough to challenge a discriminator.
 
-The filter does not know where it is. The network does not know what it is looking at. Ask the same small question in enough places, and it can still tell you what is there.
+None of this requires the system to experience a face, digit or edge as a person does. It requires a representation that supports the task and a loss that rewards the right distinctions. The remarkable fact is that local weight sharing can produce such strong recognition. The equally important fact is that recognition, confidence and understanding remain different claims.
 
 ---
 
-**Sources**
+## References
 
-- Y. Guo and others, *Deep learning for visual understanding: A review*, Neurocomputing, 2016.
-- I. Goodfellow and others, *Generative Adversarial Nets*, 2014.
-- K. Maharana and others, *A review: Data pre-processing and data augmentation techniques*, 2022.
-- scikit-learn documentation for the `load_digits` dataset (8 by 8 handwritten digits).
+- Y. Guo et al., ["Deep learning for visual understanding: A review"](https://doi.org/10.1016/j.neucom.2015.09.116), *Neurocomputing*, 187, 2016, 27–48.
+- A. Nguyen, J. Yosinski and J. Clune, ["Deep Neural Networks are Easily Fooled: High Confidence Predictions for Unrecognizable Images"](https://arxiv.org/abs/1412.1897), *Proceedings of CVPR*, 2015, 427–436.
+- I. Goodfellow et al., ["Generative Adversarial Nets"](https://arxiv.org/abs/1406.2661), *Advances in Neural Information Processing Systems 27*, 2014.
+- K. Maharana, S. Mondal and B. Nemade, ["A review: Data pre-processing and data augmentation techniques"](https://doi.org/10.1016/j.gltp.2022.04.020), *Global Transitions Proceedings*, 3(1), 2022, 91–99.
+- scikit-learn, [`load_digits` documentation](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html) (the 8 × 8 handwritten-digits dataset used in the examples).

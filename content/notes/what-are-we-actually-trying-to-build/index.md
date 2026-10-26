@@ -186,9 +186,9 @@ A rational agent does exactly what it is told. That is the whole achievement, an
 
 ---
 
-**Sources**
+## References
 
-- S. Russell and P. Norvig, *Artificial Intelligence: A Modern Approach*, 4th ed., Pearson, 2021.
-- A. M. Turing, "Computing Machinery and Intelligence", *Mind*, 59(236), 1950, 433 to 460.
-- N. Wiener, "Some Moral and Technical Consequences of Automation", *Science*, 131, 1960.
+- S. Russell and P. Norvig, [*Artificial Intelligence: A Modern Approach*](https://www.pearson.com/en-us/subject-catalog/p/artificial-intelligence-a-modern-approach/P200000003500), 4th ed., Pearson, 2021.
+- A. M. Turing, ["Computing Machinery and Intelligence"](https://doi.org/10.1093/mind/LIX.236.433), *Mind*, 59(236), 1950, 433–460.
+- N. Wiener, ["Some Moral and Technical Consequences of Automation"](https://doi.org/10.1126/science.131.3410.1355), *Science*, 131(3410), 1960, 1355–1358.
 - S. Russell, *Human Compatible: Artificial Intelligence and the Problem of Control*, Viking, 2019.

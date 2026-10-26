@@ -3,7 +3,7 @@ title: "Backpropagation: Learning by Assigning Blame"
 slug: "backpropagation-learning-by-blame"
 type: "note"
 status: "evergreen"
-summary: "The sentence I first met was that the error is fed back and the weights are adjusted. Here is what that actually means: one tiny network, every number worked out and checked, and why the blame has to be shared out layer by layer."
+summary: "Saying that a network sends error backwards hides the difficult part: deciding how much each weight contributed. I work through that accounting with one small network, a gradient check and an XOR representation learned from scratch."
 date: "2026-08-09"
 created: "2026-08-09"
 updated: "2026-08-09"
@@ -22,9 +22,9 @@ seo:
   description: "Backpropagation worked through with a tiny network: every number checked in Python, a numerical gradient check, and why softmax with cross-entropy suits the output."
 ---
 
-When I first studied neural networks, the sentence I met for how they learn was this: the error is fed back and the weights are adjusted. It sounds like an explanation. It is really a description of the result, and it leaves the two hard questions alone. Adjusted by how much? And which weights, when even a modest network has hundreds of thousands of them?
+The first explanation of backpropagation I encountered said that a neural network sends its error backwards and adjusts its weights. The sentence is memorable because it skips the mechanism. An error belongs to the output as a whole, while the network may contain hundreds of thousands of parameters. Which weight should move, in which direction, and by how much?
 
-In [the previous note](/notes/one-neuron-one-line/) I solved XOR with a small network whose weights I picked by hand. Nobody can do that for a network that reads handwritten digits. A plain one, with two hidden layers of 512 units, looks like this:
+In [One Neuron, One Line](/notes/one-neuron-one-line/) I solved XOR with weights chosen by hand. That is possible only because the network is tiny and the desired geometry is visible. A plain digit classifier with two hidden layers of 512 units has a rather different scale:
 
 ```python
 # How many weights and biases in a plain network that reads 28 x 28 pixel digits?
@@ -37,17 +37,17 @@ print("weights and biases:", total)
 weights and biases: 669706
 ```
 
-That is 669,706 numbers, and when the network gets a digit wrong, every one of them contributed a little to the mistake. Training means working out each one's share and changing it accordingly. That is the whole job of **backpropagation**, and I think the best word for it is blame.
+The count is 669,706 weights and biases. A wrong prediction supplies one loss value, yet training needs a separate direction for each parameter. **Backpropagation** is the efficient accounting procedure that produces those derivatives. I use the word *blame* as an intuition, but the quantity being assigned is more exact: the sensitivity of the loss to each parameter.
 
-## Blame as a slope
+## Blame becomes a derivative
 
-Here is the question to ask of any single weight: if I nudge this weight up by a tiny amount, does the error go up or down, and by how much? The answer is the **slope** of the error with respect to that weight. A large positive slope means the weight is pushing the error up, so lower it. A slope near zero means leave it alone. Collect the slopes for every weight into one list and you have the **gradient**.
+For one weight, the relevant question is local: if the weight increases slightly, how does the loss change? The derivative gives the direction and rate of that change. A positive derivative says that a small increase raises the loss; a negative one says it lowers it. Collect the derivatives for all parameters and the result is the **gradient**.
 
 Given the slope, the rule for the update is one line, and it is called **gradient descent**:
 
 <div class="formula">new weight = old weight - step size × slope</div>
 
-The step size deserves respect, because the slope says which way is downhill and nothing about how far to walk. Take an error of (w - 3)², which is lowest at w = 3, and start at w = 0:
+The learning rate controls how far the update travels along that direction. The derivative identifies the local downhill direction but does not promise that an arbitrarily large step will remain downhill. Consider the simple loss (w - 3)², minimised at w = 3, starting from zero:
 
 ```python
 slope = lambda w: 2 * (w - 3)            # slope of the error (w - 3)**2, lowest at w = 3
@@ -66,7 +66,7 @@ step size 1.0 [0.0, 6.0, 0.0, 6.0, 0.0, 6.0, 0.0]
 step size 1.1 [0.0, 6.6, -1.32, 8.184, -3.2208, 10.465, -5.958]
 ```
 
-At 0.1 the weight creeps towards 3. At 1.0 it leaps over the target and back, forever. At 1.1 every leap is bigger than the last, and the error grows instead of shrinking.
+With a learning rate of 0.1, the sequence approaches 3. At 1.0 it alternates between 0 and 6 without getting closer. At 1.1, each overshoot grows. The gradient was correct in every case; the update rule failed because the step size treated a local slope as permission to travel too far.
 
 There is one more thing the previous note leaves behind. A hard step, fire or do not fire, is flat everywhere except at the jump, so its slope is zero and there is nothing for blame to travel along. Networks that learn this way use a smooth bend instead. The classic choice is the sigmoid, σ(z) = 1 / (1 + e⁻ᶻ), which rises smoothly from 0 to 1 and has a slope of σ(z) × (1 - σ(z)).
 
@@ -295,15 +295,15 @@ a single perceptron on the hidden values settles after 3 passes
 
 The error falls from 0.2698 to 0.0002 and the outputs head to 0, 1, 1, 0. Look at the four rows of hidden values. They are a different description of the same four cases, built by training and not by me. And the single perceptron from last time, the neuron that could not do XOR on the raw inputs, settles in three passes once it is given these values.
 
-Nobody told the network what to build. The blame, passed backwards, shaped the middle layer into something a single line could finish. This is what people mean by **representation learning**, and it is the reason depth earns its place.
+Nobody specified those three hidden coordinates. Optimising the output loss changed the earlier weights until the hidden layer expressed XOR in a form a linear classifier could separate. This is **representation learning**: the internal description of the input is learned along with the final decision rule.
 
-It is one run, and I will be straight about that. I repeated it from 20 different random starting points: 19 solved XOR, and the lone perceptron then settled within three or four passes each time. One start got stuck with an error of 0.1252 and never recovered. Backpropagation points downhill, and nothing promises the hill leads to the bottom.
+This result is one optimisation run, so I repeated it from 20 random initialisations. Nineteen learned a representation on which the perceptron converged within three or four passes. One remained at a loss of 0.1252. Backpropagation computed the gradient it was asked for in that run; it did not guarantee that gradient descent would reach the best possible solution.
 
-Learning is not being told the answer. It is working out who was responsible for the mistake.
+I can now replace the phrase "the error is fed back" with something I can calculate. The forward pass records how each value was produced. The chain rule then moves from the loss towards earlier layers, multiplying local sensitivities so that every parameter receives its derivative. Gradient descent uses those derivatives to make the next change. The network is not told which hidden features would solve the problem; the pressure to reduce the loss shapes them indirectly.
 
 ---
 
-**Sources**
+## References
 
-- D. E. Rumelhart, G. E. Hinton and R. J. Williams, "Learning representations by back-propagating errors", *Nature*, 323, 1986.
-- M. P. Deisenroth, A. A. Faisal and C. S. Ong, *Mathematics for Machine Learning*, Cambridge Univ. Press, 2020 (gradients and backpropagation in chapter 5, gradient descent in chapter 7).
+- D. E. Rumelhart, G. E. Hinton and R. J. Williams, ["Learning representations by back-propagating errors"](https://doi.org/10.1038/323533a0), *Nature*, 323, 1986, 533–536.
+- M. P. Deisenroth, A. A. Faisal and C. S. Ong, [*Mathematics for Machine Learning*](https://mml-book.github.io/), Cambridge University Press, 2020 (vector calculus in chapter 5 and continuous optimisation in chapter 7).

@@ -8,72 +8,69 @@ import * as styles from "../styles/about.module.css"
 const AboutPage = () => {
   return (
     <Layout>
-      <SEO title="About" description="Who Husain Alghasra is, where he came from, and what he cares about." />
+      <SEO title="About" description="About Husain Alghasra, his route into technology and research, and the questions he is following now." />
       <Sheet>
         <PageHead
           title="I have always been bothered by not knowing how things work."
           margin={<><b>About</b><br />Husain Alghasra<br />London</>}
         >
-          <p>Not in a dramatic way. More like an itch.</p>
+          <p>Not knowing has never embarrassed me as much as leaving the question alone.</p>
         </PageHead>
 
         <Row className={styles.part} margin={<b>Preface</b>}>
           <p>
-            The pattern has followed me for years. I find something that feels confusing,
-            broken, hidden, or strangely powerful, and I start pulling at the thread. Sometimes
-            it becomes a note. Sometimes it becomes a project. Sometimes it becomes an obsession
-            that lasts longer than I expected.
+            The pattern has followed me for years. Something feels confusing, broken, hidden or
+            strangely powerful, and I start pulling at the thread. It may become a note, a small
+            program, a book I have filled with questions, or a project that lasts much longer than
+            I expected. This site is where I keep the trail.
           </p>
 
         </Row>
         <Row className={styles.part} margin={<><b>Early curiosity</b><br />self-taught<br /><span className={styles.gall}>June 2002, the World Cup</span></>}>
           <h2>Early curiosity</h2>
           <p>
-            My relationship with technology started through self-learning. I was drawn to the
-            web because it felt like a place where curiosity could turn into something visible.
-            A page, a tool, a small experiment, a system that did something it could not do yesterday.
+            My relationship with technology began through self-learning. The web gave curiosity
+            a physical result: a page, a tool, a small experiment, a system that could do something
+            it could not do the day before.
           </p>
           <p>
-            I learned by trying, breaking, searching, rebuilding, and asking better questions.
-            That way of learning never really left me.
+            I learned by trying, breaking, searching and rebuilding. That habit never really left me.
           </p>
           <p>
             One early memory that stuck: it was 2002, I fell asleep and missed Argentina&rsquo;s
             opening match in the World Cup. I woke up too late, grabbed a newspaper, and realised
-            I had no way of knowing the score <em>when it actually happened</em>. So I built
-            something. A rough little page in HTML that I updated as I watched matches. It was not
-            impressive. But it showed me something I have never forgotten: I could teach myself
-            anything if I needed to.
+            I had no way of knowing the score when it actually happened. So I built a rough little
+            page in HTML and updated it while I watched the matches. It was not much of a website,
+            but it changed the scale of what I thought I could teach myself.
           </p>
 
         </Row>
         <Row className={styles.part} margin={<><b>Laboratory</b><br />insurance technology</>}>
           <h2>The real-world laboratory</h2>
           <p>
-            My professional work has mostly lived inside insurance technology. It sounds dry from
-            the outside, but underneath the surface it is full of complex systems: risk, data,
-            judgement, regulation, workflows, documents, decisions, and human uncertainty.
+            My professional work has mostly lived inside insurance technology. From the outside it
+            can look like a dry collection of policies and forms. Inside, it is a dense meeting of
+            risk, data, judgement, regulation, documents, workflows and human uncertainty. It became
+            my practical education in systems thinking.
           </p>
           <p>
-            That world became a laboratory for systems thinking.
-          </p>
-          <p>
-            It taught me that good technology is not just about making something look modern.
-            It is about understanding the shape of a problem deeply enough to build something
-            that people can actually use, trust, and maintain.
+            It taught me to be suspicious of solutions that look modern before they understand the
+            problem. A system has to survive contact with the people who use it, the rules that
+            constrain it, and the untidy cases its diagram forgot.
           </p>
 
         </Row>
         <Row className={styles.part} margin={<><b>Academia</b><br />AI, ML, deep learning</>}>
           <h2>Why academia matters to me</h2>
           <p>
-            I am now moving deeper into artificial intelligence, machine learning, deep learning,
-            and research.
+            I am now studying artificial intelligence more formally, moving from years of building
+            systems towards the mathematics, computer science and research beneath them.
           </p>
           <p>
-            For me, academia is not a badge. It is a way to build better foundations. I want to
-            understand the theory properly, connect it to practice, and contribute something useful
-            rather than only consuming what others have built.
+            Academia matters to me because it makes vague confidence expensive. It asks where a
+            claim came from, what would disprove it, and whether the method deserves the conclusion.
+            I want those disciplines in my work. I also want to connect them to the practical systems
+            I already know, where neat assumptions tend to meet untidy reality.
           </p>
           <p>
             The questions that interest me most sit around trustworthy AI, traceability,
@@ -84,44 +81,35 @@ const AboutPage = () => {
         <Row className={styles.part} margin={<><b>Elsewhere</b><br />curiosynapse.com</>}>
           <h2>Curio Synapse</h2>
           <p>
-            Curio Synapse is where some of my thinking becomes more public and more structured.
-          </p>
-          <p>
-            This site is the notebook. Curio Synapse is the garden.
-          </p>
-          <p>
-            Here, ideas can stay messy for a while. There, I try to turn difficult ideas into
-            explanations that are clear, memorable, and worth sharing.
+            Curio Synapse is where some of these investigations become structured lessons. Here,
+            an idea is allowed to remain a working note, with uncertainty and loose ends still
+            visible. There, I stay with it for longer and try to make a difficult subject clear
+            without pretending that it was simple all along.
           </p>
 
         </Row>
         <Row className={styles.part} margin={<><b>The thread</b></>}>
           <h2>The thread underneath it all</h2>
           <p>
-            I care about curiosity because it is the beginning of almost everything useful.
+            I care about curiosity, but not as a personality trait or a decorative word. I mean the
+            active kind: the urge to open the system, follow the mechanism, check the source, and
+            notice when two distant ideas are describing the same shape.
           </p>
           <p>
-            Not passive curiosity. Active curiosity. The kind that opens the system, follows
-            the mechanism, checks the source, and asks what else might be possible.
+            I do not expect every question here to resolve neatly. Some will become essays or
+            research; some will expose how much more I need to learn. Both outcomes belong in the
+            notebook. Curiosity loses something important when it is allowed to publish only its
+            successes.
           </p>
-
-          <blockquote>
-            <p>
-              &ldquo;The reasonable man adapts himself to the world: the unreasonable one persists
-              in trying to adapt the world to himself. Therefore all progress depends on the
-              unreasonable man.&rdquo;
-            </p>
-            <footer>George Bernard Shaw</footer>
-          </blockquote>
-
-          </Row>
-        <Row className={styles.formal} margin={<b>Formal summary</b>}>
+        </Row>
+        <Row className={styles.formal} margin={<b>In brief</b>}>
           <div>
-                        <p className={styles.formalText}>
-              I work across product, technology, insurance systems, AI-assisted workflows, and
-              knowledge platforms. My professional experience gives me a practical laboratory for
-              understanding complex systems, while my academic direction is increasingly focused
-              on AI, machine learning, deep learning, trustworthy AI, and traceability.
+            <p className={styles.formalText}>
+              I am a technology practitioner and AI student based in London. My professional
+              background is in product and insurance systems; my academic interests are moving
+              towards machine learning, trustworthy AI, traceability and the design of knowledge
+              systems. I write to understand those subjects, and to leave a useful trail for the
+              next person who is trying to understand them too.
             </p>
             <div className={styles.socialRow}>
               <a

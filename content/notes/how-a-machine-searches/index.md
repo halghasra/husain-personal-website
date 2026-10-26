@@ -219,7 +219,7 @@ The order you look in decides what you find, and what it costs to find it.
 
 ---
 
-**Sources**
+## References
 
-- S. Russell and P. Norvig, *Artificial Intelligence: A Modern Approach*, 4th ed., Pearson, 2021. Problem formulation, uninformed search and the comparison of strategies.
-- E. W. Dijkstra, "A note on two problems in connexion with graphs", *Numerische Mathematik*, 1, 1959, 269 to 271.
+- S. Russell and P. Norvig, [*Artificial Intelligence: A Modern Approach*](https://www.pearson.com/en-us/subject-catalog/p/artificial-intelligence-a-modern-approach/P200000003500), 4th ed., Pearson, 2021 (problem formulation, uninformed search and the comparison of strategies).
+- E. W. Dijkstra, ["A note on two problems in connexion with graphs"](https://doi.org/10.1007/BF01386390), *Numerische Mathematik*, 1, 1959, 269–271.

@@ -19,16 +19,12 @@ Additionally, I was not fond of the absence of a steady or increasing timeline f
 
 Despite these issues, I am determined to explore more of Herta Müller's works. Many readers have recommended her other novels, suggesting that there are even more beautiful and compelling stories by this Nobel Prize-winning author.
 
-Herta Müller’s writing often explores themes of identity, oppression, and resilience. In _The Appointment_, these themes are present but are woven into a narrative that is intentionally fragmented, reflecting the disoriented state of the main character. The structure of the story might be challenging, but it serves to immerse the reader in the chaotic and oppressive atmosphere experienced by the characters.
+With some distance, I suspect the fragmentation is not an obstacle placed between the reader and the story; it is part of the story. A life organised by surveillance cannot be narrated with the calm continuity of a life that feels secure. On the tram to her interrogation, the narrator's memories interrupt the present because fear has destroyed the boundary between what is happening and what might happen next.
 
-Müller’s choice of a non-linear timeline and her focus on the small details of daily life can be seen as a way to show the unpredictability and fear that fills life under an oppressive regime. This style, while confusing, effectively mirrors the psychological state of people living in constant uncertainty.
+That does not mean I suddenly enjoyed every jump in time. I often lost the thread, and reading in translation made me unsure whether an awkward connection belonged to Müller, the Arabic translator, or my own inexperience with her method. I should not blame translation for particular losses without comparing it with the German text. What I can say is that the language still carried an unusual precision and menace across that distance.
 
-The translation of Müller’s work also affects how the story is understood. Translating a novel that relies heavily on language and cultural context is not easy. While the translator captures the essence of Müller’s prose, some subtleties and connections might be lost, adding to the sense of fragmentation.
+The book made me reconsider what I mean when I call a narrative disjointed. Sometimes disorder is poor construction; sometimes it is the form most faithful to a disordered life. I am not yet certain where every passage in _The Appointment_ falls, which is exactly why I want to read more of Müller rather than close the question.
 
-Reading _The Appointment_ made me think about the different ways stories can be told. While a straightforward plot might make a story easier to follow, the fragmented approach used by Müller adds a layer of complexity that can be rewarding for those willing to engage deeply with the text. It challenges readers to piece together the narrative and draw connections between different events.
+## Reference
 
-This experience also made me appreciate the role of translation in literature. Translating a novel is not just about changing words from one language to another; it involves capturing the tone, style, and cultural nuances of the original text. This can be particularly challenging with works like Müller’s, which rely heavily on precise language and cultural context.
-
-Despite the challenges posed by _The Appointment_, I am eager to read more of Herta Müller’s novels. Her unique voice and the themes she explores are intriguing, and I am curious to see how her other works compare. For those interested in literary fiction that explores deep psychological and social themes, Herta Müller’s novels are definitely worth exploring.
-
-While _The Appointment_ may not have been the easiest read, it was an enriching experience that broadened my perspective on storytelling and the impact of translation. Herta Müller’s ability to create a strong sense of atmosphere and her exploration of profound themes make her a remarkable author. I look forward to discovering more of her work and understanding the full range of her literary contributions.
+Müller, H. (2001). *The Appointment* (M. Hulse, Trans.). Metropolitan Books. (Original German edition published 1997.)

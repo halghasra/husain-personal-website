@@ -3,7 +3,7 @@ title: "Garbage In: The Unglamorous Half of Machine Learning"
 slug: "garbage-in"
 type: "note"
 status: "evergreen"
-summary: "Fifty rows of random numbers, labels with nothing to do with them, and a model that scores 95 per cent. A tour of the ways data misleads a model before it is trained, and the one mistake behind that number."
+summary: "I gave a model random numbers and meaningless labels, then watched it score 95 per cent. The result led me backwards through the quieter decisions that shape a model before training begins."
 date: "2026-10-10"
 created: "2026-10-10"
 updated: "2026-10-10"
@@ -25,17 +25,17 @@ seo:
 
 > *Garbage in, garbage out.*
 
-Programmers learn this saying early, and it sounds like comfort. Feed the machine nonsense and nonsense comes out, where you can see it and throw it away.
+I used to hear this as a promise: bad data might ruin a model, but at least the failure would announce itself. The output would be obviously useless, somebody would inspect the input, and the mistake would be found.
 
-Here is a test of the saying. I generated 50 rows of 5,000 columns of random numbers. I gave them labels, zero and one in alternation, that have nothing to do with the numbers. Then I did what the textbooks say: chose the 20 most promising columns, trained a logistic regression, and measured it with five-fold cross-validation. I repeated this on 20 different random datasets. The average accuracy was 95.4 per cent. The lowest was 90 and the highest was 100.
+Then I built a deliberately meaningless dataset. It had 50 rows, 5,000 columns of random numbers, and alternating labels that had no relationship to any of them. I selected the 20 columns that appeared most promising, trained a logistic regression, and evaluated it with five-fold cross-validation. Across 20 fresh random datasets, the average accuracy was 95.4 per cent. Even the worst run scored 90 per cent; the best scored 100.
 
-That is pure garbage going in, and what came out looked like a triumph. So the saying is incomplete. Garbage in, garbage out is the comfortable case. The dangerous one is garbage in, something that looks like gold out.
+Nothing in the data was learnable. The impressive result came entirely from the way I had prepared and evaluated it. That is the version of bad data work that worries me: not the model that collapses, but the one that produces a number polished enough to survive a meeting.
 
-In [Data Is Not Information](/notes/data-is-not-information/) I described fields that arrive intact and still mean the wrong thing. This note is about the next step, when a model learns from them. It is a tour of the work that happens before and around the model, one small way of being misled at each stop, and at the end I come back to the 95 per cent and show where it came from.
+In [Data Is Not Information](/notes/data-is-not-information/) I looked at fields that arrive intact while carrying the wrong meaning. Here I want to follow what happens after those fields enter a machine-learning workflow. The examples move through exploration, missing values, outliers, scaling, imbalance and feature construction. They eventually return to that 95.4 per cent, where a single ordering mistake explains the entire illusion.
 
 ## Look before you model
 
-In 1973 the statistician Francis Anscombe built four small datasets to make a point. Each has 11 points. Here are their summaries, recomputed:
+In 1973, the statistician Francis Anscombe published four small datasets that have become a warning against trusting a summary without looking at what it summarises. Each contains only 11 points. I recomputed their familiar statistics below:
 
 ```python
 import numpy as np
@@ -59,13 +59,13 @@ for i, y in enumerate(Y, 1):
 4 9.0 7.5 4.12 0.817 y = 3.00 + 0.500x
 ```
 
-The columns are the dataset, the mean of x, the mean of y, the variance of y, the correlation, and the fitted line. They agree to two or three decimal places. Plot them and they could hardly be more different. The first is a noisy straight line. The second is a clean curve. The third is a tight line dragged off course by one stray point. The fourth has ten points stacked at the same x, and a single distant point alone decides the slope.
+The output gives, in order, the dataset number, both means, the variance of *y*, the correlation and the fitted line. To two or three decimal places, the four datasets appear to be the same. On a plot, they tell four different stories: a noisy line, a curve, a line distorted by one point, and a nearly vertical stack whose slope is decided by a lone observation.
 
-A summary compresses, and compression throws away shape. I think of exploratory analysis, the habit of looking at the data before modelling it, as the discipline of not letting that happen. There is a counterweight. Look at one dataset enough ways and chance will hand you a pattern, so looking suggests hypotheses and does not confirm them. I look at shape more closely in [The Shape of Data](/notes/the-shape-of-data/).
+The problem is not that the summaries are wrong. They are accurate answers to questions that discarded the geometry of the data. Exploratory analysis is therefore less about hunting for attractive patterns than about learning what the summary has compressed away. Looking can mislead too, particularly when enough plots make chance look meaningful, so it suggests questions rather than settling them. I explore that tension more fully in [The Shape of Data](/notes/the-shape-of-data/).
 
 ## The harmless average
 
-Real data has gaps, and the first fix every tutorial offers is to fill each blank with the column's mean. It feels harmless. Ten values, three hidden:
+Real data arrives with gaps, and mean imputation is often introduced as the harmless repair: replace each blank with the average of what remains. The average is preserved, which makes the method look conservative. Its other effects are easier to miss. Here are ten values with three hidden:
 
 ```python
 import numpy as np, pandas as pd
@@ -91,9 +91,11 @@ print(round(np.corrcoef(x, y)[0, 1], 3), round(np.corrcoef(x[~gone], y[~gone])[0
 0.8 0.811 0.697 289
 ```
 
-The mean is untouched at 9.7143, and the variance falls from 24.57 to 16.38. The ratio is exactly 6/9. The three filled values sit exactly on the mean, so they add nothing to the sum of squared deviations while still counting in the divisor, and a column that was 30 per cent guesses is a third less spread out than the truth. The last line is a simulation: 1,000 rows, 289 of the y values deleted at random. The true correlation between x and y is 0.8. Using only the complete rows gives 0.811. Filling with the mean pulls it down to 0.697. The fill did not just add values. It weakened the relationship the model was meant to learn.
+The mean remains 9.7143, but the variance falls from 24.57 to 16.38. The ratio is exactly 6/9 because the three replacements sit on the mean: they add observations to the denominator without adding any squared distance from the centre. The column is now 30 per cent imputed and exactly one-third less variable than the observed version.
 
-The reason a value is missing matters as much as the method. If people with high incomes decline to answer, every fill built from those who did answer is biased. On an insurance form a blank can mean the question was not asked, does not apply, or is not known, and a mean fill erases the difference. Keeping an extra column that records "this was missing" is cheap and preserves it. A filled gap looks like data. It is a guess wearing data's clothes.
+The simulation shows a second cost. Its original correlation is 0.8. Keeping only complete rows estimates 0.811, while filling the missing *y* values with the mean reduces it to 0.697. The imputation has not merely completed a column; it has weakened the relationship the model was supposed to learn.
+
+Even that calculation assumes the values disappeared at random. If people with high incomes are more likely to decline a question, the visible values are already a biased guide to the missing ones. In an insurance system, a blank might mean "not asked", "not applicable" or "unknown", three states that should not necessarily collapse into the same average. A missingness indicator at least preserves the fact that a value was supplied by the preprocessing rather than the person or event being modelled.
 
 ## The strange value
 
@@ -119,7 +121,7 @@ print(round(z.max(), 4), round(np.sqrt(len(x) - 1), 4))
 
 The fences are 8.0 and 22.0, and only 95 falls outside. One value drags the mean to 22.8 while the median stays at 15. Capping it at the fence gives a mean of 15.5, and dropping it gives 14.78. The last line shows why the other popular rule, "more than three standard deviations from the mean", fails here. The z-score of 95 is 2.9919, below 3. The outlier inflated the very standard deviation that was supposed to catch it. With 10 values the largest z-score any point can reach is √9 = 3, so a strict "above 3" rule could never fire at all.
 
-Flagged does not mean wrong. In a vibration signal from a rotating machine, a heavy tail can mean impacts, and impacts can mean a fault: there the outlier is the signal. In insurance, large losses are rare and may be exactly what a model exists to handle, so deleting them as noise could remove the point. Before you delete the strange value, ask what it is trying to say.
+An outlier rule identifies an unusual value; it does not diagnose it. In a vibration signal from a rotating machine, a heavy tail may record the impacts that reveal a fault. In insurance, the largest losses may be rare precisely because they belong to the risk the model is meant to understand. The statistical flag begins an investigation. It cannot decide whether the observation is an error, an exceptional but valid case, or the most important case in the dataset.
 
 ## A common ruler
 
@@ -174,7 +176,9 @@ print(w.tolist(), 1000 / (2 * 990), 1000 / (2 * 10))
 [0.5050505050505051, 50.0] 0.5050505050505051 50.0
 ```
 
-99 per cent accuracy, and recall of 0.0: not one of the ten cases found. Accuracy counts what you got right and never asks what you missed. The remedies are to weight the rare class (here 50 for each rare case against 0.505 for each common one, so both classes carry the same total weight of 500), to duplicate or delete rows until the classes balance, or to synthesise new rare examples. All three share a limit: none adds real information about the rare class. Each also moves the base rate the model sees, so its raw probabilities stop meaning what they say. The cheapest defence comes before any of them: choose a metric that cannot be fooled this way, and look at each class on its own.
+The accuracy is 99 per cent and the recall is zero: the model has missed every case for which it might have been useful. Accuracy counts correct decisions without asking whether the errors are concentrated in the class that matters.
+
+Class weights, resampling and synthetic examples can all change what the learner pays attention to. In this example, balanced weighting gives each rare case a weight of 50 and each common case about 0.505, so both classes contribute a total weight of 500. None of these interventions creates new knowledge about the rare class, however, and changing the class balance also changes how raw predicted probabilities should be interpreted. The first defence is therefore conceptual rather than computational: choose a metric that reflects the error you actually care about, then inspect performance class by class.
 
 ## Making and choosing columns
 
@@ -203,9 +207,9 @@ print(len(orientations(img)), len(orientations(sym)))
 8 1
 ```
 
-That is **feature engineering**: building the inputs a model sees, such as ratios, durations and counts, from raw data. The hand-built column carries an assumption about what matters, and it is worth writing the assumption down.
+That extra product is **feature engineering**: constructing an input that makes a relationship available to the model. Ratios, durations, counts and interactions all do the same kind of work. Each engineered feature contains a judgement about what might matter, so documenting the feature is also documenting part of the model's reasoning.
 
-The last line of the code is **data augmentation**, making extra training examples by changing the ones you have in ways that should not change the label. Four rotations, each with and without a mirror flip, turn one asymmetric 3 by 3 image into 8 distinct versions. A symmetric image gives 1: it gains nothing. Augmentation adds variety, not information, because the copies are strongly tied to the originals. It can also corrupt the label. Turn a handwritten 6 upside down and you have a 9. A copy is not a new fact.
+The last line demonstrates **data augmentation**, where an existing example is transformed in ways that are assumed to preserve its label. Four rotations, with and without a mirror flip, create eight distinct orientations of the asymmetric image. The symmetric image still produces only one. Augmentation can teach a model which changes should not matter, but its examples are not independent observations. The label-preserving assumption also has to be true: rotate a handwritten 6 far enough and it may become a 9. The transformation encodes knowledge; it does not manufacture evidence.
 
 ## Back to the 95 per cent
 
@@ -239,19 +243,21 @@ leaky  0.954 0.9 1.0
 honest 0.508 0.38 0.68
 ```
 
-The columns are the mean, minimum and maximum accuracy over the 20 random datasets. Done in the wrong order, 95.4 per cent. Done in the right order, 50.8 per cent, which is what chance predicts for two balanced classes. This trap is described in *The Elements of Statistical Learning*, and it is easy to fall into because nothing crashes. The only symptom is a score that is too good.
+The three numbers are the mean, minimum and maximum accuracy across the 20 random datasets. Selecting first gives 95.4 per cent on average. Selecting separately inside each training fold gives 50.8 per cent, close to the chance performance expected from balanced binary labels. *The Elements of Statistical Learning* uses this kind of feature-selection trap to explain why model assessment must include the whole training procedure, not only the final estimator. Nothing in the leaky version crashes or raises a warning. Its failure appears as success.
 
-This is **data leakage**: any route by which information from outside the training data, usually from the test set or from the future, reaches the model while it is being built. The pattern is always the same. A step that learns something from data is fitted on rows that include the evaluation rows. That step can be a selector, a scaler, an imputer, a text vocabulary, or an oversampler. Every earlier section of this note hides a version of it. Fill the gaps with a mean computed over all rows and the test set has contributed to the fill. Fit the scaler on everything and it has contributed to the ruler. Duplicate rare cases before splitting and copies of test rows sit in training. The rule is short: anything that learns from data learns from the training rows only.
+This is **data leakage**: information that should remain outside training reaches some part of the learning process. The obvious case is a test label entering the model, but leakage usually travels through quieter routes. A selector fitted on every row has allowed the test set to help choose the columns. A global imputation mean lets it help fill the gaps. A scaler fitted before the split lets it help set the ruler. Oversampling before the split can place near-duplicates on both sides.
+
+The principle I now use is broader than "fit the model on the training set". Every operation that learns from data belongs inside the training boundary. That includes the vocabulary, imputer, scaler, feature selector and sampler, not merely the classifier at the end.
 
 Leakage has other forms I only name here: a feature recorded after the outcome it is supposed to predict, duplicates on both sides of the split, and using the future to predict the past in data ordered by time. Tuning against the same test set again and again leaks slowly, which is why the test set should be used once.
 
-The saying should be longer. Garbage in, garbage out is the polite version. The dangerous one is garbage in, applause out, and the only defence I know is to ask what the model saw that it should not have.
+The original saying is still useful, but it describes the failure that is easiest to notice. The more dangerous pipeline accepts weak or contaminated data and returns a convincing metric. When a result looks unusually good, the question is not only whether the model learned the pattern. It is also whether some earlier step allowed it to see the answer.
 
 ---
 
-**Sources**
+## References
 
-- F. J. Anscombe, "Graphs in Statistical Analysis", *The American Statistician*, 27(1), 1973.
+- F. J. Anscombe, ["Graphs in Statistical Analysis"](https://doi.org/10.1080/00031305.1973.10478966), *The American Statistician*, 27(1), 1973, 17–21.
 - J. W. Tukey, *Exploratory Data Analysis*, Addison-Wesley, 1977 (the IQR fences).
-- T. Hastie, R. Tibshirani and J. Friedman, *The Elements of Statistical Learning*, 2nd ed., Springer, 2009 (selecting features before cross-validation).
-- S. Russell and P. Norvig, *Artificial Intelligence: A Modern Approach*, 4th ed., 2021.
+- T. Hastie, R. Tibshirani and J. Friedman, [*The Elements of Statistical Learning*](https://hastie.su.domains/ElemStatLearn/), 2nd ed., Springer, 2009 (feature selection and cross-validation, §7.10.2).
+- S. Russell and P. Norvig, [*Artificial Intelligence: A Modern Approach*](https://www.pearson.com/en-us/subject-catalog/p/artificial-intelligence-a-modern-approach/P200000003500), 4th ed., Pearson, 2021.

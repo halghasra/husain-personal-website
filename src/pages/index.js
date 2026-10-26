@@ -17,7 +17,7 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="Husain Alghasra" description="A public notebook for curiosity, research, AI, systems, and knowledge work." />
+      <SEO title="Husain Alghasra" description="A public notebook about AI, systems, books, research, and the questions that connect them." />
 
       <Sheet>
         {/* Hero */}
@@ -39,12 +39,12 @@ const IndexPage = ({ data }) => {
           </h1>
           <div className={styles.lede}>
             <p>
-              This is my public notebook: thoughts, research seeds, reading notes, experiments,
-              and the occasional idea that refuses to leave me alone.
+              This is my public notebook: research seeds, reading notes, experiments, and the
+              occasional idea that refuses to leave me alone.
             </p>
             <p>
-              Some notes are polished. Some are still forming. I keep them here because thinking
-              becomes clearer when it has somewhere to live.
+              I do not wait for every thought to become a finished argument. Some entries explain
+              what I know; others show me where my understanding still gives way.
             </p>
           </div>
           <div className={styles.acts}>
@@ -104,9 +104,10 @@ const IndexPage = ({ data }) => {
           <div className={styles.two}>
             <div>
               <p>
-                My focus is moving towards AI, machine learning and deep learning, and above all
-                the structures that make intelligent systems reliable, explainable and useful in
-                the real world. I am less interested in treating AI as magic.
+                I am learning my way deeper into AI, machine learning and deep learning, with a
+                particular interest in the structures that make intelligent systems possible to
+                inspect, question and trust. I am less interested in treating AI as magic than in
+                understanding what happens between evidence and answer.
               </p>
               <p className={styles.keywords}>
                 <b>Keywords:</b> trustworthy AI; traceability; human–AI collaboration; knowledge
@@ -116,8 +117,8 @@ const IndexPage = ({ data }) => {
             </div>
             <div>
               <p>
-                Some thoughts stay here as notes. Some grow into lessons on <em>Curio Synapse</em>,
-                my public learning garden for difficult ideas in science and technology.
+                Some thoughts stay here as notes. Others grow into lessons on <em>Curio Synapse</em>,
+                where I work through difficult ideas in science and technology in public.
               </p>
               <p className={styles.soft}>This site is the notebook. Curio Synapse is the garden.</p>
               <a href="https://curiosynapse.com" className="more" target="_blank" rel="noopener noreferrer">

@@ -9,14 +9,16 @@ tags: ["Business", "Book Reviews", "Simon Sinek", "Start With Why", "Leadership"
 coverImage: "./images/Start-with-why-review.png"
 ---
 
-I had this book on my Kindle for years and never got the time (nor the desire) to start reading it. Not until the beginning of this year, when I was traveling back and forth and had the need to spend countless dull hours in ‘lounge-less’ airports. However this book didn’t serve me well. I lost interest in few pages and caught myself reading without comprehension many times. It is not that there were anything wrong with the general idea of the book, it is a great idea actually but not for a 255 pages book.
+I had this book on my Kindle for years without finding the time, or honestly the desire, to read it. That changed when I began travelling back and forth and needed something for countless dull hours in “lounge-less” airports. The book did not serve me well. Within a few pages I had lost interest and caught myself continuing without comprehension. There was nothing wrong with the central idea; it was a good idea, perhaps simply not one I needed expanded to 255 pages.
 
-That was my initial thought of this book. I didn’t even realize when did I stop reading or at which page, but I guess once I reached home and stowed the Kindle device inside the drawer of my side table, I totally forgot about it until I charged it again.
+That was my first encounter with it. I did not even notice when I stopped or on which page. Once I reached home and put the Kindle in my bedside drawer, I forgot the book existed until I charged the device again.
 
-I decided to give the book a second chance, I started to flip the pages trying to catch up, and it was no different this time. I headed to google and there I found an 18-minutes TED talk for the same author describing his general idea (I guess the video was prior to releasing the book), and boy wasn’t I excited!
+I gave it a second chance, flipped back through the pages, and felt exactly the same. Then I found Sinek's [18-minute TED talk](https://www.ted.com/talks/simon_sinek_how_great_leaders_inspire_action), recorded before the book was published, and suddenly the idea worked for me.
 
-I fell in love with his idea at first sight. It was too simple but with a glimpse of greatness. The way he delivers it makes it even more exciting. I got to give it to him, Simon Sinek is a gifted man and a brilliant speaker.
+I fell for the idea immediately. It was simple, but it contained a glimpse of something much larger, and Sinek's delivery made it feel newly obvious. I have to give it to him: he is a gifted speaker.
 
-In the next post, I will be writing specifically about the idea of **_“Start with Why: How great leaders inspire actions_**.” and explain his concepts the way I perceived them, and will try to list a refreshed examples since his TED talk video (along with the book) came out about 12 years ago.
+In the [next post](/blog/start-with-why-how-this-book-inspired-me-to-start-a-leadership-conversation), I examine the Golden Circle itself, including the parts I found useful and the places where Sinek's universal claims deserve more resistance.
 
-Stay tuned!
+## Reference
+
+Sinek, S. (2009). *Start With Why: How Great Leaders Inspire Everyone to Take Action*. Portfolio.

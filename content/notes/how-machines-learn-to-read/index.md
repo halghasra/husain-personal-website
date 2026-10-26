@@ -3,7 +3,7 @@ title: "How Machines Learn to Read"
 slug: "how-machines-learn-to-read"
 type: "note"
 status: "evergreen"
-summary: "A person reads a sentence in a second. A machine has to cut it, count it, place it in space and weigh it, and every step either fixes a problem left by the last one or deletes something you needed. A walk through the stages, with code you can run."
+summary: "Before a model can do anything with a sentence, somebody has already decided where words begin, what to discard and which distinctions to preserve. I follow those decisions from tokens to attention, including what each representation makes impossible to recover."
 date: "2026-09-11"
 created: "2026-09-11"
 updated: "2026-09-11"
@@ -22,13 +22,13 @@ seo:
   description: "From tokenisation and bag of words to embeddings and attention: how a machine turns text into numbers, what each step fixes, and what each step throws away."
 ---
 
-Here is a sentence you read in a second: *Don't buy it, it's NOT good!* Now here are three short programs reading it.
+Read this once: *Don't buy it, it's NOT good!*
 
-The first sees six pieces, and two of them have punctuation stuck to the end: `it,` and `good!`. The second sees eight pieces, with the comma and the exclamation mark standing on their own. The third also sees eight, but one of them is the lonely letter `t`, left over from a word it split in half.
+The sentence reaches us already carrying emphasis, negation, punctuation and word order. A program receives characters. One tokenizer turns them into six pieces and leaves punctuation attached. Another produces eight tokens, separating the comma and exclamation mark. A third also produces eight, but only after breaking both contractions and leaving `t` and `s` as fragments.
 
-None of the three is broken. Each is doing exactly what it was told. And every number a machine later computes about that sentence depends on which one you picked.
+All three outputs are legitimate consequences of their rules. The choice between them determines which patterns the later model is even able to learn. If `not good` is split carelessly, lowercased, stripped of punctuation and reduced to unordered counts, part of the author's meaning disappears before training begins.
 
-That is where reading starts for a machine: with a decision about where to cut. What follows is the path one review takes on its way to being understood, or at least being usable. Each stage solves a problem the previous stage left behind, and each one pays for it with something it throws away.
+This note follows that loss and recovery through tokenisation, counting, TF-IDF, embeddings and attention. I do not think any of them amounts to reading in the human sense. Each is a representation built for a task, and each preserves some properties of language by surrendering others.
 
 ## Where the cuts go
 
@@ -48,9 +48,9 @@ print(re.findall(r"[a-z]+", s.lower()))
 ['don', 't', 'buy', 'it', 'it', 's', 'not', 'good']
 ```
 
-Splitting on spaces leaves punctuation glued to words. The regular expression in the middle keeps contractions whole and pulls punctuation out, which is probably what you wanted. The last one keeps only letters, so `Don't` becomes `don` and `t`, and the model never learns that those two fragments were once one word. Splitting on spaces is also an English habit: some written languages do not put spaces between words at all.
+Splitting on spaces leaves punctuation attached. The middle expression preserves contractions and separates punctuation, a reasonable choice for this English sentence. The final expression accepts only lowercase letter sequences, turning `Don't` into `don` and `t`. Nothing later in the pipeline can infer with certainty that those fragments once belonged together. Space-based rules also inherit an assumption from English that does not transfer to every writing system.
 
-These pieces are **tokens**, and the process is **tokenisation**. A word-level scheme has a second, quieter problem. Any word that was not in the vocabulary when the model was built is simply unknown, however ordinary it looks to you.
+The resulting units are **tokens**, and choosing them is **tokenisation**. Word-level vocabularies then face a second problem: an unseen word has no entry, even when its components are familiar. Names, spelling variants and newly coined terms can all collapse into the same unknown symbol.
 
 The usual fix is to cut below the word. **Byte-pair encoding** starts with single characters and repeatedly merges the pair of neighbours that occurs most often. Sennrich, Haddow and Birch brought the idea to machine translation in 2016. Here is the whole method in a few lines, run on a toy word list: *low* five times, *lower* twice, *newest* six times, *widest* three times, each word ending in a marker `</w>`.
 
@@ -118,7 +118,7 @@ It is also honest about its edges. *Newer* falls back to `new`, `e`, `r`, becaus
 
 At full scale this is how real systems work. The Transformer paper (Vaswani and others, 2017) used a shared vocabulary of about 37,000 byte-pair tokens for English to German translation. The model never reads words. It reads pieces that a counting rule found. A piece is not always a meaningful unit either, and a rare name or a policy number can be chopped somewhat arbitrarily.
 
-## Counting what is there
+## What counting preserves
 
 Once the text is cut, the oldest trick is to count. A **bag of words** turns a document into a vector of word counts and forgets the order. It is an almost insultingly simple idea, and it has an obvious flaw:
 
@@ -160,7 +160,7 @@ The two recipes disagree about what *movie* is worth: 0 in the textbook form, 1 
 
 Here is the odd part. A model that treats a review as a shuffled bag still reads sentiment surprisingly well. A bag-of-words Naive Bayes classifier I ran on 50,000 labelled film reviews classified 8,535 of 10,000 held-out reviews correctly, or 85.35% (the figure moves a little from run to run, because I did not fix the random split). Order and meaning are gone, and most of the signal is still there. My guess is that many reviews announce their verdict in a handful of strongly polar words such as *awful* or *superb*, but I have not tested that. Why counting works on language at all is the subject of [The Naive Assumption That Works Anyway](/notes/the-naive-assumption-that-works/).
 
-## When cleaning deletes the answer
+## When cleaning removes the evidence
 
 Counting is hungry for tidy input, so the standard recipe is to clean the text first. Remove **stop words**, the very common words such as *the* and *is*. Then **stem**, which means chop word endings by rule so that related forms collapse into one. Or **lemmatise**, which looks a word up and returns its dictionary form. A lemmatiser needs a vocabulary and usually the part of speech, and I have not run one here.
 
@@ -193,7 +193,7 @@ The last line shows what stemming really does. A stem is not a word. *Flying*, *
 
 None of this makes cleaning wrong. It makes it a hypothesis, and one that can be tested. A 2020 study of toxic comment classification (Maslej-Krešňáková and others) began from the suspicion that standard clean-up may strip the very traits that mark toxic language, and reported no significant benefit from the traditional steps once word embeddings were in use. The result belongs to that task and those models, so I would not export it to others. The habit it argues for travels fine: every step you remove from the data is a decision about what does not matter, so test the decision rather than inherit it. I come back to the unglamorous side of this in [Garbage In](/notes/garbage-in/).
 
-## Words as positions
+## From counts to positions
 
 There is a deeper limit in the bag. *Buy used cars* and *purchase old automobiles* mean much the same, and a bag-of-words model sees two sentences with nothing in common. Each word is its own column and every column is a stranger to every other.
 
@@ -234,7 +234,7 @@ Real systems also compress the idea. A method such as word2vec learns a short li
 
 Two things to hold on to. A static embedding gives one vector per word, so *apple* the company and *apple* the fruit share a position. And the space remembers everything the text ever said, including what we would rather it forgot. Bolukbasi and colleagues showed in 2016 that vectors trained on news text encode gender stereotypes about occupations, which is precisely what you should expect from a method whose whole principle is that meaning is the company a word keeps.
 
-## Letting every word look at every other
+## Letting context change the representation
 
 Embeddings fix the stranger problem and still hand the model one fixed vector per word. The sentence around the word does not change it. The next step is to let each word look at its neighbours and adjust.
 
@@ -275,25 +275,26 @@ print((A @ V).round(4))
 
 <div class="callout callout-hint"><p><strong>Row one by hand</strong></p><p>The scores for token 1 are [1, 0, 1]. Divide by √2 to get [0.7071, 0, 0.7071]. The exponentials are 2.0281, 1 and 2.0281, which sum to 5.0562, so the weights are [0.4011, 0.1978, 0.4011]. The values are [1, 2], [3, 0] and [4, 2]. The output is 0.4011 × [1, 2] + 0.1978 × [3, 0] + 0.4011 × [4, 2] = [2.5989, 1.6044]. Token 1 listens mostly to itself and to token 3, because those are the ones its query matches.</p></div>
 
-Why divide by the square root? The paper's footnote gives the reason. If the components of a query and a key are independent with mean 0 and variance 1, their dot product has variance equal to the number of dimensions. I simulated it with 100,000 random pairs: at 64 dimensions the variance came out at about 64, and at 512 about 515, falling back to about 1 after the division. Without it, big scores push the softmax towards a single winner and learning stalls.
+The division by the square root controls scale. If independent query and key components each have mean zero and variance one, their dot product has variance *d*, the number of dimensions. In a simulation with 100,000 pairs, I obtained a variance of about 64 at 64 dimensions and 515 at 512 dimensions; dividing by √*d* returned it to roughly one. Without that scaling, increasingly large dot products drive softmax towards extreme weights, where its gradients become less useful.
 
-The real architecture adds more. Eight attention heads run in parallel and their results are joined. Layers are stacked, and because attention alone has no idea of word order, position information is added to the embeddings. I will not pretend that the toy above is a language model. What it does show is that the central move is a lookup whose rules are learned: each word asks a question, every word answers, and the answers are blended by relevance.
+The Transformer in the original paper adds multiple attention heads, learned projections, positional information, feed-forward layers and repeated blocks. The three-token calculation above is not a language model; it isolates one operation. Each position forms a query, compares it with keys from the other positions, and mixes their values according to the resulting weights. Context changes the vector because the surrounding tokens participate directly in its construction.
 
-Two honest limits from the paper itself. Self-attention compares every position with every other, so the cost grows with the square of the sequence length. And the attention weights look like an explanation of what the model is doing, but the paper offers only example pictures, and later work has argued that they are not an adequate explanation on their own.
+Two limits matter here. Full self-attention compares every position with every other, so the number of pairwise scores grows quadratically with sequence length. Attention weights are also visually tempting as explanations, but later research has shown that they are not sufficient evidence of why a model produced a particular output. A weight can describe one internal interaction without becoming a causal account of the decision.
 
 ## What stays missing
 
-Line the stages up and each one is a patch. Cutting makes text countable. Counting loses order, so people add word pairs, and it loses synonyms, so there are embeddings. A single vector per word ignores context, so there is attention. Each patch keeps something the stage before it lost, and none of them can tell you what the writer meant by *good*.
+Seen in sequence, the methods are not a ladder on which each new rung simply replaces an inferior one. Tokenisation defines the units. Counts remain valuable when transparent lexical evidence is enough. N-grams recover some order at a combinatorial price. Embeddings introduce graded similarity but inherit the corpus's regularities and biases. Attention makes a representation conditional on context, while adding cost and further distance from an explanation a person can inspect.
 
-A machine never reads the sentence you wrote. It reads the one we prepared for it, and the preparing is where most of the reading is decided.
+The sentence at the beginning never enters a model untouched. It arrives through decisions about segmentation, vocabulary, cleaning, weighting, context and training data. Those decisions are part of the model's claim about language. If I want to understand what the system has read, I have to begin by asking what version of the sentence I allowed it to see.
 
 ---
 
-**Sources**
+## References
 
-- A. Vaswani and others, *Attention Is All You Need*, 2017.
-- R. Sennrich, B. Haddow and A. Birch, *Neural Machine Translation of Rare Words with Subword Units*, 2016.
-- J. R. Firth, *A Synopsis of Linguistic Theory 1930 to 1955*, in *Studies in Linguistic Analysis*, 1957.
-- T. Bolukbasi and others, *Man is to Computer Programmer as Woman is to Homemaker? Debiasing Word Embeddings*, 2016.
-- V. Maslej-Krešňáková and others, *Deep Learning Models and Text Pre-processing for Toxic Comments Classification*, 2020.
-- scikit-learn documentation for `CountVectorizer`, `TfidfVectorizer` and the English stop-word list.
+- A. Vaswani et al., ["Attention Is All You Need"](https://arxiv.org/abs/1706.03762), *Advances in Neural Information Processing Systems 30*, 2017.
+- S. Jain and B. C. Wallace, ["Attention is not Explanation"](https://arxiv.org/abs/1902.10186), *Proceedings of NAACL-HLT*, 2019, 3543–3556.
+- R. Sennrich, B. Haddow and A. Birch, ["Neural Machine Translation of Rare Words with Subword Units"](https://arxiv.org/abs/1508.07909), *Proceedings of ACL*, 2016.
+- J. R. Firth, "A Synopsis of Linguistic Theory 1930–1955", in *Studies in Linguistic Analysis*, Blackwell, 1957, 1–32.
+- T. Bolukbasi et al., ["Man is to Computer Programmer as Woman is to Homemaker? Debiasing Word Embeddings"](https://arxiv.org/abs/1607.06520), *Advances in Neural Information Processing Systems 29*, 2016.
+- V. Maslej-Krešňáková, M. Sarnovský, P. Butka and K. Machová, ["Comparison of Deep Learning Models and Various Text Pre-Processing Techniques for the Toxic Comments Classification"](https://doi.org/10.3390/app10238631), *Applied Sciences*, 10(23), 2020, 8631.
+- scikit-learn, [`CountVectorizer` documentation](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html) and [text feature-extraction guide](https://scikit-learn.org/stable/modules/feature_extraction.html#text-feature-extraction).

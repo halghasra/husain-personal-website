@@ -3,7 +3,7 @@ title: "The Naive Assumption That Works Anyway"
 slug: "the-naive-assumption-that-works"
 type: "note"
 status: "evergreen"
-summary: "Naive Bayes multiplies probabilities as if the words in a review had nothing to do with each other. They plainly do. Why that false assumption still picks the right answer so often, what one zero count can do to it, and the small experiment where it finally breaks."
+summary: "Naive Bayes treats related words as independent evidence, an assumption language violates constantly. I wanted to understand why its classifications can survive that mistake, and exactly where the double-counting finally changes the answer."
 date: "2026-09-20"
 created: "2026-09-20"
 updated: "2026-09-20"
@@ -22,18 +22,15 @@ seo:
   description: "Why Naive Bayes works despite a false independence assumption: worked PlayTennis numbers, Laplace smoothing, a six-review text classifier, and where it breaks."
 ---
 
-> *All models are wrong, but some are useful.*
-> George Box
+Suppose a review contains the phrase *not good*. A text classifier sees two clues. The word *not* appears more often in negative reviews, and so does *good* in positive ones. Their order and dependence are exactly what give the phrase its meaning, yet Naive Bayes deliberately ignores that relationship and multiplies the clues as though they arrived separately.
 
-The statistician George Box is remembered for that line, and it has been quoted so often that it has gone smooth. A sentence like that needs a test case, something where you can point at exactly how the model is wrong and then see whether it is still useful.
+The assumption is plainly false for language. *Terrible* and *waste* co-occur; *New* and *York* are not independent observations; repeating the same complaint three ways does not create three witnesses. Still, Naive Bayes remains a useful baseline for text classification and often chooses the correct class even when its probabilities should not be believed.
 
-The best test case I know is a text classifier called Naive Bayes. Its wrongness fits in a sentence: it assumes that the words in a review have nothing to do with one another once you know whether the review is good or bad. That is false. *Not* and *good* travel together. *Terrible* and *waste* travel together. Nobody who has read a review believes the assumption.
+I wanted to understand that apparent contradiction without settling for the familiar line that all models are wrong. The useful question is more precise: which part of the answer survives the false assumption, which part does not, and how much dependence is required before the predicted class changes too?
 
-And yet it is a standard first model for sorting text, and still the baseline I would reach for before trying anything cleverer on free-text notes. So the question I wanted answered was how wrong a model can be before it stops being useful, and what "useful" is quietly relying on.
+## The calculation behind the name
 
-## The sum behind the name
-
-The Bayes half is [Bayes' rule](/notes/bayes-or-how-to-change-your-mind/). To decide whether a review belongs to a class, you ask how likely it is that this class would produce these words, weighted by how common the class is:
+The Bayes part is [Bayes' rule](/notes/bayes-or-how-to-change-your-mind/). For each possible class, the model combines how common that class is with how likely it would be to produce the observed words:
 
 <div class="formula">P(class | words) = P(words | class) × P(class) ÷ P(words)</div>
 
@@ -43,11 +40,11 @@ The trouble sits in the first factor. A review is a list of words, and the chanc
 
 <div class="formula">P(w₁, w₂, …, wₙ | class) ≈ P(w₁ | class) × P(w₂ | class) × … × P(wₙ | class)</div>
 
-Training is then just counting. How often is each class used, and how often does each word appear inside each class? The model is a set of tallies.
+This turns training into counting: the frequency of each class, and the frequency of each token within it. The simplicity is genuine. The cost is hidden in the approximation that made the counting sufficient.
 
-## Why the product is a cheat
+## The table we cannot fill
 
-The reason you cannot estimate the joint probability is size. Suppose each of n words is simply present or absent in a review. Writing down the chance of every possible combination takes 2ⁿ − 1 numbers for each class. For 20 words that is 1,048,575. The naive product needs 20. For a vocabulary of 10,000 words, the full table would have 2 raised to the power 10,000 entries, a number with 3,011 digits, and the product needs 10,000.
+Why not estimate the true joint probability of the words? Because the table grows before the evidence does. If each of *n* words is merely present or absent, a full distribution requires 2ⁿ − 1 values per class. Twenty words already require 1,048,575. A vocabulary of 10,000 implies 2¹⁰⁰⁰⁰ possible patterns, while the naive factorisation needs one conditional probability per word.
 
 The idea that licenses this saving is **conditional independence**: two things are conditionally independent given a third if, once you know the third, learning one tells you nothing more about the other. Russell and Norvig's dentist example shows it holding exactly. A toothache and the dentist's probe catching in a tooth are linked, because both are symptoms of a cavity. Their joint table gives the chance of the probe catching as:
 
@@ -58,11 +55,11 @@ The idea that licenses this saving is **conditional independence**: two things a
 
 Once you know about the cavity, the toothache changes nothing. Without that knowledge the link is real: the chance of both is 0.124, while the product of their separate chances is 0.068. I recomputed all of these from the eight cells of the table. The link ran through the cavity, and holding the cavity still removes it.
 
-Naive Bayes makes the same move for words, with the class playing the part of the cavity. Given that a review is negative, it treats each word as an independent clue. For the dentist that is a fact about the world. For language it is a convenient lie.
+Naive Bayes transfers that structure to words, using the class in place of the cavity. Once the review is assumed negative, every token is treated as an independent clue. In the dentist example, the conditional independence follows from the causal structure of the variables. In text, it is mostly a computational bargain.
 
-## Fourteen days of weather
+## Weather before words
 
-The smallest honest demonstration I know is the classic PlayTennis table: fourteen days, each with an outlook, a temperature, a humidity and a wind, and a verdict on whether tennis was played. Nine days were Yes and five were No. A new day arrives, Sunny with a Strong wind. Will they play?
+Before returning to text, the classic PlayTennis table makes the arithmetic visible. It contains fourteen days described by outlook, temperature, humidity and wind, with a final record of whether tennis was played. Nine days are labelled Yes and five No. The new observation is Sunny with a Strong wind.
 
 Count within each class. Of the five No days, three were Sunny and three had Strong wind. Of the nine Yes days, two were Sunny and three had Strong wind. Then score each class:
 
@@ -218,19 +215,19 @@ naive, 3 copies of x: 3.18
 truth, x counted once: 0.58
 ```
 
-The first four lines show confidence inflating. One honest clue gives 0.7. Five copies give 0.9857, though no new information has arrived. The model's probabilities drift far from the truth, yet the prediction is the same each time, because A stays ahead of B. If all you need is the winning class, nothing has been lost. If you need the number to mean something, you have lost it.
+The first four lines isolate the calibration problem. One clue supports class A with probability 0.7. Five perfectly dependent copies raise the naive posterior to 0.9857 even though the evidence has not changed. The ranking survives because A was already ahead, but the reported confidence no longer describes the information available.
 
-The last two lines show the ranking itself failing. Add a second, independent clue *z* that is right 80% of the time, and suppose it points to B while *x* points to A. Counted once, x loses: the odds for A are about 0.58 to 1, so B wins. With three copies of x shouting, the naive odds for A are about 3.18 to 1, so A wins, and the model is wrong. Dependent evidence has outvoted a better, independent witness.
+The last two lines make the dependence strong enough to alter the class. A second, independent clue *z* is correct 80 per cent of the time and points to B, while *x* points to A. Count *x* once and A's odds are roughly 0.58 to 1, so B wins. Count its three copies independently and A's odds become about 3.18 to 1. Repetition has allowed one source of evidence to outvote a stronger independent source.
 
-That, I think, is the whole answer to the opening puzzle. The assumption is false, and it distorts every probability the model reports. But classification does not ask for the probability. It asks which class comes out ahead, and when the distortion pushes the classes the same way, the order survives. Domingos and Pazzani analysed this in 1997 and showed that the simple Bayesian classifier can be the best possible choice for classification even when its independence assumption is violated. Roughly speaking, the double counting must not tip the order. When one cluster of dependent features gets to outvote the rest, as above, it breaks.
+This separates two claims that are often bundled together. A classifier can place the correct class first without assigning it a calibrated probability. Domingos and Pazzani showed formally that the naive classifier can be optimal under zero-one classification loss even when its probability estimates are poor and its independence assumptions fail. Classification only needs the decision boundary to fall in the right place. Dependence becomes fatal when the duplicated evidence moves an observation across that boundary.
 
-Two practical lessons follow, and I would hold both. Use the predicted class freely and the stated confidence cautiously: in a decision tool, a 99% from this model is not a 99%. And where dependence is strong and matters, a model that represents it, like the networks in [Drawing Uncertainty](/notes/drawing-uncertainty-bayesian-networks/), or the context-aware models at the end of [How Machines Learn to Read](/notes/how-machines-learn-to-read/), is the better tool.
+The practical consequence depends on what the prediction will be used for. A rough label for routing free-text notes may tolerate uncalibrated confidence. A threshold that triggers an investigation, denies an application or prioritises a clinical case cannot treat an asserted 99 per cent as meaningful without calibration and validation. Where context and dependence carry the meaning, a model that represents them, such as the networks in [Drawing Uncertainty](/notes/drawing-uncertainty-bayesian-networks/) or the contextual methods in [How Machines Learn to Read](/notes/how-machines-learn-to-read/), is a better match to the problem.
 
-A model can be wrong about how the world works and still be right about what comes first. Know which of the two you are leaning on.
+Naive Bayes works because being wrong about the joint distribution does not automatically make it wrong about the ordering of the classes. That is a narrower achievement than accurate probability estimation, but it is still a useful one. The mistake is asking the model's confidence to promise more than its assumptions can support.
 
 ---
 
-**Sources**
+## References
 
-- S. Russell and P. Norvig, *Artificial Intelligence: A Modern Approach*, 4th ed., on Bayes' rule, conditional independence and the dentist example.
-- P. Domingos and M. Pazzani, *On the Optimality of the Simple Bayesian Classifier under Zero-One Loss*, Machine Learning, 1997.
+- S. Russell and P. Norvig, [*Artificial Intelligence: A Modern Approach*](https://www.pearson.com/en-us/subject-catalog/p/artificial-intelligence-a-modern-approach/P200000003500), 4th ed., Pearson, 2021 (Bayes' rule, conditional independence and the dentist example).
+- P. Domingos and M. Pazzani, ["On the Optimality of the Simple Bayesian Classifier under Zero-One Loss"](https://doi.org/10.1023/A:1007413511361), *Machine Learning*, 29, 1997, 103–130.

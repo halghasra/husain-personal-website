@@ -3,13 +3,13 @@ title: "CoinMarketCap Data Breach"
 date: "2021-10-22"
 type: "article"
 status: "published"
-summary: "3.1 million user emails compromised. A breakdown of what happened, what it means, and what you should do if your email was in the breach."
+summary: "When my email appeared in the CoinMarketCap dataset, the absence of passwords did not make the exposure harmless. It changed what a convincing phishing attempt could know about me."
 categories: ["Articles", "Cyber Security", "Technology"]
 tags: ["Blockchain", "CoinMarketCap", "Cyber Security", "Data Breach", "Security"]
 coverImage: "./images/CoinMarketCap-data-breach.png"
 ---
 
-The most recent data breach happened to CoinMarketCap , and almost 3.1 million user emails (including mine) were compromised.
+In October 2021, 3.1 million email addresses associated with CoinMarketCap accounts appeared on hacking forums. Mine was among them. Have I Been Pwned verified the correlation with CoinMarketCap accounts, but the precise origin of the addresses remained unclear; CoinMarketCap said it had found no evidence that its own servers had been breached [1]. That uncertainty matters, so I should not present the incident as a confirmed intrusion into CoinMarketCap's systems.
 
 <figure>
 
@@ -17,13 +17,13 @@ The most recent data breach happened to CoinMarketCap , and almost 3.1 million u
 
 <figcaption>
 
-Mozilla’s Firefox Monitor added the breach to their database today (October 22nd, 2021) (source: [Firefox Monitor](https://monitor.firefox.com/))
+Mozilla Monitor added the exposure to its database on 22 October 2021 [2].
 
 </figcaption>
 
 </figure>
 
-I have noticed a big wave of phishing attempts (especially related to Cryptocurrencies) started about a week ago.
+Around the same time, I noticed a wave of phishing messages, many of them related to cryptocurrency. I cannot establish from timing alone that this dataset caused those messages, but the overlap made the risk feel much less abstract.
 
 <figure>
 
@@ -37,18 +37,15 @@ An example phishing email received today
 
 </figure>
 
-This will be followed by more tailored attempts that might replicate emails coming from major banks and/or crypto exchange platforms… **BE AWARE !**
+An address associated with a cryptocurrency service gives a phisher useful context. A message can imitate an exchange, wallet provider, or bank and arrive already knowing which subject is likely to command attention. When a message asks me to sign in urgently, I avoid its link and open the service independently.
 
-  
-Take extra caution while opening any email, when in doubt, don’t open the link on the email, always head into the official website, and always remember: “**_it it’s too good to be true, it’s a scam_**”.
+I had already begun using Apple's Hide My Email for online accounts. It creates a separate forwarding address instead of disclosing the address I use personally. If one alias is exposed, I can disable it and avoid connecting the same identity across several services. It is useful compartmentalisation, not immunity: phishing can still arrive through the alias, and the account still needs strong authentication.
 
-In matter of fact, I have decided a while ago, to not give my personal email to any website no matter how important it is, I am using Apple iCloud+ feature “Hide My Email”, to those who don’t know about it: it is a feature used while signing up via Apple, where your actual email is hidden and a dummy email is created for the purpose of using it just for that particular website. The emails received from that website will be forwarded to your actual address by Apple. This gives a massive boost to your security, and if -god forbids- your email was leaked, it won’t harm you in any sort.
+Mozilla offers a similar service through [Firefox Relay](https://relay.firefox.com/).
 
-There are similar services provided by other trusted providers like Mozilla for instance (check Firefox [Relay](https://relay.firefox.com)).
+No passwords were present in the CoinMarketCap data [1]. That narrows the immediate risk, but it does not erase it. An email address can be combined with public profiles and other breached datasets to make a later attack more specific. The incident therefore raises a question that a password reset cannot answer: why did the service need a persistent, reusable identifier in the first place, and how clearly could it account for the path that identifier took?
 
-Data breach is a very serious issue, even if your passwords aren’t compromised, yet hackers could use all the data gathered about you to have more targeted attacks. Lately, the number of data breaches and scraps happened is very alerting, this raises the question whether the websites (especially those providing paid services) are maintaining high standards in terms of cyber security? why there isn’t forcible laws that regulates compensations to the victims of those breaches, especially if the data breached led to an attack that caused a loss (of any kind) to the victim.
-
-Finally, this kind of a situation, leads the way for more efforts of separating the personal data from the website/service provider. I’m thinking of a decentralized and highly secure technology that retains the ownership of all personal data to the users themselves, where websites and services communicates and requests a timely access to certain information that relates exclusively to the service they provide. The session of data access would only last while the user is actively using the service (i.e. during the service session).
+The idea I kept returning to was a system in which people hold more of their personal data and grant a service limited access to the particular attributes it needs. Access could be scoped by purpose and time instead of becoming an indefinite copy in another database. Decentralisation does not automatically make such a system secure, and revocation becomes complicated once data has been copied, but the principle of minimising disclosure is worth pursuing.
 
 <figure>
 
@@ -62,4 +59,9 @@ Source: [Mozilla Foundation](https://foundation.mozilla.org/en/initiatives/new-y
 
 </figure>
 
-I hope this idea will turn into reality one day, and that everyone will take back control again over their own data. Because what is happening nowadays is merely a crime; one does not know how much of his personal data is exposed, sold, or analysed without his consent.
+I still hope systems move in that direction. The most unsettling part of this incident was not that my password had escaped; it had not. It was discovering how little visibility I had into where a simple piece of personal data had travelled and what somebody else could infer from it.
+
+## References
+
+1. Have I Been Pwned. [CoinMarketCap data breach](https://haveibeenpwned.com/breach/CoinMarketCap).
+2. Mozilla Monitor. [CoinMarketCap breach details](https://monitor.mozilla.org/en/breach-details/CoinMarketCap).

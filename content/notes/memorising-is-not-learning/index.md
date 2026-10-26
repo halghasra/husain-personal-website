@@ -3,7 +3,7 @@ title: "Memorising Is Not Learning"
 slug: "memorising-is-not-learning"
 type: "note"
 status: "evergreen"
-summary: "A curve that passes through all twelve points exactly, with a training error of 0.0000, and an error of 5.89 on new ones. Overfitting, the two ways a model can be wrong, why the test set is honest only once, and a perfect score earned on pure noise."
+summary: "One curve fits every training point and fails almost everywhere between them. From that failure, I work through overfitting, unstable models, exhausted test sets and the metrics that reward doing nothing."
 date: "2026-09-07"
 created: "2026-09-07"
 updated: "2026-09-07"
@@ -22,11 +22,11 @@ seo:
   description: "Overfitting, bias and variance, the test set, data leakage and precision and recall, each shown with a short Python experiment and its real output."
 ---
 
-Twelve points, and one curve that passes through every one of them. The error on the data it was fitted to prints as 0.0000. By the only measure the curve was ever shown, it is perfect.
+I gave four polynomial models the same twelve observations. One of them passed through every point, reducing its training error to 0.0000. If fitting the available data were the task, it had won completely.
 
-Then I gave it 201 fresh points from the same source. Its error was 5.8938. A plain cubic curve fitted to the same twelve points scored 0.1322 on those fresh points, about 45 times better.
+On 201 fresh observations from the same process, its error rose to 5.8938. A far simpler cubic, which had left visible error on the training set, scored 0.1322. The perfect fit was about 45 times worse where the model was actually needed: away from the examples it had already seen.
 
-Nothing in the code was broken. The curve did exactly what it was asked to do, which was to fit the data it was given as closely as it could. That is the trouble, and the rest of this note is about the habits that stop it fooling you.
+The code had behaved correctly. The mistake was allowing performance on studied examples to stand in for performance on new ones. From that small experiment, this note moves through the related ways evaluation can flatter a model: excessive flexibility, repeated use of a test set, leakage before cross-validation, and a metric that rewards the majority class while ignoring the cases that matter.
 
 ## Twelve points, four curves
 
@@ -61,15 +61,15 @@ degree  error on study points  error on fresh points
     11                 0.0000                 5.8938
 ```
 
-Read the two columns together. The straight line is too stiff, and both its errors are high. The cubic is about right, with the lowest error on fresh points. Degree 9 has a training error of 0.0317, far lower than the cubic's, but on fresh points it is more than twice as bad (0.2982 against 0.1322). And degree 11 memorises: zero error on the points it studied, and a wild curve between them.
+The columns have to be read together. The straight line is too rigid, leaving large errors on both seen and fresh data. The cubic has the lowest fresh-data error. Degree 9 fits the training points much more closely than the cubic but more than doubles the error on new observations. Degree 11 interpolates every training point and swings violently between them.
 
-The pattern generalises beyond polynomials. Error on the data a model has studied can only fall as the model gets more flexible. Error on new data falls and then climbs. A model that has learned the noise has not learned anything it can use.
+Increasing flexibility gives a model more ways to reduce training error, so that column alone cannot tell us when to stop. The useful question is whether the added flexibility captures a repeatable pattern or the accidents of this particular sample. Memorisation is not defined by a large model or a zero training error; it is the failure of what was learned to survive new data.
 
 One honest caveat: this is a single draw of noise. The ordering holds up, but the exact numbers belong to this draw, as the next section shows.
 
 ## Two ways to be wrong
 
-There is a tidier way to say what happened, and I think it is the best mental model I have for this whole subject. For squared error, a model's expected error on a new point splits into three parts:
+For squared error, the familiar bias-variance decomposition gives a more precise account of that failure. Expected error on a new observation can be separated into three parts:
 
 <div class="formula">expected error = bias² + variance + noise</div>
 
@@ -109,7 +109,7 @@ degree  bias squared  variance  plus 0.09 noise  measured error
      9        0.0000    0.1205           0.2105          0.2103
 ```
 
-The straight line has high bias (0.2157) and low variance (0.0139). It is wrong in the same way every time. The cubic cuts the bias to 0.0062 for a small rise in variance, and has the lowest total error here. By degree 5 and 9 the bias is about zero, but variance has climbed to 0.0389 and then 0.1205. Those models are right on average and unreliable on any one dataset. A stiff model is wrong the same way every time. A flexible one is wrong a different way each time.
+The straight line has high bias (0.2157) and low variance (0.0139): different samples lead to similar lines, but those lines systematically miss the wave. The cubic reduces bias to 0.0062 while adding relatively little variance, giving the lowest total error in this experiment. By degrees 5 and 9, average bias is nearly gone, yet variance has risen to 0.0389 and 0.1205. Those fits can average to the right curve while any single fitted model remains unreliable.
 
 Two things check the arithmetic. The last two columns agree to within 0.0005 (for the cubic, 0.1210 against 0.1212), so the three parts do add up. And degree 9 averages 0.2103 on fresh data over 2,000 datasets, against 0.2982 in my single draw above. The shape is solid. A single run is only a sample.
 
@@ -121,7 +121,7 @@ If error on the data you trained on is a poor guide, you need data the model has
 
 <div class="callout callout-definition"><p><strong>Three sets, three jobs</strong></p><p>The <strong>training set</strong> teaches the model. The <strong>validation set</strong> is where you choose between models and settings. The <strong>test set</strong> is looked at once, at the end, to estimate how the model will do on genuinely new data.</p></div>
 
-The rule is that every decision gets made on training and validation data: which model, which settings, which features, when to stop. The test set is touched once. Break the rule and the number stops meaning anything.
+Model choices belong to training and validation: architecture, features, hyperparameters and stopping time. The test set estimates the result only after those choices are fixed. Once its performance has influenced a decision, it has joined the development process and no longer represents untouched evidence.
 
 I wanted to see how much it matters, so I simulated it. Sixty noisy points: 36 to train, 12 to validate, 12 to test. Choose the polynomial degree from 1 to 9 two ways, once on the validation points and once by peeking at the test points. Repeat 500 times, and measure each choice against 20,000 fresh points that stand in for the real future.
 
@@ -160,7 +160,9 @@ average over 500 repeats
   error on 20,000 genuinely new points               : 0.124
 ```
 
-The honest route, choosing on validation and reporting on a test set it has never influenced, says 0.114. The real future error is 0.124, so that estimate is close. The peeking route says 0.097, which flatters the model by about a fifth. The gap is modest here because I only searched nine candidates. Search thousands of settings against the same test set and the flattery should grow. It is the same trap as trying many comparisons and reporting the one that came out well, which is what [a p-value note](/notes/what-a-p-value-is-not/) is about.
+Choosing the degree on validation data and evaluating it once gives a mean test error of 0.114, close to the 0.124 observed on 20,000 future samples. Choosing the degree that happened to look best on the test set reports 0.097. No individual result was falsified; the optimism came from selecting among nine noisy estimates and reporting the smallest.
+
+With a larger search over models and settings, there are more chances for an accidental low test error to win. The logic is closely related to running many statistical comparisons and publishing the fortunate one, which I examine in [What a p-value Is Not](/notes/what-a-p-value-is-not/).
 
 Splits can go wrong in other ways. With 12 test points the estimate is noisy, which is one reason people rotate the roles of the folds (cross-validation). A random split from one source says nothing about a different population, such as another hospital or another year. And for data ordered in time, a random shuffle lets the model train on the future. In insurance, where I work, a pricing or claims model should be tested on a later period than it was trained on, because that is how it will be used.
 
@@ -208,7 +210,7 @@ Picking first and validating second reports 95.4 per cent accuracy on average, w
 
 Why does the wrong order work so well? With 5,000 columns and 50 rows, some columns line up with the labels by chance. The best single noise column correlates with the labels at about 0.51. The selection step found those lucky columns using every row, including the rows that cross-validation later held out. The test rows had already voted.
 
-This is **data leakage**, and the shape is always the same: a step that learns something from the data, whether a column selector, a scaler, a vocabulary or a way of filling gaps, was fitted on rows that include the ones used for evaluation. Nothing crashes. The only symptom is a score that is too good. *The Elements of Statistical Learning* describes this exact trap in its chapter on model assessment.
+This is **data leakage**. A feature selector, scaler, vocabulary or imputation rule has learned from rows that the evaluation later presents as unseen. The estimator itself may receive only its training fold, but the representation it receives already contains information from outside that fold. Nothing needs to crash because the program has carried out the requested operations exactly; the error is in the boundary around what was allowed to learn.
 
 Leakage has other forms. A feature recorded after the outcome hands the model the answer. In claims data, a field filled in after the decision, such as a final outcome code, would do that, and I would look for fields like it before trusting a strong result. The wider habit is the one in [Garbage In](/notes/garbage-in/): the unglamorous parts of preparing data decide whether the score means anything.
 
@@ -245,15 +247,15 @@ simple average of the two: 0.55 | F1: 0.1818
 
 A detector that flags 20 claims and catches 8 of the 10 frauds has recall of 0.8 but precision of only 0.4, because 12 of its flags were false alarms. Its accuracy is 98.6 per cent, which says nothing about those 12. Its F1 is 0.533.
 
-The harmonic mean matters because the ordinary average is forgiving. A detector with perfect precision but a recall of 0.1 finds one case in ten. The simple average of the two is 0.55, which sounds respectable. F1 is 0.18, which is the more honest verdict.
+The harmonic mean penalises imbalance between precision and recall. With precision 1.0 and recall 0.1, the arithmetic mean is 0.55 even though nine out of ten positive cases were missed. F1 falls to 0.18. That lower number is useful only if precision and recall deserve equal weight.
 
-F1 treats a false alarm and a miss as equally bad, and in practice they rarely are. Missing a fraud and wrongly flagging an honest claim carry different costs, and the business knows them better than the statistics do. The metric should be chosen from those costs, not the other way round.
+In practice, false alarms and missed cases rarely cost the same. Missing fraud, delaying an honest claim and sending work to an investigator have different consequences. A metric encodes a preference among those consequences, whether or not that preference was discussed. It should be chosen from the decision the model supports, not merely because a library makes it convenient.
 
-Every score in this note was a claim about the future. Before believing one, ask what the model was allowed to see, and what a model that did nothing would have scored.
+Every score in this note is an argument about future behaviour. To judge the argument, I need to know what the model and its preprocessing were allowed to see, how often the evaluation data influenced a choice, and what a trivial model would have achieved. Without those answers, another decimal place only makes the uncertainty look tidy.
 
 ---
 
-**Sources**
+## References
 
-- T. Hastie, R. Tibshirani and J. Friedman, *The Elements of Statistical Learning*, 2nd ed., Springer, 2009 (model assessment and the cross-validation trap, chapter 7).
-- F. Pedregosa et al., "Scikit-learn: Machine Learning in Python", *Journal of Machine Learning Research*, 12, 2011.
+- T. Hastie, R. Tibshirani and J. Friedman, [*The Elements of Statistical Learning*](https://hastie.su.domains/ElemStatLearn/), 2nd ed., Springer, 2009 (model assessment and selection, chapter 7).
+- F. Pedregosa et al., ["Scikit-learn: Machine Learning in Python"](https://jmlr.org/papers/v12/pedregosa11a.html), *Journal of Machine Learning Research*, 12, 2011, 2825–2830.

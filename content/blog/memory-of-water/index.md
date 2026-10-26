@@ -17,16 +17,12 @@ The world, whether vast enough for each of its inhabitants to have their own con
 
 I read with my eyes, turning the pages repeatedly, while my mind delved into the lines searching for the revolution, the moment when all the villagers would stand together, refusing to meekly queue for water. They would declare that water, or freedom, belongs to everyone and that oppression, no matter how solid it seems, must eventually break before the will to live.
 
-_Memory of Water_ by Emmi Itäranta is a beautifully written and thought-provoking novel that dives into the themes of survival, control, and the human spirit's quest for freedom. Set in a dystopian future where fresh water is scarce and tightly controlled by the military, the story follows Noria, a young tea master, as she uncovers secrets about water sources and faces the harsh realities of her world.
+Noria, the young tea master at the centre of the novel, inherits knowledge that the military would rather keep hidden. What I found most effective is the quietness with which this danger enters her life. Itäranta does not need to turn resistance into a heroic performance. A concealed spring, a tea ceremony, and the decision to share what one knows become political because power has made water political.
 
-The novel's strength lies in its evocative prose and the deep sense of atmosphere Itäranta creates. The descriptions of the parched landscape and the desperation of the people are hauntingly vivid. Itäranta's writing pulls the reader into this world, making them feel the dryness in the air and the constant, oppressive thirst of the characters.
+I kept waiting for the villagers to rise together, perhaps because years of stories had trained me to expect the machinery of revolution. The novel refused to give me that release. Its people remain tired, divided, afraid, and recognisably human. That refusal made the book more painful, but also more honest. Tyranny does not always end on the page merely because the reader has understood it.
 
-Noria's journey is both personal and universal. As she struggles with her responsibilities as a tea master and the legacy of her father, she also grapples with the broader implications of knowledge and power. The metaphor of water as freedom is powerful and poignant. Itäranta uses this symbol to highlight the fundamental human need for liberty and the lengths to which people will go to secure it.
+_Memory of Water_ left me thinking about resources as instruments of power and about how easily necessity can be turned into permission. More than that, it left me thirsty for the uprising it deliberately withheld.
 
-Reading _Memory of Water_ was a profound experience. Itäranta's ability to weave a tale that is both a gripping story and a deep philosophical exploration is impressive. The book made me reflect on our current world's issues, such as resource control, environmental degradation, and the fight for freedom.
+## Reference
 
-The plight of the villagers in the book resonated with me deeply. Their struggle for water mirrored the struggles many people face today for basic resources and rights. Itäranta's portrayal of the oppressive control over water is a stark reminder of how power can corrupt and how the fight for freedom is a constant, universal struggle.
-
-This book also made me appreciate the preciousness of water and the environment. It serves as a cautionary tale about the consequences of environmental neglect and the importance of sustainable practices. The themes of hope and resistance in the face of tyranny are timeless and inspire readers to believe in the possibility of change.
-
-_Memory of Water_ by Emmi Itäranta is a compelling and beautifully crafted novel that explores critical themes relevant to both our present and future. Its rich narrative and powerful symbolism make it a must-read for those interested in dystopian fiction and environmental issues. Itäranta's storytelling not only entertains but also encourages deep reflection on the importance of freedom and the human spirit's resilience.
+Itäranta, E. (2014). *Memory of Water* (E. Itäranta, Trans.). Harper Voyager. (Original Finnish edition published 2012.)

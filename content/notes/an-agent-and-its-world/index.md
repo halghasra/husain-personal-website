@@ -26,7 +26,7 @@ There is a wasp, the sphex, whose routine is so tidy it has become a famous stor
 
 Now suppose that while she is inside checking, someone moves the prey a few inches away. She comes out, finds it, drags it back to the entrance, leaves it there, and goes in to check again. Move it again and she does the same thing again. In the classic telling, she does this dozens of times in a row, and never once thinks to drag it straight in.
 
-The story may be tidier than the real insect. But as a picture of a certain kind of agent it is perfect. The wasp is good at her job. Her routine is elaborate, purposeful and, in the world it evolved for, it works. It just has no way to notice when the world stops behaving the way the routine assumes.
+This is Fabre's experiment as George and Elizabeth Peckham recounted it in their 1898 study of solitary wasps. It is one observation, and I would not stretch it into a general theory of insects. As a picture of a certain kind of agent, however, it is hard to improve. The wasp is good at her job. Her routine is elaborate, purposeful and, in the world it evolved for, it works. It just has no way to notice when the world stops behaving the way the routine assumes.
 
 When I first studied how AI describes agents, that wasp kept coming back to me, because nearly every idea in this area is an answer to one question: what would it take for a machine not to be the wasp?
 
@@ -242,7 +242,8 @@ A reflex knows what to do. A learning agent can find out it was wrong.
 
 ---
 
-**Sources**
+## References
 
-- S. Russell and P. Norvig, *Artificial Intelligence: A Modern Approach*, 4th ed., Pearson, 2021.
-- A. M. Turing, "Computing Machinery and Intelligence", *Mind*, 59(236), 1950, 433 to 460.
+- G. W. Peckham and E. G. Peckham, [*On the Instincts and Habits of the Solitary Wasps*](https://peckhamia.com/library/Peckham%201898%20On%20the%20instincts%20and%20habits%20of%20the%20Solitary%20Wasps%2045.6MB.pdf), Wisconsin Geological and Natural History Survey Bulletin 2, 1898, 40–41 (recounting Fabre's Sphex experiment).
+- S. Russell and P. Norvig, [*Artificial Intelligence: A Modern Approach*](https://www.pearson.com/en-us/subject-catalog/p/artificial-intelligence-a-modern-approach/P200000003500), 4th ed., Pearson, 2021.
+- A. M. Turing, ["Computing Machinery and Intelligence"](https://doi.org/10.1093/mind/LIX.236.433), *Mind*, 59(236), 1950, 433–460.

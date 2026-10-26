@@ -17,14 +17,12 @@ Furthermore, the book does not provide a coherent explanation of the theory of r
 
 In addition to the translation issues, the proof tables included in the book are based on the French language, which adds another layer of confusion for readers expecting explanations in English or another more familiar language. Moreover, the Arabic terms used are direct translations from French, rather than using the standard Arabic terminology commonly accepted in the field of physics. This makes it difficult for Arabic-speaking readers to follow the discussions, as the terms do not match what they might have learned from other sources.
 
-Reading _What is Relativity?_ was a challenging and disappointing experience. As someone interested in understanding this fundamental theory, I found the book lacking in clarity and cohesion. The poor translation and disorganised content made it difficult to grasp the basic concepts of relativity.
+The most frustrating part is that I cannot tell how much of the failure belongs to Vannucci and how much belongs to this Arabic edition. My criticism is therefore of the version I read. I would need the French original, or a reliable comparison, before claiming that the author's own explanation is incoherent.
 
-This experience has underscored the importance of high-quality translations, especially for scientific texts. Accurate translations are essential for conveying complex ideas clearly and effectively. When translations are poorly done, they can obscure the original meaning and hinder the reader's understanding.
+That distinction is especially important in science. Translation is not a matter of replacing one word with another; terminology carries relationships built across an entire field. When an established Arabic term is replaced by a literal rendering from French, the reader loses the bridge to other textbooks and lectures precisely when the subject demands conceptual continuity.
 
-Furthermore, the book's failure to provide a structured explanation highlights the need for a well-organised approach when discussing complex scientific theories. Readers need a clear introduction, logical progression, and connections between concepts to build their understanding effectively.
+The book did not weaken my interest in relativity. It sharpened my sense of what a good explanation must do: introduce the problem that made the theory necessary, keep the distinction between special and general relativity visible, and let each mathematical or conceptual step earn the next one. I will look for that explanation elsewhere before deciding what I think of Vannucci's original.
 
-Despite these shortcomings, my interest in relativity remains undiminished. I plan to seek out other resources that provide a clearer and more coherent explanation of the theory. There are many well-regarded books and online courses that offer accessible introductions to relativity, and I am eager to explore these alternatives.
+## Reference
 
-_What is Relativity?_ by François Vannucci is a disappointing attempt at explaining one of the most important theories in physics. The poor translation, disjointed content, and use of non-standard terminology make it a frustrating read for anyone trying to understand relativity. For those interested in this topic, I recommend looking for other resources that offer clearer and more accurate explanations.
-
-Going forward, I will focus on finding reputable sources that provide a better introduction to relativity. Books by renowned physicists such as Albert Einstein's _Relativity: The Special and General Theory_ or more modern texts like Brian Greene's _The Elegant Universe_ may offer more accessible and informative explanations. Additionally, online courses and lectures from educational platforms can provide structured and comprehensive overviews of the theory.
+Vannucci, F. (2005). *Qu'est-ce que la relativité?* Le Pommier, Les Petites Pommes du Savoir, no. 63.

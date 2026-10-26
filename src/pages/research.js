@@ -9,7 +9,7 @@ import * as styles from "../styles/research.module.css"
 const FOCUS_AREAS = [
   {
     title: "Trustworthy AI",
-    body: "How do we design AI systems that can be checked, challenged, and trusted? Not just through performance metrics, but through transparency of process, auditability of decisions, and the ability to fail gracefully.",
+    body: "How do we design AI systems that can be checked and challenged before we ask people to trust them? Performance matters, but so do the process that produced an answer, the limits of the evidence, and what happens when the system is wrong.",
   },
   {
     title: "Traceability",
@@ -17,7 +17,7 @@ const FOCUS_AREAS = [
   },
   {
     title: "Human-AI Collaboration",
-    body: "How do we design systems where AI helps humans think better, rather than replacing judgement with automation? The interface between human cognition and machine output is one of the most underexplored problems in applied AI.",
+    body: "How do we design systems that help people think better without quietly replacing judgement with automation? I am interested in the point where a model's output becomes a human decision, and in what can be lost at that boundary.",
   },
   {
     title: "Knowledge Graphs and Memory",
@@ -43,19 +43,20 @@ const ResearchPage = ({ data }) => {
           title="Questions I might spend years trying to answer."
           margin={<><b>Research</b><br />{FOCUS_AREAS.length} areas<br />1 open question</>}
         >
-          <p>This is not a finished research profile yet. It is where I keep the questions.</p>
+          <p>This is not a finished research profile. It is a map of the questions pulling me forward.</p>
         </PageHead>
 
         <Section margin={<b>Abstract</b>} className={styles.abstract}>
           <p>
-            My work is currently moving towards artificial intelligence, machine learning,
-            deep learning, trustworthy AI, traceability, explainability, and human-AI decision support.
+            My academic direction is moving towards artificial intelligence, machine learning
+            and deep learning, especially the problems of trust, traceability, explanation and
+            human judgement.
           </p>
           <p>
             I am especially interested in the gap between a model producing an answer and a human
-            being able to trust, verify, and act on it. That gap is not a UX problem. It is a
-            fundamentally hard problem in epistemics, system design, and the relationship between
-            algorithmic reasoning and human judgement.
+            being able to verify it and decide what to do with it. I do not see that as merely an
+            interface problem. It reaches into provenance, uncertainty, system design, and the
+            relationship between algorithmic output and human judgement.
           </p>
           <p className={styles.keywords}>
             <b>Keywords:</b> {FOCUS_AREAS.map(a => a.title.toLowerCase()).join("; ")}.
@@ -79,10 +80,11 @@ const ResearchPage = ({ data }) => {
             tag="traceability"
             statement="How do we build AI systems that can explain where their answers came from?"
           >
-            Not just with a citation pasted underneath, but with a real trail of reasoning,
-            evidence, uncertainty, and context. The answer sits somewhere between knowledge
-            graphs, natural language reasoning, information retrieval, and the philosophy of
-            evidence.
+            A citation pasted underneath an answer is only a beginning. I want to understand what
+            a useful trail would need to preserve: the evidence used, the transformations applied,
+            the uncertainty introduced, and enough context for another person to challenge the
+            result. The question crosses knowledge graphs, information retrieval, natural-language
+            reasoning, provenance and the philosophy of evidence.
           </Problem>
         </Section>
 

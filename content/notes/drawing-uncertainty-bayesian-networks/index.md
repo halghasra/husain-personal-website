@@ -248,7 +248,7 @@ Ten numbers can do the work of thirty-one, provided the arrows tell the truth. D
 
 ---
 
-**Sources**
+## References
 
-- S. Russell and P. Norvig, *Artificial Intelligence: A Modern Approach*, 4th ed., Pearson, 2021 (the burglar alarm and the dentist examples, explaining away).
-- J. Pearl, *Probabilistic Reasoning in Intelligent Systems: Networks of Plausible Inference*, Morgan Kaufmann, 1988.
+- S. Russell and P. Norvig, [*Artificial Intelligence: A Modern Approach*](https://www.pearson.com/en-us/subject-catalog/p/artificial-intelligence-a-modern-approach/P200000003500), 4th ed., Pearson, 2021 (the burglar-alarm and dentist examples, and explaining away).
+- J. Pearl, [*Probabilistic Reasoning in Intelligent Systems: Networks of Plausible Inference*](https://www.sciencedirect.com/book/9780080514895/probabilistic-reasoning-in-intelligent-systems), Morgan Kaufmann, 1988.

@@ -3,7 +3,7 @@ title: "husainalghasra.com"
 slug: "husainalghasra-com"
 type: "build"
 status: "active"
-summary: "My personal website and public notebook. Built with Gatsby, React, and Markdown. A living knowledge system."
+summary: "The website began as a place to publish. It has gradually become the system through which I keep notes, develop questions, and trace the connections between them."
 date: "2026-05-13"
 created: "2024-01-01"
 updated: "2026-05-13"
@@ -21,27 +21,27 @@ seo:
 
 ## What question started it?
 
-I wanted a place to think in public. Not a blog with perfectly edited posts. Not a portfolio. A notebook. Somewhere ideas could live at different stages of completeness.
+I wanted a place where I could think in public without pretending that every thought had reached its final form. A conventional blog seemed too finished, while a portfolio would make the work look more orderly than learning ever is. What I needed was closer to a notebook: somewhere an idea could begin as a question, gather evidence, and perhaps grow into an essay or lesson.
 
 The secondary question was about knowledge systems. How do you structure information so that ideas connect? How do you preserve the trail from a rough note to a finished essay?
 
 ## What I built
 
-A Gatsby site that reads Markdown files from a `/content` folder and turns them into pages. The content model supports different types: notes, essays, research seeds, paper notes, builds.
+A Gatsby site that reads Markdown files from a `/content` folder and turns them into different kinds of pages. Notes, essays, research seeds, paper notes, builds, and lessons share a common publishing system, but they are not presented as though they serve the same purpose.
 
-The design is intended to feel like a digital notebook rather than a product site. Dark, editorial, minimal. Amber accent. Notes in a list, not a grid.
+The visual design is deliberately closer to an editorial notebook than a product site. The dark palette and restrained amber accent help, but the more important choice is structural: writing is organised by what it is and where it sits in my thinking, not by how well it might fill a card grid.
 
-The Neural Map page will eventually become a real content-driven graph. For now it is a relationship view that shows all entries with their types and tags.
+The Neural Map is the part of the site that best expresses the original idea. It builds a content-driven graph from each entry's metadata. Explicit links in `linked_notes` form the strongest edges; shared topics and tags create weaker relationships; clusters and content types help the map retain some shape. The result is not meant to claim that every association is profound. It lets me see where a question is isolated, where several pieces are circling the same concern, and where one line of inquiry has begun to lead into another.
 
 ## What I learnt
 
-Gatsby is a good choice for this kind of site. The GraphQL data layer makes it easy to query and filter content across different source types. CSS Modules keep the styles manageable.
+Gatsby has suited the project because its data layer can query Markdown consistently while the templates preserve meaningful differences between content types. CSS Modules have also allowed the design to evolve without turning the stylesheet into a second, less legible version of the site.
 
-The harder problem is content, not code. A notebook only works if you actually write in it.
+The harder lesson has had little to do with the framework. A knowledge system can have an elegant schema and a beautiful graph, yet remain empty if the habit of writing does not survive. The code can make connections visible; it cannot create the thinking worth connecting.
 
 ## What I would change
 
-I would like to add a proper graph visualisation using something like D3 or Cytoscape, driven by the frontmatter `linked_notes` and shared tags. That is the next milestone.
+The graph already uses a D3 force simulation, but its relationship model can become more deliberate. Shared tags are useful clues, although they are not equivalent to a connection I have explicitly argued for. I want future iterations to make that distinction clearer, improve the way dense clusters are explored, and expose why a particular edge exists rather than leaving the reader to infer it.
 
 ## Stack
 
@@ -54,5 +54,5 @@ I would like to add a proper graph visualisation using something like D3 or Cyto
 
 ## Links
 
-- [Source on GitHub](https://github.com/halghasra)
+- [Source on GitHub](https://github.com/halghasra/husain-personal-website)
 - [Live site](https://husainalghasra.com)

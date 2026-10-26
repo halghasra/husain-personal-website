@@ -268,12 +268,12 @@ A few honest limits, since a note about honest guesses should have some.
 
 That last point is the one I would carry into any real project, and not only into search. An estimate you did not check is a promise somebody else made on your behalf.
 
-A heuristic is a promise not to be too pessimistic. Optimism is allowed. Exaggeration is not.
+A heuristic is a promise about the estimate, not a decorative speed trick. If it never overstates the remaining cost, A\* can keep its guarantee. If it does, the faster answer may be the wrong one, and the algorithm will not tell you which promise was broken.
 
 ---
 
-**Sources**
+## References
 
-- P. E. Hart, N. J. Nilsson and B. Raphael, "A Formal Basis for the Heuristic Determination of Minimum Cost Paths", *IEEE Transactions on Systems Science and Cybernetics*, 4(2), 1968, 100 to 107.
-- S. Russell and P. Norvig, *Artificial Intelligence: A Modern Approach*, 4th ed., Pearson, 2021. Informed search and heuristic design by relaxation.
-- E. W. Dijkstra, "A note on two problems in connexion with graphs", *Numerische Mathematik*, 1, 1959, 269 to 271.
+- P. E. Hart, N. J. Nilsson and B. Raphael, ["A Formal Basis for the Heuristic Determination of Minimum Cost Paths"](https://doi.org/10.1109/TSSC.1968.300136), *IEEE Transactions on Systems Science and Cybernetics*, 4(2), 1968, 100–107.
+- S. Russell and P. Norvig, [*Artificial Intelligence: A Modern Approach*](https://www.pearson.com/en-us/subject-catalog/p/artificial-intelligence-a-modern-approach/P200000003500), 4th ed., Pearson, 2021 (informed search and heuristic design by relaxation).
+- E. W. Dijkstra, ["A note on two problems in connexion with graphs"](https://doi.org/10.1007/BF01386390), *Numerische Mathematik*, 1, 1959, 269–271.

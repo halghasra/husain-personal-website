@@ -339,7 +339,7 @@ Before a model can learn anything from a photograph, a customer list or three fi
 
 ---
 
-**Sources**
+## References
 
-- M. P. Deisenroth, A. A. Faisal and C. S. Ong, *Mathematics for Machine Learning*, 2020 (linear algebra, eigenvectors and PCA).
-- A. Vaswani et al., "Attention Is All You Need", 2017.
+- M. P. Deisenroth, A. A. Faisal and C. S. Ong, [*Mathematics for Machine Learning*](https://mml-book.github.io/), Cambridge University Press, 2020 (linear algebra, eigendecomposition and PCA).
+- A. Vaswani et al., ["Attention Is All You Need"](https://arxiv.org/abs/1706.03762), *Advances in Neural Information Processing Systems 30*, 2017.

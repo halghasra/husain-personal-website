@@ -9,13 +9,13 @@ tags: ["State of Exception", "Giorgio Agamben", "Politics", "Philosophy", "Book 
 coverImage: "./images/halat-alestithnaa.png"
 ---
 
-> _"State of exception makes people feel that they have been turned into expendable beings, defenceless bodies, stripped of their identity and their right to belong, and thrown into a realm of prohibition."_
+I chose Giorgio Agamben's _State of Exception_ because its central problem felt less like theory than a description of the previous six years: what happens when emergency measures stop behaving like a temporary interruption and begin to organise daily political life?
 
-I chose to read Giorgio Agamben's _State of Exception_ because it connects deeply with the situation we have been experiencing daily for the past six years. We exist in a shapeless void outside the realm of politics and law – a state of exception. This book provided a profound understanding of our current reality, offering a framework to understand the ongoing complexities we face.
+An earlier version of this review opened with a sentence presented as a quotation, but I could not verify it in the book. I have removed the quotation. The idea mattered to my reading; that does not give me permission to place my own paraphrase inside Agamben's quotation marks.
 
 Agamben’s work examines how governments, in times of crisis, suspend normal laws and declare a state of exception. In such times, the rule of law is often set aside, and individuals find themselves in a grey area where their rights are diminished or entirely removed. This state of exception becomes a tool for authorities to maintain control, often at the expense of personal freedoms and human rights.
 
-Authorities, regardless of time and place, share common characteristics. For thousands of years, "sovereignty" has been above the law, shaping and tailoring its rules and chapters according to need and convenience. Agamben shows how this pattern has persisted throughout history, with sovereign power manipulating legal frameworks to consolidate its authority.
+Agamben's argument is more specific than saying authority has always been above the law. He studies the paradox by which law authorises its own suspension and the sovereign claims legal power to create a space in which normal legal protections no longer apply [1]. The exception is therefore neither simply inside nor outside the legal order.
 
 Reading this book did not merely help me understand the legal aspects of states of exception or emergencies, as they are now called. It provided a way to reflect on my daily experiences. The book helped me see the underlying reasons behind the continuous legal decisions and amendments that are often justified by the need for security and stability.
 
@@ -25,4 +25,10 @@ One of the most striking aspects of Agamben’s work is his discussion on the im
 
 The knowledge gained from _State of Exception_ has encouraged me to read more of Agamben’s works, especially his _Homo Sacer_ series. These books promise to further expand my understanding of how sovereign power operates and impacts human life.
 
-In conclusion, _State of Exception_ is a powerful and timely book that sheds light on the mechanisms of power and control in times of crisis. It challenges us to critically examine the balance between security and freedom and to remain vigilant in protecting our rights against the encroachment of authoritarian measures. Agamben’s work is a must-read for anyone seeking to understand the complex interplay between law, politics, and individual freedoms in our contemporary world.
+I would not now end by calling the book a universal explanation for modern politics. Agamben's framework can flatten important differences between emergencies, legal systems, and degrees of coercion. What it gave me was a sharper question: when power calls a measure temporary, what legal and political mechanism will actually bring the temporary period to an end?
+
+That question travelled beyond the book. It changed the way I read emergency decrees, amendments justified by security, and every promise that an exceptional power will disappear once the danger has passed.
+
+## Reference
+
+1. Agamben, G. (2005). *State of Exception* (K. Attell, Trans.). University of Chicago Press. (Original Italian edition published 2003.)

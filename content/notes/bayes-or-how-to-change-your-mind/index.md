@@ -173,8 +173,8 @@ Evidence should move a belief, not replace it. How far it moves depends on where
 
 ---
 
-**Sources**
+## References
 
-- S. Russell and P. Norvig, *Artificial Intelligence: A Modern Approach*, 4th ed., Pearson, 2021 (probabilistic reasoning and agents under uncertainty).
-- T. Bayes, "An Essay towards solving a Problem in the Doctrine of Chances", communicated by R. Price, *Philosophical Transactions of the Royal Society*, 53, 1763.
-- M. Reani and colleagues, "Experience and Problem Format in Probabilistic Reasoning", 2019.
+- S. Russell and P. Norvig, [*Artificial Intelligence: A Modern Approach*](https://www.pearson.com/en-us/subject-catalog/p/artificial-intelligence-a-modern-approach/P200000003500), 4th ed., Pearson, 2021 (probabilistic reasoning and agents under uncertainty).
+- T. Bayes, ["An Essay towards solving a Problem in the Doctrine of Chances"](https://doi.org/10.1098/rstl.1763.0053), communicated by R. Price, *Philosophical Transactions of the Royal Society*, 53, 1763, 370–418.
+- M. Reani, A. Davies, N. Peek and C. Jay, ["Evidencing How Experience and Problem Format Affect Probabilistic Reasoning Through Interaction Analysis"](https://doi.org/10.3389/fpsyg.2019.01548), *Frontiers in Psychology*, 10, 2019, 1548.

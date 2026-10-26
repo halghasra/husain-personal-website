@@ -207,9 +207,9 @@ A p-value measures surprise under one assumption. What to believe afterwards is 
 
 ---
 
-**Sources**
+## References
 
-- Student (W. S. Gosset), "The probable error of a mean", *Biometrika*, 6(1), 1908.
+- Student (W. S. Gosset), ["The probable error of a mean"](https://doi.org/10.1093/biomet/6.1.1), *Biometrika*, 6(1), 1908, 1–25.
 - R. A. Fisher, *Statistical Methods for Research Workers*, Oliver and Boyd, 1925.
-- B. Efron, "Bootstrap methods: another look at the jackknife", *The Annals of Statistics*, 7(1), 1979.
-- R. L. Wasserstein and N. A. Lazar, "The ASA statement on p-values: context, process, and purpose", *The American Statistician*, 70(2), 2016.
+- B. Efron, ["Bootstrap methods: another look at the jackknife"](https://doi.org/10.1214/aos/1176344552), *The Annals of Statistics*, 7(1), 1979, 1–26.
+- R. L. Wasserstein and N. A. Lazar, ["The ASA Statement on p-Values: Context, Process, and Purpose"](https://doi.org/10.1080/00031305.2016.1154108), *The American Statistician*, 70(2), 2016, 129–133.

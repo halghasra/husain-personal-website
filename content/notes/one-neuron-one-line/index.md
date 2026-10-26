@@ -228,15 +228,15 @@ My own work is in insurance, where a scorecard adds up points for various risk f
 
 I take a general habit from that. Before asking how well a model fits, ask what its shape cannot express. A model can be excellent on average and still be unable to represent one pattern that matters.
 
-The cure for one line was a second layer, with a bend between the two.
+The XOR problem did not need a cleverer straight line. It needed the data to be represented differently before the final line was drawn. One extra layer supplied that representation, and created the next problem: how to train the hidden weights rather than choose them by hand.
 
 ---
 
-**Sources**
+## References
 
-- F. Rosenblatt, "The Perceptron: A Probabilistic Model for Information Storage and Organization in the Brain", *Psychological Review*, 65(6), 1958.
-- M. Minsky and S. Papert, *Perceptrons: An Introduction to Computational Geometry*, MIT Press, 1969. (Not read for this note; cited for the date and subject.)
-- D. E. Rumelhart, G. E. Hinton and R. J. Williams, "Learning representations by back-propagating errors", *Nature*, 323, 1986.
-- S. Russell and P. Norvig, *Artificial Intelligence: A Modern Approach*, 4th ed., Pearson, 2021.
-- M. Haenlein and A. Kaplan, "A Brief History of Artificial Intelligence: On the Past, Present, and Future of Artificial Intelligence", *California Management Review*, 61(4), 2019.
-- A. Toosi, A. Bottino, B. Saboury, E. Siegel and A. Rahmim, "A Brief History of AI: How to Prevent Another Winter (A Critical Review)", *PET Clinics*, 16(4), 2021.
+- F. Rosenblatt, ["The Perceptron: A Probabilistic Model for Information Storage and Organization in the Brain"](https://doi.org/10.1037/h0042519), *Psychological Review*, 65(6), 1958, 386–408.
+- M. Minsky and S. Papert, *Perceptrons: An Introduction to Computational Geometry*, MIT Press, 1969. (Not read for this note; cited only for the date and subject.)
+- D. E. Rumelhart, G. E. Hinton and R. J. Williams, ["Learning representations by back-propagating errors"](https://doi.org/10.1038/323533a0), *Nature*, 323, 1986, 533–536.
+- S. Russell and P. Norvig, [*Artificial Intelligence: A Modern Approach*](https://www.pearson.com/en-us/subject-catalog/p/artificial-intelligence-a-modern-approach/P200000003500), 4th ed., Pearson, 2021.
+- M. Haenlein and A. Kaplan, ["A Brief History of Artificial Intelligence: On the Past, Present, and Future of Artificial Intelligence"](https://doi.org/10.1177/0008125619864925), *California Management Review*, 61(4), 2019, 5–14.
+- A. Toosi, A. G. Bottino, B. Saboury, E. Siegel and A. Rahmim, ["A Brief History of AI: How to Prevent Another Winter (A Critical Review)"](https://doi.org/10.1016/j.cpet.2021.07.001), *PET Clinics*, 16(4), 2021, 449–469.
